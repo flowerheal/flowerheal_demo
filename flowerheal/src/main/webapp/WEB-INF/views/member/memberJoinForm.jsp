@@ -42,15 +42,15 @@
 					onkeyup="inputTelNumber(this);" placeholder="'-'를 빼고 입력하세요" required = "required" />
 				<div class="invalid-feedback"><form:errors path="tel" cssClass="errMsg"></form:errors></div>
 			</div>
-			<div class="col-md-6 col-lg-8 mb-3">
+<%-- 			<div class="col-md-6 col-lg-8 mb-3">
 				<form:label path="region">지역</form:label>
 				<form:select path="region" class="form-control">
 				<option value="0">---지역---</option>
 				<form:options items="${region}" itemValue="code" itemLabel="label"></form:options>
 				</form:select>
 				<div class="invalid-feedback"><form:errors path="region" cssClass="errMsg"></form:errors></div>
-			</div>
-			<div class="col-md-6 col-lg-8 mb-3">
+			</div> --%>
+<%-- 			<div class="col-md-6 col-lg-8 mb-3">
 				<fieldset class="form-group mb-0">
 					<form:label path="gender" class="form-check-label">성별</form:label>
 					<div class="form-control" id="gender">
@@ -65,7 +65,7 @@
 				<form:label path="nickname">별명</form:label>
 				<form:input type="text" class="form-control" path="nickname" placeholder="별명을 입력하세요.(2자리~10자리)" required = "required"/>
 				<div class="invalid-feedback"><form:errors path="nickname" cssClass="errMsg"></form:errors></div>
-			</div>
+			</div> --%>
 		</div>
 		<input type="button" class="btn btn-outline-secondary btn-lg col-md-6 mx-auto" id="joinBtn" value="회원 가입">
 	</form:form>

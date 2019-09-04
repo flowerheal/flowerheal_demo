@@ -44,7 +44,7 @@ nav{	border-radius: 0.25rem;}
 .bg-dark{	background-color: #47331f !important;}
 .text-dark{	color:#47331f !important;}
 .btn-lg{	padding: 0.6rem;}
-.btn:hover{	background-color: #47331f }
+/* .btn:hover{	background-color: #47331f } */
 
 a,
 a:hover{

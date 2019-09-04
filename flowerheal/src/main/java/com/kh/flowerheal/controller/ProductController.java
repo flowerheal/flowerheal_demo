@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kh.flowerheal.product.dto.ProductDTO;
+
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -23,13 +25,18 @@ public class ProductController {
 		viewname = "/product/productList";
 		return viewname;
 	}
+	
 	// 상품상세 페이지
-	@GetMapping("/{productNo}")
+	@GetMapping("/{product_num}")
 	public String product(
-			@PathVariable String productNo,
+			@PathVariable String product_Num,
 			Model model) {
 		logger.info("product() 호출됨");
-		viewname = "/product/"+productNo;
+		ProductDTO pdto = new ProductDTO();
+		pdto.setProduct_Num(product_Num);
+		model.addAttribute("pdto", pdto);
+		viewname = "/product/"+product_Num;
 		return viewname;
 	}
+	
 }
