@@ -1,0 +1,140 @@
+	.form-row,
+	.form-group,
+	.btn-primary {
+		display: flex;
+		flex-flow: column wrap;
+		align-items: center;
+	}
+
+	.btn-primary {
+		margin: auto;
+	}
+
+/* 	form,
+	.form {
+		width: 80%;
+		margin: 3rem auto;
+		display: flex;
+		flex-flow: column;
+		font-size: 1.2rem;
+	}
+ */
+	form .col {
+		display: flex;
+	}
+
+/* 	.form-group .col .form-check {
+		width: 50%;
+	} */
+/* 	.form-group span{
+	 margin: 0 3rem !important;
+	} */
+	
+	form .row,
+	.form .row{
+		margin: 0.5rem 0 !important;
+		justify-content: center;
+	}
+	
+	form .row label{
+    margin: auto 0;
+	}
+	form .row .btn{
+	  margin-left: 0.5rem !important;
+	  margin-right: 0.5rem !important;
+	}
+	
+	form .invalid-feedback{
+		text-align: center;
+	}
+	form textarea.form-control {
+		min-height: 200px;
+/* 		font-size: 0.8rem; */
+	}
+	.form-control:disabled, .form-control[readonly] {
+		background-color: #fff !important;
+		opacity: 1;
+	}
+
+
+
+	@media (min-width: 576px) {
+		form .row label{
+		  text-align: center;
+		}
+	}
+	
+
+
+
+
+
+.form-row,
+.form-group,
+.btn-primary {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+}
+
+.btn-primary {
+	margin: auto;
+}
+
+.container>form, 
+.container>.form{
+ 	width: 80%;
+	display: flex;
+	flex-flow: column wrap;
+	margin: 2rem auto 0 auto;
+
+}
+.container>form label,
+.container>.form label{
+  font-size: 1.1rem;
+}
+.container>form input,
+.container>form select,
+.container>form fieldset label,
+.container>form textarea,
+.container>.form input,
+.container>.form select,
+.container>.form fieldset label,
+.container>.form textarea{
+  font-size: 0.9rem;
+}
+
+.invalid-feedback{
+  font-size: 0.75rem !important;
+}
+
+.form-group .col {
+	display: flex;
+}
+
+.form-group .col .form-check {
+	width: 50%;
+}
+.form-group span {
+margin: 0 2rem !important;
+}
+
+/* 태블릿 - 768px 이상 */
+@media screen and (min-width: 768px) {
+	.container>form label{
+		font-size: 1.3rem;
+	}
+	.container>form input,
+	.container>form select,
+	.container>form fieldset label,
+	.container>form textarea,
+	.container>.form input,
+	.container>.form select,
+	.container>.form fieldset label,
+	.container>.form textarea{
+		font-size: 1.15rem;
+	}
+	.invalid-feedback{
+		font-size: 1rem !important;
+	}
+}

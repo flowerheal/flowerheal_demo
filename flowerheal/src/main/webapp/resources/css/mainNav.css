@@ -1,0 +1,186 @@
+/* nav#mainNav */
+#desktopNav{
+	display: none;
+}
+
+#mobileNav {
+	display:none;		/*js로 조절함*/
+	height: 100%;
+	width: 250px; 
+	position: fixed;
+	z-index: 20; 
+	top: 0;
+	left: 0;
+	background-color: #f0f5b8;
+	overflow: hidden;
+	padding-top: 60px;
+	flex-flow: column;
+}
+
+#mobileNav div{
+	display: block;
+	width: 100%;
+}
+#mobileNav div div {
+	width: 100%;
+	float: left;
+	padding: 0;
+}
+#mobileNav div div:hover {
+	cursor: pointer;
+}
+
+#mobileNav div div a{
+	width: 100%;
+	float: left;
+	font-size: 16px;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+#mobileNav .dropdown-container{
+	display:none;
+
+    flex-flow: column;
+    background: aliceblue;
+
+}
+
+#mobileNav .dropdown-container.show{
+	display: flex;
+}
+
+
+
+
+.btn-lg{
+	padding: 0.6rem;
+}
+@media (min-width: 576px) {
+	.btn-lg{
+		padding: 0.5rem 1rem;
+	}
+}
+
+
+@media (min-width: 768px) {
+	#mobileNav{
+		display : none !important;
+	}
+	#desktopNav{
+		display : flex;
+	}
+        
+	/* .navbar-expand-md .navbar-collapse {
+		width:80%;
+	} */
+
+
+  #desktopNav{
+		flex-flow: row wrap;
+		justify-content: center;
+		text-align: center;
+    width: 100%;
+		height: auto;
+		position: relative;
+		font-size: 15px;
+		padding:0;
+	}
+	
+ 	.mainNav div.closeBtn,
+	.openBtn,
+	.closeBtn{
+		display:none;
+	} 
+
+	#desktopNav .subnav,
+	#desktopNav div{
+    padding: 0;
+    font-size: 1em;
+		flex:1;
+	}
+
+	#desktopNav div{
+    display: flex;
+		justify-content: center;
+	}
+
+
+	#desktopNav .dropdown-container{
+		display: none;
+		position: absolute;
+ 		top: 60px;
+		left: 0;
+ 		background: rgb(128,128,0);
+		width: 100%;
+	z-index: 20; 
+	}
+
+
+	#desktopNav a{
+		float: left;
+		width: 100%;
+    height: 100%;
+		font-size: 16px;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
+	
+	
+	#desktopNav .openSubNav {
+		float: left;
+		overflow: hidden;
+		text-align: center;
+		font-size: 16px; 
+		border: none;
+		outline: none;
+		color: black;
+		padding: 14px 16px;
+		background-color: inherit;
+		font-family: inherit;
+		margin: 0;
+	}
+
+	#desktopNav div div{
+		color:black;
+	}
+
+	#desktopNav div div:hover {
+		background: rgb(128,128,0);
+		cursor: pointer;
+	}
+
+
+	
+	
+	.openSubNav:hover .dropdown-container {
+		display: flex !important;
+	}
+	.dropdown-container {
+		display: none;
+		position: absolute;
+		left: 0;
+		background: rgb(128,128,0);
+		width: 100%;
+	z-index: 20; 
+	}
+
+
+	.dropdown-container a {
+		margin: 0 1rem;
+		float: right;
+		color: white;
+		text-decoration: none;
+		width: 15%;
+		border-radius: 0.25rem;
+	}
+
+
+	.dropdown-container a:hover {
+		background-color: #eee;
+		color: black;
+	}
+
+}
+

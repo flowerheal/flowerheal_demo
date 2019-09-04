@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.bbs-mapper">
+
+	<!-- 게시글 작성 -->
+	<insert id="write"
+					parameterType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		insert into board
+								(bnum,btitle,bid,bnickname,bhit,bcontent,bgroup,bstep,bindent)
+					values(board_seq.nextval,#{btitle},#{bid},#{bnickname},0,#{bcontent},board_seq.currval,0,0)
+	</insert>
+	<!-- 게시글 수정 -->
+	<update id="modify"
+					parameterType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		update board 
+		   set btitle=#{btitle}, budate=sysdate, bcontent=#{bcontent}
+		 where bnum=#{bnum} 
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete"
+					parameterType="String">
+		delete from board where bnum=#{bnum}
+	</delete>
+	
+	<!-- 게시글 보기 -->
+	<select id="view"
+					parameterType="String"
+					resultType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		select bnum,btitle,bid,bnickname,bcdate,budate, 
+		       bhit,bcontent,bgroup,bstep,bindent 
+		  from board 
+		 where bnum=#{bnum}
+
+		 <if test="bid!=null">
+		 		update board set bhit = bhit + 1 
+				 where bnum = #{bnum}
+		 </if>
+	</select>
+	
+	<!-- 게시글 목록보기  -->
+	<!-- 1)전체 -->
+	<select id="listAll"
+					resultType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		select bnum,btitle,bid,bnickname,bcdate,budate,
+		       bhit,bcontent,bgroup,bstep,bindent 
+		  from board 
+	</select>
+	
+	<!-- 2)검색어 없는경우 -->
+	<select id="listNoSearch"
+					parameterType="Map"
+					resultType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		select t2.* 
+	  	from ( select row_number() over (order by bgroup desc, bstep asc) as num, t1.* 
+																       from board t1 ) t2 	
+ 							where num between #{starRec} and #{endRec} 
+	</select>
+	
+	<!-- 3)검색어 있는경우 -->
+		<select id="listYesSearch"
+					parameterType="Map"
+					resultType="com.kh.flowerheal.bbs.dto.BbsDTO">
+			select t2.* 
+	      from ( select row_number() 
+	      				 over (order by bgroup desc, bstep asc) as num, t1.* 
+	  										from board t1 
+											 where bnum > 0  
+					  switch(#{searchType}) {
+					  case	"TC" :<!-- //제목+내용 -->
+					  						 and btitle   	like '%' || #{keyword} || '%' 
+					  						  or bcontent 	like '%' || #{keyword} || '%' 
+					  	break;
+					  case	"T" :	<!-- //제목 -->
+					  						 and btitle   	like '%' || #{keyword} || '%'	  
+					  	break;
+					  case	"C" :	<!-- //내용 -->
+					  						 and bcontent   like '%' || #{keyword} || '%' 	  
+					  	break;
+					  case	"N" :	<!-- //작성자(별칭) -->
+					  						 and bnickname  like '%' || #{keyword} || '%' 		  
+					  	break;
+					  case	"I" :	<!-- //아이디 -->
+					  						 and bid   		  like '%' || #{keyword} || '%' 		 	  	
+					  	break;
+					  	
+					  default : <!-- // 제목 + 내용+ 작성자(별칭) -->
+					  			 			 and btitle   	like '%' || #{keyword} || '%' 
+					  						  or bcontent 	like '%' || #{keyword} || '%' 	 
+					  						  or bnickname  like '%' || #{keyword} || '%' 	 	  	
+					  	break;
+					  }  
+					    ) t2 	
+	  	where num between #{starRec} and #{endRec} 	
+	  
+	</select>
+	
+	<!-- 게시글 답글 -->
+	<update id="updateStep"
+					parameterType="Map">
+		update board set bstep = bstep + 1 where bgroup = #{bgroup} and bstep > #{bgroup}
+	</update>			
+	<insert id="reply"
+					parameterType="com.kh.flowerheal.bbs.dto.BbsDTO">
+					
+		insert into board 
+								(bnum,btitle,bid,bnickname,bhit,
+								 bcontent,bgroup,bstep,bindent)
+				 values (board_seq.nextval,#{btitle},#{bid},#{bnickname},0,
+				 				#{bcontent},#{bgroup},#{bstep}+1,#{bindent}+1)			
+	</insert>
+	
+	<!-- 게시글 총계 -->
+	<!-- 1)검색어 없는경우 -->
+	
+	<!-- 2)검색어 있는경우 -->
+</mapper>

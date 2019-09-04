@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.bbsdaoimplxml-mapper">
+
+	<!-- 게시글 작성 -->
+	<insert id="write"
+					parameterType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		insert into board
+								(bnum,btitle,bid,bnickname,bhit,bcontent,bgroup,bstep,bindent)
+					values(board_seq.nextval,#{btitle},#{bid},#{bnickname},0,#{bcontent},board_seq.currval,0,0)
+	</insert>
+	<!-- 게시글 수정 -->
+	<update id="modify"
+					parameterType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		update board 
+		   set btitle=#{btitle}, budate=sysdate, bcontent=#{bcontent}
+		 where bnum=#{bnum} 
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete"
+					parameterType="String">
+		delete from board where bnum=#{bnum}
+	</delete>
+	<!-- 해당 게시글의 댓글 삭제 -->
+	<delete id="deleteComments"
+					parameterType="String">
+		delete from replyboard where bnum=#{bnum}
+	</delete>
+	
+	<!-- 게시글 보기 -->
+	<select id="view"
+					parameterType="String"
+					resultType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		select bnum,btitle,bid,bnickname,bcdate,budate, 
+		       bhit,bcontent,bgroup,bstep,bindent 
+		  from board 
+		 where bnum=#{bnum}
+
+	</select>
+	<!-- 조회수 증가 -->
+	<update id = "updateHit" parameterType="String">
+		update board
+		   set bhit = bhit + 1
+	   where  bnum = #{bnum}
+	</update>
+	
+	<!-- 게시글 목록보기  -->
+	<!-- 1)전체 -->
+	<select id="listAll"
+					resultType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		select bnum,btitle,bid,bnickname,bcdate,budate,
+		       bhit,bcontent,bgroup,bstep,bindent 
+		  from board 
+	</select>
+	
+	<!-- 2)게시글 목록 보기 : 검색어 없는경우 -->
+	<select id="listNoSearch"
+					parameterType="Map"
+					resultType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		SELECT t2.* 
+		 	FROM ( SELECT row_number() OVER (ORDER BY bgroup DESC, bstep ASC) AS num, t1.* 
+		            	FROM board t1) t2 
+			WHERE num BETWEEN #{startRec} AND #{endRec} 
+	
+	</select>
+
+	<!-- 3) 게시글 목록 보기 : 검색어 있는경우 -->
+	<select id="listYesSearch"
+					parameterType="Map"
+					resultType="com.kh.flowerheal.bbs.dto.BbsDTO">
+		SELECT t2.* 
+		 	FROM ( SELECT row_number() OVER (ORDER BY bgroup DESC, bstep ASC) AS num, t1.*
+		            	FROM board t1 
+						WHERE bnum > 0 
+		
+		<!-- 내가 참고한 것 -->
+		<!-- https://sinpk.tistory.com/entry/Mybatis-if-%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%B9%84%EA%B5%90 -->
+		<bind name="keyword" value="'%'+keyword+'%'"/>
+		<choose>
+			<!-- 선생님이 사용한 문자열 비교 방법 -->
+			<when test="searchType == 'TC'.toString()">
+				AND 	btitle 		LIKE #{keyword} 
+				OR 		bcontent 	LIKE #{keyword}  
+			</when>
+			<when test="searchType == 'T'.toString()">
+				AND 	btitle 		LIKE #{keyword} 
+			</when>
+			<when test="searchType == 'C'.toString()">
+				AND 	bcontent 	LIKE #{keyword} 
+			</when>
+			<when test="searchType == 'N'.toString()">
+				AND 	bnickname 	LIKE #{keyword} 
+			</when>
+			<when test="searchType == 'I'.toString()">
+				AND 	bid 		LIKE #{keyword} 
+			</when>
+			<otherwise>
+				AND 	btitle 			LIKE #{keyword} 
+				OR  	bcontent 		LIKE #{keyword} 
+				OR  	bid 			LIKE #{keyword} 
+			</otherwise>
+		
+		<!-- 
+					홑 따움표 사용
+    		<if test='searchType.equals("TC")'>  (O)
+    		<if test='searchType == "TC"'>  (O)
+    		<if test="searchType == 'TC'">  (Error) 예시가 애매하다.
+    		<if tset='searchType == "h"'>  (O)   예시가 애매하다.
+    		
+    				쌍 따움표 사용
+    		<if test="'TC'.equals(searchType)">  (O)
+    		<if test="'h'.equals(searchType)'>  (X) 예시가 애매하다.
+    		<if test="searchType.equals('h')">  (X) 예시가 애매하다.
+    		<if test="searchType == 'TC'.toString()>  (O)
+    		<if test="searchType eq 'TC'.toString()>  (O)
+    		<if test="searchType.equalsIgnoreCase('TC')">  (O)
+    		<if test="searchType.equalsIgnoreCase('h')">  (O)
+    		<if test="'h'.equalsIgnoreCase(searchType)">  (Error)
+		 -->
+		</choose>		
+						
+				) t2 
+			WHERE num BETWEEN #{startRec} AND #{endRec}
+		
+	</select>
+	
+	<!-- 게시글 답글 -->		
+	<insert id="reply"
+					parameterType="com.kh.flowerheal.bbs.dto.BbsDTO">
+					
+		insert into board 
+								(bnum,btitle,bid,bnickname,bhit,
+								 bcontent,bgroup,bstep,bindent)
+				 values (board_seq.nextval,#{btitle},#{bid},#{bnickname},0,
+				 				#{bcontent},#{bgroup},#{bstep}+1,#{bindent}+1)			
+	</insert>
+	
+	<!-- 이전 답글 step 업데이트 -->
+	<update id = "updateStep"
+				  parameterType="java.util.Map">
+		update board
+		   set bstep = bstep + 1
+	   where bgroup = #{bgroup} and bstep > #{bstep}
+	</update>
+	
+	<!-- 게시글 총계 -->
+	<!-- 1)검색어 없는경우 -->
+	<select id="totalRec"
+					resultType="Integer">
+		select count(bnum) toalcnt from board 
+	</select>	
+	
+	<!-- 2)검색어 있는경우 -->
+	<select id="searchTotalRec"
+					parameterType="java.util.Map"
+					resultType="Integer">
+		select count(bnum) totalRec 
+	    from ( select row_number() over (order by bgroup desc, bstep asc) as num, t1.*
+	  	         from board t1
+			        where bnum > 0
+	   	<bind name="keyword" value="'%'+keyword+'%'"/>
+				<choose>
+					<!-- 선생님이 사용한 문자열 비교 방법 -->
+					<when test="searchType == 'TC'.toString()">
+						AND 	btitle 		LIKE #{keyword} 
+						OR 		bcontent 	LIKE #{keyword}  
+					</when>
+					<when test="searchType == 'T'.toString()">
+						AND 	btitle 		LIKE #{keyword} 
+					</when>
+					<when test="searchType == 'C'.toString()">
+						AND 	bcontent 	LIKE #{keyword} 
+					</when>
+					<when test="searchType == 'N'.toString()">
+						AND 	bnickname 	LIKE #{keyword} 
+					</when>
+					<when test="searchType == 'I'.toString()">
+						AND 	bid 		LIKE #{keyword} 
+					</when>
+					<otherwise>
+						AND 	btitle 			LIKE #{keyword} 
+						OR  	bcontent 		LIKE #{keyword} 
+						OR  	bid 			LIKE #{keyword} 
+					</otherwise>
+					</choose>     
+    			 ) t2 
+	</select>	
+</mapper>

@@ -1,0 +1,198 @@
+/* === 폰트 === */
+@font-face {
+  font-family: Baekbeom;
+  src: url(font/Typo_BaekbeomB.woff) format('woff'),
+       url(font/Typo_BaekbeomB.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: DXSnUB;
+  src: url(font/DXSnUB-KSCpc-EUC-H.woff) format('woff'),
+       url(font/DXSnUB-KSCpc-EUC-H.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: MoonP;
+  src: url(font/moonp.woff) format('woff'),
+       url(font/moonp.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* 기본 한국어 폰트 */
+*,body{	font-family: DXSnUB;}
+
+/* 영어, 중국어, 일본어 폰트 */
+.Lang_Eng,  
+.Lang_Ch,
+.Lang_Jp{
+	font-family: MoonP;
+}
+
+
+
+/* === 화면 전체 적용 === */
+h1, h2, h3, h4, h5, h6 {  font-family: Baekbeom;}
+nav{	border-radius: 0.25rem;}
+	p{	font-size: 0.9rem;}
+.h4{	font-size: 1.2em;}
+.h5{	font-size: 1.15em;}
+.bg-dark{	background-color: #47331f !important;}
+.text-dark{	color:#47331f !important;}
+.btn-lg{	padding: 0.6rem;}
+.btn:hover{	background-color: #47331f }
+
+a,
+a:hover{
+	color: black;
+	text-decoration: none;
+}
+
+.row{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+section.container {
+	margin: 2rem auto;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+}
+section h4 {
+	text-align: center;
+}
+
+
+/* === header.jsp === */
+/* header tag */
+.blog-header {
+  line-height: 2;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.blog-header-logo {
+	font-family: Baekbeom;
+  font-size: 3rem;
+}
+
+.blog-header-logo:hover {
+  text-decoration: none;
+}
+
+header nav{
+	margin: 0 auto;
+}
+
+.openBtn{
+	width: 120px;
+	height: 2em;
+	font-size: 25px;
+	border: none;
+	background: none;
+}
+
+/* nav#headerLinks */
+#headerLinks a,
+#headerLinks #greetMsg{
+  font-size: 0.8rem;
+}
+/* .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #696969;
+  min-width: 6.5rem;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color:white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover { background-color: #ddd; }
+.show{ display: block !important; } */
+
+
+
+
+/* === footer.jsp === */
+/* section.site-info */
+.site-info {
+  padding: 2rem 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: .05rem solid #e5e5e5;
+}
+
+.site-info p:last-child {
+  margin-bottom: 0;
+}
+.site-info .container .row div{
+	width: auto;
+	margin: 1rem auto;
+}
+
+/* footer tag */
+.blog-footer {
+	font-size: 0.85rem;
+  padding: 2.5rem 0;
+  color: #999;
+  text-align: left;
+  background-color: white;
+  border-top: .05rem solid #e5e5e5;
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
+
+
+
+@media (min-width: 576px) {
+	/* === 화면 전체 적용 === */
+	.btn-lg{	padding: 0.5rem 1rem;}
+		p{	font-size: 1rem;}
+	.h4{	font-size: 1.3em;}
+  .h5{	font-size: 1.2em;}
+  
+  /* nav#headerLinks */
+  #headerLinks a,
+  #headerLinks #greetMsg{
+    font-size: 1rem;
+  }
+}
+
+
+
+@media (min-width: 768px) {
+	/* === 화면 전체 적용 === */
+	html,
+  body{ font-size: 0.9em;}
+		h3{	font-size: 2rem;}
+		p{	font-size: 1.1rem;}
+	.h4{	font-size: 1.5em;}
+  .h5{	font-size: 1.3em;}
+
+  /* nav#headerLinks */
+  #headerLinks a,
+  #headerLinks #greetMsg{
+    font-size: 1.2rem;
+  }
+
+}
+
+

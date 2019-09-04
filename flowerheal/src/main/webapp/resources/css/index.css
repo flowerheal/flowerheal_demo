@@ -1,0 +1,95 @@
+/* === jumbotron.jsp === */
+.jumbotron{
+	padding:0;
+	background-color:white;
+	color :#004d00 ; 
+	    position: relative;
+}
+.jumbotron img{
+	width: 100%;
+  min-height: 18rem;
+
+}
+
+.jumbotron #desktopJumbo{
+display: none;
+}
+
+.jumbotron div#mobileJumbo,
+.jumbotron div#desktopJumbo{
+	height:100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+}
+.jumbotron div .jumboText{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+
+}
+.jumbotron div#arrowToProduct{
+	position: absolute;
+	top: 85%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+
+}
+.jumbotron div h3,
+.jumbotron div h4,
+.jumbotron div#arrowToProduct i{
+	border-radius: 1rem;
+	background-color: rgb(255, 255, 255,0.8);
+	color: #004d00;
+	width: fit-content;
+}
+
+ #recommendBanner div a  img{
+	height: 8rem;
+}
+
+/* === body.jsp === */
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.card-text{
+	min-width: 195px;
+}
+
+
+
+@media (min-width: 768px) {
+	/* === jumbotron.jsp === */
+	.lead{
+		font-size : 1.5rem;
+	}
+	.jumbotron #mobileJumbo{
+	display: none;
+	}
+	.jumbotron #desktopJumbo{
+	display: block;
+	}
+	.jumbotron img {
+    height: 390px;
+	}
+}
+
+
+@media (min-width: 992px) {
+	/* === jumbotron.jsp === */
+	.jumbotron img {
+    height: 420px;
+	}
+	 #recommendBanner img{
+	height: 10rem;
+}
+
+}

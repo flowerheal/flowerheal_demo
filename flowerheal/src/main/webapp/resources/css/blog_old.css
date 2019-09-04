@@ -1,0 +1,292 @@
+
+@font-face {
+  font-family: Baekbeom;
+  src: url(font/Typo_BaekbeomB.woff) format('woff'),
+       url(font/Typo_BaekbeomB.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+@font-face {
+  font-family: DXSnUB;
+  src: url(font/DXSnUB-KSCpc-EUC-H.woff) format('woff'),
+       url(font/DXSnUB-KSCpc-EUC-H.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: MoonP;
+  src: url(font/moonp.woff) format('woff'),
+       url(font/moonp.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* 기본 한국어 폰트 */
+*,body{
+	font-family: DXSnUB;
+}
+
+/* 영어, 중국어, 일본어 폰트 */
+.Lang_Eng,  
+.Lang_Ch,
+.Lang_Jp{
+	font-family: MoonP;
+}
+
+/* header.jsp */
+.blog-header {
+  line-height: 2;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.blog-header-logo {
+	font-family: Baekbeom;
+  font-size: 3rem;
+}
+
+.blog-header-logo:hover {
+  text-decoration: none;
+}
+
+/* .blog-header .btn-lg{
+	padding: auto 0.75rem;
+} */
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Baekbeom;
+}
+.bg-dark{
+	background-color: #47331f !important;
+}
+.text-dark{
+	color:#47331f !important;
+}
+
+/* 한자 (가) 분홍색 */
+header div span{
+	color: #ff659f;
+}
+
+/* .header .row .col  */
+ #memberMsg{
+	font-size: 1.3rem;
+}
+
+
+
+
+/* nav */
+nav{
+	border-radius: 0.25rem;
+}
+
+
+
+.jumbotron{
+	padding:0;
+	background-color:white;
+	color :#004d00 ; 
+	    position: relative;
+}
+.jumbotron #TabletJumbo{
+display: none;
+}
+
+
+.jumbotron img{
+	width: 100%;
+  min-height: 18rem;
+
+}
+.jumbotron div#mobileJumbo,
+.jumbotron div#TabletJumbo{
+	height:100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+}
+.jumbotron div .jumboText{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+
+}
+.jumbotron div#arrowToProduct{
+	position: absolute;
+	top: 85%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+
+}
+.jumbotron div h3,
+.jumbotron div h4,
+.jumbotron div#arrowToProduct i{
+	border-radius: 1rem;
+	background-color: rgb(255, 255, 255,0.8);
+	color: #004d00;
+	width: fit-content;
+}
+
+
+
+@media (min-width: 768px) {
+	.navbar-expand-md .navbar-collapse {
+		width:80%;
+	}
+	#searchBar{
+		justify-content: flex-end;
+	}
+  .display-4 {
+    font-size: 3rem;
+	}
+	h3{
+		font-size: 2rem;
+	}
+	.lead{
+		font-size : 1.5rem;
+	}
+.jumbotron #mobileJumbo{
+display: none;
+}
+.jumbotron #TabletJumbo{
+display: block;
+}
+
+	.jumbotron img {
+    height: 390px;
+	}
+
+}
+
+@media (min-width: 992px) {
+	.jumbotron img {
+    height: 420px;
+	}
+
+}
+@media (min-width: 1200px) {
+}
+
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroller .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+}
+
+.card-img-right {
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+}
+
+.flex-auto {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.h-250 { height: 250px; }
+@media (min-width: 768px) {
+  .h-md-250 { height: 250px; }
+}
+
+/*
+ * Blog name and description
+ */
+.blog-title {
+  margin-bottom: 0;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.blog-description {
+  font-size: 1.1rem;
+  color: #999;
+}
+
+@media (min-width: 40em) {
+  .blog-title {
+    font-size: 3.5rem;
+  }
+}
+
+/* Pagination */
+.blog-pagination {
+  margin-bottom: 4rem;
+}
+.blog-pagination > .btn {
+  border-radius: 2rem;
+}
+
+/*
+ * Blog posts
+ */
+.blog-post {
+  margin-bottom: 4rem;
+}
+.blog-post-title {
+  margin-bottom: .25rem;
+  font-size: 2.5rem;
+}
+.blog-post-meta {
+  margin-bottom: 1.25rem;
+  color: #999;
+}
+
+/*
+ * info
+ */
+.site-info {
+  padding: 2rem 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: .05rem solid #e5e5e5;
+}
+
+.site-info p:last-child {
+  margin-bottom: 0;
+}
+.site-info .container .row div{
+	width: auto;
+	margin: 1rem auto;
+}
+/*
+ * Footer
+ */
+.blog-footer {
+	font-size: 0.85rem;
+  padding: 2.5rem 0;
+  color: #999;
+  text-align: left;
+  background-color: white;
+  border-top: .05rem solid #e5e5e5;
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}

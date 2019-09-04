@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.login-mapper">
+
+<!-- 회원유무 체크 -->
+<select id="isMember"
+				parameterType="Map"
+				resultType="java.lang.Integer">
+	SELECT COUNT(id) FROM member WHERE id = #{id} AND pw = #{pw} 
+</select>
+
+<!-- 회원정보 가져오기 -->
+<select id="getMember"
+				parameterType="Map"
+				resultType="com.kh.flowerheal.member.dto.MemberDTO">
+	SELECT id, pw, tel, nickname, gender, region 
+	  FROM member 
+	 WHERE id = #{id} AND pw = #{pw}
+</select>
+</mapper>
