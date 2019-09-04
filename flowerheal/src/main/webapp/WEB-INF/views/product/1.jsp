@@ -231,7 +231,7 @@ $( document ).ready(function() {
 	
 	//배송비 : 2500원 / 3만원 이상 배송비 무료
 	let $postCost = 0;
-		if($productCost>=30000){
+		if($productCost>=30000){ 
 			$postCost = 0;
 		}else{
 			$postCost = 2500;
