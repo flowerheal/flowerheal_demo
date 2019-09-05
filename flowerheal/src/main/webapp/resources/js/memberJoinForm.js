@@ -59,8 +59,6 @@ function hasIdF() {
 	}
 }
 
-
-
 function inputTelNumber(obj) {
 
 	var number = obj.value.replace(/[^0-9]/g, "");
@@ -129,6 +127,7 @@ function check() {
 	let id = this.id;
 	var errMsg = this.nextElementSibling;
 	switch (id) {
+//==== 필수 입력사항 ====
 		//1) 이메일 주소 체크 
 		case "id":
 			var emailReg = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
@@ -177,10 +176,25 @@ function check() {
 			}
 			break;
 
-		//4) 전화번호 체크
+		//4) 이름체크	
+		case "name":
+			var input = $('#name').val().replace(/ /gi, '');	//공백 입력 방지
+			$('#name').val(input);
+			name = this.value;
+			if (this.value == "" || this.value == null) {
+				errorLogic(errMsg,"이름을 입력하세요",this,3);
+			}else if(!onlyHangul(this)){
+				errLogin(errMsg,"한글만 입력 가능합니다.",this,3)
+			}else {
+				okLogic(this,3);
+			}
+			break;
+
+
+//==== 선택 입력사항 ====
+		//5) 전화번호 체크
 		case "tel":
 			var phoneReg = /(\d{3}).*(\d{3}).*(\d{4})/;
-			//var errMsg = this.nextElementSibling;
 			var tel = this.value;
 			var telNumOnly = "";
 			for (var i = 0; i < tel.length; i++) {
@@ -189,53 +203,15 @@ function check() {
 				}
 			}
 
-
 			if (telNumOnly == "" || telNumOnly == null) {
-				errorLogic(errMsg,"전화번호를 입력하세요",this,3);
-
+				checkArray[4] = true;
 			} else if (!phoneReg.test(telNumOnly)) {
-				errorLogic(errMsg,"올바른 전화번호 형식이 아닙니다.",this,3);
-
-			} else {
-				okLogic(this,3);
-			}
-			break;
-
-
-		//5) 지역 체크
-		case "region":
-			if (this.value == "" || this.value == null || this.value == "0") {
-				errorLogic(errMsg,"지역을 선택하세요.",this,4);
-
+				errorLogic(errMsg,"올바른 전화번호 형식이 아닙니다.",this,4);
 			} else {
 				okLogic(this,4);
 			}
 			break;
 
-		//6) 성별 체크	
-		case "gender":
-			var selectedGender = $('input:radio[name="gender"]:checked').val();
-			if (!(selectedGender == null || selectedGender == "")) {
-				console.log(this);
-				okLogic(this,5);
-			} else {
-				console.log(this);
-				errorLogic(errMsg,"성별을 선택하세요.",this,5);
-			}
-
-			break;
-
-		//7) 별명체크	
-		case "nickname":
-			var input = $('#nickname').val().replace(/ /gi, '');			//공백 입력 방지
-			$('#nickname').val(input);
-			nickname = this.value;
-			if (this.value == "" || this.value == null) {
-				errorLogic(errMsg,"별명을 입력하세요.",this,6);
-			} else {
-				okLogic(this,6);
-			}
-			break;
 
 		default:
 			break;

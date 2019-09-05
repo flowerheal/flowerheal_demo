@@ -10,7 +10,8 @@
 	<nav id="mobileNav" class="navbar navbar-light">
 	  <div class="mb-auto pl-0">
 	  	<div class="closeBtn"><a href="javascript:void(0)" class="closeBtn" >&times;</a></div>  	
-	  	<div><a href="${pageContext.request.contextPath }/menu/aboutUs">꽃미힐미 소개</a></div>
+			<div><a href="${pageContext.request.contextPath }/menu/aboutUs">꽃미힐미 소개</a></div>
+			<div class="nav-link"><a href="${pageContext.request.contextPath }/product/productList">구독 상품</a></div>
 		  <div><a href="${pageContext.request.contextPath }/menu/oneDayClass">원데이 클래스</a></div>
 	    <div><a href="${pageContext.request.contextPath }/menu/recommend">상품 추천</a></div>
 	    <div><a href="<%=request.getContextPath() %>/bbs/list">후기 게시판</a></div>

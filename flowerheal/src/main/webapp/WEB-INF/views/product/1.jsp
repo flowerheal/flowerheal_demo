@@ -12,7 +12,6 @@
 	width: 100%;
 	height: 3rem;
 	margin: 0.5rem 0;
-	background: black;
 	font-size: 1.5rem !important;
 	outline: 1px solid black;
 }
@@ -21,10 +20,12 @@
  color:white !important;
 }
 /* 구독기간 버튼 */
-.subscribeTermBtn:hover{
+.product_SubsCnt_Btn:hover{
 	background: none;
 }
-
+.product_SubsCnt_Btn.active{
+	background: greenyellow !important;
+}
 
 /* form */
 .form-row{
@@ -58,7 +59,7 @@
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .accordion:hover {
+.accordion.active, .accordion:hover {
   background-color: #ccc;
 }
 
@@ -110,16 +111,17 @@
 						<div>꽃다발/화분은 구성에서 제외할 수 없습니다</div>
 					</div>
 				</div>
-				<div class="row col-12 orderOption" id="subscribeTerm">
-					<button type="button" class="btn subscribeTermBtn">1개월권</button>
-					<button type="button" class="btn subscribeTermBtn">2개월권</button>
-					<button type="button" class="btn subscribeTermBtn">6개월권</button>
-					<button type="button" class="btn subscribeTermBtn">정기결제</button>
+				<div class="row col-12 orderOption" id="product_SubsCnt_Btns">
+					<input type="hidden" name="product_SubsCnt" id="product_SubsCnt">
+					<button type="button" class="btn product_SubsCnt_Btn" value="1">1개월권</button>
+					<button type="button" class="btn product_SubsCnt_Btn" value="2">2개월권</button>
+					<button type="button" class="btn product_SubsCnt_Btn" value="6">6개월권</button>
+					<!-- <button type="button" class="btn product_SubsCnt_Btn">정기결제</button> -->
 				</div>
 				<div class="row col-12 d-flex justify-content-around orderOption" id="orderCost">
 					<div class="col-12">가격<input type="text" name="productCost" id="productCost" readonly="readonly">원</div>
 					<div class="col-12">배송비<input type="text" name="postCost" id="postCost" readonly="readonly">원</div>
-					<div class="col-12">금액<input type="text" name="totalCost" id="totalCost"readonly="readonly">원</div>
+					<div class="col-12">금액<input type="text" name="product_Price" id="product_Price" readonly="readonly">원</div>
 				</div>
 
 			</div>
@@ -138,7 +140,7 @@
 <div class="row my-2">
 	<div class="col-md-12">
 		  <img src="${pageContext.request.contextPath }/resources/img/product/blank.png"
-		       width="100%" height="150%" alt="#" />
+					 width="100%" height="auto" alt="#" />
 	</div>
 </div>
 

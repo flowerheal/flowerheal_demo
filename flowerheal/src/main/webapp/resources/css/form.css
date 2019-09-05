@@ -58,12 +58,7 @@
 
 
 
-	@media (min-width: 576px) {
-		form .row label{
-		  text-align: center;
-		}
-	}
-	
+
 
 
 
@@ -118,6 +113,15 @@
 .form-group span {
 margin: 0 2rem !important;
 }
+
+
+	@media (min-width: 576px) {
+		form .row label{
+		  text-align: center;
+		}
+	}
+	
+
 
 /* 태블릿 - 768px 이상 */
 @media screen and (min-width: 768px) {

@@ -2,6 +2,7 @@ $( document ).ready(function() {
 	//===== button 활성화 =====
 	$("#addToCartBtn").on("click",addToCartBtnF); //카트에 담기 버튼
 	$("#orderPageBtn").on("click",orderPageBtnF); //주문하기 버튼
+	$(".product_SubsCnt_Btn").on("click",product_SubsCnt_BtnF); //구독기간 설정버튼
 
 //====== 금액 계산 로직 : 디폴트 ======
 	let $option0 = parseInt($("#option0").val()); //꽃다발 & 화분 가격
@@ -19,8 +20,8 @@ $( document ).ready(function() {
 		}
 	$("#postCost").val($postCost);	//배송비 input 란에 삽입
 	//총액 = 상품 가격 + 배송비
-	let $totalCost = $productCost+$postCost; 
-	$("#totalCost").val($totalCost); //금액 input 란에 삽입
+	let $product_Price = $productCost+$postCost; 
+	$("#product_Price").val($product_Price); //금액 input 란에 삽입
 
 	//====== 금액 계산 로직 : 체크박스 선택에 따를 가격 변동 ======
 $("input:checkbox").each(function(){
@@ -39,8 +40,8 @@ $("input:checkbox").each(function(){
 				$postCost = 2500;
 			}
 		$("#postCost").val($postCost);	//배송비 input 란에 삽입
-		$totalCost = $productCost+$postCost; //금액 = 바뀐가격 + 바뀐가격에 따른 배송비
-		$("#totalCost").val($totalCost); 		 //금액 input 란에 삽입
+		$product_Price = $productCost+$postCost; //금액 = 바뀐가격 + 바뀐가격에 따른 배송비
+		$("#product_Price").val($product_Price); 		 //금액 input 란에 삽입
 
 	});
 });
@@ -54,8 +55,13 @@ function orderPageBtnF(){
 	alert("orderPageBtnF");
 }
 
-
-
+//구독기간 설정버튼
+function product_SubsCnt_BtnF(){
+	$(".product_SubsCnt_Btn.active").removeClass("active");
+	$(this).toggleClass("active");
+	let $product_SubsCnt = $(this).val();
+	$("#product_SubsCnt").val($product_SubsCnt);
+}
 
 
 

@@ -27,7 +27,7 @@ public class ProductController {
 	}
 	
 	// 상품상세 페이지
-	@GetMapping("/{product_num}")
+	@GetMapping("/{product_Num}")
 	public String product(
 			@PathVariable String product_Num,
 			Model model) {
