@@ -47,7 +47,7 @@ public class TestLoginDAOImpl {
 	@Test
 	//@Disabled
 	void testGetMember() {
-		MemberDTO mdto = ldaoImpl.getMember(id, pw);		
+		MemberDTO mdto = ldaoImpl.getMember(id, pw, 1);		
 		logger.info(mdto.toString());
 	}
 

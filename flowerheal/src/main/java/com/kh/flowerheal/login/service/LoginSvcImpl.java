@@ -25,9 +25,8 @@ public class LoginSvcImpl implements LoginSvc{
 	
 	// 회원 정보 가져오기
 	@Override
-	public MemberDTO getMember(String id, String pw) {
-		
-		return ldao.getMember(id, pw);
+	public MemberDTO getMember(String id, String pw, int cnt) {
+			return ldao.getMember(id, pw, cnt);
 	}
 
 

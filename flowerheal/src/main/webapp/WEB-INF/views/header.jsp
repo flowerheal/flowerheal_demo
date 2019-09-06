@@ -97,7 +97,7 @@ window.onclick = function(event) {
 									<a class="dropdown-item" href="${pageContext.request.contextPath }/member/memberDeleteForm/${sessionScope.user.id}">회원 탈퇴</a>
 								</div>
 								</div> --%>
-								<span class="px-2" id="greetMsg">${sessionScope.user.nickname}님 환영합니다.</span>
+								<span class="px-2" id="greetMsg">${sessionScope.user.name}님 환영합니다.</span>
 								<span> | </span>
 								<a class="px-2" href="#">마이페이지</a>
 								<span> | </span>

@@ -39,14 +39,20 @@ public String memberLogin(
 			HttpSession session) {
 
 	logger.info("memberLogin() 호출됨");
-	
-	int cnt = loginSvc.isMember(id, pw);
-	if(cnt==1) {
-		MemberDTO calledMdto =loginSvc.getMember(id, pw);
-		session.setAttribute("user", calledMdto);
-		session.setAttribute("msg", "IsMember");
-		return "redirect:/"; 
 
+	int cnt = loginSvc.isMember(id, pw);
+
+	// 1이면 멤버, 2이면 관리자
+	if(cnt==1 || cnt == 2) {
+		MemberDTO calledMdto =loginSvc.getMember(id, pw, cnt);
+		session.setAttribute("user", calledMdto);
+		
+		if( cnt == 1) {
+			session.setAttribute("msg", "IsMember");			
+		} else {
+			session.setAttribute("msg", "IsAdmin");
+		}
+		return "redirect:/"; 
 	}else {
 		session.invalidate();
 		return "/login/loginForm";

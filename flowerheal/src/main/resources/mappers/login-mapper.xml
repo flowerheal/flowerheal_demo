@@ -9,12 +9,30 @@
 	SELECT COUNT(id) FROM member WHERE id = #{id} AND pw = #{pw} 
 </select>
 
+<!-- 어드민유무 체크 -->
+<select id="isAdmin" parameterType="Map" resultType="Integer">
+	SELECT COUNT(id)
+		FROM admin
+		WHERE id= #{id} AND pw= #{pw}
+</select>
+
+
 <!-- 회원정보 가져오기 -->
 <select id="getMember"
 				parameterType="Map"
 				resultType="com.kh.flowerheal.member.dto.MemberDTO">
-	SELECT id, pw, tel, nickname, gender, region 
-	  FROM member 
+	SELECT * 
+	  FROM member
 	 WHERE id = #{id} AND pw = #{pw}
 </select>
+
+<!-- 어드민정보 가져오기 -->
+<select id="getAdmin"
+				parameterType="Map"
+				resultType="com.kh.flowerheal.member.dto.MemberDTO">
+	SELECT * 
+	  FROM admin
+	 WHERE id = #{id} AND pw = #{pw}
+</select>
+
 </mapper>

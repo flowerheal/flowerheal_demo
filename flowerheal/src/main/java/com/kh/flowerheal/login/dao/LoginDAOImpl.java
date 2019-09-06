@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.flowerheal.member.dto.MemberDTO;
 
 @Repository
-public class LoginDAOImpl implements LoginDAO{
+public abstract class LoginDAOImpl implements LoginDAO{
 
 	@Inject
 	private JdbcTemplate jdbcTemplate;
@@ -28,7 +28,7 @@ public class LoginDAOImpl implements LoginDAO{
 
 	// 회원 정보 가져오기
 	@Override
-	public MemberDTO getMember(String id, String pw) {
+	public MemberDTO getMember(String id, String pw, int cnt) {
 		MemberDTO mdto = new MemberDTO();
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT id, pw, tel, nickname, gender, region ");
