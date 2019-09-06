@@ -22,14 +22,16 @@
 </style>
 <section class="container">
 	<form:form modelAttribute="mdto" action="memberJoin"
-						 cssClass="row col-9 col-md-11 col-lg-6">
+						 cssClass="row col-9 col-md-11 col-lg-8">
 		<h3 class="col justify-content-center">회원가입</h3>
 		<div class="form-row">
 			<div class="col-md-8 col-lg-10 my-3 h5 text-center">필수 입력사항</div>
 			<div class="col-md-8 col-lg-10 mb-3">
 				<form:label path="id">아이디</form:label>
-				<form:input type="email" class="form-control" path="id" placeholder="ex)aaa@bbb.com" required = "required"/>
-				<input type="button" class="btn btn-outline-secondary my-2" id="hasId" value="이메일 중복 확인">
+				<div class="row justify-content-start">
+				<form:input type="email" class="form-control col-md-6 col-xl-7" path="id" placeholder="ex)aaa@bbb.com" required = "required"/>
+				<input type="button" class="btn btn-outline-secondary col-md-5 col-xl-4" id="hasId" value="이메일 중복 확인">
+				</div>
 				<div class="invalid-feedback"><form:errors path="id" cssClass="errMsg"></form:errors></div>
 			</div>
 			<div class="col-md-8 col-lg-10 mb-3">
@@ -44,7 +46,8 @@
 			</div>
 			<div class="col-md-8 col-lg-10 mb-3">
 				<form:label path="name">이름</form:label>
-				<form:input type="text" class="form-control" path="name" placeholder="이름을 입력하세요" required = "required" />
+				<form:input type="text" class="form-control onlyHangul" path="name" placeholder="한글만 입력 가능합니다." 
+										required = "required"/>
 				<div class="invalid-feedback"><form:errors path="name" cssClass="errMsg"></form:errors></div>
 			</div>
 			<div class="col-md-8 col-lg-10 my-3 h5 text-center">선택 입력사항</div>
@@ -56,14 +59,13 @@
 			</div>
 			<div class="col-md-8 col-lg-10 mb-3">
 				<form:label path="address">주소</form:label>
-<%--  				<form:input type="text" class="form-control" path="address"/> --%> 
 					<div class="row" id="addressForm">
 						<div class="row col-12 p-0 d-flex justify-content-start">
-							<input type="text" class="col-5 form-control ml-0 mr-2" placeholder="우편번호" />
-							<input type="button" class="col-5 form-control" value="주소 검색" />
+							<input type="text" class="col-5 form-control ml-0 mr-2" placeholder="우편번호" id="zipNo" name="zipNo" readOnly onClick="goPopup();"/>
+							<input type="button" class="col-5 form-control" value="주소 검색" onClick="goPopup();"/>
 						</div>
-						<input type="text" class="col-12 form-control" placeholder="도로명주소" />
-						<input type="text" class="col-12 form-control" placeholder="상세주소" />					
+						<input type="text" class="col-12 form-control" placeholder="도로명주소" id="roadAddrPart1" name="roadAddrPart1" readOnly/>
+						<input type="text" class="col-12 form-control" placeholder="상세주소" id="addrDetail" name="addrDetail" readOnly/>					
 					</div>
 				<div class="invalid-feedback"><form:errors path="address" cssClass="errMsg"></form:errors></div>
 			</div>
@@ -71,6 +73,7 @@
 		<input type="button" class="btn btn-outline-secondary btn-lg col-md-6 mx-auto" id="joinBtn" value="회원 가입">
 	</form:form>
 </section>
+
 
 
 <script src="${pageContext.request.contextPath }/resources/js/memberJoinForm.js"></script>

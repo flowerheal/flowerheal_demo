@@ -1,8 +1,6 @@
 window.addEventListener("load", init, false);
 function init() {
-	$("input").on('blur', check); //지역, 성별 제외한 모든 입력사항 유효성 검사
-	$("select").on('blur', check);	//지역 유효성 검사
-	$("div#gender").on('click', check);	//성별 유효성 검사
+	$("input").on('blur', check); // input 사항 유효성 검사
 
 	$("#hasId").on('click', hasIdF); //아이디 중복검사 버튼
 	$("#joinBtn").on('click', joinBtnF); //회원가입 버튼
@@ -14,17 +12,19 @@ function hasIdF() {
 	var wantId = $("#id").val();
 	var allData = { "wantId": wantId };
 	var emailReg = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
-	var errMsg = this.nextElementSibling;
+	var errMsg = this.parentElement.nextElementSibling;
 	console.log(errMsg)
 
 	if (wantId == null || wantId == "") {
 		errMsg.innerText = "아이디를 입력하세요."
 		$("#id").addClass("is-invalid");
+		errMsg.style="display:block";
 		checkArray[0] = false;
 
 	} else if (wantId != "" && !emailReg.test(wantId)) {
 		errMsg.innerText = "아이디 형식이 바르지 않습니다."
 		$("#id").addClass("is-invalid");
+		errMsg.style="display:block";
 		checkArray[0] = false;
 
 	} else {
@@ -36,16 +36,21 @@ function hasIdF() {
 				switch (str) {
 					case "YES":
 						$("#id").removeClass("is-invalid").addClass("is-valid");
+						errMsg.style="display:none";
 						checkArray[0] = true;
 						break;
 					case "NULL":
 						errMsg.innerText = "아이디를 입력하세요."
 						$("#id").addClass("is-invalid");
+						errMsg.style="display:block";
+						//$(errMsg).css("display:block");
 						checkArray[0] = false;
 						break;
 					case "NO":
 						errMsg.innerText = "이미 존재하는 아이디입니다."
 						$("#id").addClass("is-invalid");
+						errMsg.style="display:block";
+						//$(errMsg).css("display:block");
 						checkArray[0] = false;
 						break;
 				}
@@ -114,10 +119,12 @@ function onlyHangul(sth) {
 function errorLogic(errMsg,errMsgText,input,i){
 	errMsg.innerText = errMsgText;
 	$(input).addClass("is-invalid");
+	errMsg.style="display:block";
 	checkArray[i]=false;
 }
-function okLogic(input,i){
+function okLogic(errMsg,input,i){
 	$(input).removeClass("is-invalid").addClass("is-valid");
+	errMsg.style="display:none";
 	checkArray[i] = true;
 }
 
@@ -131,10 +138,12 @@ function check() {
 		//1) 이메일 주소 체크 
 		case "id":
 			var emailReg = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
-			errMsg = this.nextElementSibling.nextElementSibling;
+			errMsg = this.parentElement.nextElementSibling;
+			console.log(errMsg)
 			if (this.value == "") {
 				errorLogic(errMsg,"아이디를 입력하세요.",this,0);
 				$(this).focus();
+				return;
 
 			} else if (this.value != "" && !emailReg.test(this.value)) {
 				errorLogic(errMsg,"아이디 형식이 바르지 않습니다.",this,0);
@@ -154,7 +163,7 @@ function check() {
 			} else if(!pwdReg.test(this.value)) {
 				errorLogic(errMsg,"조건에 맞지 않는 비밀번호입니다.",this,1);
 			} else {
-				okLogic(this,1);
+				okLogic(errMsg,this,1);
 			}
 			break;
 
@@ -171,7 +180,7 @@ function check() {
 				errorLogic(errMsg,"입력한 비밀번호를 다시 입력해주세요.",this,2);
 
 			} else {
-				okLogic(this,2);
+				okLogic(errMsg,this,2);
 
 			}
 			break;
@@ -180,13 +189,13 @@ function check() {
 		case "name":
 			var input = $('#name').val().replace(/ /gi, '');	//공백 입력 방지
 			$('#name').val(input);
-			name = this.value;
+			nameVal = this.value;
 			if (this.value == "" || this.value == null) {
 				errorLogic(errMsg,"이름을 입력하세요",this,3);
-			}else if(!onlyHangul(this)){
-				errLogin(errMsg,"한글만 입력 가능합니다.",this,3)
-			}else {
-				okLogic(this,3);
+			}else if(!onlyHangul(nameVal)){
+				errorLogic(errMsg,"한글만 입력 가능합니다.",this,3)
+			}else if(onlyHangul(nameVal)){
+				okLogic(errMsg,this,3);
 			}
 			break;
 
@@ -208,7 +217,7 @@ function check() {
 			} else if (!phoneReg.test(telNumOnly)) {
 				errorLogic(errMsg,"올바른 전화번호 형식이 아닙니다.",this,4);
 			} else {
-				okLogic(this,4);
+				okLogic(errMsg,this,4);
 			}
 			break;
 
@@ -217,6 +226,40 @@ function check() {
 			break;
 	}
 }
+
+/* ========== 도로명주소검색 팝업창 뛰우기 ==========*/
+function goPopup(){
+	// window.open("URL GET방식 호출" , "팝업창 이름", "창 CSS");
+	// 만들 팝업창 x축 위치 조정
+	var popupX = (window.screen.width / 2) - (570 / 2);
+	console.log(popupX)
+	// 만들 팝업창 y축 위치 조정
+	var popupY= (window.screen.height / 2) - (420 / 2);
+	console.log(popupY)
+	var pop = 
+	window.open("../popup/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes left="+ popupX +"px '"+", top="+ popupY+"px '"); 
+}
+/* ========== 도로명주소검색 팝업창 뛰우기 ==========*/
+
+
+/* ========== 검색값 form에 입력받기 ==========*/
+function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+	// 우편주소 > 상세주소 > 사용자입력 주소
+	// console.log(zipNo);	
+	// console.log(roadFullAddr);
+	// console.log(addrDetail);
+	
+	// id="zipNo" 태그의 text값을 넣는다.
+	$("#zipNo").val(zipNo);
+	
+	// id="roadAddrPart1" 태그의 text값을 넣는다.
+	$("#roadAddrPart1").val(roadAddrPart1);
+	
+	// id="addrDetail" 태그의 text값을 넣는다.
+	$("#addrDetail").val(addrDetail);
+	$("#addrDetail").attr("readOnly",false);
+}
+/* ========== 검색값 form에 입력받기 ==========*/
 
 
 

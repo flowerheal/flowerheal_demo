@@ -170,8 +170,56 @@ jQuery.browser = {};
 
 // datepicker(배송일) 특정날짜만 활성화
 $(function() {
-		//선택가능 날짜
-		var availableDates = ["2019-09-09", "2019-09-13"];	
+	//===오늘 날짜===
+	var date = new Date(); 
+	var year = date.getFullYear(); 
+	var month = new String(date.getMonth()+1); 
+	var day = new String(date.getDate()); 
+	
+	// 한자리수일 경우 0을 채워준다. 
+	if(month.length == 1){ 
+		month = "0" + month; 
+	} 
+	if(day.length == 1){ 
+		day = "0" + day; 
+	} 
+	
+	var todayDate = year + "" + month + "" + day;
+	
+	//===선택가능 날짜===
+		var availableDates = ["2019-09-03", "2019-09-01","2019-09-09", "2019-09-02","2018-09-09", "2019-08-20"];
+		
+		//선택가능 날짜 배열에 있는 값이 오늘날짜보다 과거인 경우 제거
+		//연도가 과거인 경우	
+		for(var i = 0; i<availableDates.length; i++){		
+			var aDatesYear = parseInt(availableDates[i].substr(0,4));
+			if(aDatesYear<parseInt(year)){
+				availableDates.splice(i,1);
+				i-=1;
+			}
+		}
+		console.log(availableDates)
+		//월이 과거인 경우
+		for(var i = 0; i<availableDates.length; i++){		
+			var aDatesMonth = parseInt(availableDates[i].substr(5,2));
+			if(aDatesMonth<parseInt(month)){
+				availableDates.splice(i,1);
+				i-=1;
+			}
+		}
+				console.log(availableDates)
+		//일이 과거인 경우
+		for(var i = 0; i<availableDates.length; i++){
+			var aDatesDay = parseInt(availableDates[i].substr(8,2));
+			console.log("aDatesDay"+aDatesDay)
+			console.log("day"+parseInt(day))
+			if(aDatesDay<parseInt(day)){
+				availableDates.splice(i,1);
+				i-=1;
+			}
+		}
+		console.log(availableDates)
+
 		function available(date) {			
 
 			var thismonth = date.getMonth()+1;
@@ -183,9 +231,15 @@ $(function() {
 			if(thisday<10){
 				thisday = "0"+thisday;
 			}
-		  ymd = date.getFullYear() + "-" + thismonth + "-" + thisday;
+			ymd = date.getFullYear() + "-" + thismonth + "-" + thisday;
+			
+
+
+
+
 
 		  if ($.inArray(ymd, availableDates) >= 0) {
+
 				return [true,"",""];
 			} else {
 		    return [false,"",""];
@@ -207,7 +261,8 @@ $(function() {
 		changeYear: false,
 		yearSuffix: '년',
 		regional: "ko",
-		beforeShowDay: available 
+		beforeShowDay: available,
+		// minDate: 0
 
 		}).datepicker("setDate", new Date(availableDates[0]));
 		
