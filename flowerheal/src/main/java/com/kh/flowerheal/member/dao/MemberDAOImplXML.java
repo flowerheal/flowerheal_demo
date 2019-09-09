@@ -28,6 +28,7 @@ public class MemberDAOImplXML implements MemberDAO{
 	@Override
 	public int hasId(String id) {
 		logger.info("MemberDAOImplXML.hasId 호출됨");
+
 		return sqlSession.selectOne("mappers.member-mapper.hasId",id);
 	}
 	

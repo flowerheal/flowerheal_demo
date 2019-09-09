@@ -1,74 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="mappers.member-mapper">
 
 	<!-- 회원가입 시 아이디 중복체크 -->
-	<select id="hasId"
-					parameterType="String"
-					resultType="java.lang.Integer">
-		select count(id) from member where id = #{id}
+	<select resultType="int" parameterType="String" id="hasId"> 
+		select count(id) from member where id = #{id} 
 	</select>
-
-
-	<!-- 회원등록 -->
-	<insert id="insert"
-					parameterType="com.kh.flowerheal.member.dto.MemberDTO">
-		insert into member (id,pw,tel,gender,region,nickname)
-		values(#{id},#{pw},#{tel},#{gender},#{region},#{nickname})
-					
+	
+	<!-- 회원등록 -->	
+	<insert parameterType="com.kh.flowerheal.member.dto.MemberDTO" id="insert">
+		insert into member (id,pw,name, tel, zipNo, roadAddrPart1, addrDetail) 
+		values(#{id},#{pw},#{name},#{tel} , #{zipNo}, #{roadAddrPart1}, #{addrDetail}) 
 	</insert>
-
-	<!-- 회원수정 : 비밀번호 제외  -->
-	<update id="modify"
-					parameterType="com.kh.flowerheal.member.dto.MemberDTO">
-		update member 
-			 set tel=#{tel}, nickname=#{nickname}, gender=#{gender},
-				   region=#{region}, udate=sysdate 
-		 where id=#{id}
-		 
+	
+	<!-- 회원수정 : 비밀번호 제외 -->
+	<update parameterType="com.kh.flowerheal.member.dto.MemberDTO" id="modify">
+		update member set tel=#{tel},nickname=#{nickname},
+						  zipNo = #{zipNo}, roadAddrPart1 = #{roadAddrPart1},
+						  addrDetail = #{addrDetail}, 
+						  udate=sysdate 
+		 where id=#{id} 
 	</update>
 	
 	<!-- 회원수정 : 비밀번호 -->
-	<update id="modifyPw"
-					parameterType="Map">
-		update member 
-			 set pw=#{newPw}, udate=sysdate 
-		 where id=#{id} and pw=#{nowPw}
-		 
+	<update parameterType="Map" id="modifyPw">
+		update member set pw=#{newPw}, udate=sysdate where id=#{id} and pw=#{nowPw} 
 	</update>
 	
 	<!-- 회원삭제(회원용:탈퇴) -->
-	<delete id="delete"
-					parameterType="Map">
-		delete from member where id=#{id} and pw=#{pw}
-		 
+	<delete parameterType="Map" id="delete"> 
+		delete from member where id=#{id} and pw=#{pw} 
 	</delete>
 	
 	<!-- 회원삭제(관리자용) -->
-	<delete id="delByManager"
-					parameterType="String">
-		delete from member where id=#{id}
-		 
+	<delete parameterType="String" id="delByManager"> 
+		delete from member where id=#{id} 
 	</delete>
 	
-	<!-- 회원 개인 조회 -->
-	<select id="getMember"
-					parameterType="String"
-					resultType="com.kh.flowerheal.member.dto.MemberDTO">
-		select id,pw,tel,nickname,gender,region
-		  from member 
-		 where id=#{id}
-		 
+	<!-- 회원 개인 조회 -->	
+	<select resultType="com.kh.flowerheal.member.dto.MemberDTO" parameterType="String" id="getMember"> 
+		select id,pw,tel,name, zipNo, roadAddrPart1, addrDetail, subs_check from member where id=#{id} 
 	</select>
 	
 	<!-- 회원 목록 조회(관리자용) -->
-	<select id="getMemberList"
-					resultType="com.kh.flowerheal.member.dto.MemberDTO">
-		select id,pw,tel,nickname,gender,region,
-						cdate,udate
-		  from member
+	<select resultType="com.kh.flowerheal.member.dto.MemberDTO" id="getMemberList"> 
+		select id,pw,tel,name, zipNo, roadAddrPart1, addrDetail, subs_check, cdate,udate from member 
 	</select>
 
-	
-	
 </mapper>

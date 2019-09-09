@@ -23,11 +23,11 @@ public class MemberSvcImpl implements MemberSvc {
 	@Override
 	public int hasId(String id) {
 		int cnt = 0;
-		if(id=="") {
-		cnt = -1;
-	}else {
-		cnt = mDAO.hasId(id);
-	}
+		if(id=="") 
+		{	cnt = -1;}
+		else 
+		{cnt = mDAO.hasId(id);}
+		
 		return cnt;
 	}
 	

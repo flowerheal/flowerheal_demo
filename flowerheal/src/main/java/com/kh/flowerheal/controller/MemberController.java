@@ -38,10 +38,12 @@ public class MemberController {
 	@ResponseBody
 	public String checkId(@RequestParam("wantId") String id, Model model) {
 		logger.info("checkId() 호출됨");
-
+		
 		String str = null;
 		
-		int cnt = mSvc.hasId(id);			
+		int cnt = mSvc.hasId(id);
+		logger.info("cnt = "+cnt);
+		
 		if(cnt==0) {
 			logger.info("canmake");
 			str = "YES";
@@ -56,37 +58,7 @@ public class MemberController {
 	}
 
 	
-	@ModelAttribute
-	public void initData(Model model) {
-		//지역
-		List<Code> region = new ArrayList<>();
-		region.add(new Code("서울","서울특별시"));
-		region.add(new Code("인천","인천광역시"));
-		region.add(new Code("대전","대전광역시"));
-		region.add(new Code("광주","광주광역시"));
-		region.add(new Code("울산","울산광역시"));
-		region.add(new Code("부산","부산광역시"));
-		region.add(new Code("경기","경기도"));
-		region.add(new Code("강원","강원도"));
-		region.add(new Code("충북","충청북도"));
-		region.add(new Code("충남","충청남도"));
-		region.add(new Code("전북","전라북도"));
-		region.add(new Code("전남","전라남도"));
-		region.add(new Code("경북","경상북도"));
-		region.add(new Code("충남","충청남도"));
-		region.add(new Code("경남","경상남도"));
-		region.add(new Code("제주","제주도"));
-		region.add(new Code("기타","기  타"));
-		
-		model.addAttribute("region",region);
-		
-		//성별
-		List<Code> gender = new ArrayList<>();
-		gender.add(new Code("남","남자"));
-		gender.add(new Code("여","여자"));
-		
-		model.addAttribute("gender",gender);
-	}
+
 	
 	// 회원가입 양식
 	@GetMapping("/memberJoinForm")
