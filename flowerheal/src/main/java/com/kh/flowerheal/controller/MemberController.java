@@ -98,7 +98,7 @@ public class MemberController {
 		//회원 등록
 		int cnt = mSvc.insert(mdto);
 		if (cnt == 1) {
-			viewname = "redirect:/";
+			viewname = "/member/memberJoinComplete";
 			return viewname;
 
 		} else {

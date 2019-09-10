@@ -77,4 +77,5 @@
 
 
 <script src="${pageContext.request.contextPath }/resources/js/memberJoinForm.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/address.js"></script>
 <jsp:include page="../footer.jsp" />

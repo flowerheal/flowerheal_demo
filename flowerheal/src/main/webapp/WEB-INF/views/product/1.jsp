@@ -93,11 +93,17 @@
 	</div>
 	<div class="col-md-6">
 		<!-- 상품 구성 고르기 폼 -->
-		<form action="${pageContext.request.contextPath}/product" class="row my-3">
+<!-- 		<form action="${pageContext.request.contextPath}/product" class="row my-3"> -->
+		<form class="row my-3">
 			<div class="form-row">
+				<input type="hidden" name="user_id" id="user_id" value="${sessionScope.user.id}"> 
+				<input type="hidden" name="product_Num" id="product_Num" value="${pdto.product_Num}"> 
+				<input type="hidden" name="product_Name" id="product_Name" value="코코낸내 허니잠 세트"> 
 				<div class="col-12" id="productName">코코낸내 허니잠 세트</div>
 				<div class="col-12 d-flex justify-content-around orderOption" id="orderDate">
 					<i class="far fa-calendar-alt my-auto"></i>
+					<input type="hidden" name="subs_Fdate" id="subs_Fdate"> 
+					<input type="hidden" name="subs_Edate" id="subs_Edate"> 
 					<input type="text" id="datepicker" />
 					<i class="fas fa-plus my-auto"></i>
 				</div>
@@ -151,7 +157,65 @@
 <!-- 상품상세페이지 관련 js -->
 <script src="${pageContext.request.contextPath }/resources/js/product.js"></script>
 
+<script>
+function orderPageBtnF(){
 
+	var user = "${sessionScope.user == null ? null : sessionScope.user.id}";
+	
+	//로그인전이면 로그인화면으로 이동
+	if(user == null || user == "") {
+		if(confirm("로그인 하시겠습니까?")){
+			document.location.href="${pageContext.request.contextPath }/login/loginForm";
+		}
+		return;
+	}
+	
+	//구독기간 설정 안했다면 alert;
+	if($("#product_SubsCnt").val()==""){
+		alert("구독기간을 선택해주세요.");
+		return;
+	}
+		/* 시작날짜를 바탕으로 종료날짜 산출 */
+		let $subs_Fdate = $("#datepicker").val(); // 시작날짜
+		let $subs_Edate = ""; //종료날짜 선언
+
+		// 종료날짜 달 = 시작날짜에서 달 추출 + 구독횟수 -1
+		let EdateMonth = parseInt($subs_Fdate.substr(5,2)) + parseInt($("#product_SubsCnt").val()) -1;
+
+
+		// 종료날짜 달이 10보다 작은 경우		
+		if(EdateMonth<10){
+			// String으로 바꾼 다음 앞에 0을 붙인다. ex) 9 -> "09"
+			let StringEdateMonth = "0"+String(EdateMonth);
+			// 마지막날짜 = 시작날짜 연도 + 종료날짜 달 + 시작날짜 일
+			$subs_Edate = $subs_Fdate.substr(0,5)+StringEdateMonth+$subs_Fdate.substr(7,3);
+
+		// 종료날짜 달이 12보다 큰 경우		
+		}else if(EdateMonth>12){
+			// 종료날짜 연도 = 시작날짜 연도 +1
+			let EdateYear = String(parseInt($subs_Fdate.substr(0,4))+1); 
+			// 종료날짜 달 - 12 한 다음 String으로 바꾼 다음 앞에 0을 붙인다. ex) 14 -> "02"
+			let StringEdateMonth = "0"+String(EdateMonth-12);
+			// 종료날짜 = 종료날짜 연도 + 종료날짜 달 + 시작날짜 일
+			$subs_Edate = EdateYear+$subs_Fdate.substr(4,1)+StringEdateMonth+$subs_Fdate.substr(7,3);
+		}else{
+			//그 외
+			// String으로 바꿈 ex) 11 -> "11"
+			let StringEdateMonth = String(EdateMonth);
+			// 종료날짜 = 시작날짜 연도 + 종료날짜 달 + 시작날짜 일
+			$subs_Edate = $subs_Fdate.substr(0,5)+StringEdateMonth+$subs_Fdate.substr(7,3);
+		}
+
+		//hidden tag에 각각 시작날짜와 종료날짜 넣기
+		$("#subs_Fdate").val($subs_Fdate);
+		$("#subs_Edate").val($subs_Edate);
+		//pdto에 값 넣어서 orderPage에 넘기기
+		$("form").attr("action","${pageContext.request.contextPath }/product/orderPage");
+		$("form").attr("method","POST");
+	 	$("form").submit();
+	
+}
+</script>
 
 <!-- jquery.ui datapicker 관련 css, js -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />

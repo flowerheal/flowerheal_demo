@@ -78,7 +78,7 @@
 
 .container>form, 
 .container>.form{
- 	width: 80%;
+ 	width: 95%;
 	display: flex;
 	flex-flow: column wrap;
 	margin: 2rem auto 0 auto;
@@ -119,12 +119,21 @@ margin: 0 2rem !important;
 		form .row label{
 		  text-align: center;
 		}
+		.container>form, 
+		.container>.form{
+			width: 90%;
+		}
 	}
 	
 
 
 /* 태블릿 - 768px 이상 */
 @media screen and (min-width: 768px) {
+	.container>form, 
+	.container>.form{
+		width: 85%;
+	}
+
 	.container>form label{
 		font-size: 1.3rem;
 	}
