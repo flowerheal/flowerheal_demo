@@ -16,16 +16,15 @@
 	
 	<!-- 회원수정 : 비밀번호 제외 -->
 	<update parameterType="com.kh.flowerheal.member.dto.MemberDTO" id="modify">
-		update member set tel=#{tel},nickname=#{nickname},
+		update member set name=#{name},tel=#{tel},
 						  zipNo = #{zipNo}, roadAddrPart1 = #{roadAddrPart1},
-						  addrDetail = #{addrDetail}, 
-						  udate=sysdate 
+						  addrDetail = #{addrDetail}
 		 where id=#{id} 
 	</update>
 	
 	<!-- 회원수정 : 비밀번호 -->
 	<update parameterType="Map" id="modifyPw">
-		update member set pw=#{newPw}, udate=sysdate where id=#{id} and pw=#{nowPw} 
+		update member set pw=#{newPw} where id=#{id} and pw=#{nowPw} 
 	</update>
 	
 	<!-- 회원삭제(회원용:탈퇴) -->

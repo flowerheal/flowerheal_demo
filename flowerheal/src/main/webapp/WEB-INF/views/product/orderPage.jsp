@@ -164,7 +164,7 @@ div{
 		<input type="text" name="subs_Product" id="subs_Product" value="${pdto.product_Num}">
 		<input type="text" name="subs_Fdate" id="subs_Fdate" value="${subs_Fdate}">
 		<input type="text" name="subs_Edate" id="subs_Edate" value="${subs_Edate}">		
-		<input type="text" name="subs_Cnt" id="subs_Cnt" value="${pdto.product_SubsCnt-1}">
+		<input type="text" name="subs_Cnt" id="subs_Cnt" value="${pdto.product_SubsCnt}">
 		<div class="row my-3">
 			<div class="col-lg-11 mb-3">
 				<div class="accordion"><span>주문 상품 확인</span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></div>
@@ -192,13 +192,13 @@ div{
 <!-- 					<div class="row" id="addressForm"> -->
 				<div class="row  justify-content-end addressFromBtns">
 					<!-- <input type="hidden" name="address" id="address"> -->
-					<button type="button" class="btn addressFrom_Btn btn-outline-dark" value="recentAddress">
+					<button type="button" class="btn addressFrom_Btn btn-outline-dark" id="recentAddress">
 						<span>최근 배송지</span>
 					</button>
-					<button type="button" class="btn addressFrom_Btn btn-outline-dark" value="defaultAddress">
+					<button type="button" class="btn addressFrom_Btn btn-outline-dark" id="defaultAddress">
 						<span>기본 배송지</span>
 					</button>
-					<button type="button" class="btn addressFrom_Btn btn-outline-dark" value="newAddress">
+					<button type="button" class="btn addressFrom_Btn btn-outline-dark" id="newAddress">
 						<span>새로 입력</span>
 					</button>
 				</div>
@@ -214,7 +214,9 @@ div{
 							<input type="text" class="col-12 form-control" placeholder="도로명주소" id="roadAddrPart1" name="roadAddrPart1" readOnly/>
 							<input type="text" class="col-12 form-control" placeholder="상세주소" id="addrDetail" name="addrDetail" readOnly/>					
 						</div>
-					<%-- <div class="invalid-feedback"><form:errors path="address" cssClass="errMsg"></form:errors></div> --%>
+					<div class="invalid-feedback">
+						<!-- <form:errors path="address" cssClass="errMsg"></form:errors> -->
+					</div>
 				</div>
 
 
@@ -305,6 +307,7 @@ $(function() {
 	$("#agreementMsg").on("click",agreementMsgF);
 	$(".payMethod_Btn").on("click",payMethod_BtnF); //결제수단 설정버튼
 	$(".addressFrom_Btn").on("click",addressFrom_BtnF);
+	$(".addressFrom_Btn#recentAddress").click();
 });
 function agreementMsgF(){
 	console.log(this);
@@ -327,19 +330,25 @@ function payMethod_BtnF(){
 	$("#payMethod_Btn").val($payMethod_Btn);
 }
 
-//*=====  =====*
+//*===== 주소입력폼 관련 버튼 기능 =====*
 
 function addressFrom_BtnF(){
 	$(".addressFrom_Btn.active").removeClass("active");
 	$(this).toggleClass("active");
-	switch(this.value){
-	case "recentAddress":
+	switch(this.id){
+	case "recentAddress": 	//최근배송지
+		if($(this).val()==""){
+			$(".addressFrom_Btn#defaultAddress").click();
+		}
 	break;
-	case "defaultAddress":
+	case "defaultAddress": 	//기본배송지
+		$("#zipNo").val("${mdto.zipNo}");
+		$("#roadAddrPart1").val("${mdto.roadAddrPart1}");
+		$("#addrDetail").val("${mdto.addrDetail}");
 	break;
-	case "newAddress":
-	console.log("newAddress")
-	 $(".orderAddress input:text").val("");
+	case "newAddress":  		//새로입력 ->빈칸으로
+		console.log("newAddress")
+		$(".orderAddress input:text").val("");
 	break;
 	}
 }

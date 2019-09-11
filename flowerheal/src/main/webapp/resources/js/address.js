@@ -9,7 +9,7 @@ function goPopup(){
 	var popupY= (window.screen.height / 2) - (420 / 2);
 	console.log(popupY)
 	var pop = 
-	window.open("../popup/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes left="+ popupX +"px '"+", top="+ popupY+"px '"); 
+	window.open("/flowerheal/popup/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes left="+ popupX +"px '"+", top="+ popupY+"px '"); 
 }
 /* ========== 도로명주소검색 팝업창 뛰우기 ==========*/
 
