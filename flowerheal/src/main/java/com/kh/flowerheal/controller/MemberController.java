@@ -1,6 +1,5 @@
 package com.kh.flowerheal.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kh.flowerheal.common.Code;
 import com.kh.flowerheal.member.dto.MemberDTO;
 import com.kh.flowerheal.member.dto.PasswordDTO;
 import com.kh.flowerheal.member.service.MemberSvc;
@@ -119,18 +117,18 @@ public class MemberController {
 	}
 	
 	//회원수정 양식 : 비밀번호 제외
-	@GetMapping("/memberModifyForm/{id:.+}")
+	@GetMapping("/mypage/memberModifyForm/{id:.+}")
 	public String memberModifyForm(@PathVariable String id,
 															Model model) {
 		logger.info("memberModifyForm() 호출됨");
 		MemberDTO mdto = mSvc.getMember(id);
 		model.addAttribute("mdto",mdto);
 		
-		return "/member/memberModifyForm";
+		return "/member/mypage/memberModifyForm";
 	}
 	
 	//회원수정 처리 : 비밀번호 제외
-	@PostMapping("/memberModifyForm/memberModify")
+	@PostMapping("/mypage/memberModifyForm/memberModify")
 	public String memberModify(MemberDTO mdto,
 							HttpSession session ) {
 		logger.info("memberModify() 호출됨");
@@ -142,16 +140,16 @@ public class MemberController {
 			MemberDTO calledMdto =mSvc.getMember(mdto.getId());
 			session.setAttribute("user", calledMdto);
 			session.setAttribute("msg", "IsMember");
-			return "redirect:/"; 		
+			return "/member/mypage/memberMyPage"; 		
 		}else {
-			return "/member/memberModifyForm";
+			return "/member/mypage/memberModifyForm";
 		}
 	}
 		
 		
 	
 	//회원수정 양식 : 비밀번호
-	@GetMapping("/mPwChangeForm/{id:.+}")
+	@GetMapping("/mypage/mPwChangeForm/{id:.+}")
 	public String mPwChangeForm(
 						@PathVariable String id,
 						Model model) {
@@ -160,15 +158,16 @@ public class MemberController {
 		model.addAttribute("mdto",mdto);
 		model.addAttribute("pdto", new PasswordDTO());
 		
-		return "/member/mPwChangeForm";
+		return "/member/mypage/mPwChangeForm";
 	}
 	
 	//회원수정 처리 : 비밀번호
-	@PostMapping("/mPwChangeForm/mPwChange")
+	@PostMapping("/mypage/mPwChangeForm/mPwChange")
+	@ResponseBody
 	public String mPwChange(
-			 @RequestParam String id,
-			 @RequestParam String nowPw,
-			 @RequestParam String newPw,
+			 @RequestParam("id") String id,
+			 @RequestParam("nowPw") String nowPw,
+			 @RequestParam("newPw") String newPw,
 			 HttpSession session) {
 		logger.info("mPwChange() 호출됨");
 		PasswordDTO pdto = new PasswordDTO();
@@ -178,48 +177,80 @@ public class MemberController {
 		int result = mSvc.modifyPw(pdto);
 		logger.info("비번수정결과"+result);
 		
+		String str = null;
 		if(result==1) {
 			MemberDTO calledMdto =mSvc.getMember(id);
 			session.setAttribute("user", calledMdto);
-			return "redirect:/"; 		
+			str = "OK";
+
 		}else {
-			
-			return "/member/mPwChangeForm";
+			str = "WRONGPW";
 		}
-		
+		return str;		
 	}
 
+	
 	//회원 삭제 양식
-	@GetMapping("/memberDeleteForm/{id:.+}")
+	@GetMapping("/mypage/memberDeleteForm/{id:.+}")
 	public String memberDeleteForm(@PathVariable String id,
 								   Model model) {
 		logger.info("memberDeleteForm() 호출됨");
 		MemberDTO mdto = mSvc.getMember(id);
 		model.addAttribute("mdto",mdto);
 		
-		return "/member/memberDeleteForm";
+		return "/member/mypage/memberDeleteForm";
 	}	
 	
 	//회원삭제처리 : 회원용
-	@PostMapping("/memberDeleteForm/memberDelete")
-	public String memberDelete(@RequestParam String id,
-							   @RequestParam String pw,
+	@PostMapping("/mypage/memberDeleteForm/memberDelete")
+	@ResponseBody
+	public String memberDelete(@RequestParam("id") String id,
+							   @RequestParam("pw") String pw,
 							   HttpSession session) {
 		logger.info("memberDelete() 호출됨");
 		int result = mSvc.delete(id,pw);
+		String str = null;
 		
 		if(result==1) {
 			logger.info("탈퇴결과"+result);
 			session.invalidate();
-			return "redirect:/"; 		
+			str = "OK";
+				
 		}else {			
 			MemberDTO calledMdto =mSvc.getMember(id);
 			session.setAttribute("mdto",calledMdto);
-			return "/member/memberDeleteForm";
+			str = "WRONGPW";
+			
 		}
-
+		return str;
 	}
-	
+//	//회원수정 처리 : 비밀번호
+//	@PostMapping("/mypage/mPwChangeForm/mPwChange")
+//	@ResponseBody
+//	public String mPwChange(
+//			 @RequestParam("id") String id,
+//			 @RequestParam("nowPw") String nowPw,
+//			 @RequestParam("newPw") String newPw,
+//			 HttpSession session) {
+//		logger.info("mPwChange() 호출됨");
+//		PasswordDTO pdto = new PasswordDTO();
+//		pdto.setId(id);
+//		pdto.setNowPw(nowPw);
+//		pdto.setNewPw(newPw);
+//		int result = mSvc.modifyPw(pdto);
+//		logger.info("비번수정결과"+result);
+//		
+//		String str = null;
+//		if(result==1) {
+//			MemberDTO calledMdto =mSvc.getMember(id);
+//			session.setAttribute("user", calledMdto);
+//			str = "OK";
+//
+//		}else {
+//			str = "WRONGPW";
+//		}
+//		return str;		
+//	}
 	//회원삭제처리 : 관리자용
 	@GetMapping("/memberDelete/{id:.+}")
 	public String memberDelete(@PathVariable String id) {
@@ -228,6 +259,18 @@ public class MemberController {
 		logger.info("삭제결과"+result);
 		return "redirect:/member/memberList";
 	}	
+	
+	//회원 마이페이지
+	@GetMapping("/mypage/memberMyPage/{id:.+}")
+	public String memberMyPage(@PathVariable String id,
+															Model model) {
+		logger.info("memberMyPage() 호출됨");
+		MemberDTO mdto = mSvc.getMember(id);
+		model.addAttribute("mdto",mdto);
+		
+		return "/member/mypage/memberMyPage";
+	}
+	
 	
 	
 }
