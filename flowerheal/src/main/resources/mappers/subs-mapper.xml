@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.subs-mapper">
+
+	<!-- 구독정보 가져오기 -->
+	<select id="getSDTO" resultType="com.kh.flowerheal.subs.dto.SubsDTO">
+		SELECT *
+			FROM subs
+			WHERE subs_num = #{snum}
+	</select>
+	
+	<!-- 구독정보 등록 -->
+	<insert id="addSubs" parameterType="com.kh.flowerheal.subs.dto.SubsDTO">
+		INSERT INTO subs (SUBS_NUM, SUBS_MEMBER_ID, SUBS_PRODUCT, SUBS_FDATE, SUBS_EDATE, 
+							SUBS_CNT, SUBS_PRICE, ZIPNO, ROADADDRPART1, ADDRDEATAIL)
+		    VALUES (SUBS_SEQ.nextval, #{subs_Member_Id}, ${subs_Product}, sysdate, sysdate,
+		    		 #{subs_Cnt}, #{subs_Price}, #{zipNo}, #{roadAddrPart1}, #{addrDetail} )
+	</insert>
+
+	<!-- 이미 구독한 상품에 대한 배송지 변경 -->
+	<update id="changeAddr" parameterType="com.kh.flowerheal.subs.dto.SubsDTO">
+		UPDATE subs
+    		SET zipno = #{zipNo},
+        		roadaddrpart1 = #{roadAddrPart1},
+        		addrdeatail = #{addrDetail}
+    		WHERE subs_num = #{subs_num}
+	</update>
+	
+	<!-- 구독취소 -->
+	<delete id="cancelSubs" parameterType="String">
+		DELETE subs
+			WHERE subs_num = #{snum}
+		
+	</delete>
+	
+	<update id="changeSubs" parameterType="com.kh.flowerheal.subs.dto.SubsDTO">
+		UPDATE subs
+	    SET subs_product = #{subs_num},
+	        subs_udate = sysdate,
+	        subs_edate = #{subs_edate},
+	        subs_cnt = #{subs_Cnt},
+	        subs_price = #{subs_Price},
+	        zipno = #{zipNo},
+	        roadaddrpart1 = #{roadAddrPart1},
+	        addrdeatail = #{addrDetail}
+	    WHERE subs_num = #{subs_num};
+	</update>
+	
+	
+	
+	
+
+</mapper>

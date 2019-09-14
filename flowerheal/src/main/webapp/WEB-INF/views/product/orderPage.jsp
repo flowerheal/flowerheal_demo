@@ -154,17 +154,25 @@ div{
 
 <jsp:include page="../header.jsp" />
 <section class="container">
+		<%
+			String product_SubsCnt = request.getParameter("product_SubsCnt");
+		%>
+
 	<form action="${pageContext.request.contextPath}/product/order" method="POST">
 	<!-- subs_Member_Id : 구독자 아이디
 			 subs_Product : 구독상품번호
 			 subs_Fdate : 구독 시작일
 			 subs_Edate : 구독 종료일
 			 subs_Cnt : 남은 구독 횟수 -->
+		${mdto} <br>
+		${pdto} <br>
+		
 		<input type="text" name="subs_Member_Id" id="subs_Member_Id" value="${sessionScope.user.id }">
 		<input type="text" name="subs_Product" id="subs_Product" value="${pdto.product_Num}">
 		<input type="text" name="subs_Fdate" id="subs_Fdate" value="${subs_Fdate}">
 		<input type="text" name="subs_Edate" id="subs_Edate" value="${subs_Edate}">		
-		<input type="text" name="subs_Cnt" id="subs_Cnt" value="${pdto.product_SubsCnt}">
+		<input type="text" name="subs_Cnt" id="subs_Cnt" value="<%=product_SubsCnt%>">
+		<input type="text" name="subs_Price" id="subs_Price" value=3000>
 		<div class="row my-3">
 			<div class="col-lg-11 mb-3">
 				<div class="accordion"><span>주문 상품 확인</span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></div>
@@ -177,7 +185,7 @@ div{
 					<div class="row d-flex py-2">
 						<div class="col-md-6 col-lg-5">${pdto.product_Name}</div>
 						<div class="col-7 col-md-4 col-lg-4">매월 ${pdto.product_Price}원</div>
-						<div class="col-5 col-md-2 col-lg-3">${pdto.product_SubsCnt}개월</div>
+						<div class="col-5 col-md-2 col-lg-3"><%=product_SubsCnt %>개월</div>
 						<div class="col-md-12 col-md-5 text-right">${subs_Fdate} ~ ${subs_Edate}</div>
 					</div>
 				</div>
@@ -259,7 +267,7 @@ div{
 				<div id="agreementMsg"><i class="far fa-check-circle"></i>주문정보 및 대행서비스 이용약관에 모두 동의합니다.</div>
 			</div>
 			<div class="col-lg-11 mb-3 paymentDiv">
-				<button type="button" class="btn btn-primary" id="paymentBtn">결제하기</button>
+				<button type="submit" class="btn btn-primary" id="paymentBtn">결제하기</button>
 			</div>
 		</div>
 		</div>

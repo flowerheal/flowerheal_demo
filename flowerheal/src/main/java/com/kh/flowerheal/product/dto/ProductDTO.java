@@ -13,7 +13,5 @@ public class ProductDTO {
 	@NotNull
 	private String product_Name; 		//	패키지이름
 	@NotNull
-	private String product_Price; 	//	상품가격
-	@NotNull
-	private String product_SubsCnt; //	구독횟수
+	private String product_Price; 		//	상품가격
 }

@@ -74,9 +74,9 @@ window.onclick = function(event) {
     </div>
 
 
- <nav class="navbar d-flex justify-content-end" id="headerLinks">    
+ <nav class="navbar d-flex justify-content-end" id="headerLinks"> 
 			<c:choose>
-					<c:when test= "${empty sessionScope}">
+					<c:when test= "${empty sessionScope.user}">
 						<div>
 							<a class="px-2" href="${pageContext.request.contextPath }/member/memberJoinForm">회원가입</a>
 							<span> | </span>

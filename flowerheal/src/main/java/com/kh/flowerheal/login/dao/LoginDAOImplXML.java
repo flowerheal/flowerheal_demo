@@ -36,7 +36,7 @@ public class LoginDAOImplXML implements LoginDAO{
 		
 		// 회원계정이 있다면 1를 반환해주고
 		if(result == 1) {
-			return result;
+		    return result;
 		}
 		
 		// 회원계정에 없으면 최종적으로 어드민계정인지 확인
@@ -44,7 +44,12 @@ public class LoginDAOImplXML implements LoginDAO{
 		result = sqlSession.selectOne("mappers.login-mapper.isAdmin", map);
 		
 		// 로그인 계정이 어드민이라면 2를 반환한다.
-		return result + 1;
+		if(result == 1) {
+		    return result + 1;		    
+		}
+		
+		// 멤버도, 어드민도 없는 계정이라면 0을 반환한다.
+		return 0;
 	}
 
 	// 회원 정보 가져오기

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.product-mapper">
+
+	<select id="getPDTO" parameterType="String" resultType="com.kh.flowerheal.product.dto.ProductDTO">
+		SELECT * 
+			FROM product
+			WHERE product_num = #{pnum}
+	</select>
+
+</mapper>

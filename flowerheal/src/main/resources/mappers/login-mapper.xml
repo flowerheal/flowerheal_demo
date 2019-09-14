@@ -5,7 +5,7 @@
 <!-- 회원유무 체크 -->
 <select id="isMember"
 				parameterType="Map"
-				resultType="java.lang.Integer">
+				resultType="Integer">
 	SELECT COUNT(id) FROM member WHERE id = #{id} AND pw = #{pw} 
 </select>
 
