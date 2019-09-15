@@ -7,18 +7,7 @@
 
 
 <style>
-/* 모바일 : 768px 이하*/
 
-/* 로그인 폼 : S:ROOM 회원 로그인 */
-/* form#loginForm {
-	display: flex;
-	flex-flow: column wrap;
-	margin: 1rem auto;
-} */
-
-/* form div, form input {
-	font-size: 1.25rem;
-} */
 
 /*소셜 계정으로 로그인*/
 .socialMedia {
@@ -50,9 +39,7 @@
 .socialMedia h3 {
 	font-size: 3em;
 }
-/*     .socialMedia img.icon_sns{
-    display : none;
-	} */
+
 .socialMedia .row .btn {
 	height: 3rem;
 	font-size: 0.9rem;
@@ -60,11 +47,11 @@
 	padding: 0.2rem;
 }
 
-/* 에러메세지 */
+
 
 /* 태블릿 - 768px 이상 */
 @media screen and (min-width: 768px) {
-	/* 로그인 폼 : S:ROOM 회원 로그인 */
+
 	/*소셜 계정으로 로그인*/
 	.socialMedia {
 		width: 500px !important;
@@ -98,17 +85,7 @@
 	form {
 		width: 754px;
 	}
-	/* hover 기능 추가  */
-/* 	input[type=button]:hover, input[type=submit]:hover {
-		background-color: olive;
-		border: 1px solid grey;
-		color: white;
-	} */
-	/* #saveEmail:hover,
-  input[type=button]:hover,
-  input[type=submit]:hover{
-    cursor: pointer;
-  } */
+
 }
 </style>
 <jsp:include page="../header.jsp" />
@@ -177,11 +154,7 @@
 	window.addEventListener("load", init, false);
 	var chk = new Array();
 	function init() {
-/* 		$("input").on('focus', function() {
-			$(this).removeClass("is-invalid");
-			return;
-		}); */
-		//$("input").on('change', check); //모든 입력사항 유효성 검사
+
 		$("input#id").keyup(function(){
 			checkId();
 			return;

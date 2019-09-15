@@ -224,33 +224,7 @@ public class MemberController {
 		}
 		return str;
 	}
-//	//회원수정 처리 : 비밀번호
-//	@PostMapping("/mypage/mPwChangeForm/mPwChange")
-//	@ResponseBody
-//	public String mPwChange(
-//			 @RequestParam("id") String id,
-//			 @RequestParam("nowPw") String nowPw,
-//			 @RequestParam("newPw") String newPw,
-//			 HttpSession session) {
-//		logger.info("mPwChange() 호출됨");
-//		PasswordDTO pdto = new PasswordDTO();
-//		pdto.setId(id);
-//		pdto.setNowPw(nowPw);
-//		pdto.setNewPw(newPw);
-//		int result = mSvc.modifyPw(pdto);
-//		logger.info("비번수정결과"+result);
-//		
-//		String str = null;
-//		if(result==1) {
-//			MemberDTO calledMdto =mSvc.getMember(id);
-//			session.setAttribute("user", calledMdto);
-//			str = "OK";
-//
-//		}else {
-//			str = "WRONGPW";
-//		}
-//		return str;		
-//	}
+
 	//회원삭제처리 : 관리자용
 	@GetMapping("/memberDelete/{id:.+}")
 	public String memberDelete(@PathVariable String id) {
@@ -263,7 +237,7 @@ public class MemberController {
 	//회원 마이페이지
 	@GetMapping("/mypage/memberMyPage/{id:.+}")
 	public String memberMyPage(@PathVariable String id,
-															Model model) {
+								Model model) {
 		logger.info("memberMyPage() 호출됨");
 		MemberDTO mdto = mSvc.getMember(id);
 		model.addAttribute("mdto",mdto);

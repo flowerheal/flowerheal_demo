@@ -99,9 +99,17 @@ header nav{
 
 /* nav#headerLinks */
 #headerLinks a,
-#headerLinks #greetMsg{
+#headerLinks .greetMsg{
   font-size: 0.8rem;
 }
+
+/* 420px 이하에서는 ~님 환영합니다 안보이게 */
+@media (max-width: 420px) {
+  #headerLinks .greetMsg{
+    display:none;
+  }
+}
+
 /* .dropdown {
   position: relative;
   display: inline-block;
@@ -171,7 +179,7 @@ header nav{
   
   /* nav#headerLinks */
   #headerLinks a,
-  #headerLinks #greetMsg{
+  #headerLinks .greetMsg{
     font-size: 1rem;
   }
 }
@@ -189,7 +197,7 @@ header nav{
 
   /* nav#headerLinks */
   #headerLinks a,
-  #headerLinks #greetMsg{
+  #headerLinks .greetMsg{
     font-size: 1.2rem;
   }
 

@@ -79,6 +79,9 @@ div{
 .orderProductCheck .row:nth-child(2){
 	outline: 1px solid gray;
 }
+.orderProductCheck .row:nth-child(2) div{
+	font-size: 1.2rem;
+}
 
 .orderProductCheck .row div{
 	text-align: center;
@@ -172,7 +175,7 @@ div{
 		<input type="text" name="subs_Fdate" id="subs_Fdate" value="${subs_Fdate}">
 		<input type="text" name="subs_Edate" id="subs_Edate" value="${subs_Edate}">		
 		<input type="text" name="subs_Cnt" id="subs_Cnt" value="<%=product_SubsCnt%>">
-		<input type="text" name="subs_Price" id="subs_Price" value=3000>
+		<input type="text" name="subs_Price" id="subs_Price" value="${pdto.product_Price}">
 		<div class="row my-3">
 			<div class="col-lg-11 mb-3">
 				<div class="accordion"><span>주문 상품 확인</span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></div>
@@ -210,17 +213,13 @@ div{
 						<span>새로 입력</span>
 					</button>
 				</div>
-<!-- 				<div class="col-lg-11 mb-3 agreementDiv">
-					<input type="radio" id="agreementBtn" name="radio">
-					<div id="agreementMsg"><i class="far fa-check-circle"></i>주문정보 및 대행서비스 이용약관에 모두 동의합니다.</div>
-				</div> -->
 				<div class="row orderAddress">
 						<div class="row col-12 p-0 d-flex justify-content-start">
 							<input type="text" class="col-5 form-control ml-0 mr-2" placeholder="우편번호" id="zipNo" name="zipNo" readOnly onClick="goPopup();"/>
 							<input type="button" class="col-5 form-control" value="주소 검색" onClick="goPopup();"/>
 						</div>
 							<input type="text" class="col-12 form-control" placeholder="도로명주소" id="roadAddrPart1" name="roadAddrPart1" readOnly/>
-							<input type="text" class="col-12 form-control" placeholder="상세주소" id="addrDetail" name="addrDetail" readOnly/>					
+							<input type="text" class="col-12 form-control" placeholder="상세주소" id="addrDetail" name="addrDetail" />					
 						</div>
 					<div class="invalid-feedback">
 						<!-- <form:errors path="address" cssClass="errMsg"></form:errors> -->
@@ -228,9 +227,6 @@ div{
 				</div>
 
 
-
-
-				<!-- </div> -->
 			</div>
 			<div class="col-lg-11 mb-3 payMethodDiv">
 				<div class="accordion payMethod active"><span>결제수단 선택</span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></div>
@@ -267,9 +263,8 @@ div{
 				<div id="agreementMsg"><i class="far fa-check-circle"></i>주문정보 및 대행서비스 이용약관에 모두 동의합니다.</div>
 			</div>
 			<div class="col-lg-11 mb-3 paymentDiv">
-				<button type="submit" class="btn btn-primary" id="paymentBtn">결제하기</button>
+				<button type="button" class="btn btn-primary" id="paymentBtn">결제하기</button>
 			</div>
-		</div>
 		</div>
 	</form>
 </section>
@@ -310,13 +305,25 @@ for (var i = 0; i < acc.length; i++) {
 }
 </script>
 <script>
-//==agreementMsg 클릭했을 때
+
 $(function() {
-	$("#agreementMsg").on("click",agreementMsgF);
+	$("#agreementMsg").on("click",agreementMsgF); // agreementMsg 클릭 이벤트
 	$(".payMethod_Btn").on("click",payMethod_BtnF); //결제수단 설정버튼
+	$(".addressFrom_Btn").on("load",loadAddressF);
 	$(".addressFrom_Btn").on("click",addressFrom_BtnF);
-	$(".addressFrom_Btn#recentAddress").click();
+//	$(".addressFrom_Btn#recentAddress").click();
+	$("#paymentBtn").on("click",paymentBtnF);
 });
+
+
+function loadAddressF(){
+	/* subs 테이블에서 같은 계정으로 주문한 기록 있는지 조회 */
+	/* 있으면 불러와서 주소란에 넣고 최근배송지 click */
+	/* 없으면 기존 배송지 click */
+}
+
+
+
 function agreementMsgF(){
 	console.log(this);
 	$(this).toggleClass("active");
@@ -330,16 +337,15 @@ function agreementMsgF(){
 }
 </script>
 <script>
-//결제수단 설정버튼
+//*===== 결제수단 설정버튼 =====*
 function payMethod_BtnF(){
 	$(".payMethod_Btn.active").removeClass("active");
 	$(this).toggleClass("active");
 	let $payMethod_Btn = $(this).val();
-	$("#payMethod_Btn").val($payMethod_Btn);
+	$("input#payment").val($payMethod_Btn);
 }
 
 //*===== 주소입력폼 관련 버튼 기능 =====*
-
 function addressFrom_BtnF(){
 	$(".addressFrom_Btn.active").removeClass("active");
 	$(this).toggleClass("active");
@@ -359,5 +365,31 @@ function addressFrom_BtnF(){
 		$(".orderAddress input:text").val("");
 	break;
 	}
+}
+</script>
+<script>
+function paymentBtnF(){
+	
+	var addressTag = $('#roadAddrPart1').val();											//주소 입력 여부
+	var paymentHiddenTag = $('input#payment').val();								//결제수단 선택 여부
+	var agreementBtn = $('input[id="agreementBtn"]:checked').val(); //이용약관 클릭 여부
+
+	if(addressTag==""){
+		alert("주소를 입력해주세요.");
+		return;
+	}
+	if(paymentHiddenTag==""){
+		alert("결제수단을 선택해주세요.");
+		return;
+		
+	}else if(agreementBtn !="on"){
+		alert("이용약관에 동의해주세요.");
+		return;
+		
+	}else{
+		$("form").submit();
+		
+	}
+	
 }
 </script>

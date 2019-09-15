@@ -39,30 +39,6 @@
 
 
 
-
- 
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-/* function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-} */
-</script>
-
   </head>
   <body>
 
@@ -88,18 +64,9 @@ window.onclick = function(event) {
 					<c:otherwise>
 
 							<div>
-<%-- 								<div class="dropdown">
-								<a class="dropbtn btn btn-lg btn-outline-secondary dropdown-toggle mr-2" onclick="myFunction()" href="javascript:void(0);">${sessionScope.user.nickname}님</a>
-								<div class="dropdown-content" id="myDropdown">
-									<a class="dropdown-item" href="${pageContext.request.contextPath }/member/memberModifyForm/${sessionScope.user.id}">내 정보수정</a>
-									<a class="dropdown-item" href="${pageContext.request.contextPath }/member/mPwChangeForm/${sessionScope.user.id}">비밀번호 수정</a>
-									<a class="dropdown-item" href="#"></a>
-									<a class="dropdown-item" href="${pageContext.request.contextPath }/member/memberDeleteForm/${sessionScope.user.id}">회원 탈퇴</a>
-								</div>
-								</div> --%>
-								<span class="px-2" id="greetMsg">${sessionScope.user.name}님 환영합니다.</span>
-								<span> | </span>
-								<a class="px-2" href="#">마이페이지</a>
+								<span class="px-2 greetMsg">${sessionScope.user.name}님 환영합니다.</span>
+								<span class="greetMsg"> | </span>
+								<a class="px-2" href="${pageContext.request.contextPath }/member/mypage/memberMyPage/${sessionScope.user.id}">마이페이지</a>
 								<span> | </span>
 								<a class="px-2" href="#">장바구니</a>
 								<span> | </span>
