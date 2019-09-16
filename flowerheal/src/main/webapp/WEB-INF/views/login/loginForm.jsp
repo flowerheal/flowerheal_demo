@@ -224,8 +224,36 @@
 				cnt++;
 			}
 		}
+
+		var $id = $('input#id').val();
+		var $pw = $('input#pw').val();
+		var allData = { "id": $id, "pw":$pw };
 		if (cnt == 2) {
-			document.getElementById("loginForm").submit();
+			$.ajax({
+				type : "POST",    	 
+				url  : "memberLogin",
+				data : allData,
+				//응답 성공시 
+				success:function(str){		
+					
+					if(str=="OK"){
+						$(location).attr('href', "${pageContext.request.contextPath }");
+					} else if (str=="NO"){
+						alert("회원정보가 일치하지 않습니다.");
+						$('input#id').val("").focus();
+						$('input#pw').val("");
+						$("input#id, input#pw").removeClass("is-valid");
+						chk = [false,false];
+					} 
+				},
+				//응답 실패시 
+				error:function(xhr, status, err){			
+					console.log("code:"+xhr.status);
+					console.log("message:"+xhr.responseText );
+					console.log("status:"+status);
+					console.log("err:"+err);
+				}			
+			});
 		}
 	}
 </script>
