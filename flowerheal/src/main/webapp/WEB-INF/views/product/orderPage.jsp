@@ -176,6 +176,7 @@ div{
 		<input type="text" name="subs_Edate" id="subs_Edate" value="${subs_Edate}">		
 		<input type="text" name="subs_Cnt" id="subs_Cnt" value="<%=product_SubsCnt%>">
 		<input type="text" name="subs_Price" id="subs_Price" value="${pdto.product_Price}">
+		<input type="text" name="subs_Pname" id="subs_Pname" value="${pdto.product_Name}">
 		<div class="row my-3">
 			<div class="col-lg-11 mb-3">
 				<div class="accordion"><span>주문 상품 확인</span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></div>

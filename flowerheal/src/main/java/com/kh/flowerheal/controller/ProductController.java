@@ -1,7 +1,5 @@
 package com.kh.flowerheal.controller;
 
-import java.sql.ResultSet;
-
 import javax.inject.Inject;
 import javax.validation.Valid;
 
@@ -9,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -74,8 +71,8 @@ public class ProductController {
 			@RequestParam String productCost,
 			@RequestParam String postCost,
 			Model model) {
-		logger.info("product() 호출됨");
-		MemberDTO mdto = mSvc.getMember(user_id);	
+		logger.info("orderPage() 호출됨");
+		MemberDTO mdto = mSvc.getMember(user_id);
 		model.addAttribute("mdto",mdto);
 		
 		model.addAttribute("pdto", pdto);
@@ -100,4 +97,29 @@ public class ProductController {
 		return "redirect:/";
 	}
 	
+	// 주문하기 페이지
+	@PostMapping("/addToCart")
+	public String addToCart(
+//			@ModelAttribute ProductDTO pdto,
+			@RequestParam String user_id,
+//			@RequestParam String subs_Fdate,
+//			@RequestParam String subs_Edate,
+//			@RequestParam String productCost,
+//			@RequestParam String postCost,
+			Model model) {
+		logger.info("addToCart() 호출됨");
+		MemberDTO mdto = mSvc.getMember(user_id);
+		model.addAttribute("mdto",mdto);
+		
+		//cart DB에 해당 상품 넣음
+		//cart DB에서 list 불러와서 뿌림
+		
+//		model.addAttribute("pdto", pdto);
+//		model.addAttribute("subs_Fdate", subs_Fdate);
+//		model.addAttribute("subs_Edate", subs_Edate);
+//		model.addAttribute("productCost", productCost);
+//		model.addAttribute("postCost", postCost);
+		viewname = "/product/cart";
+		return viewname;
+	}	
 }

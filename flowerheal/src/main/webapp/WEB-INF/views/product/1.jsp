@@ -154,6 +154,8 @@
 <!-- 푸터 -->
 <jsp:include page="../footer.jsp" />
 
+
+
 <!-- 상품상세페이지 관련 js -->
 <script src="${pageContext.request.contextPath }/resources/js/product.js"></script>
 <script>
@@ -205,14 +207,17 @@ function orderCheckF(){
 			// 종료날짜 = 시작날짜 연도 + 종료날짜 달 + 시작날짜 일
 			$subs_Edate = $subs_Fdate.substr(0,5)+StringEdateMonth+$subs_Fdate.substr(7,3);
 		}
+		$subs_Fdate = $subs_Fdate.replace(/\./gi,"-");
+		$subs_Edate = $subs_Edate.replace(/\./gi,"-");
+		
 
 		//hidden tag에 각각 시작날짜와 종료날짜 넣기
 		$("#subs_Fdate").val($subs_Fdate);
 		$("#subs_Edate").val($subs_Edate);
 		state = true;
-		return state;
-	
+		return state;	
 }
+
 function addToCartBtnF(){
 	if(orderCheckF()){//유효성 검사
 		//pdto에 값 넣어서 productController에 addToCart에 넘기기
@@ -221,6 +226,20 @@ function addToCartBtnF(){
 	 	$("form").submit();
 	}
 }
+
+
+
+
+/* $(document).ready(function(){
+  $('#addToCartBtn').popover({title: "<h1><strong>HTML</strong> inside <code>the</code> <em>popover</em></h1>",
+  									 content: "<a href='http://www.ulsankh.com'>Cool stuff!</a>",
+  									 html: true,
+  									 placement: "top"}); 
+}); */
+
+
+
+
 </script>
 <script>
 function orderPageBtnF(){
