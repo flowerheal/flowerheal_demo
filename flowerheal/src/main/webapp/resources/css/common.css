@@ -1,4 +1,4 @@
-/* === í°íŠ¸ === */
+/* === ÆùÆ® === */
 @font-face {
   font-family: Baekbeom;
   src: url(font/Typo_BaekbeomB.woff) format('woff'),
@@ -23,10 +23,10 @@
   font-weight: normal;
 }
 
-/* ê¸°ë³¸ í•œêµ­ì–´ í°íŠ¸ */
+/* ±âº» ÇÑ±¹¾î ÆùÆ® */
 *,body{	font-family: DXSnUB;}
 
-/* ì˜ì–´, ì¤‘êµ­ì–´, ì¼ë³¸ì–´ í°íŠ¸ */
+/* ¿µ¾î, Áß±¹¾î, ÀÏº»¾î ÆùÆ® */
 .Lang_Eng,  
 .Lang_Ch,
 .Lang_Jp{
@@ -35,7 +35,7 @@
 
 
 
-/* === í™”ë©´ ì „ì²´ ì ìš© === */
+/* === È­¸é ÀüÃ¼ Àû¿ë === */
 h1, h2, h3, h4, h5, h6 {  font-family: Baekbeom;}
 nav{	border-radius: 0.25rem;}
 	p{	font-size: 0.9rem;}
@@ -98,18 +98,13 @@ header nav{
 }
 
 /* nav#headerLinks */
-#headerLinks a,
-#headerLinks .greetMsg{
+#headerLinks a{
+	 font-size: 1rem;
+}
+
+#headerLinks #greetMsg{
   font-size: 0.8rem;
 }
-
-/* 420px ì´í•˜ì—ì„œëŠ” ~ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤ ì•ˆë³´ì´ê²Œ */
-@media (max-width: 420px) {
-  #headerLinks .greetMsg{
-    display:none;
-  }
-}
-
 /* .dropdown {
   position: relative;
   display: inline-block;
@@ -171,7 +166,7 @@ header nav{
 
 
 @media (min-width: 576px) {
-	/* === í™”ë©´ ì „ì²´ ì ìš© === */
+	/* === È­¸é ÀüÃ¼ Àû¿ë === */
 	.btn-lg{	padding: 0.5rem 1rem;}
 		p{	font-size: 1rem;}
 	.h4{	font-size: 1.3em;}
@@ -179,15 +174,17 @@ header nav{
   
   /* nav#headerLinks */
   #headerLinks a,
-  #headerLinks .greetMsg{
+  #headerLinks #greetMsg{
     font-size: 1rem;
   }
+  
+  
 }
 
 
 
 @media (min-width: 768px) {
-	/* === í™”ë©´ ì „ì²´ ì ìš© === */
+	/* === È­¸é ÀüÃ¼ Àû¿ë === */
 	html,
   body{ font-size: 0.9em;}
 		h3{	font-size: 2rem;}
@@ -197,7 +194,7 @@ header nav{
 
   /* nav#headerLinks */
   #headerLinks a,
-  #headerLinks .greetMsg{
+  #headerLinks #greetMsg{
     font-size: 1.2rem;
   }
 

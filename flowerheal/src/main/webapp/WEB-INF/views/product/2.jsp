@@ -137,12 +137,12 @@ font-size:2rem;
 
 <jsp:include page="../header.jsp" />
 <section class="container">
-<div class="row my-5"><p class="headtext">(정기구독상품)코코낸내 허니잠 패키지</p></div>
+<div class="row my-5"><p class="headtext">(정기구독상품)활력뿜뿜 치어업 패키지</p></div>
 
 <div class="row" >
 	<!-- 상품 대표이미지 -->
 	<div class="col-md-6">
-	  <img src="${pageContext.request.contextPath }/resources/img/product/product1/product-1.jpg"
+	  <img src="${pageContext.request.contextPath }/resources/img/product/product1/product-2.jpg"
 	       width="100%" height="auto" alt="#" />
 	</div>
 	<div class="col-md-6 ">
@@ -152,8 +152,8 @@ font-size:2rem;
 			<div class="form-row " style="outline:2px solid #FEC5B9;">
 				<input type="hidden" name="user_id" id="user_id" value="${sessionScope.user.id}"> 
 				<input type="hidden" name="product_Num" id="product_Num" value="${pdto.product_Num}"> 
-				<input type="hidden" name="product_Name" id="product_Name" value="코코낸내 허니잠 세트"> 
-			  <!-- - --><div class="col-12 pb-4" id="productName" >코코낸내 허니잠 세트</div>
+				<input type="hidden" name="product_Name" id="product_Name" value="활력붐뿜 세트"> 
+			  <!-- - --><div class="col-12 pb-4" id="productName" >활력뿜뿜 치어업 패키지</div>
 				<div class="col-12 pb-3 d-flex justify-content-around orderOption1" id="orderDate">
 					<i class="far fa-calendar-alt my-auto"></i> 
 					<input type="hidden" name="subs_Fdate" id="subs_Fdate"> 
@@ -171,10 +171,11 @@ font-size:2rem;
 						
 						<input type="checkbox"  name="option1" id="option1" value="4000" checked="checked" 
 						style="width:20px;height:20px">
-						<label for="option1" style="font-size:15pt ;"><span></span>캔들(+4000)</label> 
+						<label for="option1" style="font-size:15pt ;"><span></span>바디코롱(+4000)</label>
+						 
 			            <input type="checkbox" class="ml-5"  name="option2" id="option2" value="5000" checked="checked"
 			            style="width:20px;height:20px">
-					    <label for="option2" style="font-size:15pt ;"><span></span>라벤더 홍차(+4000)</label>
+					    <label for="option2" style="font-size:15pt ;"><span></span>허브 티백(+4000)</label>
 					    
 						
 						<div style="color:#E8504A;"> 꽃다발/화분은 구성에서 제외할 수 없습니다</div>
@@ -219,26 +220,20 @@ font-size:2rem;
 
 
 	<div class="col-md-12 pt-5">
-		  <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig1.jpg"
+		  <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig2.jpg"
 					 width="100%" height="auto" alt="#" />
 					 
-	 <h3>
-	 수정필요	
-	   소중한 당신의 하루는 행복할 가치가 있어요.
-	"힘든 하루 끝에 반겨주는 꽃이 제게 큰 위안이 돼요.
-	오늘 하루도 수고했다고,
-	이제 나랑 행복한 시간을 보내자고 말하는 것 같거든요."
-	
-	소중한 당신이기에 매일 행복해도 부족하잖아요.
-	힘든 일이 있으면 곁에 놓인 꽃이 위로를 건네요.
-	커피 두잔값으로 당신의 세상을 행복으로 채울 수 있어요.
-	
-	그렇게 당신의 곁에서
-	당신만을 바라보는 꽃을 보며 잠시 쉬었다 가요.
+	 <h3>	
+	 수정필요
+	 힘들고 지치고 누구에게 기대기도 힘든 이 세상에서 당신에게 
+	 조금이라도 힘이 되주고 싶어요.
+	 활력뿜뿜 치어업 패키지로 당신의 몸과 마음을 응원 해드려요.
+	 무기력하고 삶의 의지가 없는 당신 ! 꽃미힐미로 힐링하며 생활의
+	 활력을 같이 찾아보아요.
 	</h3>
- <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig1_2.jpg"
+ <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig2_2.jpg"
 	 width="100%" height="auto" alt="#" />
-<img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig1_3.jpg"
+<img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig2_3.jpg"
 	 width="100%" height="auto" alt="#" />	 
 	</div>
 	
@@ -344,7 +339,7 @@ $(function() {
 	var todayDate = year + "" + month + "" + day;
 	
 	//===선택가능 날짜===
-		var availableDates = ["2019-09-18", "2019-09-19"];
+		var availableDates = ["2019-09-03", "2019-09-01","2019-09-09", "2019-09-02","2018-09-09", "2019-08-20"];
 		
 		//선택가능 날짜 배열에 있는 값이 오늘날짜보다 과거인 경우 제거
 		//연도가 과거인 경우	

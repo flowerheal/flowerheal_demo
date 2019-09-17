@@ -11,7 +11,7 @@
 	z-index: 20; 
 	top: 0;
 	left: 0;
-	background-color: #FFFCFC;
+	background-color: #f0f5b8;
 	overflow: hidden;
 	padding-top: 60px;
 	flex-flow: column;
@@ -121,7 +121,7 @@
 		position: absolute;
  		top: 60px;
 		left: 0;
- 		background: #F5B49D; /*메뉴바 바탕색*/
+ 		background: #000; /*메뉴바 바탕색*/
 		width: 100%;
 	    z-index: 20; 
 	}
@@ -153,11 +153,11 @@
 	}
 
 	#desktopNav div div{
-		color:#FFFCFC;
+		color:black;
 	}
 
 	#desktopNav div div:hover {
-		background: #F5B49D;  /*164번이랑 색동일하게하기 ,124번이랑 메뉴 2개임*/
+		background: #000;  /*164번이랑 색동일하게하기 ,114번이랑 메뉴 2개임*/
 		cursor: pointer;
 	}
 

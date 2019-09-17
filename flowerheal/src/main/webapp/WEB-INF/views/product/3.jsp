@@ -137,12 +137,12 @@ font-size:2rem;
 
 <jsp:include page="../header.jsp" />
 <section class="container">
-<div class="row my-5"><p class="headtext">(정기구독상품)코코낸내 허니잠 패키지</p></div>
+<div class="row my-5"><p class="headtext">(정기구독상품)피부리셋 무지개 패키지</p></div>
 
 <div class="row" >
 	<!-- 상품 대표이미지 -->
 	<div class="col-md-6">
-	  <img src="${pageContext.request.contextPath }/resources/img/product/product1/product-1.jpg"
+	  <img src="${pageContext.request.contextPath }/resources/img/product/product1/product-3.jpg"
 	       width="100%" height="auto" alt="#" />
 	</div>
 	<div class="col-md-6 ">
@@ -171,10 +171,10 @@ font-size:2rem;
 						
 						<input type="checkbox"  name="option1" id="option1" value="4000" checked="checked" 
 						style="width:20px;height:20px">
-						<label for="option1" style="font-size:15pt ;"><span></span>캔들(+4000)</label> 
+						<label for="option1" style="font-size:15pt ;"><span></span>천연비누(+4000)</label> 
 			            <input type="checkbox" class="ml-5"  name="option2" id="option2" value="5000" checked="checked"
 			            style="width:20px;height:20px">
-					    <label for="option2" style="font-size:15pt ;"><span></span>라벤더 홍차(+4000)</label>
+					    <label for="option2" style="font-size:15pt ;"><span></span>워터백(+4000)</label>
 					    
 						
 						<div style="color:#E8504A;"> 꽃다발/화분은 구성에서 제외할 수 없습니다</div>
@@ -219,26 +219,21 @@ font-size:2rem;
 
 
 	<div class="col-md-12 pt-5">
-		  <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig1.jpg"
+		  <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig3.jpg"
 					 width="100%" height="auto" alt="#" />
 					 
-	 <h3>
-	 수정필요	
-	   소중한 당신의 하루는 행복할 가치가 있어요.
-	"힘든 하루 끝에 반겨주는 꽃이 제게 큰 위안이 돼요.
-	오늘 하루도 수고했다고,
-	이제 나랑 행복한 시간을 보내자고 말하는 것 같거든요."
-	
-	소중한 당신이기에 매일 행복해도 부족하잖아요.
-	힘든 일이 있으면 곁에 놓인 꽃이 위로를 건네요.
-	커피 두잔값으로 당신의 세상을 행복으로 채울 수 있어요.
-	
-	그렇게 당신의 곁에서
-	당신만을 바라보는 꽃을 보며 잠시 쉬었다 가요.
+	 <h3>	
+	 수정필요
+	피부가 푸석 하지 않으신가요 ?  미세먼지와 각종 먼지들 실내 에어컨과 히터 때문에
+	당신의 피부가 늘 건조 해지는건 아시는지요? 저희
+	꽃미힐미는 보이는 피부건강까지 챙겨드리고 싶습니다.
+	피부리셋 무지개 패키지는 실제 화장품 재료로 쓰이는 꽃들과 유럽에서 공수해온
+	천연비누 그리고 비타민C 이너 워터백을 준비하여 당신의 피부를 
+	재생하고 탄탄히 만들어 드립니다.
 	</h3>
- <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig1_2.jpg"
+ <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig3_2.jpg"
 	 width="100%" height="auto" alt="#" />
-<img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig1_3.jpg"
+<img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig3_3.jpg"
 	 width="100%" height="auto" alt="#" />	 
 	</div>
 	
@@ -344,7 +339,7 @@ $(function() {
 	var todayDate = year + "" + month + "" + day;
 	
 	//===선택가능 날짜===
-		var availableDates = ["2019-09-18", "2019-09-19"];
+		var availableDates = ["2019-09-03", "2019-09-01","2019-09-09", "2019-09-02","2018-09-09", "2019-08-20"];
 		
 		//선택가능 날짜 배열에 있는 값이 오늘날짜보다 과거인 경우 제거
 		//연도가 과거인 경우	

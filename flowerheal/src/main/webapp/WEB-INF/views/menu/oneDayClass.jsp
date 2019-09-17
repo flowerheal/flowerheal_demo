@@ -3,5 +3,6 @@
 <jsp:include page="../header.jsp" />
 <section class="container">
 
+<h1>보류</h1>
 </section>
 <jsp:include page="../footer.jsp" />

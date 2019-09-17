@@ -3,5 +3,7 @@
 <jsp:include page="../header.jsp" />
 <section>
 <p>recommend</p>
+
+<h1>보류</h1>
 </section>
 <jsp:include page="../footer.jsp" />

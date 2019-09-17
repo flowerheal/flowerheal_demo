@@ -4,8 +4,8 @@
 
 <style>
 .item {
-	height: 21rem;
-	background: #4DC7A0;
+	height: 27rem;
+	background: #fff;
 	padding: 1rem;
 }
 .owl-nav{
@@ -29,19 +29,23 @@
 </style>
 
 <section class="instaCarousel mx-auto my-3">
+<h2>Instagram@Fhealmekorea</h2>
+
 	<div class="owl-carousel owl-theme">
-	    <div class="item"><h4>1</h4></div>
-	    <div class="item"><h4>2</h4></div>
-	    <div class="item"><h4>3</h4></div>
-	    <div class="item"><h4>4</h4></div>
-	    <div class="item"><h4>5</h4></div>
-	    <div class="item"><h4>6</h4></div>
-	    <div class="item"><h4>7</h4></div>
-	    <div class="item"><h4>8</h4></div>
-	    <div class="item"><h4>9</h4></div>
-	    <div class="item"><h4>10</h4></div>
-	    <div class="item"><h4>11</h4></div>
-	    <div class="item"><h4>12</h4></div>
+	
+	
+	    <div class="item"><h4><a href="#"><img src="${pageContext.request.contextPath }/resources/img/instar/instar1.jpg"></a></h4></div>
+	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar2.jpg"></a></h4></div>
+	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar3.jpg"></a></h4></div>
+	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar4.jpg"></a></h4></div>
+	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar5.jpg"></a></h4></div>
+	    <div class="item"><h4><a href="">6</a></h4></div>
+	    <div class="item"><h4><a href="">7</a></h4></div>
+	    <div class="item"><h4><a href="">8</a></h4></div>
+	    <div class="item"><h4><a href="">9</a></h4></div>
+	    <div class="item"><h4><a href="">10</a></h4></div>
+	    <div class="item"><h4><a href="">12</a></h4></div>
+	    
 	</div>
 </section>
 <script>
