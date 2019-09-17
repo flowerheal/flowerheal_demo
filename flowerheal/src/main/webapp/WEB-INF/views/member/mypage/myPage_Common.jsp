@@ -113,8 +113,12 @@ div{
 				<div class="accordion"><span>구독 정보</span></div>
 					<div class="panel orderProductCheck px-1">
 						<div class="row py-2">
-							<div class="col"><a href="">주문/배송 정보</a></div>
-							<div class="col"><a href="">구독정보 조회/변경</a></div>
+							<div class="col subInfoChange">
+								<a href="${pageContext.request.contextPath }/member/mypage/memberMyPage/${sessionScope.user.id}">
+									구독정보 조회/변경
+								</a>
+							</div>
+							<div class="col orderInfoChange"><a href="">주문/배송 정보</a></div>
 						</div>
 					</div>
 				<div class="accordion"><span>개인 정보</span></div>

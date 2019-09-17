@@ -121,5 +121,15 @@ public class ProductController {
 //		model.addAttribute("postCost", postCost);
 		viewname = "/product/cart";
 		return viewname;
-	}	
+	}
+	
+	//장바구니 이동
+	@GetMapping("/cart/{user_id:.+}")
+	public String cart(@PathVariable String user_id, Model model) {
+		logger.info("cart() 호출됨");
+		MemberDTO mdto = mSvc.getMember(user_id);
+		model.addAttribute("mdto",mdto);
+		viewname = "/product/cart";
+		return viewname;
+	}
 }

@@ -68,7 +68,7 @@
 								<span class="greetMsg"> | </span>
 								<a class="px-2" href="${pageContext.request.contextPath }/member/mypage/memberMyPage/${sessionScope.user.id}">마이페이지</a>
 								<span> | </span>
-								<a class="px-2" href="#">장바구니</a>
+								<a class="px-2" href="${pageContext.request.contextPath }/product/cart/${sessionScope.user.id}">장바구니</a>
 								<span> | </span>
 								<a class="px-2" href="javascript:logOut();">로그아웃</a>
 							</div>
