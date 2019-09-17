@@ -3,6 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<style>
+.orderProductCheck .mPwChangeBtn a{
+	background: lightpink;
+}
+</style>
+
 <!-- myPage_Common.jsp : 메뉴창, 공통css -->
 <jsp:include page="myPage_Common.jsp" />
 		

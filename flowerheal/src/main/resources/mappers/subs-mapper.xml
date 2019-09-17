@@ -3,7 +3,21 @@
 <mapper namespace="mappers.subs-mapper">
 
 	<!-- 구독정보 가져오기 -->
-	<select id="getSDTO" resultType="com.kh.flowerheal.subs.dto.SubsDTO">
+	<select id="getSDTO" parameterType="String" resultType="com.kh.flowerheal.subs.dto.SubsDTO" >
+		SELECT *
+			FROM subs
+			WHERE subs_num = #{snum}
+	</select>
+	
+	<!-- 회원이 구독한 구독 리스트 조회 -->
+	<select id="getMemberSubsList" parameterType="String" resultType="com.kh.flowerheal.subs.dto.SubsDTO">
+		SELECT *
+			FROM subs
+			WHERE subs_member_id = #{id}
+	</select>
+	
+	<!-- 해당 상품을 구독한 리스트 조회 -->
+	<select id="getProductSubsList" parameterType="String" resultType="com.kh.flowerheal.subs.dto.SubsDTO">
 		SELECT *
 			FROM subs
 			WHERE subs_num = #{snum}
@@ -11,10 +25,12 @@
 	
 	<!-- 구독정보 등록 -->
 	<insert id="addSubs" parameterType="com.kh.flowerheal.subs.dto.SubsDTO">
-		INSERT INTO subs (SUBS_NUM, SUBS_MEMBER_ID, SUBS_PRODUCT, SUBS_FDATE, SUBS_EDATE, 
+		INSERT INTO subs (SUBS_NUM, SUBS_MEMBER_ID, SUBS_PRODUCT, SUBS_CHECK, SUBS_PNAME, 
+							SUBS_FDATE, SUBS_EDATE, SUBS_DDATE
 							SUBS_CNT, SUBS_PRICE, ZIPNO, ROADADDRPART1, ADDRDEATAIL)
-		    VALUES (SUBS_SEQ.nextval, #{subs_Member_Id}, ${subs_Product}, sysdate, sysdate,
-		    		 #{subs_Cnt}, #{subs_Price}, #{zipNo}, #{roadAddrPart1}, #{addrDetail} )
+    		VALUES (subs_seq.nextval, #{subs_Member_Id}, #{subs_Product}, 'Y', #{subs_Pname}, 
+    					#{subs_Fdate}, #{subs_Edate}, #{subs_Fdate}, 
+            			#{subs_Cnt}, #{subs_Price}, #{zipNo}, #{roadAddrPart1}, #{addrDetail})  		 
 	</insert>
 
 	<!-- 이미 구독한 상품에 대한 배송지 변경 -->
@@ -27,12 +43,13 @@
 	</update>
 	
 	<!-- 구독취소 -->
-	<delete id="cancelSubs" parameterType="String">
-		DELETE subs
+	<update id="cancelSubs" parameterType="String">
+		UPDATE subs
+			SET subs_check = 'C'
 			WHERE subs_num = #{snum}
-		
-	</delete>
+	</update>
 	
+	<!-- 구독변경 -->
 	<update id="changeSubs" parameterType="com.kh.flowerheal.subs.dto.SubsDTO">
 		UPDATE subs
 	    SET subs_product = #{subs_num},
@@ -43,11 +60,29 @@
 	        zipno = #{zipNo},
 	        roadaddrpart1 = #{roadAddrPart1},
 	        addrdeatail = #{addrDetail}
-	    WHERE subs_num = #{subs_num};
+	    WHERE subs_num = #{subs_num}
 	</update>
 	
+	<!-- 구독만료 -->
+	<update id="endSubs" parameterType="String">
+		UPDATE subs
+			SET subs_check = 'E'
+			WHERE subs_num = #{subs_num}
+	</update>
 	
+	<!-- 상품배송 1회했으면 실행 -->
+	<update id="delivery" parameterType="String">
+		UPDATE subs
+			SET subs_cnt = subs_cnt - 1
+    		SET subs_ddate = add_months(subs_ddate, 1)
+			WHERE subs_num = #{subs_num} AND subs_cnt &gt; 0
+	</update>
 	
-	
+	<!-- 배송 후 subs_cnt == 0 이라면 구독만료를 호출해주기 위한 검색 -->
+	<select id="findEndsubs" parameterType="String" resultType="Integer">
+		SELECT subs_cnt
+			FROM subs
+			WHERE subs_num = #{subs_num}
+	</select>
 
 </mapper>

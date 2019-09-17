@@ -1,5 +1,7 @@
 package com.kh.flowerheal.subs.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -20,6 +22,16 @@ public class SubsSvcImpl implements SubsSvc {
 	}
 
 	@Override
+	public List<SubsDTO> getMemberSubsList(String id) {
+		return sdao.getMemberSubsList(id);
+	}
+	
+	@Override
+	public List<SubsDTO> getProductSubsList(String pnum) {
+		return getProductSubsList(pnum);
+	}
+	
+	@Override
 	public int addSubs(SubsDTO sdto) {
 		return sdao.addSubs(sdto);
 	}
@@ -30,8 +42,8 @@ public class SubsSvcImpl implements SubsSvc {
 	}
 
 	@Override
-	public int delivery(SubsDTO sdto) {
-		return sdao.delivery(sdto);
+	public int delivery(String snum) {
+		return sdao.delivery(snum);
 	}
 
 	@Override
@@ -45,9 +57,8 @@ public class SubsSvcImpl implements SubsSvc {
 	}
 
 	@Override
-	public int endSubs(SubsDTO sdto) {
-		return sdao.endSubs(sdto);
+	public int endSubs(String snum) {
+		return sdao.endSubs(snum);
 	}
-
 
 }

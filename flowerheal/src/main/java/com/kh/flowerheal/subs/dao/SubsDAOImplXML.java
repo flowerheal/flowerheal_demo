@@ -1,5 +1,7 @@
 package com.kh.flowerheal.subs.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,7 +19,17 @@ public class SubsDAOImplXML implements SubsDAO {
 	public SubsDTO getSDTO(String snum) {
 		return sqlSession.selectOne("mappers.subs-mapper.getSDTO", snum);
 	}
-
+	
+	@Override
+	public List<SubsDTO> getMemberSubsList(String id) {
+		return sqlSession.selectList("mappers.subs-mapper.getMemberSubsList", id);
+	}
+	
+	@Override
+	public List<SubsDTO> getProductSubsList(String pnum) {
+		return sqlSession.selectList("mappers.subs-mapper.getProductSubsList", pnum);
+	}
+	
 	@Override
 	public int addSubs(SubsDTO sdto) {
 		return sqlSession.insert("mappers.subs-mapper.addSubs", sdto);
@@ -30,13 +42,24 @@ public class SubsDAOImplXML implements SubsDAO {
 	}
 
 	@Override
-	public int delivery(SubsDTO sdto) {
-		return sqlSession.update("mappers.subs-mapper.delivery",sdto);
+	public int delivery(String snum) {
+		
+		// 배송단계 subs_cnt = subs_cnt - 1    카운트  1감소
+		int cnt = sqlSession.update("mappers.subs-mapper.delivery", snum);
+		
+		// 배송을 한 이후에 sbus_cnt == 0   인지 유무를 체크
+		int result = sqlSession.selectOne("mappers.subs-mapper.findEndsubs",snum);		
+		
+		if(result == 0) {
+			// 0이면 구독만료로 인해 subs_check = E 로 변경해줌.
+			endSubs(snum);
+		}
+		return cnt;
 	}
 
 	@Override
 	public int cancelSubs(String snum) {
-		return sqlSession.delete("mappers.subs-mapper.cancelSubs", snum);
+		return sqlSession.update("mappers.subs-mapper.cancelSubs", snum);
 	}
 
 	@Override
@@ -45,8 +68,9 @@ public class SubsDAOImplXML implements SubsDAO {
 	}
 
 	@Override
-	public int endSubs(SubsDTO sdto) {
-		return 0;
+	public int endSubs(String snum) {
+		return sqlSession.update("mappers.subs-mapper.endSubs", snum);
 	}
+
 
 }

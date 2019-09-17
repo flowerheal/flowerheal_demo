@@ -124,13 +124,15 @@ div{
 				<div class="accordion"><span>개인 정보</span></div>
 					<div class="panel orderProductCheck px-1">
 						<div class="row py-2">
-							<div class="col">
+							<div class="col modifyBtn">
 								<a href="${pageContext.request.contextPath }/member/mypage/memberModifyForm/${sessionScope.user.id}">개인정보 수정</a>
 							</div>
-							<div class="col">
+							<div class="col mPwChangeBtn">
 								<a href="${pageContext.request.contextPath }/member/mypage/mPwChangeForm/${sessionScope.user.id}">비밀번호 수정</a>
 							</div>
-							<div class="col"><a href="${pageContext.request.contextPath }/member/mypage/memberDeleteForm/${sessionScope.user.id}">회원 탈퇴</a></div>
+							<div class="col deleteBtn">
+								<a href="${pageContext.request.contextPath }/member/mypage/memberDeleteForm/${sessionScope.user.id}">회원 탈퇴</a>
+								</div>
 						</div>
 					</div>
 				<div class="accordion active"><span>나의 리뷰</span></div>

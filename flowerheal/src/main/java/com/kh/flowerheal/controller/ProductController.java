@@ -132,4 +132,49 @@ public class ProductController {
 		viewname = "/product/cart";
 		return viewname;
 	}
+	
+	// 구독 상품 배송지 변경 폼 보여주기
+	@GetMapping("/changeAddr/{snum}")
+	public String changeAddrForm(Model model, @PathVariable String snum) {
+		logger.info("구독 상품 배송지 변경 폼");
+		
+		SubsDTO sdto = sSvc.getSDTO(snum);
+		
+		model.addAttribute("subs", sdto);
+		
+		// 배송지변경 버튼 클릭 후 이동페이지  : index.jsp
+		viewname = "redirect:/";
+		return viewname;
+	}
+	
+	// 구독 상품 배송지 변경 기능구현
+	@PostMapping("/changeAddr")
+	public String changeAddr(@Valid @PathVariable SubsDTO sdto) {
+		
+		sSvc.changeAddr(sdto);
+		
+		// 배송지변경 완료 시 이동페이지 : index.jsp
+		viewname = "redirect:/";
+		return viewname;
+	}
+	
+	
+	/* ========== 구독상품 변경 구현예정 ==========
+	// 구독 상품 변경 폼 보여주기
+	public String changeSubsForm() {
+		logger.info("구독 상품 배송지 변경 폼");
+		
+		viewname = "redirect:/";
+		return viewname;
+	}
+	
+	// 구독 상품 배송지 변경 기능구현
+	public String changeSubs(SubsDTO sdto) {
+		logger.info("구독 상품 배송지 변경 기능구현");
+		sSvc.changeSubs(sdto);
+		
+		viewname = "redirect:/";
+		return viewname;
+	}
+	========== 구독상품 변경 구현예정 ========== */
 }
