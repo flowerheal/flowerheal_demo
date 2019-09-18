@@ -21,10 +21,16 @@ font-size:2rem;
 	height: 4rem;
 	margin: 0.5rem 0;
 	font-size: 1.5rem !important;
-    outline:1px solid #FFA59C;
-    border-radius: 2em; 
+    border:1px solid #FFA59C !important;
+   /*  border-radius: 2em;  outline 으로 해서 안되는거 같음*/ 
    /*  background-color: #FFA59C;  안먹음*/
 }
+
+.btn-black:hover{ 
+
+ background-color: #FFA59C;
+ color:white !important;  /*글색깔*/
+} 
 
 .btn-black:hover{ 
 
@@ -209,7 +215,6 @@ font-size:2rem;
 				<button type="button" class="btn btn-black" style="color:#FFA59C" id="addToCartBtn">카트에 담기</button>
 				<button type="button" class="btn btn-black" style="background-color: #FFA59C; color:#fff; " id="orderPageBtn">주문하기</button>
 			</div>
-
 	</div>
 	</div>
 
