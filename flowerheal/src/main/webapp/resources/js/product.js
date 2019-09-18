@@ -47,22 +47,3 @@ $("input:checkbox").each(function(){
 });
 });
 
-function addToCartBtnF(){
-	alert("addToCartBtnF");
-}
-
-function orderPageBtnF(){
-	alert("orderPageBtnF");
-}
-
-//구독기간 설정버튼
-function product_SubsCnt_BtnF(){
-	$(".product_SubsCnt_Btn.active").removeClass("active");
-	$(this).toggleClass("active");
-	let $product_SubsCnt = $(this).val();
-	$("#product_SubsCnt").val($product_SubsCnt);
-}
-
-
-
-

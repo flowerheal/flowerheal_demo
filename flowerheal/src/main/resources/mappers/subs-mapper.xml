@@ -26,7 +26,7 @@
 	<!-- 구독정보 등록 -->
 	<insert id="addSubs" parameterType="com.kh.flowerheal.subs.dto.SubsDTO">
 		INSERT INTO subs (SUBS_NUM, SUBS_MEMBER_ID, SUBS_PRODUCT, SUBS_CHECK, SUBS_PNAME, 
-							SUBS_FDATE, SUBS_EDATE, SUBS_DDATE
+							SUBS_FDATE, SUBS_EDATE, SUBS_DDATE,
 							SUBS_CNT, SUBS_PRICE, ZIPNO, ROADADDRPART1, ADDRDEATAIL)
     		VALUES (subs_seq.nextval, #{subs_Member_Id}, #{subs_Product}, 'Y', #{subs_Pname}, 
     					#{subs_Fdate}, #{subs_Edate}, #{subs_Fdate}, 

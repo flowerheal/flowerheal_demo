@@ -249,23 +249,49 @@ font-size:2rem;
 
 <!-- 상품상세페이지 관련 js -->
 <script src="${pageContext.request.contextPath }/resources/js/product.js"></script>
-
 <script>
-function orderPageBtnF(){
+//구성버튼 누르면 열기&닫기
+var acc = document.getElementsByClassName("accordion");
 
+for (var i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+		this.classList.toggle("active");
+
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+//구독기간 설정버튼
+function product_SubsCnt_BtnF(){
+	$(".product_SubsCnt_Btn.active").removeClass("active");
+	$(this).toggleClass("active");
+	let $product_SubsCnt = $(this).val();
+	$("#product_SubsCnt").val($product_SubsCnt);
+}
+
+
+// 장바구니, 주문하기 유효성 검사
+function orderCheckF(){
 	var user = "${sessionScope.user == null ? null : sessionScope.user.id}";
-	
+	var state = false;
 	//로그인전이면 로그인화면으로 이동
 	if(user == null || user == "") {
 		if(confirm("로그인 하시겠습니까?")){
 			document.location.href="${pageContext.request.contextPath }/login/loginForm";
 		}
+		state = false;
 		return;
 	}
 	
 	//구독기간 설정 안했다면 alert;
 	if($("#product_SubsCnt").val()==""){
 		alert("구독기간을 선택해주세요.");
+		state = false;
 		return;
 	}
 		/* 시작날짜를 바탕으로 종료날짜 산출 */
@@ -298,17 +324,55 @@ function orderPageBtnF(){
 			// 종료날짜 = 시작날짜 연도 + 종료날짜 달 + 시작날짜 일
 			$subs_Edate = $subs_Fdate.substr(0,5)+StringEdateMonth+$subs_Fdate.substr(7,3);
 		}
+		$subs_Fdate = $subs_Fdate.replace(/\./gi,"-");
+		$subs_Edate = $subs_Edate.replace(/\./gi,"-");
+		
 
 		//hidden tag에 각각 시작날짜와 종료날짜 넣기
 		$("#subs_Fdate").val($subs_Fdate);
 		$("#subs_Edate").val($subs_Edate);
-		//pdto에 값 넣어서 orderPage에 넘기기
-		$("form").attr("action","${pageContext.request.contextPath }/product/orderPage");
+		state = true;
+		return state;	
+}
+
+// 카트에 담기 버튼 클릭
+function addToCartBtnF(){
+	if(orderCheckF()){//유효성 검사
+		//pdto에 값 넣어서 productController에 addToCart에 넘기기
+		$("form").attr("action","${pageContext.request.contextPath }/product/addToCart");
 		$("form").attr("method","POST");
 	 	$("form").submit();
-	
+	}
 }
+
+
+
+
+/* $(document).ready(function(){
+  $('#addToCartBtn').popover({title: "<h1><strong>HTML</strong> inside <code>the</code> <em>popover</em></h1>",
+  									 content: "<a href='http://www.ulsankh.com'>Cool stuff!</a>",
+  									 html: true,
+  									 placement: "top"}); 
+}); */
+
+
+
+
+// 주문하기 버튼 클릭
+function orderPageBtnF(){
+		if(orderCheckF()){//유효성 검사
+			//pdto에 값 넣어서 orderPage에 넘기기
+			$("form").attr("action","${pageContext.request.contextPath }/product/orderPage");
+			$("form").attr("method","POST");
+		 	$("form").submit();
+		} 	
+}
+
+
+
+
 </script>
+
 
 <!-- jquery.ui datapicker 관련 css, js -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -424,21 +488,4 @@ $(function() {
 		}).datepicker("setDate", new Date(availableDates[0]));
 		
 });
-</script>
-<script>
-// 구성버튼 누르면 열기&닫기
-var acc = document.getElementsByClassName("accordion");
-
-for (var i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-		this.classList.toggle("active");
-
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
 </script>

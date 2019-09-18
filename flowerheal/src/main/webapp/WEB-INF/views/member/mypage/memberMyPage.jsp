@@ -58,7 +58,7 @@ $(function(){
 //요청페이지에 대한 댓글목록 가져오기
 function replyList(id){
 	let $id = id;
-	let $url = "${pageContext.request.contextPath }/productRest/select"; 
+	let $url = "${pageContext.request.contextPath }/productRest/msselect"; 
 	let str = "";
 	
 	$.ajax({
@@ -70,7 +70,7 @@ function replyList(id){
 		success:function(result){		
 			$.each(result,function(idx, rec){
 				str += '<div class="col-12 outline px-0">';
-				str += '<div class="row">';
+				str += '<div class="row col-12">';
 				str += '	<div class="col-3 px-0 TabletMode">상품명</div>';
 				str += '	<div class="col-md-8 px-0">'+rec.subs_Pname+'</div>';
 				str += '	</div>';
