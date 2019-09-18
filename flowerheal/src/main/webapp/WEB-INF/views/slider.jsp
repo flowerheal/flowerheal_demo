@@ -4,7 +4,7 @@
 
 <style>
 .item {
-	height: 27rem;
+	height: 21rem;
 	background: #fff;
 	padding: 1rem;
 }
@@ -34,18 +34,16 @@
 	<div class="owl-carousel owl-theme">
 	
 	
-	    <div class="item"><h4><a href="#"><img src="${pageContext.request.contextPath }/resources/img/instar/instar1.jpg"></a></h4></div>
+	    <div class="item"><h4><a href="#"><img src="${pageContext.request.contextPath}/resources/img/instar/instar1.jpg"></a></h4></div>
 	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar2.jpg"></a></h4></div>
 	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar3.jpg"></a></h4></div>
 	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar4.jpg"></a></h4></div>
 	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar5.jpg"></a></h4></div>
-	    <div class="item"><h4><a href="">6</a></h4></div>
-	    <div class="item"><h4><a href="">7</a></h4></div>
-	    <div class="item"><h4><a href="">8</a></h4></div>
-	    <div class="item"><h4><a href="">9</a></h4></div>
-	    <div class="item"><h4><a href="">10</a></h4></div>
-	    <div class="item"><h4><a href="">12</a></h4></div>
-	    
+	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar6.jpg"></a></h4></div>
+	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar7.jpg"></a></h4></div>
+	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar8.jpg"></a></h4></div>
+	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar9.jpg"></a></h4></div>
+	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar10.jpg"></a></h4></div>
 	</div>
 </section>
 <script>
