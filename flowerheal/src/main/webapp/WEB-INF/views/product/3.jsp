@@ -21,8 +21,8 @@ font-size:2rem;
 	height: 4rem;
 	margin: 0.5rem 0;
 	font-size: 1.5rem !important;
-    outline:1px solid #FFA59C;
-    border-radius: 2em; 
+    border:1px solid #FFA59C !important;
+   /*  border-radius: 2em;  outline 으로 해서 안되는거 같음*/ 
    /*  background-color: #FFA59C;  안먹음*/
 }
 
@@ -137,7 +137,7 @@ font-size:2rem;
 
 <jsp:include page="../header.jsp" />
 <section class="container">
-<div class="row my-5"><p class="headtext">(정기구독상품)피부리셋 무지개 패키지</p></div>
+<div class="row my-5"><p class="headtext">(정기구독상품)코코낸내 허니잠 패키지</p></div>
 
 <div class="row" >
 	<!-- 상품 대표이미지 -->
@@ -152,8 +152,8 @@ font-size:2rem;
 			<div class="form-row " style="outline:2px solid #FEC5B9;">
 				<input type="hidden" name="user_id" id="user_id" value="${sessionScope.user.id}"> 
 				<input type="hidden" name="product_Num" id="product_Num" value="${pdto.product_Num}"> 
-				<input type="hidden" name="product_Name" id="product_Name" value="코코낸내 허니잠 세트"> 
-			  <!-- - --><div class="col-12 pb-4" id="productName" >코코낸내 허니잠 세트</div>
+				<input type="hidden" name="product_Name" id="product_Name" value="피부리셋 세트"> 
+			  <!-- - --><div class="col-12 pb-4" id="productName" >피부리셋 무지개 패키지</div>
 				<div class="col-12 pb-3 d-flex justify-content-around orderOption1" id="orderDate">
 					<i class="far fa-calendar-alt my-auto"></i> 
 					<input type="hidden" name="subs_Fdate" id="subs_Fdate"> 
@@ -174,7 +174,7 @@ font-size:2rem;
 						<label for="option1" style="font-size:15pt ;"><span></span>천연비누(+4000)</label> 
 			            <input type="checkbox" class="ml-5"  name="option2" id="option2" value="5000" checked="checked"
 			            style="width:20px;height:20px">
-					    <label for="option2" style="font-size:15pt ;"><span></span>워터백(+4000)</label>
+					    <label for="option2" style="font-size:15pt ;"><span></span>이너워터백(+5000)</label>
 					    
 						
 						<div style="color:#E8504A;"> 꽃다발/화분은 구성에서 제외할 수 없습니다</div>
@@ -186,7 +186,7 @@ font-size:2rem;
 					<input type="hidden" name="product_SubsCnt" id="product_SubsCnt"><!-- warning 버튼 노랑색 -->
 					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="1">1개월권</button>
 					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="2">2개월권</button>
-					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="6">정기결제</button>
+					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="6">6개월권</button>
 				    <!-- <button type="button" class="ml-5 btn product_SubsCnt_Btn btn btn-outline-warning">정기결제</button> -->  
 				</div>
 				<div class="row col-12 pb-3 d-flex justify-content-around orderOption4" id="orderCost">
@@ -222,15 +222,15 @@ font-size:2rem;
 		  <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig3.jpg"
 					 width="100%" height="auto" alt="#" />
 					 
-	 <h3>	
-	 수정필요
-	피부가 푸석 하지 않으신가요 ?  미세먼지와 각종 먼지들 실내 에어컨과 히터 때문에
-	당신의 피부가 늘 건조 해지는건 아시는지요? 저희
-	꽃미힐미는 보이는 피부건강까지 챙겨드리고 싶습니다.
-	피부리셋 무지개 패키지는 실제 화장품 재료로 쓰이는 꽃들과 유럽에서 공수해온
-	천연비누 그리고 비타민C 이너 워터백을 준비하여 당신의 피부를 
-	재생하고 탄탄히 만들어 드립니다.
-	</h3>
+	 <p class="text-center" style="font-size:1.2rem; color:#8C8C8C;" >
+		
+	 <span style="font-weight:bold; font-size:1.5rem; color:#5D5D5D;">당신의 피부도 힐링해드리고 싶어요</span>  <br><br>
+	미세먼지와 각종 먼지들 그리고 히터와 에어컨으로 1년내내 우리의 피부는 적신호입니다. <br>
+	그리고 스트레스와 소홀한 피부관리로 우리는 하루하루 젊어질 기회를 놓치고 있을지 모릅니다.<br>
+	이제 꽃으로도 피부에게 생기를 불어넣어주세요. 유럽에서 공수해온 천연비누와 비타민C가 풍부한 차로 <br>
+	당신의 젊음과 건강함을 꽃미힐미와 함께해요.
+	</p>
+	
  <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig3_2.jpg"
 	 width="100%" height="auto" alt="#" />
 <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig3_3.jpg"
@@ -339,7 +339,7 @@ $(function() {
 	var todayDate = year + "" + month + "" + day;
 	
 	//===선택가능 날짜===
-		var availableDates = ["2019-09-03", "2019-09-01","2019-09-09", "2019-09-02","2018-09-09", "2019-08-20"];
+		var availableDates = ["2019-09-18", "2019-09-19"];
 		
 		//선택가능 날짜 배열에 있는 값이 오늘날짜보다 과거인 경우 제거
 		//연도가 과거인 경우	

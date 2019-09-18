@@ -21,8 +21,8 @@ font-size:2rem;
 	height: 4rem;
 	margin: 0.5rem 0;
 	font-size: 1.5rem !important;
-    outline:1px solid #FFA59C;
-    border-radius: 2em; 
+    border:1px solid #FFA59C !important;
+   /*  border-radius: 2em;  outline 으로 해서 안되는거 같음*/ 
    /*  background-color: #FFA59C;  안먹음*/
 }
 
@@ -137,11 +137,11 @@ font-size:2rem;
 
 <jsp:include page="../header.jsp" />
 <section class="container">
-<div class="row my-5"><p class="headtext">(정기구독상품)활력뿜뿜 치어업 패키지</p></div>
+<div class="row my-5"><p class="headtext">(정기구독상품)코코낸내 허니잠 패키지</p></div>
 
 <div class="row" >
 	<!-- 상품 대표이미지 -->
-	<div class="col-md-6">
+	<div class="col-md-6" >
 	  <img src="${pageContext.request.contextPath }/resources/img/product/product1/product-2.jpg"
 	       width="100%" height="auto" alt="#" />
 	</div>
@@ -152,8 +152,8 @@ font-size:2rem;
 			<div class="form-row " style="outline:2px solid #FEC5B9;">
 				<input type="hidden" name="user_id" id="user_id" value="${sessionScope.user.id}"> 
 				<input type="hidden" name="product_Num" id="product_Num" value="${pdto.product_Num}"> 
-				<input type="hidden" name="product_Name" id="product_Name" value="활력붐뿜 세트"> 
-			  <!-- - --><div class="col-12 pb-4" id="productName" >활력뿜뿜 치어업 패키지</div>
+				<input type="hidden" name="product_Name" id="product_Name" value="치어업 세트"> 
+			  <!-- - --><div class="col-12 pb-4" id="productName" >활력뿜뿜 치어업 세트</div>
 				<div class="col-12 pb-3 d-flex justify-content-around orderOption1" id="orderDate">
 					<i class="far fa-calendar-alt my-auto"></i> 
 					<input type="hidden" name="subs_Fdate" id="subs_Fdate"> 
@@ -171,11 +171,10 @@ font-size:2rem;
 						
 						<input type="checkbox"  name="option1" id="option1" value="4000" checked="checked" 
 						style="width:20px;height:20px">
-						<label for="option1" style="font-size:15pt ;"><span></span>바디코롱(+4000)</label>
-						 
+						<label for="option1" style="font-size:15pt ;"><span></span>바디코롱(+4000)</label> 
 			            <input type="checkbox" class="ml-5"  name="option2" id="option2" value="5000" checked="checked"
 			            style="width:20px;height:20px">
-					    <label for="option2" style="font-size:15pt ;"><span></span>허브 티백(+4000)</label>
+					    <label for="option2" style="font-size:15pt ;"><span></span>허브티(+5000)</label>
 					    
 						
 						<div style="color:#E8504A;"> 꽃다발/화분은 구성에서 제외할 수 없습니다</div>
@@ -187,7 +186,7 @@ font-size:2rem;
 					<input type="hidden" name="product_SubsCnt" id="product_SubsCnt"><!-- warning 버튼 노랑색 -->
 					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="1">1개월권</button>
 					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="2">2개월권</button>
-					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="6">정기결제</button>
+					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="6">6개월권</button>
 				    <!-- <button type="button" class="ml-5 btn product_SubsCnt_Btn btn btn-outline-warning">정기결제</button> -->  
 				</div>
 				<div class="row col-12 pb-3 d-flex justify-content-around orderOption4" id="orderCost">
@@ -223,14 +222,18 @@ font-size:2rem;
 		  <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig2.jpg"
 					 width="100%" height="auto" alt="#" />
 					 
-	 <h3>	
-	 수정필요
-	 힘들고 지치고 누구에게 기대기도 힘든 이 세상에서 당신에게 
-	 조금이라도 힘이 되주고 싶어요.
-	 활력뿜뿜 치어업 패키지로 당신의 몸과 마음을 응원 해드려요.
-	 무기력하고 삶의 의지가 없는 당신 ! 꽃미힐미로 힐링하며 생활의
-	 활력을 같이 찾아보아요.
-	</h3>
+	 <p class="text-center" style="font-size:1.2rem; color:#8C8C8C;">
+		
+	   <sapn style="font-weight:bold; font-size:1.5rem;color:#5D5D5D;">힘들고 지치지는 않으신가요?</sapn><br>
+	
+	<br>"일상생활에 지친 당신을 위하여 꽃미힐미가 힘을 드리고 싶어요"<br>
+	
+	우리는 각각의 힘든생활을 홀로 견디고 있잖아요.
+	누구에게 기대기도 힘든 이 모든 순간에 조금이나마 꽃미힐미가 <br>
+	당신의 힘이 되어주고 싶어 준비했습니다.
+	잠시나마 일을 뒤로 미루고 나에게 집중에보아요.
+	</p>
+	
  <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig2_2.jpg"
 	 width="100%" height="auto" alt="#" />
 <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig2_3.jpg"
@@ -339,7 +342,7 @@ $(function() {
 	var todayDate = year + "" + month + "" + day;
 	
 	//===선택가능 날짜===
-		var availableDates = ["2019-09-03", "2019-09-01","2019-09-09", "2019-09-02","2018-09-09", "2019-08-20"];
+		var availableDates = ["2019-09-18", "2019-09-19"];
 		
 		//선택가능 날짜 배열에 있는 값이 오늘날짜보다 과거인 경우 제거
 		//연도가 과거인 경우	

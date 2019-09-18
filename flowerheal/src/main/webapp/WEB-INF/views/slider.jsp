@@ -29,7 +29,7 @@
 </style>
 
 <section class="instaCarousel mx-auto my-3">
-<h2>Instagram@Fhealmekorea</h2>
+<h2 class="text-center">패키지 정기구독 후기</h2>
 
 	<div class="owl-carousel owl-theme">
 	

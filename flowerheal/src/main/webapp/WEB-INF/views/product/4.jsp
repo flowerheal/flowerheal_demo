@@ -21,8 +21,8 @@ font-size:2rem;
 	height: 4rem;
 	margin: 0.5rem 0;
 	font-size: 1.5rem !important;
-    outline:1px solid #FFA59C;
-    border-radius: 2em; 
+    border:1px solid #FFA59C !important;
+   /*  border-radius: 2em;  outline 으로 해서 안되는거 같음*/ 
    /*  background-color: #FFA59C;  안먹음*/
 }
 
@@ -137,12 +137,12 @@ font-size:2rem;
 
 <jsp:include page="../header.jsp" />
 <section class="container">
-<div class="row my-5"><p class="headtext" style="color:#5D5D5D;  font-weight:bold;">(정기구독상품)코코낸내 허니잠 패키지</p></div>
+<div class="row my-5"><p class="headtext">나만의 공간 패키지</p></div>
 
 <div class="row" >
 	<!-- 상품 대표이미지 -->
 	<div class="col-md-6">
-	  <img src="${pageContext.request.contextPath }/resources/img/product/product1/product-1.jpg"
+	  <img src="${pageContext.request.contextPath }/resources/img/product/product1/product-4.jpg"
 	       width="100%" height="auto" alt="#" />
 	</div>
 	<div class="col-md-6 ">
@@ -152,8 +152,8 @@ font-size:2rem;
 			<div class="form-row " style="outline:2px solid #FEC5B9;">
 				<input type="hidden" name="user_id" id="user_id" value="${sessionScope.user.id}"> 
 				<input type="hidden" name="product_Num" id="product_Num" value="${pdto.product_Num}"> 
-				<input type="hidden" name="product_Name" id="product_Name" value="코코낸내 허니잠 세트"> 
-			  <!-- - --><div class="col-12 pb-4" id="productName" >코코낸내 허니잠 세트</div>
+				<input type="hidden" name="product_Name" id="product_Name" value="나만의 공간 세트"> 
+			  <!-- - --><div class="col-12 pb-4" id="productName" >나만의 공간 패키지</div>
 				<div class="col-12 pb-3 d-flex justify-content-around orderOption1" id="orderDate">
 					<i class="far fa-calendar-alt my-auto"></i> 
 					<input type="hidden" name="subs_Fdate" id="subs_Fdate"> 
@@ -171,10 +171,10 @@ font-size:2rem;
 						
 						<input type="checkbox"  name="option1" id="option1" value="4000" checked="checked" 
 						style="width:20px;height:20px">
-						<label for="option1" style="font-size:15pt ;"><span></span>캔들(+4000)</label> 
+						<label for="option1" style="font-size:15pt ;"><span></span>구성품1(+4000)</label> 
 			            <input type="checkbox" class="ml-5"  name="option2" id="option2" value="5000" checked="checked"
 			            style="width:20px;height:20px">
-					    <label for="option2" style="font-size:15pt ;"><span></span>라벤더 홍차(+5000)</label>
+					    <label for="option2" style="font-size:15pt ;"><span></span>구성품2(+5000)</label>
 					    
 						
 						<div style="color:#E8504A;"> 꽃다발/화분은 구성에서 제외할 수 없습니다</div>
@@ -219,27 +219,42 @@ font-size:2rem;
 
 
 	<div class="col-md-12 pt-5">
-		  <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig1.jpg"
+		  <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig4.jpg"
 					 width="100%" height="auto" alt="#" />
-					 
-	 <p class="text-center" style="font-size:1.5rem; color:#5D5D5D; font-weight:bold;" >
-	
-	   소중한 당신의 하루는 행복할 가치가 있어요.
-	   </p>
-	  <p class="text-center" style="font-size:1.2rem; color:#8C8C8C;" >
-	"힘든 하루 끝에 반겨주는 꽃이 제게 큰 위안이 돼요.
-	오늘 하루도 수고했다고,
-	이제 나랑 행복한 시간을 보내자고 말하는 것 같거든요."<br>
-	
-	소중한 당신이기에 매일 행복해도 부족하잖아요.<br>
-	힘든 일이 있으면 곁에 놓인 꽃이 위로를 건네요.
-	커피 두잔값으로 당신의 세상을 행복으로 채울 수 있어요.
-	
-	</p>
- <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig1_2.jpg"
+	<br><br><br>
+ <img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig4-2.jpg"
 	 width="100%" height="auto" alt="#" />
-<img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig1_3.jpg"
-	 width="100%" height="auto" alt="#" />	 
+	 
+	 <p class="text-center" style="font-size:1.5rem; color:#5D5D5D; font-weight:bold;">
+	   작은 소품으로도 힐링을 느껴보세요.<br>
+	   </p>
+	   
+	   <p class="text-center" style="font-size:1.2rem; color:#8C8C8C;">
+	    비싸거나 화려한 장식품 보다는 작고 귀여운 화분을 벽에 걸어보세요.<br>
+	   우리의 눈은 초록색을 보면 피로가 풀리다고 했어요.<br>
+	   물을 주지 않아도 햇빛으로만 먹고사는 식물들과 함께 공기도 정화하고 <br>
+	   나에게 작은 힐링을 선물하세요.
+	 
+	 
+	 </p>
+	 
+<img src="${pageContext.request.contextPath }/resources/img/product/product1/productbig4-3.jpg"
+	 width="100%" height="auto" alt="#" />	
+	 
+	  <p class="text-center"style="font-size:1.5rem; color:#5D5D5D; font-weight:bold;">
+	    책과 서류들로 쌓여있는 책상. 
+	    </p>
+	    
+	    <p class="text-center"style="font-size:1.2rem; color:#8C8C8C;">
+	    당신의 무뚝뚝한 책상과 테이블에 변신을 해보세요.<br>
+	    심플해보이지만 스테인 재질의 장식품이 당신의 책상을 좀 더 세련있게 보이게 할꺼예요.<br>
+	    선물받은 장미 한송이나 아무런 꽃송이를 꽂아두어도 예쁘답니다.<br>
+	    녹슬지 않고 항상 당신옆에 힐링이 되어줄거예요.
+	 
+	 
+	 </p>
+	 
+	  
 	</div>
 	
 </div>
@@ -249,50 +264,23 @@ font-size:2rem;
 
 <!-- 상품상세페이지 관련 js -->
 <script src="${pageContext.request.contextPath }/resources/js/product.js"></script>
+
 <script>
-//구성버튼 누르면 열기&닫기
-var acc = document.getElementsByClassName("accordion");
+function orderPageBtnF(){
 
-for (var i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-		this.classList.toggle("active");
-
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-
-//구독기간 설정버튼
-function product_SubsCnt_BtnF(){
-	$(".product_SubsCnt_Btn.active").removeClass("active");
-	$(this).toggleClass("active");
-	let $product_SubsCnt = $(this).val();
-	$("#product_SubsCnt").val($product_SubsCnt);
-}
-
-
-// 장바구니, 주문하기 유효성 검사
-function orderCheckF(){
 	var user = "${sessionScope.user == null ? null : sessionScope.user.id}";
-	var state = false;
+	
 	//로그인전이면 로그인화면으로 이동
 	if(user == null || user == "") {
-		
 		if(confirm("로그인 하시겠습니까?")){
 			document.location.href="${pageContext.request.contextPath }/login/loginForm";
 		}
-		state = false;
 		return;
 	}
 	
 	//구독기간 설정 안했다면 alert;
 	if($("#product_SubsCnt").val()==""){
 		alert("구독기간을 선택해주세요.");
-		state = false;
 		return;
 	}
 		/* 시작날짜를 바탕으로 종료날짜 산출 */
@@ -325,55 +313,17 @@ function orderCheckF(){
 			// 종료날짜 = 시작날짜 연도 + 종료날짜 달 + 시작날짜 일
 			$subs_Edate = $subs_Fdate.substr(0,5)+StringEdateMonth+$subs_Fdate.substr(7,3);
 		}
-		$subs_Fdate = $subs_Fdate.replace(/\./gi,"-");
-		$subs_Edate = $subs_Edate.replace(/\./gi,"-");
-		
 
 		//hidden tag에 각각 시작날짜와 종료날짜 넣기
 		$("#subs_Fdate").val($subs_Fdate);
 		$("#subs_Edate").val($subs_Edate);
-		state = true;
-		return state;	
-}
-
-// 카트에 담기 버튼 클릭
-function addToCartBtnF(){
-	if(orderCheckF()){//유효성 검사
-		//pdto에 값 넣어서 productController에 addToCart에 넘기기
-		$("form").attr("action","${pageContext.request.contextPath }/product/addToCart");
+		//pdto에 값 넣어서 orderPage에 넘기기
+		$("form").attr("action","${pageContext.request.contextPath }/product/orderPage");
 		$("form").attr("method","POST");
 	 	$("form").submit();
-	}
+	
 }
-
-
-
-
-/* $(document).ready(function(){
-  $('#addToCartBtn').popover({title: "<h1><strong>HTML</strong> inside <code>the</code> <em>popover</em></h1>",
-  									 content: "<a href='http://www.ulsankh.com'>Cool stuff!</a>",
-  									 html: true,
-  									 placement: "top"}); 
-}); */
-
-
-
-
-// 주문하기 버튼 클릭
-function orderPageBtnF(){
-		if(orderCheckF()){//유효성 검사
-			//pdto에 값 넣어서 orderPage에 넘기기
-			$("form").attr("action","${pageContext.request.contextPath }/product/orderPage");
-			$("form").attr("method","POST");
-		 	$("form").submit();
-		} 	
-}
-
-
-
-
 </script>
-
 
 <!-- jquery.ui datapicker 관련 css, js -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -409,7 +359,7 @@ $(function() {
 	var todayDate = year + "" + month + "" + day;
 	
 	//===선택가능 날짜===
-		var availableDates = ["2019-10-04","2019-10-08","2019-10-09"];
+		var availableDates = ["2019-09-18", "2019-09-19"];
 		
 		//선택가능 날짜 배열에 있는 값이 오늘날짜보다 과거인 경우 제거
 		//연도가 과거인 경우	
@@ -431,7 +381,7 @@ $(function() {
 		}
 				console.log(availableDates)
 		//일이 과거인 경우
-/* 		for(var i = 0; i<availableDates.length; i++){
+		for(var i = 0; i<availableDates.length; i++){
 			var aDatesDay = parseInt(availableDates[i].substr(8,2));
 			console.log("aDatesDay"+aDatesDay)
 			console.log("day"+parseInt(day))
@@ -439,7 +389,7 @@ $(function() {
 				availableDates.splice(i,1);
 				i-=1;
 			}
-		} */
+		}
 		console.log(availableDates)
 
 		function available(date) {			
@@ -489,4 +439,21 @@ $(function() {
 		}).datepicker("setDate", new Date(availableDates[0]));
 		
 });
+</script>
+<script>
+// 구성버튼 누르면 열기&닫기
+var acc = document.getElementsByClassName("accordion");
+
+for (var i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+		this.classList.toggle("active");
+
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
 </script>

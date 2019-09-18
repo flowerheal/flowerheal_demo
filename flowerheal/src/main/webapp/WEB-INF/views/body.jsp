@@ -68,16 +68,17 @@
 
         <div class="col-md-6 my-md-2 col-lg-5 m-lg-4">
           <div class="card mb-4 shadow-sm">
-          <a href="${pageContext.request.contextPath }/product/1" />
-            <img src="${pageContext.request.contextPath }/resources/img/product/blank.png"
+          <a href="${pageContext.request.contextPath }/product/4" />
+            <img src="${pageContext.request.contextPath }/resources/img/product/product1/product-4.jpg"
           			 class="bd-placeholder-img card-img-top" width="100%" height="100%" alt="#" />
             <div class="card-body">
-              <p class="card-title h4"> </p>
+              <p class="card-title h4">나만의 공간 패키지 </p>
               <div class="row d-flex justify-content-between align-items-center">
-              <p class="card-text">  <br/>  </p>
-                <div class="btn-group row mr-0">
+              <p class="card-text">10월의 주제: Make clean air and my space  <br/>
+                나만의공간도 힐링해보세요.  </p>
+                <!-- <div class="btn-group row mr-0">
                   <button type="button" class="btn btn-sm btn-outline-secondary">더보기</button>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

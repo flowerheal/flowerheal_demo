@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>springFramework</title>
+    <title>꽃미힐미</title>
     <!-- favicon.ico 404 없앰 -->
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
@@ -45,7 +45,9 @@
   <header class="blog-header pt-4" id="blog-header">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col text-center">
-        <a class="blog-header-logo text-dark bold" href="${pageContext.request.contextPath }">꽃미 힐미</a>
+        <a class="blog-header-logo text-dark bold" href="${pageContext.request.contextPath }">
+        <img src="${pageContext.request.contextPath }/resources/img/logo1.png" 
+        width="207" height="110"/></a>
       </div>
     </div>
 
