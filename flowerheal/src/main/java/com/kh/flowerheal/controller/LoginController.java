@@ -1,6 +1,7 @@
 package com.kh.flowerheal.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -26,9 +27,14 @@ public class LoginController {
 	
 	// 회원로그인 양식
 	@GetMapping("/loginForm")
-	public String memberLoginForm(Model model) {
+	public String memberLoginForm(
+			HttpSession session,
+			HttpServletRequest request,
+			Model model) {
 		logger.info("memberLoginForm() 호출됨");
 		model.addAttribute("mdto", new MemberDTO());
+		String referer = (String)request.getHeader("REFERER");
+		session.setAttribute("referer", referer);
 		return "/login/loginForm";
 	}
 
@@ -53,7 +59,6 @@ public String memberLogin(
 		} else {
 		    session.setAttribute("msg", "IsAdmin");
 		}
-		
 		str = "OK";
 	}else {
 		session.invalidate();

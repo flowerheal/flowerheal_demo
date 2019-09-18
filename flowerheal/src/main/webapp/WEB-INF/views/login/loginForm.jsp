@@ -237,7 +237,13 @@
 				success:function(str){		
 					
 					if(str=="OK"){
-						$(location).attr('href', "${pageContext.request.contextPath }");
+						var back_url = "${sessionScope.referer}";
+						console.log(back_url);
+						if(back_url==null){
+							$(location).attr('href', "${pageContext.request.contextPath }");
+						}else{
+							$(location).attr('href', back_url);
+						}
 					} else if (str=="NO"){
 						alert("회원정보가 일치하지 않습니다.");
 						$('input#id').val("").focus();

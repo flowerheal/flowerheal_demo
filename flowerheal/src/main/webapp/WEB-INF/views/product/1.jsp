@@ -174,7 +174,7 @@ font-size:2rem;
 						<label for="option1" style="font-size:15pt ;"><span></span>캔들(+4000)</label> 
 			            <input type="checkbox" class="ml-5"  name="option2" id="option2" value="5000" checked="checked"
 			            style="width:20px;height:20px">
-					    <label for="option2" style="font-size:15pt ;"><span></span>라벤더 홍차(+4000)</label>
+					    <label for="option2" style="font-size:15pt ;"><span></span>라벤더 홍차(+5000)</label>
 					    
 						
 						<div style="color:#E8504A;"> 꽃다발/화분은 구성에서 제외할 수 없습니다</div>
@@ -186,7 +186,7 @@ font-size:2rem;
 					<input type="hidden" name="product_SubsCnt" id="product_SubsCnt"><!-- warning 버튼 노랑색 -->
 					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="1">1개월권</button>
 					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="2">2개월권</button>
-					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="6">정기결제</button>
+					<button type="button" class="ml-3 btn product_SubsCnt_Btn btn btn-outline-warning" value="6">6개월권</button>
 				    <!-- <button type="button" class="ml-5 btn product_SubsCnt_Btn btn btn-outline-warning">정기결제</button> -->  
 				</div>
 				<div class="row col-12 pb-3 d-flex justify-content-around orderOption4" id="orderCost">
@@ -281,6 +281,7 @@ function orderCheckF(){
 	var state = false;
 	//로그인전이면 로그인화면으로 이동
 	if(user == null || user == "") {
+		
 		if(confirm("로그인 하시겠습니까?")){
 			document.location.href="${pageContext.request.contextPath }/login/loginForm";
 		}
@@ -408,7 +409,7 @@ $(function() {
 	var todayDate = year + "" + month + "" + day;
 	
 	//===선택가능 날짜===
-		var availableDates = ["2019-09-18", "2019-09-19"];
+		var availableDates = ["2019-10-04","2019-10-08","2019-10-09"];
 		
 		//선택가능 날짜 배열에 있는 값이 오늘날짜보다 과거인 경우 제거
 		//연도가 과거인 경우	
@@ -430,7 +431,7 @@ $(function() {
 		}
 				console.log(availableDates)
 		//일이 과거인 경우
-		for(var i = 0; i<availableDates.length; i++){
+/* 		for(var i = 0; i<availableDates.length; i++){
 			var aDatesDay = parseInt(availableDates[i].substr(8,2));
 			console.log("aDatesDay"+aDatesDay)
 			console.log("day"+parseInt(day))
@@ -438,7 +439,7 @@ $(function() {
 				availableDates.splice(i,1);
 				i-=1;
 			}
-		}
+		} */
 		console.log(availableDates)
 
 		function available(date) {			

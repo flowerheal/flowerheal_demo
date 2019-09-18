@@ -57,6 +57,7 @@ public class ProductController {
 		ProductDTO pdto = pSvc.getPDTO(product_Num);
 
 		model.addAttribute("pdto", pdto);
+ 
 		viewname = "/product/"+product_Num;
 		return viewname;
 	}
@@ -94,7 +95,7 @@ public class ProductController {
 		
 		sSvc.addSubs(sdto);
 		
-		return "redirect:/";
+		return "/product/orderComplete";
 	}
 	
 	// 주문하기 페이지
