@@ -3,14 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <style>
-button{
-	border : 1px solid gray !important;
-	border-radius: 0.25rem !important;
-}
+
 /* div.accordion */
 .accordion {
-  background-color: #eee;
-  color: #444;
+   border : 2px solid #FFBEB7 !important;
+   border-radius: 0.25rem !important;
+  /* background-color: #fff; */
+  color:#5D5D5D;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -25,7 +24,8 @@ button{
 
 /* accordion 활성화, 마우스 hover 되었을 때 배경색 */
 .accordion.active, .accordion:hover {
-  background-color: #ccc;
+  background-color: #FFA596;
+  color:white !important;  /*글색깔*/
 }
 
 
@@ -35,6 +35,7 @@ button{
 div{
 	font-size: 1rem;
 	margin: auto 0;
+	
 }
 
 
@@ -76,8 +77,8 @@ div{
 #agreementMsg:hover{
 	cursor: pointer;
 }
-.orderProductCheck .row:nth-child(2){
-	outline: 1px solid gray;
+.orderProductCheck .row:nth-child(2){  
+	outline: 1px solid #F5B6A8;
 }
 .orderProductCheck .row:nth-child(2) div{
 	font-size: 1.2rem;
@@ -149,6 +150,32 @@ div{
 	}
 }
 
+  /* 배송 여부 버튼*/
+
+    .addressFrom_Btn{
+     border : 1px solid #FF9484 !important;
+     border-radius: 0.25rem !important;
+    }
+
+	.addressFrom_Btn:hover{
+	background-color: #FF9484;
+    color:white !important;  /*글색깔*/
+	}
+
+/* 결제하기 버튼*/
+	button{
+	background-color: #F59E85;
+    /*  border : 1px solid #F59E85 !important; */
+     border-radius: 0.25rem !important;
+     height: 4rem;
+     font-size: 1.5rem;
+     /* color:#FF9880; 폰트컬러 안먹음*/
+	}
+	/* button:hover{
+    background-color: #F59E85;
+    color:white !important;  /*글색깔*/
+	} */
+
 
 
 </style>
@@ -177,8 +204,10 @@ div{
 		<input type="text" name="subs_Cnt" id="subs_Cnt" value="<%=product_SubsCnt%>">
 		<input type="text" name="subs_Price" id="subs_Price" value="${pdto.product_Price}">
 		<input type="text" name="subs_Pname" id="subs_Pname" value="${pdto.product_Name}">
-		<div class="row my-3">
-			<div class="col-lg-11 mb-3">
+		
+		
+		<div class="row my-3" style="height: auto; width: 100%; border:2px solid #fff;">
+			<div class="col-lg-11 mb-3 pt-5 ">
 				<div class="accordion"><span>주문 상품 확인</span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></div>
 				<div class="panel orderProductCheck px-1">
 					<div class="row noMobile">
@@ -202,15 +231,15 @@ div{
 
 <!-- 				<div class="col-lg-10 mb-3"> -->
 <!-- 					<div class="row" id="addressForm"> -->
-				<div class="row  justify-content-end addressFromBtns">
+					<div class="row  justify-content-end addressFromBtns">
 					<!-- <input type="hidden" name="address" id="address"> -->
-					<button type="button" class="btn addressFrom_Btn btn-outline-dark" id="recentAddress">
+					<button type="button" class="btn addressFrom_Btn " style="color:#FF9484" id="recentAddress">
 						<span>최근 배송지</span>
 					</button>
-					<button type="button" class="btn addressFrom_Btn btn-outline-dark" id="defaultAddress">
+					<button type="button" class="btn addressFrom_Btn " style="color:#FF9484" id="defaultAddress">
 						<span>기본 배송지</span>
 					</button>
-					<button type="button" class="btn addressFrom_Btn btn-outline-dark" id="newAddress">
+					<button type="button" class="btn addressFrom_Btn " style="color:#FF9484" id="newAddress">
 						<span>새로 입력</span>
 					</button>
 				</div>
@@ -219,8 +248,11 @@ div{
 							<input type="text" class="col-5 form-control ml-0 mr-2" placeholder="우편번호" id="zipNo" name="zipNo" readOnly onClick="goPopup();"/>
 							<input type="button" class="col-5 form-control" value="주소 검색" onClick="goPopup();"/>
 						</div>
+						<br><Br>
 							<input type="text" class="col-12 form-control" placeholder="도로명주소" id="roadAddrPart1" name="roadAddrPart1" readOnly/>
+							<br/><br>
 							<input type="text" class="col-12 form-control" placeholder="상세주소" id="addrDetail" name="addrDetail" />					
+					
 						</div>
 					<div class="invalid-feedback">
 						<!-- <form:errors path="address" cssClass="errMsg"></form:errors> -->
@@ -251,7 +283,7 @@ div{
 					</button>
 				</div>
 			</div>
-			<div class="col-lg-11 mb-3 priceDiv">
+			<div class="col-lg-11 mb-3 pb-5 priceDiv">
 				<div class="accordion"><span>최종 금액</span><span>${pdto.product_Price}원  <i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></span></div>
 				<div class="panel row">
 					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>가격 </span><span>${productCost}원</span></div>
@@ -259,12 +291,12 @@ div{
 					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>금액 </span><span>${pdto.product_Price}원</span></div>
 				</div>
 			</div>
-			<div class="col-lg-11 mb-3 agreementDiv">
+			<div class="col-lg-11 mb-3 pb-5 agreementDiv">
 				<input type="radio" id="agreementBtn" name="radio">
 				<div id="agreementMsg"><i class="far fa-check-circle"></i>주문정보 및 대행서비스 이용약관에 모두 동의합니다.</div>
 			</div>
-			<div class="col-lg-11 mb-3 paymentDiv">
-				<button type="button" class="btn btn-primary" id="paymentBtn">결제하기</button>
+				<div class="col-lg-11 mb-3 pb-5 paymentDiv">
+				<button type="button" class="btn btn-lg btn-block" style="color:#fff; background-color: #FFA596;" id="paymentBtn">결제하기</button>	
 			</div>
 		</div>
 	</form>
