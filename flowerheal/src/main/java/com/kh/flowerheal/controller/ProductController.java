@@ -1,5 +1,7 @@
 package com.kh.flowerheal.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kh.flowerheal.cart.dao.CartDTO;
+import com.kh.flowerheal.cart.dao.service.cartSVC;
 import com.kh.flowerheal.member.dto.MemberDTO;
 import com.kh.flowerheal.member.service.MemberSvc;
 import com.kh.flowerheal.product.dto.ProductDTO;
@@ -32,6 +36,9 @@ public class ProductController {
 	
 	@Inject
 	private SubsSvc sSvc;
+	
+	@Inject
+	private cartSVC cSvc;
 	
 	private static final Logger logger
 	= LoggerFactory.getLogger(ProductController.class);
@@ -98,41 +105,52 @@ public class ProductController {
 		return "/product/orderComplete";
 	}
 	
-	// 주문하기 페이지
+	// 장바구니 담기 페이지
 	@PostMapping("/addToCart")
 	public String addToCart(
-//			@ModelAttribute ProductDTO pdto,
+			@ModelAttribute CartDTO cdto,
+			@RequestParam String product_Num,
 			@RequestParam String user_id,
-//			@RequestParam String subs_Fdate,
-//			@RequestParam String subs_Edate,
-//			@RequestParam String productCost,
-//			@RequestParam String postCost,
+			@RequestParam String subs_Fdate,
+			@RequestParam String subs_Edate,
+			@RequestParam String productCost,
+			@RequestParam String postCost,
 			Model model) {
 		logger.info("addToCart() 호출됨");
 		MemberDTO mdto = mSvc.getMember(user_id);
 		model.addAttribute("mdto",mdto);
-		
+
 		//cart DB에 해당 상품 넣음
+		logger.info("addToCart() 호출됨");
+		int result = cSvc.cart_insert(cdto);
+		logger.info("수정결과"+result);
+		
 		//cart DB에서 list 불러와서 뿌림
 		
-//		model.addAttribute("pdto", pdto);
-//		model.addAttribute("subs_Fdate", subs_Fdate);
-//		model.addAttribute("subs_Edate", subs_Edate);
-//		model.addAttribute("productCost", productCost);
-//		model.addAttribute("postCost", postCost);
-		viewname = "/product/cart";
-		return viewname;
+		model.addAttribute("cdto", cdto);
+		
+		return "product/cart";
 	}
 	
 	//장바구니 이동
-	@GetMapping("/cart/{user_id:.+}")
-	public String cart(@PathVariable String user_id, Model model) {
-		logger.info("cart() 호출됨");
-		MemberDTO mdto = mSvc.getMember(user_id);
-		model.addAttribute("mdto",mdto);
-		viewname = "/product/cart";
-		return viewname;
-	}
+	/*
+	 * @GetMapping("/cart/{user_id:.+}") public String cart(@PathVariable String
+	 * user_id, Model model) { logger.info("cart() 호출됨"); MemberDTO mdto =
+	 * mSvc.getMember(user_id); model.addAttribute("mdto",mdto); viewname =
+	 * "/product/cart"; return viewname; }
+	 */
+	
+	//장바구니 보기
+		@GetMapping("/cart/{id:.+}")
+		public String cartList(@PathVariable String id,
+							   Model model)
+		{
+			logger.info("cartList() 호출");
+			
+			List<CartDTO> cdto = cSvc.getCartList(id);
+			model.addAttribute("cdto", cdto);
+			return "/product/cart";
+		}
 	
 	// 구독 상품 배송지 변경 폼 보여주기
 	@GetMapping("/changeAddr/{snum}")

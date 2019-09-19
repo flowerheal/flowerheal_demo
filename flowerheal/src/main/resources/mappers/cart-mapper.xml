@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.cart-mapper">
+
+<!-- 로그인 전 -->
+
+
+<!-- 로그인 후 -->
+	<!-- 카트에 상품 담기 -->
+	<insert id="cart_insert" parameterType="com.kh.flowerheal.cart.dao.CartDTO">
+		insert into cart(cart_num, cart_name, cart_id, cart_price, 
+							cart_cnt, cart_productnum)
+			   		values(cart_seq.nextVal, #{product_Name}, #{user_id}, #{product_Price}, 
+			   				#{product_SubsCnt}, #{product_Num})
+			   <!-- 이곳의 product_price는 결제단에서 받아오는 product_price와 동일 -->
+	</insert>
+	
+	<!-- 카트에 담은 상품 수정 --> <!-- 수량변경, 구독변경, 어 뭐지 -->
+	<update id="cart_modify" parameterType="com.kh.flowerheal.cart.dao.CartDTO">
+		update cart 
+	</update>
+	
+	<!-- 카트에 상품 빼기 -->
+	<delete id="cart_delete" parameterType="int">
+		delete cart where cart_num = ${cart_num}
+	</delete>
+	
+	<!-- 카트 상품 리스트 불러오기 -->
+	<select id="getCartList" parameterType="String" resultType="com.kh.flowerheal.cart.dao.CartDTO">
+		select cart_num, cart_name "product_Name", cart_id "user_id", 
+				cart_price "product_Price", cart_cnt "product_SubsCnt", cart_productnum "product_Num"
+			from cart where cart_id = #{id}
+	</select>
+	
+	<!-- 카트에서 결제할 상품 체크해서 결제 창에서 보여주기-->
+	<!-- <select id=""  parameterType="int" resultType="com.kh.flowerheal.cart.dao.CartDTO">
+		select * from  cart where cart_num = #{cart_num}
+	</select> -->
+	
+	
+	<!-- 카트에서 구매후 상황 -->
+		<!-- 회원-구독여부 체크 -->
+		<!-- <update id="" parameterType="Map">
+			update member set SUBS_CHECK = 'Y'
+						  where id = #{id} and pw = #{pw}
+		</update> -->
+		
+		<!-- 구독테이블 업로드 -->
+		<!-- <insert id="" parameterType="Map">
+			insert into subs(SUBS_NUM, SUBS_MEMBER_ID, SUBS_PRODUCT, 
+								SUBS_FDATE, SUBS_EDATE, SUBS_CNT)
+				   values(subs_seq.nextval, #{id}, #{PRODUCT_NUM}, SYSDATE, , #{cnt});
+		</insert> -->
+		<!-- 카트 테이블 클리어 -->
+		<!--  <delete id="" parameterType="int">
+			delete cart where cart_num = ${cart_num}
+		</delete> -->
+	<!--  -->
+</mapper>
