@@ -31,6 +31,31 @@
   font-weight: normal;
 } 
 
+
+ @font-face {
+  font-family: A스마일B;
+  src: /* url(font/moonp.woff) format('woff'), */
+       url(font/A스마일B.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+ @font-face {
+  font-family: A스마일L;
+  src: /* url(font/moonp.woff) format('woff'), */
+       url(font/A스마일L.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+ @font-face {
+  font-family: A스마일M;
+  src: /* url(font/moonp.woff) format('woff'), */
+       url(font/A스마일M.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
 /* 기본 한국어 폰트 */
 /* *,body{	font-family: DXSnUB;} */
 
@@ -48,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {  font-family: A드림고딕4;
 color:#4C4C4C;
 }
 
-.lead{ /*aboutus.jsp font*/
+.lead{ /*aboutus.jsp 폰트*/
 	font-family: A드림고딕2;
 	font-size:25px;
 	color:#5D5D5D;

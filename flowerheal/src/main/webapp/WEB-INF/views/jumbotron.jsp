@@ -31,7 +31,7 @@
       </div>
         <div class="container">
           <div class="carousel-caption">
-            <h1 class="text-warning">꽃미힐미에서 힐링하세요</h1>
+            <h1 class="text-warning">꽃미힐미에서 힐링하세요.</h1>
             <p class="text-muted"> 저희 꽃미힐미는 고객의 1:1 맞춤으로 최적의 구독상품을 제공합니다.<br> 매달 몸상태와 정신이 맑아지는 경험을 해보세요.</p>
            <!--  <p><a class="btn btn-lg btn-primary" href="#" role="button">구독상품보러가기</a></p> -->
           </div>

@@ -72,7 +72,7 @@
 
     <div class="row featurette center-block">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading" >작은 소품으로 색다른 기분을 느끼세요. <span class="eng">See for yourself.</span></h2>
+        <h2 class="featurette-heading" >작은 소품으로 색다른 기분을 느껴보세요. <span class="eng">See for yourself.</span></h2>
        <br><br> <p class="lead"> 꽃다발과 함께 작은 소품들로 준비하여 구독자분들께 가성비 있게 행복을 좀더 커질 수 있게 준비했습니다.
                          저희 꽃미힐미는 꽃다발 디자인과 작은 소품들의 디자인도 직접하여 판매합니다.<br> 티백,미니화분,천연비누, 인테리어 소품 등 모두
                          디자이너들을 두어 좋은 질의 재료와 신체에 접속해도 무해한 천연재료들로만 판매상품을 만듭니다. 

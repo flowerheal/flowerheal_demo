@@ -34,7 +34,7 @@
 	<div class="owl-carousel owl-theme">
 	
 	
-	    <div class="item"><h4><a href="#"><img src="${pageContext.request.contextPath}/resources/img/instar/instar1.jpg"></a></h4></div>
+	    <div class="item"><h3><a href="#"><img src="${pageContext.request.contextPath}/resources/img/instar/instar1.jpg"></a></h4></div>
 	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar2.jpg"></a></h4></div>
 	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar3.jpg"></a></h4></div>
 	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar4.jpg"></a></h4></div>

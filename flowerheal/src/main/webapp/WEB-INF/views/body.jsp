@@ -75,7 +75,7 @@
               <p class="card-title h4">나만의 공간 패키지 </p>
               <div class="row d-flex justify-content-between align-items-center">
               <p class="card-text">10월의 주제: Make clean air and my space  <br/>
-                나만의공간도 힐링해보세요.  </p>
+                나만의 공간을 힐링해보세요.  </p>
                 <!-- <div class="btn-group row mr-0">
                   <button type="button" class="btn btn-sm btn-outline-secondary">더보기</button>
                 </div> -->
