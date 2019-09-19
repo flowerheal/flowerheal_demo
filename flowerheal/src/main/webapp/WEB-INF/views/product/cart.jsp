@@ -67,32 +67,42 @@ input[type=checkbox]:checked + label:before {
 <!-- Form CSS -->
 <link href="${pageContext.request.contextPath }/resources/css/form.css" rel="stylesheet">
 
+<!-- 장바구니 관련 스크립트 -->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="${pageContext.request.contextPath }/resources/js/cart.js"></script>
+
+
 <jsp:include page="../header.jsp" />
 <section class="container">
 	<section class="form">
 		<div class="row my-3">
 			<div class="col-md-8 col-lg-10 my-3 h5 text-center">장바구니</div>
-			<div class="col-lg-12 col-xl-9 mb-3">
+			
+			<div class="col-lg-11 col-xl-9 mb-3">
+			<c:forEach var="cartList" items="${cdto}" >
 				<div class="row cartList">
-				<div class="row col-1 checkboxDiv px-0">
+				<div class="row col-1 checkboxDiv">
 					<input type="checkbox" name="check" id="itemCheck1">
 					<label for="itemCheck1"></label>
 				</div>
-				<div class="row col-11 itemDiv px-0">
+				<div class="row col-11 itemDiv">
 					<div class="row col-md-7 px-0">
-						<div class="col-7 col-sm-8">코코낸내 허니잠 세트</div>
-						<div class="col-5 col-sm-4">30000원</div>						
+						<div class="col-6">${cartList.product_Name}</div>
+						<div class="col-3">${cartList.product_Price}원</div>
+						<div class="col-3">${cartList.product_SubsCnt}개월</div>					
 					</div>
-					<div class="row col-md-5 itemBtns px-0">
-						<div class="col-5">6개월</div>		
+					<div class="row col-md-5 itemBtns">
 						<button type="button" class="btn btn-sm btn-primary" id="changeItemBtn">구성 변경</button>
 						<button type="button" class="btn btn-sm btn-primary" id="delCartBtn">삭제</button>
 					</div>
 				</div>
 				</div>
-
-				<button type="button" class="btn btn-sm btn-primary" id="selectDeleteBtn">선택삭제</button>
+			</c:forEach>
 			</div>
+			<button type="button" class="btn btn-sm btn-primary" id="selectDeleteBtn">선택삭제</button>
 			<div class="col-lg-11 mb-3 priceDiv">
 					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>총 상품금액 </span><span>${pdto.product_Price}원</span></div>
 			</div>
