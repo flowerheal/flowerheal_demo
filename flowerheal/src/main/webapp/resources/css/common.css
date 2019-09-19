@@ -1,11 +1,11 @@
 /* === 폰트 === */
- /* @font-face {
-  font-family: HANYGO230;
+ @font-face {
+  font-family: Typo_BaekbeomB;
   src: url(font/Typo_BaekbeomB.woff) format('woff'),
        url(font/Typo_BaekbeomB.ttf) format('truetype');
   font-style: normal;
   font-weight: normal;
-} */
+} 
 
 /* @font-face {
   font-family: DXSnUB;
@@ -15,13 +15,21 @@
   font-weight: normal;
 } */
 
-/* @font-face {
-  font-family: MoonP;
-  src: url(font/moonp.woff) format('woff'),
-       url(font/moonp.ttf) format('truetype');
+ @font-face {
+  font-family: A드림고딕4;
+  src: /* url(font/moonp.woff) format('woff'), */
+       url(font/A드림고딕4.ttf) format('truetype');
   font-style: normal;
   font-weight: normal;
-} */
+} 
+
+ @font-face {
+  font-family: A드림고딕2;
+  src: /* url(font/moonp.woff) format('woff'), */
+       url(font/A드림고딕2.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+} 
 
 /* 기본 한국어 폰트 */
 /* *,body{	font-family: DXSnUB;} */
@@ -36,7 +44,16 @@
 
 
 /* === 화면 전체 적용 === */
-h1, h2, h3, h4, h5, h6 {  font-family: HANYGO230;}
+h1, h2, h3, h4, h5, h6 {  font-family: A드림고딕4;
+color:#4C4C4C;
+}
+
+.lead{ /*aboutus.jsp font*/
+	font-family: A드림고딕2;
+	font-size:25px;
+	color:#5D5D5D;
+}
+
 nav{	border-radius: 0.25rem;}
 	p{	font-size: 0.9rem;}
 .h4{	font-size: 1.2em;}

@@ -7,13 +7,13 @@
   <%--  <img src="${pageContext.request.contextPath }/resources/img/" 
    alt="정기구독방법 이미지" />
  --%>
-  <h2 class="text-center">당신에게 맞는 구독상품은 ?</h2>
+  <h3 class="text-center">당신에게 맞는 구독상품은 ?</h3>
   </div>
   </div>
 
    
     <div class="container row">
-			<h1 class="col-md-12 my-3 d-flex justify-content-center">정기구독 패키지</h1>
+			<h2 class="col-md-12 my-3 d-flex justify-content-center">정기구독 패키지</h2>
         <div class="col-md-6 my-md-2 col-lg-5 m-lg-4">
           <div class="card mb-4 shadow-sm">
           	<a href="${pageContext.request.contextPath }/product/1">

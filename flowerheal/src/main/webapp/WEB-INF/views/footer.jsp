@@ -3,7 +3,7 @@
 <section class="site-info">
   <div class="container">
   	<div class="row justify-content-around">
-			<div class="col-sm-6 col-md-4 col-lg-3 text-left">
+			<div class="col-sm-6 col-md-5col-lg-3 text-left">
 				<p class="h5 text-secondary">CS INFO<br/>010. 2222. 3333</p>
 				<p>
 					월-금(전화상담 | 1:1문의) :  9:00 - 18:00 <br/>
@@ -11,7 +11,7 @@
 					토. 일. 휴일 휴무(전화상담 | 1:1문의)
 				</p>
 			</div>
-			<div class="col-sm-6 col-md-4 col-lg-3 text-left">				
+			<div class="col-sm-6 col-md-5 col-lg-3 text-left">				
 				<p class="h5 text-secondary">BANKING INFO</p>
 				<p>
 					농협 / 888 - 7777 - 123456<br/>

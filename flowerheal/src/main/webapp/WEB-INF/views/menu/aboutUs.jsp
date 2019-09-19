@@ -31,6 +31,22 @@
 		  line-height: 1;
 		  letter-spacing: -.05rem;
 		}
+		
+		
+		/*h2 폰트 스타일*/
+		.featurette-heading{
+		font-weight:bold;
+		color:#747474;
+		}
+		
+		.eng{
+		color:#D5D5D5;
+		font-size:30px;
+		}
+		
+		.lead{
+		font-size:15px;
+		}
 				
     </style>
     
@@ -39,39 +55,58 @@
     <hr class="featurette-divider">
 
     <div class="row featurette center-block">
-      <div class="col-md-6">
-        <h2 class="featurette-heading">이미지는 있는데 반응형맞추는중 <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      <div class="col-md-7">
+        <h2 class="featurette-heading" >우리 꽃미힐미와 함께 힐링하세요. <span class="eng">I hope you happiness.</span></h2>
+       <br><br> <p class="lead"> 이제 꽃도 구독하는 시대입니다. 일상 생활이 무료하고 회사때문에 스트레스에 시달리는 당신을 위하여
+                         우리 꽃미힐미가 당신에게 힘이되기위해 꽃을 준비했습니다.<br> 그냥 꽃이 아니라 과학적으로 증명된 재료로 계절마다 몸과 정신에 좋은 영향을 주는
+                          꽃을 준비해서 구독자분에게 작은 행복을 드리고 싶습니다.</p>
       </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette center-block">
-      <div class="col-md-6 order-md-2">
-        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5 order-md-1 ">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+      <div class="col-md-4">
+       <!--  <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+       <img src="${pageContext.request.contextPath }/resources/img/product/aboutus11.jpg" class="img-fluid" alt="Responsive image">
+    
       </div>
     </div>
 
     <hr class="featurette-divider">
 
     <div class="row featurette center-block">
-      <div class="col-md-6">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading" >작은 소품으로 색다른 기분을 느끼세요. <span class="eng">See for yourself.</span></h2>
+       <br><br> <p class="lead"> 꽃다발과 함께 작은 소품들로 준비하여 구독자분들께 가성비 있게 행복을 좀더 커질 수 있게 준비했습니다.
+                         저희 꽃미힐미는 꽃다발 디자인과 작은 소품들의 디자인도 직접하여 판매합니다.<br> 티백,미니화분,천연비누, 인테리어 소품 등 모두
+                         디자이너들을 두어 좋은 질의 재료와 신체에 접속해도 무해한 천연재료들로만 판매상품을 만듭니다. 
+                         임산부들과 어린아이들을 위해 저희 꽃미힐미를 이용해주세요.</p>
       </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" data-src="${pageContext.request.contextPath }/resources/img/product/aboutus11.jpg"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+      <div class="col-md-4 order-md-1 ">
+        <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+      <img src="${pageContext.request.contextPath }/resources/img/product/aboutus22.jpg" class="img-fluid" alt="Responsive image">
+    
+     
       </div>
     </div>
 
+    <hr class="featurette-divider">
+
+    <div class="row featurette center-block">
+      <div class="col-md-7">
+        <h2 class="featurette-heading" >당신이 마시는 물도 소중해야합니다.<span class="eng">How about your water?</span></h2>
+        <br><br><p class="lead">음식처럼 마시는 것도 중요한것도 알고계신지요. 이제는 마실 물도 신경쓰는 시대입니다. <br>
+                       정수기도 믿을 수 없는 시대에서 우리 꽃미힐미는 직접 만든 이너워터팩을 판매하여 구독자분들의 건강까지 신경씁니다.
+                       카페인과 각종 화학제품들로 쌓여진 우리의 신체를 위해 조금이라도 더 좋은 물을 제공하고픈 마음에 계절마다 
+                        각종 비타민이 풍부한 꽃차 과일차를 시즌별로 준비하였습니다.<br> 홈페이지에 찾아오셔서 각 월마다 준비한 정기구독 패키지를
+                        확인해보세요!</p>
+      </div>
+      <div class="col-md-4">
+<%--         <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" data-src="${pageContext.request.contextPath }/resources/img/product/aboutus11.jpg"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+     --%>
+     <img src="${pageContext.request.contextPath }/resources/img/product/aboutus33.jpg" class="img-fluid" alt="Responsive image">
+    
+      </div>
+    </div>
+    
+    
+   
     <hr class="featurette-divider">
 
     <!-- /END THE FEATURETTES -->

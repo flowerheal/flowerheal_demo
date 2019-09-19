@@ -33,7 +33,7 @@
           <div class="carousel-caption">
             <h1 class="text-warning">꽃미힐미에서 힐링하세요</h1>
             <p class="text-muted"> 저희 꽃미힐미는 고객의 1:1 맞춤으로 최적의 구독상품을 제공합니다.<br> 매달 몸상태와 정신이 맑아지는 경험을 해보세요.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">구독상품보러가기</a></p>
+           <!--  <p><a class="btn btn-lg btn-primary" href="#" role="button">구독상품보러가기</a></p> -->
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
           <div class="carousel-caption text-left">
             <h1>꽃미힐미 One-Day Class</h1>
             <p>가정의 마음의 평화를 위해 꽃꽃이 클래스를 해보아요.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button"> One-Day Class</a></p>
+           <!--  <p><a class="btn btn-lg btn-primary" href="#" role="button"> One-Day Class</a></p> -->
           </div>
         </div>
       </div>
@@ -55,9 +55,9 @@
        </div>
         <div class="container">
           <div class="carousel-caption">
-            <h1>이제 인테리어도 꽃미힐미에서</h1>
+            <h1 style="color:#8C8C8C;">이제 인테리어도 꽃미힐미에서</h1>
             <p class="text-muted">마음의 평화는 주거공간으로 부터 시작입니다.<br> 소소한 상품으로 집에게도 힐링을 해주세요.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">인테리어 소품보러가기</a></p>
+          <!--   <p><a class="btn btn-lg btn-primary" href="#" role="button">인테리어 소품보러가기</a></p> -->
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
   </div>
 
 		
-		
+
 <section class="row" id="recommendBanner ">
 	<div class="row col-md-10 col-lg-9 col-xl-8 my-5">
 		<a href="${pageContext.request.contextPath }/product/3">

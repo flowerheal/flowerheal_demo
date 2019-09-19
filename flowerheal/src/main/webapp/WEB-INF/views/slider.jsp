@@ -29,7 +29,7 @@
 </style>
 
 <section class="instaCarousel mx-auto my-3">
-<h2 class="text-center">패키지 정기구독 후기</h2>
+<h3 class="text-center">패키지 정기구독 후기</h3>
 
 	<div class="owl-carousel owl-theme">
 	
