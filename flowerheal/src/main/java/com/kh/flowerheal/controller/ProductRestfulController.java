@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kh.flowerheal.common.mail.GmailSend;
+import com.kh.flowerheal.member.dto.MemberDTO;
+import com.kh.flowerheal.member.service.MemberSvc;
 import com.kh.flowerheal.subs.dto.SubsDTO;
 import com.kh.flowerheal.subs.service.SubsSvc;
 
@@ -27,6 +29,12 @@ public class ProductRestfulController {
 	
 	@Inject
 	private SubsSvc sSvc;
+	
+	@Inject
+	private MemberSvc mSvc;
+	
+	// @Inject
+	private GmailSend mail = new GmailSend();
 	
 	
 	// 구독 상품 리스트 조회
@@ -74,13 +82,24 @@ public class ProductRestfulController {
 		
 		ResponseEntity<String> res = null;
 		
-		System.out.println("이 문장 밑으로 에러가 뜬다면 ProductRestfulController.delivery(snum) 메소드를 찾으세요.");
+		System.out.println("★★★★★★★★★★이 문장 밑으로 에러가 뜬다면 ProductRestfulController.delivery(snum) 메소드를 찾으세요.");
 		int result = sSvc.delivery(snum);
-		
+	
 		if(result == 1) {
-			res = new ResponseEntity<String>("구독 상품 배송 기능구현", HttpStatus.OK); // 200
+			res = new ResponseEntity<String>("subs_product delivery OK", HttpStatus.OK); // 200
+			
+			SubsDTO sdto = sSvc.getSDTO(snum);
+			
+			MemberDTO mdto = mSvc.getMember(sdto.getSubs_Member_Id());
+
+			boolean dMail = mail.delivery(mdto.getName(), sdto);
+			if(!dMail) {
+				System.out.println("구독 상품 배송 기능은 구현됐는데... 이메일 발송에 실패했다.");
+			}
+			
+			
 		} else {
-			res = new ResponseEntity<String>("구독 상품 배송 실패 OR 이미 구독만료된 SNUM입니다.", HttpStatus.BAD_REQUEST); // 400
+			res = new ResponseEntity<String>("subs_product delivery Fail", HttpStatus.BAD_REQUEST); // 400
 		}
 		return res;
 	}

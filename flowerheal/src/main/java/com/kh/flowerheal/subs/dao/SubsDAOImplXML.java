@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.flowerheal.common.mail.GmailSend;
 import com.kh.flowerheal.subs.dto.SubsDTO;
 
 @Repository
@@ -14,7 +15,7 @@ public class SubsDAOImplXML implements SubsDAO {
 
 	@Inject
 	private SqlSession sqlSession;
-
+	
 	@Override
 	public SubsDTO getSDTO(String snum) {
 		return sqlSession.selectOne("mappers.subs-mapper.getSDTO", snum);

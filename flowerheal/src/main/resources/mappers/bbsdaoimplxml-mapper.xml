@@ -138,7 +138,7 @@
 	
 	<!-- 이전 답글 step 업데이트 -->
 	<update id = "updateStep"
-				  parameterType="java.util.Map">
+				  parameterType="Map">
 		update board
 		   set bstep = bstep + 1
 	   where bgroup = #{bgroup} and bstep > #{bstep}
@@ -153,7 +153,7 @@
 	
 	<!-- 2)검색어 있는경우 -->
 	<select id="searchTotalRec"
-					parameterType="java.util.Map"
+					parameterType="Map"
 					resultType="Integer">
 		select count(bnum) totalRec 
 	    from ( select row_number() over (order by bgroup desc, bstep asc) as num, t1.*

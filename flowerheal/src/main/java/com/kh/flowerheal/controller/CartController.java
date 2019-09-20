@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.flowerheal.cart.dao.CartDTO;
-import com.kh.flowerheal.cart.dao.service.cartSVC;
-import com.kh.flowerheal.member.service.MemberSvc;
+import com.kh.flowerheal.cart.service.cartSVC;
 
 @Controller
 @RequestMapping("/cart")

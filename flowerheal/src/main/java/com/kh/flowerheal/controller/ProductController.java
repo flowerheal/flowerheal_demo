@@ -1,7 +1,5 @@
 package com.kh.flowerheal.controller;
 
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.validation.Valid;
 
@@ -17,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.flowerheal.cart.dao.CartDTO;
-import com.kh.flowerheal.cart.dao.service.cartSVC;
+import com.kh.flowerheal.cart.service.cartSVC;
+import com.kh.flowerheal.common.mail.GmailSend;
 import com.kh.flowerheal.member.dto.MemberDTO;
 import com.kh.flowerheal.member.service.MemberSvc;
 import com.kh.flowerheal.product.dto.ProductDTO;
@@ -39,6 +38,9 @@ public class ProductController {
 	
 	@Inject
 	private cartSVC cSvc;
+	
+	//@Inject
+	private GmailSend mail = new GmailSend();
 	
 	private static final Logger logger
 	= LoggerFactory.getLogger(ProductController.class);
@@ -100,7 +102,15 @@ public class ProductController {
 		System.out.println(sdto);
 		System.out.println("===============================");
 		
-		sSvc.addSubs(sdto);
+		int cnt = sSvc.addSubs(sdto);
+		
+		MemberDTO mdto = mSvc.getMember(sdto.getSubs_Member_Id());
+		
+		if(cnt == 1) {
+			// 구독 상품 결제 이메일 보내는 메소드
+			mail.order(mdto.getName(), sdto);
+		}
+		
 		
 		return "/product/orderComplete";
 	}
@@ -129,21 +139,10 @@ public class ProductController {
 		
 		model.addAttribute("cdto", cdto);
 		
-		return "redirect:/product/cart";
+		return "redirect:/cart/cart2/" + user_id;
 	}
-	
-	//장바구니 보기
-		@GetMapping("/cart/{id:.+}")
-		public String cartList(@PathVariable String id,
-							   Model model)
-		{
-			logger.info("장바구니 호출");
-			
-			MemberDTO mdto = mSvc.getMember(id);
-			model.addAttribute("mdto",mdto);
-			
-			return "/product/cart";
-		}
+
+
 	
 	// 구독 상품 배송지 변경 폼 보여주기
 	@GetMapping("/changeAddr/{snum}")

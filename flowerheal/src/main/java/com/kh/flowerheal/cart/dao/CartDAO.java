@@ -2,9 +2,6 @@ package com.kh.flowerheal.cart.dao;
 
 import java.util.List;
 
-import com.kh.flowerheal.product.dto.ProductDTO;
-import com.kh.flowerheal.product.dto.dao.ProductDAO;
-
 public interface CartDAO {
 	
 	//카트에 상품 추가

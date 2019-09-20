@@ -7,6 +7,9 @@ public class MailMain {
 		
 		GmailSend mail = new GmailSend();
 		// 파라미터 값으로는 ( "받는 사람 이메일 주소" )
-		mail.GmailSet("flowerheal2019@gmail.com");
+		
+		// mail.delivery("gksdlf7709@naver.com");
+		
+		
 	}
 }

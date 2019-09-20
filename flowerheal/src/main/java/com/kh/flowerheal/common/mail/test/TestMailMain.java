@@ -8,6 +8,7 @@ public class TestMailMain {
 		TestGmailSend mail = new TestGmailSend();
 		// 파라미터 값으로는 ( "받는 사람 이메일 주소" )
 		// mail.GmailSet("flowerheal2019@gmail.com");
-		mail.GmailSet("gksdlf7709@naver.com");
+		mail.GmailSet("gksdlf7709@gmail.com");
+		
 	}
 }

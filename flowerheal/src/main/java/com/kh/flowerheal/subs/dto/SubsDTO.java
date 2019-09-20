@@ -1,10 +1,8 @@
 package com.kh.flowerheal.subs.dto;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -17,6 +15,7 @@ public class SubsDTO {
 	private int subs_num;		// 구독 번호
 	private String subs_Member_Id;	// 구독자 아이디
 	private String subs_Check;	// 진행여부 Y-진행, E-만료, C-취소
+	private String subs_Email;	// 이메일 발송여부 Y/N
 	private String subs_Pname;	// 구독한 패키지 상품명	
 	private int subs_Product;	// 구매한 패키지 상품 번호
 	private int subs_Cnt;		// 구독한 패키지 남은 발송 횟수
