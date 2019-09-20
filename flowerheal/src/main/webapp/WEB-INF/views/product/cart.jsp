@@ -87,7 +87,7 @@ input[type=checkbox]:checked + label:before {
 			
 			<div class="col-lg-11 mb-3 priceDiv">
 					<span>총 상품금액  </span>
-					<div class="col-lg-7 d-flex justify-content-between mx-auto">
+					<div class="col-lg-7 d-flex justify-content-between mx-auto" id="total_price">
 						<!-- 총 상품금액 여기에 -->
 					</div>
 			</div>
@@ -111,9 +111,7 @@ $(function(){
 
 	//카트목록 보이기
 	cartList(memberId);
-	
-
-	
+		
 });//end od function()
 
 
@@ -137,7 +135,6 @@ function cartList(id){
 				str += '    </div>';
 				str += '    <div class="row col-11 itemDiv">';
 				str += '      <div class="row col-md-7 px-0">';
-				str += '        <div class="col-2"> ' + cartList.cart_num +' </div>';
 				str += '        <div class="col-6"> ' + cartList.product_Name +' </div>';
 				str += '        <div class="col-3">' + cartList.product_Price + '원 </div>';
 				str += '        <div class="col-3">' + cartList.product_SubsCnt + '개월</div>';
@@ -170,7 +167,6 @@ function cartList(id){
 
 //총금액
 function total_price(id){
-	console.log(id);
 	let $id = id;
 	let $url = "${pageContext.request.contextPath }/cartRest/cartList"; 
 	let str = "";
@@ -182,13 +178,11 @@ function total_price(id){
 		//응답 성공시 처리사항
 		success:function(result){	
 			$.each(result,function(idx, cartList){
-				str += '    <div class="row cartList" data-cnum="' +cartList.money+ '">';
+				str += '    <div> <span>' +cartList.money+ ' </span> 원</div>';
 			});
 			
-
 			//장바구니목록 삽입
-			$("#cartList").html(str);
-
+			$("#total_price").html(str);
 		},
 		//응답 실패시 처리사항
 		error:function(xhr, status, err){		
