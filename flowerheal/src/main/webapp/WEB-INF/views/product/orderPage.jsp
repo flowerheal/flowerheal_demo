@@ -116,7 +116,7 @@ div{
 .payMethod_Btn span{
 	display:none;
 }
-.agreementDiv input[type="radio"]{display:none;}
+.agreementDiv input[type="checkbox"]{display:none;}
 
 .panel .row.noMobile{display:none;}
 .addressFrom_Btn span{font-size:0.8rem;}
@@ -291,9 +291,12 @@ div{
 					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>금액 </span><span>${pdto.product_Price}원</span></div>
 				</div>
 			</div>
-			<div class="col-lg-11 mb-3 pb-5 agreementDiv">
-				<input type="radio" id="agreementBtn" name="radio">
-				<div id="agreementMsg"><i class="far fa-check-circle"></i>주문정보 및 대행서비스 이용약관에 모두 동의합니다.</div>
+			<div class="row col-lg-11 mb-3 pb-5 agreementDiv">
+				<input type="hidden" name="subs_Email" id="subs_Email">
+				<input type="checkbox" id="subsEmailBtn" name="checkbox">
+				<div class="col-12 pb-2" id="subsEmailMsg"><i class="far fa-check-circle"></i>(선택)배송정보 이메일 수신에 동의합니다.</div>
+				<input type="checkbox" id="agreementBtn" name="checkbox">
+				<div class="col-12" id="agreementMsg"><i class="far fa-check-circle"></i>(필수)주문정보 및 대행서비스 이용약관에 모두 동의합니다.</div>
 			</div>
 				<div class="col-lg-11 mb-3 pb-5 paymentDiv">
 				<button type="button" class="btn btn-lg btn-block" style="color:#fff; background-color: #FFA596;" id="paymentBtn">결제하기</button>	
@@ -340,7 +343,8 @@ for (var i = 0; i < acc.length; i++) {
 <script>
 
 $(function() {
-	$("#agreementMsg").on("click",agreementMsgF); // agreementMsg 클릭 이벤트
+	$("#subsEmailMsg").on("click",agreementMsgF); // 이메일 수신여부 클릭 이벤트
+	$("#agreementMsg").on("click",agreementMsgF); // 이용약관 클릭 이벤트
 	$(".payMethod_Btn").on("click",payMethod_BtnF); //결제수단 설정버튼
 	$(".addressFrom_Btn").on("load",loadAddressF);
 	$(".addressFrom_Btn").on("click",addressFrom_BtnF);
@@ -406,6 +410,7 @@ function paymentBtnF(){
 	var addressTag = $('#roadAddrPart1').val();											//주소 입력 여부
 	var paymentHiddenTag = $('input#payment').val();								//결제수단 선택 여부
 	var agreementBtn = $('input[id="agreementBtn"]:checked').val(); //이용약관 클릭 여부
+	var subsEmailBtn = $('input[id="subsEmailBtn"]:checked').val(); //이메일 수신여부 클릭 여부
 
 	if(addressTag==""){
 		alert("주소를 입력해주세요.");
@@ -415,11 +420,18 @@ function paymentBtnF(){
 		alert("결제수단을 선택해주세요.");
 		return;
 		
-	}else if(agreementBtn !="on"){
+	}
+
+	if(agreementBtn !="on"){
 		alert("이용약관에 동의해주세요.");
 		return;
 		
 	}else{
+		if(subsEmailBtn == "on"){
+			$('input[id="subs_Email"]').val('Y');
+		}else{
+			$('input[id="subs_Email"]').val('N');
+		}
 		$("form").submit();
 		
 	}

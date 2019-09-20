@@ -4,16 +4,22 @@
 <style>
 .carousel,
 .carousel-inner,
-.carousel-item {
-  height: 30rem;
+.carousel-item,
+.carousel-item img {
+  min-height: 20rem; 
+  max-height: 30rem; 
 }
 
-@media (min-width: 768px) {
-/* .carousel,
-.carousel-inner,
-.carousel-item {
-  height: 40rem;
-} */
+@media (max-width: 768px) {
+
+	.carousel-item img{
+	  width: 160%;
+	}
+	
+	.carousel-caption h1,
+	.carousel-caption  p{
+		background-color: rgba(255, 255, 255, 0.5);
+	}
 }
 </style>
 <main role="main">

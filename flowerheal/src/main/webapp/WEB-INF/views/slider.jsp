@@ -4,7 +4,6 @@
 
 <style>
 .item {
-	height: 21rem;
 	background: #fff;
 	padding: 1rem;
 }
@@ -12,8 +11,8 @@
     position: absolute;
     top: 10rem;
     margin: 0 !important;
-	display: flex;
-	width: 100%;
+		display: flex;
+		width: 100%;
     justify-content: space-between;
 }
 .owl-nav i{
@@ -22,6 +21,9 @@
 
 
 @media (min-width: 768px) {	
+	.owl-nav{
+		width : 105%;
+	}
 .instaCarousel{
 	width: 80%;
 }
@@ -34,7 +36,7 @@
 	<div class="owl-carousel owl-theme">
 	
 	
-	    <div class="item"><h3><a href="#"><img src="${pageContext.request.contextPath}/resources/img/instar/instar1.jpg"></a></h4></div>
+	    <div class="item"><h4><a href="#"><img src="${pageContext.request.contextPath}/resources/img/instar/instar1.jpg"></a></h4></div>
 	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar2.jpg"></a></h4></div>
 	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar3.jpg"></a></h4></div>
 	    <div class="item"><h4><a href=""><img src="${pageContext.request.contextPath }/resources/img/instar/instar4.jpg"></a></h4></div>
@@ -55,12 +57,13 @@ $(document).ready(function(){
 	
 	var owl = $('.owl-carousel');
 	owl.owlCarousel({
-		stagePadding: 50,
-	    center:true,
+/* 		stagePadding: 50, */
+	    center:false,
 	    dots: false,
 	    loop:true,
 	    nav:true,
 	    margin:10,
+	    autoWidth:true,
 	    autoplay:true,
 	    autoplayTimeout:2500,
 	    autoplayHoverPause:true,
@@ -70,14 +73,12 @@ $(document).ready(function(){
 	            items:1,
 	            //nav:true
 	        },
-	        // 600:{
-	        //     items:3,
-	        //     //nav:false
-	        // },
+	         600:{
+	             items:2,
+	         },
 	        1000:{
 	            items:3,
-	            //nav:true,
-	            //loop:false
+	            loop:true
 	        }
 	    }
 	});

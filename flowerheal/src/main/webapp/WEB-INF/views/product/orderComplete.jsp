@@ -44,7 +44,7 @@ $(".btn").on("click",function(){
 		break;
 		
 	case "마이페이지" :
-		document.location.href = "${pageContext.request.contextPath }/member/memberMyPage"+$id;
+		document.location.href = "${pageContext.request.contextPath }/member/mypage/memberMyPage/"+$id;
 		break;
 	}
 })
