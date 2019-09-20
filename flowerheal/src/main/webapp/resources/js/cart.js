@@ -11,7 +11,7 @@ $( document ).ready(function() {
 function keepShoppingBtnF()
 {
 	alert("상품페이지로 이동합니다");
-	location.href = "flowerheal/product/productList";
+	document.location.href = "/flowerheal/product/productList";
 }
 
 function orderBtnF()
