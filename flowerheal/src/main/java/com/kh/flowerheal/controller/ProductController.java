@@ -129,26 +129,19 @@ public class ProductController {
 		
 		model.addAttribute("cdto", cdto);
 		
-		return "product/cart";
+		return "redirect:/product/cart";
 	}
-	
-	//장바구니 이동
-	/*
-	 * @GetMapping("/cart/{user_id:.+}") public String cart(@PathVariable String
-	 * user_id, Model model) { logger.info("cart() 호출됨"); MemberDTO mdto =
-	 * mSvc.getMember(user_id); model.addAttribute("mdto",mdto); viewname =
-	 * "/product/cart"; return viewname; }
-	 */
 	
 	//장바구니 보기
 		@GetMapping("/cart/{id:.+}")
 		public String cartList(@PathVariable String id,
 							   Model model)
 		{
-			logger.info("cartList() 호출");
+			logger.info("장바구니 호출");
 			
-			List<CartDTO> cdto = cSvc.getCartList(id);
-			model.addAttribute("cdto", cdto);
+			MemberDTO mdto = mSvc.getMember(id);
+			model.addAttribute("mdto",mdto);
+			
 			return "/product/cart";
 		}
 	

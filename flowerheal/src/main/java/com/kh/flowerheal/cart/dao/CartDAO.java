@@ -19,7 +19,8 @@ public interface CartDAO {
 	//카드에서 상품 수정
 	int cart_modify(CartDTO cartDTO);
 	
-	//카트에서 결제
+	//카트에서 예상 금액
+	int cart_money(String user_id);
 	
 	//음 또 뭐가 있지
 	

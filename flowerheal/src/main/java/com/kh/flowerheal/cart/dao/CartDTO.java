@@ -28,4 +28,6 @@ public class CartDTO {
 	
 	//구독횟수
 	private int product_SubsCnt;
+	
+
 }

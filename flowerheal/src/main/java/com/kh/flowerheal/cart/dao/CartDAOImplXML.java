@@ -48,4 +48,11 @@ public class CartDAOImplXML implements CartDAO {
 		return 0;
 	}
 
+	@Override
+	public int cart_money(String user_id) {
+		// TODO Auto-generated method stub
+		logger.info("카트 총 가격 호출됨/xml");
+		return 0;
+	}
+
 }

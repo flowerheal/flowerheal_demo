@@ -72,8 +72,6 @@ input[type=checkbox]:checked + label:before {
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script src="${pageContext.request.contextPath }/resources/js/cart.js"></script>
-
 
 <jsp:include page="../header.jsp" />
 <section class="container">
@@ -81,30 +79,17 @@ input[type=checkbox]:checked + label:before {
 		<div class="row my-3">
 			<div class="col-md-8 col-lg-10 my-3 h5 text-center">장바구니</div>
 			
-			<div class="col-lg-11 col-xl-9 mb-3">
-			<c:forEach var="cartList" items="${cdto}" >
-				<div class="row cartList">
-				<div class="row col-1 checkboxDiv">
-					<input type="checkbox" name="check" id="itemCheck1">
-					<label for="itemCheck1"></label>
-				</div>
-				<div class="row col-11 itemDiv">
-					<div class="row col-md-7 px-0">
-						<div class="col-6">${cartList.product_Name}</div>
-						<div class="col-3">${cartList.product_Price}원</div>
-						<div class="col-3">${cartList.product_SubsCnt}개월</div>					
-					</div>
-					<div class="row col-md-5 itemBtns">
-						<button type="button" class="btn btn-sm btn-primary" id="changeItemBtn">구성 변경</button>
-						<button type="button" class="btn btn-sm btn-primary" id="delCartBtn">삭제</button>
-					</div>
-				</div>
-				</div>
-			</c:forEach>
+			<div class="col-lg-11 col-xl-9 mb-3" id="cartList">
+				<!--  ajax cartList로 불러오기-->
 			</div>
-			<button type="button" class="btn btn-sm btn-primary" id="selectDeleteBtn">선택삭제</button>
+				<button type="button" class="btn btn-sm btn-primary" id="selectDeleteBtn">선택삭제</button>
+			
+			
 			<div class="col-lg-11 mb-3 priceDiv">
-					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>총 상품금액 </span><span>${pdto.product_Price}원</span></div>
+					<span>총 상품금액  </span>
+					<div class="col-lg-7 d-flex justify-content-between mx-auto">
+						<!-- 총 상품금액 여기에 -->
+					</div>
 			</div>
 
 			<div class="col-md-9 mb-3 orderOrNotDiv">
@@ -114,5 +99,144 @@ input[type=checkbox]:checked + label:before {
 		</div>
 	</section>
 </section>
+
+<script src="${pageContext.request.contextPath }/resources/js/cart.js"></script> 
+
+<script>
+
+var memberId = "${sessionScope.user.id}";	//로긴아이디
+var cartnum= 0;
+
+$(function(){
+
+	//카트목록 보이기
+	cartList(memberId);
+	
+
+	
+});//end od function()
+
+
+function cartList(id){
+	console.log(id);
+	let $id = id;
+	let $url = "${pageContext.request.contextPath }/cartRest/cartList"; 
+	let str = "";
+	$.ajax({
+		type : "POST",    	 //http 전송 방식
+		url  : $url,		//요청 url
+		data : {"id" : $id},
+		dataType : "JSON",   //요청시 응답데이터 타입
+		//응답 성공시 처리사항
+		success:function(result){	
+			$.each(result,function(idx, cartList){
+				str += '    <div class="row cartList" data-cnum="' +cartList.cart_num+ '">';
+				str += '    <div class="row col-1 checkboxDiv">';
+				str += '      <input type="checkbox" name="check" class="itemCheck">';
+				str += '      <label for="itemCheck"></label>';
+				str += '    </div>';
+				str += '    <div class="row col-11 itemDiv">';
+				str += '      <div class="row col-md-7 px-0">';
+				str += '        <div class="col-2"> ' + cartList.cart_num +' </div>';
+				str += '        <div class="col-6"> ' + cartList.product_Name +' </div>';
+				str += '        <div class="col-3">' + cartList.product_Price + '원 </div>';
+				str += '        <div class="col-3">' + cartList.product_SubsCnt + '개월</div>';
+				str += '      </div>';
+				str += '      <div class="row col-md-5 itemBtns">';
+				str += '        <button type="button" class="changeItembtn btn-sm btn-primary" id="changeItemBtn">구성 변경</button>';
+				str += '        <button type="button" class="delCartbtn btn-sm btn-primary" onclick="delCartF(this)">삭제</button>';
+				str += '      </div>';
+				str += '    </div>';
+				str += '    </div>';
+			});
+			
+
+			//장바구니목록 삽입
+			$("#cartList").html(str);
+
+		},
+		//응답 실패시 처리사항
+		error:function(xhr, status, err){		
+			
+
+			console.log("code:"+xhr.status);
+			console.log("message:"+xhr.responseText );
+			console.log("status:"+status);
+			console.log("err:"+err);
+		}	
+				
+	});//End of $.ajax
+}
+
+//총금액
+function total_price(id){
+	console.log(id);
+	let $id = id;
+	let $url = "${pageContext.request.contextPath }/cartRest/cartList"; 
+	let str = "";
+	$.ajax({
+		type : "POST",    	 //http 전송 방식
+		url  : $url,		//요청 url
+		data : {"id" : $id},
+		dataType : "JSON",   //요청시 응답데이터 타입
+		//응답 성공시 처리사항
+		success:function(result){	
+			$.each(result,function(idx, cartList){
+				str += '    <div class="row cartList" data-cnum="' +cartList.money+ '">';
+			});
+			
+
+			//장바구니목록 삽입
+			$("#cartList").html(str);
+
+		},
+		//응답 실패시 처리사항
+		error:function(xhr, status, err){		
+			
+
+			console.log("code:"+xhr.status);
+			console.log("message:"+xhr.responseText );
+			console.log("status:"+status);
+			console.log("err:"+err);
+		}	
+				
+	});//End of $.ajax
+}
+
+//장바구니 삭제
+function delCartF()
+{
+
+	let $cart_num = $(".delCartBtn").closest("div[data-cnum]").attr("data-cnum"); 		 		 
+	let $url = "${pageContext.request.contextPath }/cartRest/cartList/cancel/" + $cart_num;
+	
+	
+	console.log("삭제 버튼 클릭 cart_num : "+ $cart_num );
+
+	if(!confirm("삭제하시겠습니까?")) return false;				
+	
+	//AJAX 비동기 처리기술
+	$.ajax({
+		type : "DELETE",    	//http 전송 방식
+		url  : $url,				  //요청 url
+		dataType : "text",    //요청시 응답데이터 타입
+		//응답 성공시 처리사항
+		success:function(result){		
+			console.log(result);
+			cartList(memberId);
+		},
+		//응답 실패시 처리사항
+		error:function(xhr, status, err){			
+			console.log("code:"+xhr.status);
+			console.log("message:"+xhr.responseText );
+			console.log("status:"+status);
+			console.log("err:"+err);
+		}			
+	});	//end of ajax	
+}
+
+
+</script>
+
 
 <jsp:include page="../footer.jsp" />

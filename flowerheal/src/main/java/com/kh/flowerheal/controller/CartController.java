@@ -29,7 +29,7 @@ public class CartController {
 	
 	
 	//장바구니 보기
-	@GetMapping("/cart/{id:.+}")
+	@GetMapping("/cart2/{id:.+}")
 	public String cartList(@PathVariable String id,
 						   Model model)
 	{

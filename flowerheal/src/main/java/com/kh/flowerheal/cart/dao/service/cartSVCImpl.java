@@ -43,4 +43,10 @@ public class cartSVCImpl implements cartSVC{
 		return cartDAO.cart_modify(cartDTO);
 	}
 
+	@Override
+	public int cart_money(String user_id) {
+		// TODO Auto-generated method stub
+		return cartDAO.cart_money(user_id);
+	}
+
 }
