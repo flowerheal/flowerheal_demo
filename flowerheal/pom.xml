@@ -298,6 +298,21 @@
 		    <artifactId>jsoup</artifactId>
 		    <version>1.12.1</version>
 		</dependency>
+		<!-- 이메일 보내기 -->
+		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>javax.mail-api</artifactId>
+		    <version>1.6.2</version>
+		</dependency>
+		<!-- 자바에서 연동해보면 com.sun.mail로 연동되는것같아서 위에 있는 javax.mail은 필요없어보인다. -->
+		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+		<dependency>
+		    <groupId>com.sun.mail</groupId>
+		    <artifactId>javax.mail</artifactId>
+		    <version>1.6.2</version>
+		</dependency>
+		
 		
 	</dependencies>
 	<build>
