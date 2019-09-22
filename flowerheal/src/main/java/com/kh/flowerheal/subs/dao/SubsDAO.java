@@ -12,6 +12,9 @@ public interface SubsDAO {
 	// 회원이 구독한 구독 리스트 조회
 	List<SubsDTO> getMemberSubsList(String id);
 	
+	// 최근배송지
+	SubsDTO getlastOrderSDTO(String id);
+	
 	// 해당 상품을 구독한 리스트 조회
 	List<SubsDTO> getProductSubsList(String pnum);
 	

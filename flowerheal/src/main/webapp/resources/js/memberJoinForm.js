@@ -4,7 +4,8 @@ function init() {
 
 	$("#hasId").on('click', hasIdF); //아이디 중복검사 버튼
 	$("#joinBtn").on('click', joinBtnF); //회원가입 버튼
-
+	
+	var errMsg = null;	// 이메일 팝업에서도 이 변수에 접근해야해요.
 }
 
 
@@ -12,9 +13,13 @@ function hasIdF() {
 	var wantId = $("#id").val();
 	var allData = { "wantId": wantId };
 	var emailReg = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
-	var errMsg = this.parentElement.nextElementSibling;
+	errMsg = this.parentElement.nextElementSibling;
 	console.log(errMsg)
 
+	if(checkArray[0]){
+		return false;
+	}
+	
 	if (wantId == null || wantId == "") {
 		errMsg.innerText = "아이디를 입력하세요."
 		$("#id").addClass("is-invalid");
@@ -35,9 +40,16 @@ function hasIdF() {
 			success: function (str) {
 				switch (str) {
 					case "YES":
-						$("#id").removeClass("is-invalid").addClass("is-valid");
-						errMsg.style="display:none";
-						checkArray[0] = true;
+						//$("#id").removeClass("is-invalid").addClass("is-valid");
+						// errMsg.style="display:none";
+						// checkArray[0] = true;
+						
+						// 이메일체크에서도 클릭하면 '이메일인증을 진행해주세요' 텍스트를 표시해줌
+						errMsg.innerText = "이메일 인증을 진행해주세요.";
+						$("#id").addClass("is-invalid");
+						errMsg.style="display:block";
+						// emailCheck();	
+						emailPopup();
 						break;
 					case "NULL":
 						errMsg.innerText = "아이디를 입력하세요."
@@ -47,7 +59,7 @@ function hasIdF() {
 						checkArray[0] = false;
 						break;
 					case "NO":
-						errMsg.innerText = "이미 존재하는 아이디입니다."
+						errMsg.innerText = "이미 존재하는 이메일입니다."
 						$("#id").addClass("is-invalid");
 						errMsg.style="display:block";
 						//$(errMsg).css("display:block");
@@ -63,6 +75,34 @@ function hasIdF() {
 		});
 	}
 }
+
+function getContextPath(){
+    var offset=location.href.indexOf(location.host)+location.host.length;
+    var ctxPath=location.href.substring(offset,location.href.indexOf('/',offset+1));
+    return ctxPath;
+}
+
+/* ========== 이메일 인증 팝업창 뛰우기 ==========*/
+function emailPopup(){
+	// window.open("URL GET방식 호출" , "팝업창 이름", "창 CSS");
+	// 만들 팝업창 x축 위치 조정
+	var popupX = (window.screen.width / 2) - (480 / 2);
+	// 만들 팝업창 y축 위치 조정
+	var popupY= (window.screen.height / 2) - (170 / 2);
+	
+	let $userEmail = $("#id").val();
+	var pop = 
+	window.open("/flowerheal/popup/emailCheck/" + $userEmail,"pop","width=480,height=170, scrollbars=yes, resizable=yes left="+ popupX +"px '"+", top="+ popupY+"px '"); 
+}
+/* ========== 이메일 인증 팝업창 뛰우기 ==========*/
+
+/* ========== 이메일 인증 form에 입력받기 ==========*/
+function emailCallBack(){
+	$("#id").removeClass("is-invalid").addClass("is-valid");
+	errMsg.style="display:none";
+	checkArray[0] = true;
+}
+/* ========== 이메일 인증 form에 입력받기 ==========*/
 
 function inputTelNumber(obj) {
 
@@ -150,7 +190,7 @@ function check() {
 				$(this).focus();
 
 			} else if (this.value != "" && emailReg.test(this.value)) {
-				errorLogic(errMsg,"아이디 중복검사를 진행해주세요",this,0);
+				errorLogic(errMsg,"이메일 인증을 진행해주세요",this,0);
 			}
 
 			break;

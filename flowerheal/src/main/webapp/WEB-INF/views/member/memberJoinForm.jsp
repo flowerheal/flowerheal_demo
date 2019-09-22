@@ -30,7 +30,7 @@
 				<form:label path="id">아이디</form:label>
 				<div class="row justify-content-start">
 				<form:input type="email" class="form-control col-md-6 col-xl-7" path="id" placeholder="ex)aaa@bbb.com" required = "required"/>
-				<input type="button" class="btn btn-outline-secondary col-md-5 col-xl-4" id="hasId" value="이메일 중복 확인">
+				<input type="button" class="btn btn-outline-secondary col-md-5 col-xl-4" id="hasId" value="이메일 인증">
 				</div>
 				<div class="invalid-feedback"><form:errors path="id" cssClass="errMsg"></form:errors></div>
 			</div>

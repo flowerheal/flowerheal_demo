@@ -20,6 +20,11 @@ public class SubsSvcImpl implements SubsSvc {
 	public SubsDTO getSDTO(String snum) {
 		return sdao.getSDTO(snum);
 	}
+	
+	@Override
+	public SubsDTO getLastOrderSDTO(String id) {
+	    return sdao.getlastOrderSDTO(id);
+	}
 
 	@Override
 	public List<SubsDTO> getMemberSubsList(String id) {

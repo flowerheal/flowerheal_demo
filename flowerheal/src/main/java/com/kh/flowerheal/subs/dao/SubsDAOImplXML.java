@@ -22,6 +22,11 @@ public class SubsDAOImplXML implements SubsDAO {
 	}
 	
 	@Override
+	public SubsDTO getlastOrderSDTO(String id) {
+	    	return sqlSession.selectOne("mappers.subs-mapper.getLastOrderSDTO", id);
+	}
+	
+	@Override
 	public List<SubsDTO> getMemberSubsList(String id) {
 		return sqlSession.selectList("mappers.subs-mapper.getMemberSubsList", id);
 	}
@@ -72,6 +77,7 @@ public class SubsDAOImplXML implements SubsDAO {
 	public int endSubs(String snum) {
 		return sqlSession.update("mappers.subs-mapper.endSubs", snum);
 	}
+
 
 
 }

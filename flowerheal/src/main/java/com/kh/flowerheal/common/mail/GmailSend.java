@@ -32,7 +32,6 @@ public class GmailSend {
 	public GmailSend(){}
 	
 	// 이메일 받는 생성자
-	
 	public void init(){
 		p = System.getProperties();
 		p.put("mail.smtp.starttls.enable", "true");
@@ -52,10 +51,13 @@ public class GmailSend {
 		try {
 			// 편지보낸시간 설정
 			msg.setSentDate(new Date());
+
 			// 송신자 설정
 			from = new InternetAddress();
 			from = new InternetAddress(new String(fromName.getBytes(charSet), "UTF-8") + "<flowerheal2019@naver.com>");
+			
 			msg.setFrom(from);
+			
 		} catch (AddressException addr_e) { // 예외처리 주소를 입력하지 않을 경우
 			System.out.println("메일주소 입력안해서 오류발생!!");
 			JOptionPane.showMessageDialog(null, "올바른 메일주소를 입력해주세요.", "메일주소입력", JOptionPane.ERROR_MESSAGE);
@@ -73,7 +75,7 @@ public class GmailSend {
 	
 	// 메일 정보를 콘촐창에 출력해서 보기 위함!!
 	private void seeResult() {
-		System.out.println("메일 발신자 : " + from);
+		
 		System.out.println("메일 수신자 : " + to);
 		
 		try {
@@ -188,7 +190,7 @@ public class GmailSend {
 	
 	
 	// 회원가입 이메일 인증
-	public boolean joinEmailCheck(String userEmail) {
+	public boolean joinEmailCheck(String userEmail, String code) {
 		init();
 		boolean isSend = false;
 		
@@ -199,7 +201,7 @@ public class GmailSend {
 			
 			// 제목 설정
 			// setSubject(" 이메일 제목 ", " 문자타입 " );
-			msg.setSubject("[꽃미힐미] " + userEmail + "님 구독신청 감사합니다!", "UTF-8");
+			msg.setSubject("[꽃미힐미] 이메일 인증을 진행해주세요.", "UTF-8");
 			
 			// 내용 설정 - 사용안함
 			// msg.setText(content, "UTF-8");
@@ -207,8 +209,11 @@ public class GmailSend {
 			// setContent( "  html문자를 넣어주세요.  " );
 			msg.setContent(""
 					+ "<div>"
-					+ "		<h1>꽃미힐미 회원가입 이메일 인증</h1>"
-					+ "		<h3>인증코드 : " + "URL 던져줄 공간"  
+					+ "	<h1>회원가입 이메일 인증</h1>"
+					+ "	<h3>인증번호 : " + code + "</h3>"
+					// 기존에는 url 버튼을 눌러서 인증을 진행할 예정이였다. 팝업으로 바꾸면서 보내줄 필요가 없어졌다.
+					// + "<a href='localhost:9080/flowerheal/mail/check/" + userEmail + "'>"
+					// + "<button>이메일인증</button></a>"
 					+ ""
 					+ "</div>"
 					, "text/html; charset=utf-8");	// 뒤에 charset=utf-8 를 붙여줘야 한글이 정상적으로 보입니다.
