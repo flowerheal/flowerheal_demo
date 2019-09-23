@@ -60,7 +60,11 @@
 	<div class="row justify-content-center mx-auto my-3 py-3">
 		<div class="col col-md-10 p-0">
 			<div class="row justify-content-center mt-3">
-				<p class="h4">후기 게시판</p>
+				<div class="alert alert-warning" role="alert">
+  <h4 class="alert-heading row justify-content-center ">후기 게시판</h4>
+  <p class="mt-3">저희 꽃미힐미 의 플라워테라피 상품을 정기구독 하신 고객들만 작성할 수 있는 솔찍한 구독후기 게시판입니다.</p>
+ 
+</div>
 			</div>
 			<div id="mobileList">
 				<div class="row my-1 listHeader">
@@ -92,7 +96,7 @@
 							<div class="col"><small>${rec.bcdate }</small></div>
 							
 						</div>
-						<div class="col-4 text-center">${rec.bnickname }</div>
+						<div class="col-4 text-center">${rec.bname }</div>
 						<div class="col-2 text-right">${rec.bhit }</div>
 					</div>
 					</c:forEach>
@@ -129,7 +133,7 @@
 							<a class="text-decoration-none font-weight-bolder pl-1"
 								 href="${pageContext.request.contextPath }/bbs/read/${pc.rc.reqPage}
 											/${rec.bnum}/${pc.searchType}/${pc.keyword}">${rec.btitle }</a></div>
-						<div class="col col-md-2 text-center">${rec.bnickname }</div>
+						<div class="col col-md-2 text-center">${rec.bname }</div>
 						<div class="col col-md-3 text-center">${rec.bcdate }</div>
 						<div class="col col-md-1 text-right">${rec.bhit }</div>
 					</div>
@@ -138,7 +142,7 @@
 			</div>
 			<!-- 글쓰기 버튼 -->
 			<div class="row justify-content-end my-3">
-				<button type=button class="btn btn-outline-secondary" id="writeBtn">글쓰기</button>
+				<button type=button class="btn btn-outline-warning" id="writeBtn">글쓰기</button>
 			</div>
 			<!-- 페이징 Pagination-->
 			<div class="row justify-content-center my-3">

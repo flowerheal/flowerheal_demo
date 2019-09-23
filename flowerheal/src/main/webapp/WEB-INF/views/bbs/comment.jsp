@@ -19,7 +19,7 @@ div a.badge{
 	var page = 1; 				 			 //요청페이지
 	
 	var l_id = "${sessionScope.user.id}"; //로긴아이디
-	var l_nickname = "${sessionScope.user.nickname}"; //로긴닉네임
+	var l_name = "${sessionScope.user.name}"; //로긴닉네임
 	var l_url = "${pageContext.request.contextPath }/rbbs"; //공통 URL요청
 	
 	// 대댓글 작성 html코드 시작--------------------------------

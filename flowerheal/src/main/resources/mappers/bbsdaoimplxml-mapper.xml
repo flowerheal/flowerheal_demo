@@ -6,8 +6,8 @@
 	<insert id="write"
 					parameterType="com.kh.flowerheal.bbs.dto.BbsDTO">
 		insert into board
-								(bnum,btitle,bid,bnickname,bhit,bcontent,bgroup,bstep,bindent)
-					values(board_seq.nextval,#{btitle},#{bid},#{bnickname},0,#{bcontent},board_seq.currval,0,0)
+								(bnum,btitle,bid,bname,bhit,bcontent,bgroup,bstep,bindent)
+					values(board_seq.nextval,#{btitle},#{bid},#{bname},0,#{bcontent},board_seq.currval,0,0)
 	</insert>
 	<!-- 게시글 수정 -->
 	<update id="modify"
@@ -32,7 +32,7 @@
 	<select id="view"
 					parameterType="String"
 					resultType="com.kh.flowerheal.bbs.dto.BbsDTO">
-		select bnum,btitle,bid,bnickname,bcdate,budate, 
+		select bnum,btitle,bid,bname,bcdate,budate, 
 		       bhit,bcontent,bgroup,bstep,bindent 
 		  from board 
 		 where bnum=#{bnum}
@@ -49,7 +49,7 @@
 	<!-- 1)전체 -->
 	<select id="listAll"
 					resultType="com.kh.flowerheal.bbs.dto.BbsDTO">
-		select bnum,btitle,bid,bnickname,bcdate,budate,
+		select bnum,btitle,bid,bname,bcdate,budate,
 		       bhit,bcontent,bgroup,bstep,bindent 
 		  from board 
 	</select>
@@ -90,7 +90,7 @@
 				AND 	bcontent 	LIKE #{keyword} 
 			</when>
 			<when test="searchType == 'N'.toString()">
-				AND 	bnickname 	LIKE #{keyword} 
+				AND 	bname 	LIKE #{keyword} 
 			</when>
 			<when test="searchType == 'I'.toString()">
 				AND 	bid 		LIKE #{keyword} 
@@ -130,9 +130,9 @@
 					parameterType="com.kh.flowerheal.bbs.dto.BbsDTO">
 					
 		insert into board 
-								(bnum,btitle,bid,bnickname,bhit,
+								(bnum,btitle,bid,bname,bhit,
 								 bcontent,bgroup,bstep,bindent)
-				 values (board_seq.nextval,#{btitle},#{bid},#{bnickname},0,
+				 values (board_seq.nextval,#{btitle},#{bid},#{bname},0,
 				 				#{bcontent},#{bgroup},#{bstep}+1,#{bindent}+1)			
 	</insert>
 	
@@ -173,7 +173,7 @@
 						AND 	bcontent 	LIKE #{keyword} 
 					</when>
 					<when test="searchType == 'N'.toString()">
-						AND 	bnickname 	LIKE #{keyword} 
+						AND 	bname 	LIKE #{keyword} 
 					</when>
 					<when test="searchType == 'I'.toString()">
 						AND 	bid 		LIKE #{keyword} 

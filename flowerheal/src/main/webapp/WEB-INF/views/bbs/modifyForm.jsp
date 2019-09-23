@@ -21,12 +21,12 @@
 			<div class="btitle invalid-feedback"><form:errors path="btitle" cssClass="errMsg"></form:errors></div>
 		</div>
 		<div class="row">
-	    <form:label path="bnickname" class="col-sm-3">작성자</form:label>
-	    <form:input path="bnickname"
+	    <form:label path="bname" class="col-sm-3">작성자</form:label>
+	    <form:input path="bname"
 	    						class="form-control col-sm-8 border-0" 
 									type="text"
 									readonly="true"
-	    						value="${bbsDTO.bnickname}"></form:input>
+	    						value="${bbsDTO.bname}"></form:input>
 		</div>
 		<div class="row">
 	    <form:label 	 path="bcontent" class="col-sm-3">내용</form:label>

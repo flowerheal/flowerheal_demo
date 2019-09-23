@@ -18,7 +18,7 @@ public class BbsDTO {
 	@Size(min=4,max=30, message="제목은 4~30자까지 입력 가능합니다.")
 	private String btitle;		//제목
 	private String bid;				//작성자ID
-	private String bnickname;	//작성자(별칭)
+	private String bname;	//작성자(별칭)
 	private Date	bcdate;			//작성일
 	private Date 	budate;			//수정일
 	private int bhit;					//조회수

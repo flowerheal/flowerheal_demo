@@ -23,12 +23,12 @@
 	    						type="text" value="${bbsDTO.btitle }" readonly="true"/>
 		</div>
 		<div class="row">
-	    <form:label path="bnickname" class="col-sm-3">작성자</form:label>
-	    <form:input path="bnickname"
+	    <form:label path="bname" class="col-sm-3">작성자</form:label>
+	    <form:input path="bname"
 	    						class="form-control col-sm-8 border-0" 
 	    						type="text"
 	    						readonly="true"
-	    						value="${bbsDTO.bnickname}"></form:input>
+	    						value="${bbsDTO.bname}"></form:input>
 		</div>
 		<div class="row">
 	    <form:label 	 path="bcontent" class="col-sm-3">내용</form:label>
@@ -58,7 +58,7 @@ $( document ).ready(function() {
 	//제목, 내용 border
 	$("#btitle, #bcontent").css({"box-shadow":"none","border-color":"rgb(206, 212, 218)"});
 	//작성자 border(없음)
-	$("#bnickname").css({"box-shadow":"none"});
+	$("#bname").css({"box-shadow":"none"});
 	//버튼 click function
 	$(".row .btn").on("click",buttonF);
 
