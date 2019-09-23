@@ -347,22 +347,54 @@ function orderCheckF(){
 function addToCartBtnF(){
 	if(orderCheckF()){//유효성 검사
 		//pdto에 값 넣어서 productController에 addToCart에 넘기기
-		$("form").attr("action","${pageContext.request.contextPath }/product/addToCart");
-		$("form").attr("method","POST");
-	 	$("form").submit();
+		
+	var $url = "addToCart";
+	
+	var $product_Name = $("#product_Name").val();
+	var $user_id ="${sessionScope.user.id}";
+	var $product_Price =$("#product_Price").val();
+	var $product_Num = $("#product_Num").val();
+	var $product_SubsCnt = $("#product_SubsCnt").val();
+	var $cart_Fdate = $("#subs_Fdate").val();
+	var $cart_Edate = $("#subs_Edate").val();
+
+	console.log($product_Name)
+	$.ajax({
+		type : "POST",    	 //http 전송 방식
+		url  : $url,		//요청 url
+		data : {
+			"product_Name" : $product_Name,
+			"user_id" : $user_id,
+			"product_Price" : $product_Price,
+			"product_Num" : $product_Num,
+			"product_SubsCnt" : $product_SubsCnt,
+			"cart_Fdate" : $cart_Fdate,
+			"cart_Edate" : $cart_Edate,
+			},
+		//dataType : "JSON",   //요청시 응답데이터 타입
+		//응답 성공시 처리사항
+		success:function(result){	
+			if(result=="YES"){
+				if(confirm("장바구니로 이동하시겠습니까?")){
+					document.location.href = "${pageContext.request.contextPath }/cart/cart2/"+"${sessionScope.user.id}";
+				}
+			}
+		},
+		//응답 실패시 처리사항
+		error:function(xhr, status, err){		
+			
+
+			console.log("code:"+xhr.status);
+			console.log("message:"+xhr.responseText );
+			console.log("status:"+status);
+			console.log("err:"+err);
+		}	
+				
+	});//End of $.ajax		
+		
+
 	}
 }
-
-
-
-
-/* $(document).ready(function(){
-  $('#addToCartBtn').popover({title: "<h1><strong>HTML</strong> inside <code>the</code> <em>popover</em></h1>",
-  									 content: "<a href='http://www.ulsankh.com'>Cool stuff!</a>",
-  									 html: true,
-  									 placement: "top"}); 
-}); */
-
 
 
 

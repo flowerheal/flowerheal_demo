@@ -10,13 +10,13 @@ $( document ).ready(function() {
 
 function keepShoppingBtnF()
 {
-	alert("상품페이지로 이동합니다");
+	//alert("상품페이지로 이동합니다");
 	document.location.href = "/flowerheal/product/productList";
 }
 
 function orderBtnF(){
 	let $id = memberId;
-	alert("결제페이지로 이동합니다");
+	//alert("결제페이지로 이동합니다");
 	$.ajax({
 		type : "POST",
 		url : "cartToOrder",

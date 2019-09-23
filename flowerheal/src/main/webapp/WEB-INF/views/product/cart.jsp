@@ -88,8 +88,8 @@ input[type=checkbox]:checked + label:before {
 						
 			<div class="row col-lg-11 col-xl-9 mb-3 priceDiv d-flex justify-content-between">
 				<button type="button" class="btn btn-primary col-md-3" id="selectDeleteBtn">선택삭제</button>
-					<div class="col-md-8 col-lg-7  mx-auto" id="total_price">
-					<span>총 상품금액  </span>
+					<div class="col-md-8 col-lg-7 d-flex justify-content-between mx-auto" id="total_price">
+					
 						<!-- 총 상품금액 여기에 -->
 					</div>
 			</div>
@@ -130,15 +130,16 @@ function cartList(id){
 		dataType : "JSON",   //요청시 응답데이터 타입
 		//응답 성공시 처리사항
 		success:function(result){	
+			var cart_Num = 0;
 			$.each(result,function(idx, cartList){
 				str += '    <div class="row cartList" data-cnum="' +cartList.cart_num+ '">';
-				str += '    <div class="row col-1 checkboxDiv">';
+				str += '    <div class="row col-1 d-none checkboxDiv">';
 				str += '      <input type="checkbox" name="itemCheck" id="itemCheck'+cartList.cart_num+'"';
 				str += '      	     value="'+cartList.cart_num+'">';
 				str += '      <label for="itemCheck'+cartList.cart_num+'"></label>';
 				str += '    </div>';
-				str += '    <div class="row col-11 itemDiv">';
-				str += '      <div class="row col-md-7 col-lg-8 px-0">';
+				str += '    <div class="row col-12 itemDiv">';
+				str += '      <div class="row col-md-8 col-lg-9 px-0">';
 				str += '        <div class="col-md-6 col-lg-5" id="p_name"> ' + cartList.product_Name +' </div>';
 				str += '        <div class="col-7 col-md-4 col-lg-4" id="p_price">' + cartList.product_Price + '원 </div>';
 				str += '        <div class="col-5 col-md-2 col-lg-3" id="p_subsCnt">' + cartList.product_SubsCnt + '개월</div>';
@@ -146,18 +147,28 @@ function cartList(id){
 				str += '      	<input type="hidden" id="p_Fdate" value='+cartList.cart_Fdate+'>';
 				str += '      	<input type="hidden" id="p_Edate" value='+cartList.cart_Edate+'>';
 				str += '      </div>';
-				str += '      <div class="row col-md-5 col-lg-4 itemBtns">';
+				str += '      <div class="row col-md-2 itemBtns">';
 				str += '        <button type="button" class="changeItembtn btn-sm btn-primary" id="changeItemBtn">구성 변경</button>';
 				str += '        <button type="button" class="delCartbtn btn-sm btn-primary" onclick="delCartF(this)">삭제</button>';
 				str += '      </div>';
 				str += '    </div>';
 				str += '    </div>';
+				cart_Num += 1;
 			});
 			
-
+			if(result[0]==null || cart_Num == 0){
+				str += '<div class="row col-md-8 col-lg-10 my-3 mx-auto">';
+				str += '<div class="col-12 px-0 d-flex justify-content-center">';
+				str += '	<i class="fas fa-shopping-basket" style="font-size:14rem;"></i>';
+				str += '</div>';
+				str += '<div class="col-12 px-0 text-center">';
+				str += '	장바구니가 비어있습니다.';
+				str += '</div>';
+				str += '</div>';
+			}
 			//장바구니목록 삽입
 			$("#cartList").html(str);
-
+			total_price(id);
 		},
 		//응답 실패시 처리사항
 		error:function(xhr, status, err){		
@@ -175,8 +186,9 @@ function cartList(id){
 //총금액
 function total_price(id){
 	let $id = id;
-	let $url = "${pageContext.request.contextPath }/cartRest/cart_totalPrice"; 
+	let $url = "${pageContext.request.contextPath }/cartRest/cartList"; 
 	let str = "";
+	let p_totalPrice = 0;
 	$.ajax({
 		type : "POST",    	 //http 전송 방식
 		url  : $url,		//요청 url
@@ -185,8 +197,9 @@ function total_price(id){
 		//응답 성공시 처리사항
 		success:function(result){	
 			$.each(result,function(idx, cartList){
-				str += '    <div> <span>' +cartList.money+ ' </span> 원</div>';
+				p_totalPrice += cartList.product_Price
 			});
+				str += '<span>총 상품금액  </span> <span>' +p_totalPrice+ '원 </span>';
 			
 			//장바구니목록 삽입
 			$("#total_price").html(str);

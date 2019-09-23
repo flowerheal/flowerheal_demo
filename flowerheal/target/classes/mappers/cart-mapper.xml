@@ -7,16 +7,16 @@
 
 <!-- 로그인 후 -->
 	<!-- 카트에 상품 담기 -->
-	<insert id="cart_insert" parameterType="com.kh.flowerheal.cart.dao.CartDTO">
+	<insert id="cart_insert" parameterType="com.kh.flowerheal.cart.dto.CartDTO">
 		insert into cart(cart_num, cart_name, cart_id, cart_price, 
-							cart_cnt, cart_productnum)
+							cart_cnt, cart_productnum, cart_Fdate, cart_Edate)
 			   		values(cart_seq.nextVal, #{product_Name}, #{user_id}, #{product_Price}, 
-			   				#{product_SubsCnt}, #{product_Num})
+			   				#{product_SubsCnt}, #{product_Num}, #{cart_Fdate}, #{cart_Edate})
 			   <!-- 이곳의 product_price는 결제단에서 받아오는 product_price와 동일 -->
 	</insert>
 	
 	<!-- 카트에 담은 상품 수정 --> <!-- 수량변경, 구독변경, 어 뭐지 -->
-	<update id="cart_modify" parameterType="com.kh.flowerheal.cart.dao.CartDTO">
+	<update id="cart_modify" parameterType="com.kh.flowerheal.cart.dto.CartDTO">
 		update cart 
 	</update>
 	
@@ -26,14 +26,15 @@
 	</delete>
 	
 	<!-- 카트 상품 리스트 불러오기 -->
-	<select id="getCartList" parameterType="String" resultType="com.kh.flowerheal.cart.dao.CartDTO">
+	<select id="getCartList" parameterType="String" resultType="com.kh.flowerheal.cart.dto.CartDTO">
 		select cart_num, cart_name "product_Name", cart_id "user_id", 
-				cart_price "product_Price", cart_cnt "product_SubsCnt", cart_productnum "product_Num"
+					 cart_price "product_Price", cart_cnt "product_SubsCnt",
+					 cart_productnum "product_Num", cart_Fdate, cart_Edate
 			from cart where cart_id = #{id}
 	</select>
 	
 	<!-- 카트에서 결제할 상품 체크해서 결제 창에서 보여주기-->
-	<!-- <select id=""  parameterType="int" resultType="com.kh.flowerheal.cart.dao.CartDTO">
+	<!-- <select id=""  parameterType="int" resultType="com.kh.flowerheal.cart.dto.CartDTO">
 		select * from  cart where cart_num = #{cart_num}
 	</select> -->
 	

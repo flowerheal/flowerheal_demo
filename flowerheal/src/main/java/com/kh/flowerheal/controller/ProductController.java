@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.flowerheal.cart.dto.CartDTO;
 import com.kh.flowerheal.cart.service.cartSVC;
@@ -136,33 +137,43 @@ public class ProductController {
 	
 	// 장바구니 담기 페이지
 	@PostMapping("/addToCart")
+	@ResponseBody
 	public String addToCart(
-			@ModelAttribute CartDTO cdto,
-			@RequestParam String product_Num,
-			@RequestParam String user_id,
-			@RequestParam Date subs_Fdate,
-			@RequestParam Date subs_Edate,
-//			@RequestParam String productCost,
-//			@RequestParam String postCost,
+		@RequestParam("product_Name") String product_Name,
+		@RequestParam("user_id") String user_id,
+		@RequestParam("product_Price") int product_Price,
+		@RequestParam("product_Num") String product_Num,
+		@RequestParam("product_SubsCnt") int product_SubsCnt,
+		@RequestParam("cart_Fdate") Date cart_Fdate,
+		@RequestParam("cart_Edate") Date cart_Edate,
 			Model model) {
 		logger.info("addToCart() 호출됨");
 		MemberDTO mdto = mSvc.getMember(user_id);
 		model.addAttribute("mdto",mdto);
 
+		String str = "";
+		
 		//cart DB에 해당 상품 넣음
-		logger.info("addToCart() 호출됨");
-		cdto.setCart_Fdate(subs_Fdate);
-		cdto.setCart_Edate(subs_Edate);
+		CartDTO cdto = new CartDTO();
+		cdto.setProduct_Name(product_Name);
+		cdto.setUser_id(user_id);
+		cdto.setProduct_Price(product_Price);
+		cdto.setProduct_Num(product_Num);
+		cdto.setProduct_SubsCnt(product_SubsCnt);
+		cdto.setCart_Fdate(cart_Fdate);
+		cdto.setCart_Edate(cart_Edate);
 		
 		int result = cSvc.cart_insert(cdto);
 		logger.info("수정결과"+result);
+		if(result==1) {
+			str = "YES";
+		}else {
+			str = "NO";
+		}
 		
-		//cart DB에서 list 불러와서 뿌림
-		
-		model.addAttribute("cdto", cdto);
-		
-		return "redirect:/cart/cart2/" + user_id;
+		return str;
 	}
+
 
 	
 	// orderPage2 기능 구현
