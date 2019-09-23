@@ -66,4 +66,9 @@ public class SubsSvcImpl implements SubsSvc {
 		return sdao.endSubs(snum);
 	}
 
+	@Override
+	public List<SubsDTO> getSubsList() {
+		return sdao.getSubsList();
+	}
+
 }

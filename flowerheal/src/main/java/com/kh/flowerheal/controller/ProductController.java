@@ -1,6 +1,7 @@
 package com.kh.flowerheal.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -117,10 +118,7 @@ public class ProductController {
 	@PostMapping("/order")
 	public String addSubs(@Valid @ModelAttribute SubsDTO sdto) {
 		System.out.println("product 컨트롤러 /order 결제 구독상품 기능구현");
-		
-		System.out.println(sdto);
-		System.out.println("===============================");
-		
+				
 		int cnt = sSvc.addSubs(sdto);
 		
 		MemberDTO mdto = mSvc.getMember(sdto.getSubs_Member_Id());
@@ -174,7 +172,6 @@ public class ProductController {
 		return str;
 	}
 
-
 	
 	// orderPage2 기능 구현
 	@PostMapping("/orderFromCart")
@@ -188,7 +185,11 @@ public class ProductController {
 		System.out.println("orderPage2 기능구현");
 		System.out.println("===============================");
 		
+		
+		boolean result = false;
+		
 		List<CartDTO> list = cSvc.getCartList(user_id);
+		List<SubsDTO> sdtoList = new ArrayList<>();
 		
 		for(int i = 0; i < list.size(); i++) {
 			SubsDTO sdto = new SubsDTO();
@@ -205,17 +206,20 @@ public class ProductController {
 			sdto.setSubs_Fdate(list.get(i).getCart_Fdate());
 			sdto.setSubs_Edate(list.get(i).getCart_Edate());
 			
+			sdtoList.add(sdto);
 			sSvc.addSubs(sdto);
 			cSvc.cart_delete(list.get(i).getCart_num());
+
+			if((i + 1) == list.size()) {
+				result = true;
+			}
 		}
-		//int cnt = sSvc.addSubs(sdto);
 		
-		//MemberDTO mdto = mSvc.getMember(sdto.getSubs_Member_Id());
+		MemberDTO mdto = mSvc.getMember(user_id);
 		
-//		if(cnt == 1) {
-//			// 구독 상품 결제 이메일 보내는 메소드
-//			mail.order(mdto.getName(), sdto);
-//		}
+		if(result) {
+			mail.listOrder(mdto.getName(), sdtoList);
+		}
 		
 		return "/product/orderComplete";
 	}

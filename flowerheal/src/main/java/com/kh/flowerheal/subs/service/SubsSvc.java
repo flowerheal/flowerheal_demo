@@ -36,6 +36,7 @@ public interface SubsSvc {
 	// 구독 만료
 	int endSubs(String snum);
 
-	
+	// 어드민 구독 리스트 불러오기
+	List<SubsDTO> getSubsList();
 	
 }

@@ -38,6 +38,7 @@
           <a href="${pageContext.request.contextPath }/product/2">
             <img src="${pageContext.request.contextPath }/resources/img/product/product1/product-2.jpg"
           			 class="bd-placeholder-img card-img-top" width="100%" height="100%" alt="#" />
+          			 </a>
             <div class="card-body">
               <p class="card-title h4">활력뿜뿜 치어업 패키지</p>
               <div class="row d-flex justify-content-between align-items-center">
@@ -51,9 +52,10 @@
         </div>
         <div class="col-md-6 my-md-2 col-lg-5 m-lg-4">
           <div class="card mb-4 shadow-sm">
-          <a href="${pageContext.request.contextPath }/product/3" />
+          <a href="${pageContext.request.contextPath }/product/3" >
            	<img src="${pageContext.request.contextPath }/resources/img/product/product1/product-3.jpg"
           			 class="bd-placeholder-img card-img-top" width="100%" height="100%" alt="#" />
+          			 </a>
             <div class="card-body">
               <p class="card-title h4">피부리셋 무지개 패키지 </p>
               <div class="row d-flex justify-content-between align-items-center">
@@ -68,9 +70,10 @@
 
         <div class="col-md-6 my-md-2 col-lg-5 m-lg-4">
           <div class="card mb-4 shadow-sm">
-          <a href="${pageContext.request.contextPath }/product/4" />
+          <a href="${pageContext.request.contextPath }/product/4" >
             <img src="${pageContext.request.contextPath }/resources/img/product/product1/product-4.jpg"
           			 class="bd-placeholder-img card-img-top" width="100%" height="100%" alt="#" />
+          			 </a>
             <div class="card-body">
               <p class="card-title h4">나만의 공간 패키지 </p>
               <div class="row d-flex justify-content-between align-items-center">

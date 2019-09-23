@@ -3,6 +3,7 @@ package com.kh.flowerheal.common.mail;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -116,7 +117,7 @@ public class GmailSend {
 					+ "		<h1>주문하신 상품이 발송되었습니다.</h1>"
 					+ "		<h3>배송 상품 : " + sdto.getSubs_Pname() + "</h3>"
 					+ "		<h3>구독 기간 : " + sdto.getSubs_Fdate() + " ~ " + sdto.getSubs_Edate() + "</h3>"
-					+ "		<h3>결제 금액 : " + sdto.getSubs_Price() + "</h3>"
+					+ "		<h3>결제 금액 : " + sdto.getSubs_Price() + "원</h3>"
 					+ "		<h3> 배송지   : " + sdto.getRoadAddrPart1() + " " + sdto.getAddrDetail()
 					+ ""
 					+ "</div>"
@@ -164,7 +165,7 @@ public class GmailSend {
 					+ "		<h1>구독 신청 안내 메일</h1>"
 					+ "		<h3>배송 상품 : " + sdto.getSubs_Pname() + "</h3>"
 					+ "		<h3>구독 기간 : " + sdto.getSubs_Fdate() + " ~ " + sdto.getSubs_Edate() + "</h3>"
-					+ "		<h3>결제 금액 : " + sdto.getSubs_Price() + "</h3>"
+					+ "		<h3>결제 금액 : " + sdto.getSubs_Price() + "원</h3>"
 					+ ""
 					+ "</div>"
 					, "text/html; charset=utf-8");	// 뒤에 charset=utf-8 를 붙여줘야 한글이 정상적으로 보입니다.
@@ -187,6 +188,65 @@ public class GmailSend {
 		seeResult();
 		return isSend;
 	}	// 결제 안내 이메일
+	
+	// 장바구니 리스트 안내 이메일 발송
+	public boolean listOrder(String name, List<SubsDTO> list) {
+		init();
+		boolean isSend = false;
+		
+		try {
+			// 수신자 설정
+			to = new InternetAddress(list.get(0).getSubs_Member_Id());
+			msg.setRecipient(Message.RecipientType.TO, to);
+			
+			// 제목 설정
+			// setSubject(" 이메일 제목 ", " 문자타입 " );
+			msg.setSubject("[꽃미힐미] " + name + "님 구독신청 감사합니다!", "UTF-8");
+			
+			// 내용 설정 - 사용안함
+			// msg.setText(content, "UTF-8");
+
+			// setContent( "  html문자를 넣어주세요.  " );
+			
+			StringBuffer content = new StringBuffer();
+						
+			content.append("<div>");
+			content.append("	<h1>구독 신청 안내 메일</h1>");
+			
+			int totalPrice = 0;
+			
+		    for(SubsDTO item : list){	
+		    	content.append("	<h3>배송 상품 : " + item.getSubs_Pname() + "</h3>");
+		    	content.append("		<h3>구독 기간 : " + item.getSubs_Fdate() + " ~ " + item.getSubs_Edate() + "</h3>");
+		    	content.append("	<h3>결제 금액 : " + item.getSubs_Price() + "원</h3>");
+		    	content.append("<br>");
+		    	totalPrice += item.getSubs_Price();
+		    }
+		    content.append("<h3>총 결제 금액 : " + totalPrice + "원</h3>");
+			content.append("</div>");
+			
+			msg.setContent(content.toString(), "text/html; charset=utf-8");
+			
+			
+			// 메일 송신
+			Transport.send(msg);
+			// 메일이 정상적으로 발송됌.
+			isSend = true;
+
+		} catch (AddressException addr_e) { // 예외처리 주소를 입력하지 않을 경우
+			System.out.println("메일주소 입력안해서 오류발생!!");
+			JOptionPane.showMessageDialog(null, "올바른 메일주소를 입력해주세요.", "메일주소입력", JOptionPane.ERROR_MESSAGE);
+			addr_e.printStackTrace();
+		} catch (MessagingException msg_e) { // 메시지에 이상이 있을 경우
+			System.out.println("메세지에 이상이 있습니다.");
+			JOptionPane.showMessageDialog(null, "메세지에 이상이 있을 경우", "오류발생", JOptionPane.ERROR_MESSAGE);
+			msg_e.printStackTrace();
+		}
+		
+		seeResult();
+		return isSend;
+	}	// 장바구니 리스트 안내 이메일 발송
+	
 	
 	
 	// 회원가입 이메일 인증

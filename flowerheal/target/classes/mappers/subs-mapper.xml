@@ -9,6 +9,15 @@
 			WHERE subs_num = #{snum}
 	</select>
 	
+	<!-- 최근배송지 정보 가져오기 -->
+	<select id="getLastOrderSDTO" parameterType="String" resultType="com.kh.flowerheal.subs.dto.SubsDTO">
+		SELECT *
+			FROM subs
+			WHERE subs_num = (SELECT MAX(subs_num)
+								FROM subs
+								WHERE subs_member_id= #{id})
+	</select>
+	
 	<!-- 회원이 구독한 구독 리스트 조회 -->
 	<select id="getMemberSubsList" parameterType="String" resultType="com.kh.flowerheal.subs.dto.SubsDTO">
 		SELECT *
@@ -84,5 +93,15 @@
 			FROM subs
 			WHERE subs_num = #{subs_num}
 	</select>
+
+
+	<!-- 어드민 구독관리 리스트 조회 -->
+	<select id="getSubsList" resultType="com.kh.flowerheal.subs.dto.SubsDTO">
+		SELECT *
+    		FROM subs
+    		WHERE subs_cnt &gt; 0
+    		ORDER BY subs_ddate ASC	
+	</select>
+
 
 </mapper>

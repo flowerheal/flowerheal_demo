@@ -94,4 +94,14 @@
 			WHERE subs_num = #{subs_num}
 	</select>
 
+
+	<!-- 어드민 구독관리 리스트 조회 -->
+	<select id="getSubsList" resultType="com.kh.flowerheal.subs.dto.SubsDTO">
+		SELECT *
+    		FROM subs
+    		WHERE subs_cnt &gt; 0
+    		ORDER BY subs_ddate ASC	
+	</select>
+
+
 </mapper>

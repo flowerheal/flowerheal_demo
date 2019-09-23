@@ -41,7 +41,7 @@
 
   </head>
   <body>
-
+ ${sessionScope }
   <header class="blog-header pt-4" id="blog-header">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col text-center">
@@ -53,6 +53,7 @@
 
 
  <nav class="navbar d-flex justify-content-end" id="headerLinks"> 
+
 			<c:choose>
 					<c:when test= "${empty sessionScope.user}">
 						<div>
@@ -63,11 +64,19 @@
 							<a class="px-2" href="#">ID/비밀번호 찾기</a>
 						</div>
 					</c:when>
+					<c:when test="${sessionScope.msg == 'IsAdmin' }">
+								<span class="px-2 greetMsg">${sessionScope.user.name}님 환영합니다.</span>
+								<span> | </span>
+								<a class="px-2" href="${pageContext.request.contextPath }/admin/subsList">구독관리</a>
+								<span> | </span>
+								<a class="px-2" href="javascript:logOut();">로그아웃</a>
+					</c:when>
+					
 					<c:otherwise>
 
 							<div>
 								<span class="px-2 greetMsg">${sessionScope.user.name}님 환영합니다.</span>
-								<span class="greetMsg"> | </span>
+								<span> | </span>
 								<a class="px-2" href="${pageContext.request.contextPath }/member/mypage/memberMyPage/${sessionScope.user.id}">마이페이지</a>
 								<span> | </span>
 								<a class="px-2" href="${pageContext.request.contextPath }/cart/cart2/${sessionScope.user.id}">장바구니</a>

@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.kh.flowerheal.common.mail.GmailSend;
 import com.kh.flowerheal.subs.dto.SubsDTO;
 
 @Repository
@@ -76,6 +75,11 @@ public class SubsDAOImplXML implements SubsDAO {
 	@Override
 	public int endSubs(String snum) {
 		return sqlSession.update("mappers.subs-mapper.endSubs", snum);
+	}
+
+	@Override
+	public List<SubsDTO> getSubsList() {
+		return sqlSession.selectList("mappers.subs-mapper.getSubsList");
 	}
 
 
