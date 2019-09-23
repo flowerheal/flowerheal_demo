@@ -1,3 +1,4 @@
+// *===== 배송비 로직 주석처리함 =====*
 $( document ).ready(function() {
 	//===== button 활성화 =====
 	$("#addToCartBtn").on("click",addToCartBtnF); //카트에 담기 버튼
@@ -8,39 +9,40 @@ $( document ).ready(function() {
 	let $option0 = parseInt($("#option0").val()); //꽃다발 & 화분 가격
 	let $option1 = parseInt($("#option1").val()); //구성품 1 가격
 	let $option2 = parseInt($("#option2").val()); //구성품 2 가격
-	let $productCost = parseInt($option0 + $option1 + $option2); // 상품 가격
-	$("#productCost").val($productCost); //가격 input 란에 삽입
+	// let $productCost = parseInt($option0 + $option1 + $option2); // 상품 가격
+	// $("#productCost").val($productCost); //가격 input 란에 삽입
 	
-	//배송비 : 2500원 / 3만원 이상 배송비 무료
-	let $postCost = 0;
-		if($productCost>=30000){ 
-			$postCost = 0;
-		}else{
-			$postCost = 2500;
-		}
-	$("#postCost").val($postCost);	//배송비 input 란에 삽입
-	//총액 = 상품 가격 + 배송비
-	let $product_Price = $productCost+$postCost; 
+	// //배송비 : 2500원 / 3만원 이상 배송비 무료
+	// let $postCost = 0;
+	// 	if($productCost>=30000){ 
+	// 		$postCost = 0;
+	// 	}else{
+	// 		$postCost = 2500;
+	// 	}
+	// $("#postCost").val($postCost);	//배송비 input 란에 삽입
+
+
+	let $product_Price = parseInt($option0 + $option1 + $option2); // 상품 가격
 	$("#product_Price").val($product_Price); //금액 input 란에 삽입
 
 	//====== 금액 계산 로직 : 체크박스 선택에 따를 가격 변동 ======
 $("input:checkbox").each(function(){
 	$(this).on("click",function(){
 		if(!$(this).is(":checked")){
-			$productCost = $productCost - parseInt($(this).val()); //checked 안한 경우	
+			$product_Price = $product_Price - parseInt($(this).val()); //checked 안한 경우	
 		}else{
-			$productCost = $productCost + parseInt($(this).val()); //다시 checked한 경우
+			$product_Price = $product_Price + parseInt($(this).val()); //다시 checked한 경우
 		}
 
-		$("#productCost").val($productCost);//바뀐 가격 input 란에 삽입
-		//바뀐 가격에 따른 배송비
-		if($productCost>=30000){
-				$postCost = 0;
-			}else{
-				$postCost = 2500;
-			}
-		$("#postCost").val($postCost);	//배송비 input 란에 삽입
-		$product_Price = $productCost+$postCost; //금액 = 바뀐가격 + 바뀐가격에 따른 배송비
+		// $("#productCost").val($productCost);//바뀐 가격 input 란에 삽입
+		// //바뀐 가격에 따른 배송비
+		// if($productCost>=30000){
+		// 		$postCost = 0;
+		// 	}else{
+		// 		$postCost = 2500;
+		// 	}
+		// $("#postCost").val($postCost);	//배송비 input 란에 삽입
+		// $product_Price = $productCost+$postCost; //금액 = 바뀐가격 + 바뀐가격에 따른 배송비
 		$("#product_Price").val($product_Price); 		 //금액 input 란에 삽입
 
 	});

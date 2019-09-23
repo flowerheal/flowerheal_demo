@@ -11,6 +11,9 @@ div, span{font-size:1rem;}
 }
 
 
+.itemDiv div{
+	padding :0;
+}
 
 
 @media screen and (min-width: 768px) {
@@ -39,9 +42,9 @@ input[type=checkbox] {
 	margin-bottom: 0;
 }
 label:before {
+  display:none;
   border-radius: 3px;
   content: "";
-  display:flex;
  
   width: 16px;
   height: 16px;
@@ -52,17 +55,17 @@ label:before {
 input[type=checkbox]:checked + label:before {
   content: "\2713";
   text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-  font-size: 15px;
+  font-size: 16px;
   color: #f3f3f3;
   text-align: center;
-  line-height: 20px;
+  line-height: 16px;
 }
 
 .itemBtns :nth-child(1){
 	margin-right: 0;
 }
 
-
+#changeItemBtn, #selectDeleteBtn{display:none}
 </style>
 <!-- Form CSS -->
 <link href="${pageContext.request.contextPath }/resources/css/form.css" rel="stylesheet">
@@ -82,12 +85,11 @@ input[type=checkbox]:checked + label:before {
 			<div class="col-lg-11 col-xl-9 mb-3" id="cartList">
 				<!--  ajax cartList로 불러오기-->
 			</div>
-				<button type="button" class="btn btn-sm btn-primary" id="selectDeleteBtn">선택삭제</button>
-			
-			
-			<div class="col-lg-11 mb-3 priceDiv">
+						
+			<div class="row col-lg-11 col-xl-9 mb-3 priceDiv d-flex justify-content-between">
+				<button type="button" class="btn btn-primary col-md-3" id="selectDeleteBtn">선택삭제</button>
+					<div class="col-md-8 col-lg-7  mx-auto" id="total_price">
 					<span>총 상품금액  </span>
-					<div class="col-lg-7 d-flex justify-content-between mx-auto" id="total_price">
 						<!-- 총 상품금액 여기에 -->
 					</div>
 			</div>
@@ -100,7 +102,7 @@ input[type=checkbox]:checked + label:before {
 	</section>
 </section>
 
-<script src="${pageContext.request.contextPath }/resources/js/cart.js"></script> 
+
 
 <script>
 
@@ -115,6 +117,7 @@ $(function(){
 });//end od function()
 
 
+//카트목록 보이기
 function cartList(id){
 	console.log(id);
 	let $id = id;
@@ -130,16 +133,20 @@ function cartList(id){
 			$.each(result,function(idx, cartList){
 				str += '    <div class="row cartList" data-cnum="' +cartList.cart_num+ '">';
 				str += '    <div class="row col-1 checkboxDiv">';
-				str += '      <input type="checkbox" name="check" class="itemCheck">';
-				str += '      <label for="itemCheck"></label>';
+				str += '      <input type="checkbox" name="itemCheck" id="itemCheck'+cartList.cart_num+'"';
+				str += '      	     value="'+cartList.cart_num+'">';
+				str += '      <label for="itemCheck'+cartList.cart_num+'"></label>';
 				str += '    </div>';
 				str += '    <div class="row col-11 itemDiv">';
-				str += '      <div class="row col-md-7 px-0">';
-				str += '        <div class="col-6"> ' + cartList.product_Name +' </div>';
-				str += '        <div class="col-3">' + cartList.product_Price + '원 </div>';
-				str += '        <div class="col-3">' + cartList.product_SubsCnt + '개월</div>';
+				str += '      <div class="row col-md-7 col-lg-8 px-0">';
+				str += '        <div class="col-md-6 col-lg-5" id="p_name"> ' + cartList.product_Name +' </div>';
+				str += '        <div class="col-7 col-md-4 col-lg-4" id="p_price">' + cartList.product_Price + '원 </div>';
+				str += '        <div class="col-5 col-md-2 col-lg-3" id="p_subsCnt">' + cartList.product_SubsCnt + '개월</div>';
+				str += '        <div class="col-md-12 col-md-5 text-right">' + cartList.cart_Fdate +' ~ '+ cartList.cart_Edate+ '</div>';
+				str += '      	<input type="hidden" id="p_Fdate" value='+cartList.cart_Fdate+'>';
+				str += '      	<input type="hidden" id="p_Edate" value='+cartList.cart_Edate+'>';
 				str += '      </div>';
-				str += '      <div class="row col-md-5 itemBtns">';
+				str += '      <div class="row col-md-5 col-lg-4 itemBtns">';
 				str += '        <button type="button" class="changeItembtn btn-sm btn-primary" id="changeItemBtn">구성 변경</button>';
 				str += '        <button type="button" class="delCartbtn btn-sm btn-primary" onclick="delCartF(this)">삭제</button>';
 				str += '      </div>';
@@ -168,7 +175,7 @@ function cartList(id){
 //총금액
 function total_price(id){
 	let $id = id;
-	let $url = "${pageContext.request.contextPath }/cartRest/cartList"; 
+	let $url = "${pageContext.request.contextPath }/cartRest/cart_totalPrice"; 
 	let str = "";
 	$.ajax({
 		type : "POST",    	 //http 전송 방식
@@ -230,7 +237,9 @@ function delCartF()
 }
 
 
-</script>
 
+
+</script>
+<script src="${pageContext.request.contextPath }/resources/js/cart.js"></script> 
 
 <jsp:include page="../footer.jsp" />

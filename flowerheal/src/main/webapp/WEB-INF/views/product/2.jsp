@@ -190,12 +190,14 @@ font-size:2rem;
 				    <!-- <button type="button" class="ml-5 btn product_SubsCnt_Btn btn btn-outline-warning">정기결제</button> -->  
 				</div>
 				<div class="row col-12 pb-3 d-flex justify-content-around orderOption4" id="orderCost">
-					<div class="col-12 price" style="text-align:right; font-size:1.5rem;">
+				<!-- 배송비 주석처리함 -->
+<!-- 					<div class="col-12 price" style="text-align:right; font-size:1.5rem;">
 					가격
 					<input type="text" style="border:none; text-align:right;"    name="productCost" id="productCost" readonly="readonly">원</div>
 					<div class="col-12 " style="text-align:right; font-size:1.5rem;">
 					배송비
 					<input type="text" style="border:none; text-align:right;"  name="postCost" id="postCost" readonly="readonly">원</div>
+					 -->
 					<div class="col-12 " style="text-align:right; font-size:1.5rem;">
 					총금액
 					<input type="text" style="border:none; text-align:right;"  name="product_Price" id="product_Price" readonly="readonly">원</div>

@@ -69,20 +69,20 @@ function replyList(id){
 		//응답 성공시 처리사항
 		success:function(result){		
 			$.each(result,function(idx, rec){
-				str += '<div class="col-12 outline px-0">';
+				str += '<div class="row col-12 outline px-0">';
 				str += '<div class="row col-12">';
 				str += '	<div class="col-3 px-0 TabletMode">상품명</div>';
 				str += '	<div class="col-md-8 px-0">'+rec.subs_Pname+'</div>';
 				str += '	</div>';
-				str += '			<div class="row">';
+				str += '			<div class="row col-12">';
 				str += '		<div class="col-4 px-0 PcMode">시작일 ~ 종료일</div>';
 				str += '					<div class="col-md-8 px-0">'+rec.subs_Fdate+' ~ '+rec.subs_Edate+'</div>';
 				str += '	</div>';
-				str += '		<div class="row">';
+				str += '		<div class="row col-12">';
 				str += '		<div class="col-4 px-0">배송예정일</div>';
 				str += '		<div class="col-7 px-0">19년 9월 8일</div>';
 				str += '		</div>';
-				str += '		<div class="row">';
+				str += '		<div class="row col-12">';
 				str += '			<button type="button" class="btn btn-sm btn-primary mr-2" id="deliveryInfoBtn">배송정보 변경</button>';
 				str += '			<button type="button" class="btn btn-sm btn-primary mx-3" id="subsCancleBtn">구독 취소</button>';
 				str += '			</div>';

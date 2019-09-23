@@ -1,6 +1,7 @@
 package com.kh.flowerheal.controller;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -80,8 +81,8 @@ public class ProductController {
 			@RequestParam String user_id,
 			@RequestParam String subs_Fdate,
 			@RequestParam String subs_Edate,
-			@RequestParam String productCost,
-			@RequestParam String postCost,
+//			@RequestParam String productCost,
+//			@RequestParam String postCost,
 			Model model) {
 		logger.info("orderPage() 호출됨");
 		MemberDTO mdto = mSvc.getMember(user_id);
@@ -90,9 +91,24 @@ public class ProductController {
 		model.addAttribute("pdto", pdto);
 		model.addAttribute("subs_Fdate", subs_Fdate);
 		model.addAttribute("subs_Edate", subs_Edate);
-		model.addAttribute("productCost", productCost);
-		model.addAttribute("postCost", postCost);
+//		model.addAttribute("productCost", productCost);
+//		model.addAttribute("postCost", postCost);
 		viewname = "/product/orderPage";
+		return viewname;
+	}
+	// 카트 -> 주문하기 페이지
+	@PostMapping("/orderPage2")
+	public String orderPage2(
+			@RequestParam String user_id,
+			Model model) {
+		logger.info("orderPage2() 호출됨");
+		MemberDTO mdto = mSvc.getMember(user_id);
+		model.addAttribute("mdto",mdto);
+		List<CartDTO> list = cSvc.getCartList(user_id);
+		model.addAttribute("list", list);
+		logger.info(user_id);
+		logger.info(list.toString());
+		viewname = "/product/orderPage2";
 		return viewname;
 	}
 	
@@ -116,6 +132,7 @@ public class ProductController {
 		
 		return "/product/orderComplete";
 	}
+
 	
 	// 장바구니 담기 페이지
 	@PostMapping("/addToCart")
@@ -125,8 +142,8 @@ public class ProductController {
 			@RequestParam String user_id,
 			@RequestParam Date subs_Fdate,
 			@RequestParam Date subs_Edate,
-			@RequestParam String productCost,
-			@RequestParam String postCost,
+//			@RequestParam String productCost,
+//			@RequestParam String postCost,
 			Model model) {
 		logger.info("addToCart() 호출됨");
 		MemberDTO mdto = mSvc.getMember(user_id);
@@ -147,7 +164,50 @@ public class ProductController {
 		return "redirect:/cart/cart2/" + user_id;
 	}
 
-
+	
+	// orderPage2 기능 구현
+	@PostMapping("/orderFromCart")
+	public String addSubs2(
+			@RequestParam("subs_Member_Id") String user_id,
+			@RequestParam("subs_Email") String subs_Email,
+			@RequestParam("zipNo") String zipNo,
+			@RequestParam("roadAddrPart1") String roadAddrPart1,
+			@RequestParam("addrDetail") String addrDetail) {
+		
+		System.out.println("orderPage2 기능구현");
+		System.out.println("===============================");
+		
+		List<CartDTO> list = cSvc.getCartList(user_id);
+		
+		for(int i = 0; i < list.size(); i++) {
+			SubsDTO sdto = new SubsDTO();
+			sdto.setSubs_Member_Id(user_id);
+			sdto.setSubs_Email(subs_Email);
+			
+			sdto.setSubs_Pname(list.get(i).getProduct_Name());
+			sdto.setSubs_Product(Integer.parseInt(list.get(i).getProduct_Num()));
+			sdto.setSubs_Cnt(list.get(i).getProduct_SubsCnt());
+			sdto.setSubs_Price(list.get(i).getProduct_Price());
+			sdto.setZipNo(zipNo);
+			sdto.setRoadAddrPart1(roadAddrPart1);
+			sdto.setAddrDetail(addrDetail);
+			sdto.setSubs_Fdate(list.get(i).getCart_Fdate());
+			sdto.setSubs_Edate(list.get(i).getCart_Edate());
+			
+			sSvc.addSubs(sdto);
+			cSvc.cart_delete(list.get(i).getCart_num());
+		}
+		//int cnt = sSvc.addSubs(sdto);
+		
+		//MemberDTO mdto = mSvc.getMember(sdto.getSubs_Member_Id());
+		
+//		if(cnt == 1) {
+//			// 구독 상품 결제 이메일 보내는 메소드
+//			mail.order(mdto.getName(), sdto);
+//		}
+		
+		return "/product/orderComplete";
+	}
 	
 	// 구독 상품 배송지 변경 폼 보여주기
 	@GetMapping("/changeAddr/{snum}")

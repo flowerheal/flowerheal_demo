@@ -77,15 +77,18 @@ div{
 #agreementMsg:hover{
 	cursor: pointer;
 }
-.orderProductCheck .row:nth-child(2){  
+.orderProductCheck .row{  
 	outline: 1px solid #F5B6A8;
 }
-.orderProductCheck .row:nth-child(2) div{
-	font-size: 1.2rem;
-}
-
 .orderProductCheck .row div{
+	font-size: 1.2rem;
 	text-align: center;
+}
+.orderProductCheck .row:nth-child(1){  
+	outline: none;
+}
+.orderProductCheck .row:nth-child(1) div{
+	font-size: 1.4rem;
 }
 
 
@@ -190,23 +193,8 @@ div{
 			String product_SubsCnt = request.getParameter("product_SubsCnt");
 		%>
 
-	<form action="${pageContext.request.contextPath}/product/order" method="POST">
-	<!-- subs_Member_Id : 구독자 아이디
-			 subs_Product : 구독상품번호
-			 subs_Fdate : 구독 시작일
-			 subs_Edate : 구독 종료일
-			 subs_Cnt : 남은 구독 횟수 -->
-		${mdto} <br>
-		${pdto} <br>
-		
+	<form action="${pageContext.request.contextPath}/product/orderFromCart" method="POST">
 		<input type="text" name="subs_Member_Id" id="subs_Member_Id" value="${sessionScope.user.id }">
-		<input type="text" name="subs_Product" id="subs_Product" value="${pdto.product_Num}">
-		<input type="text" name="subs_Fdate" id="subs_Fdate" value="${subs_Fdate}">
-		<input type="text" name="subs_Edate" id="subs_Edate" value="${subs_Edate}">		
-		<input type="text" name="subs_Cnt" id="subs_Cnt" value="<%=product_SubsCnt%>">
-		<input type="text" name="subs_Price" id="subs_Price" value="${pdto.product_Price}">
-		<input type="text" name="subs_Pname" id="subs_Pname" value="${pdto.product_Name}">
-		
 		
 		<div class="row my-3" style="height: auto; width: 100%; border:2px solid #fff;">
 			<div class="col-lg-11 mb-3 pt-5 ">
@@ -217,24 +205,21 @@ div{
 						<div class="col-md-4 col-lg-4">결제금액</div>
 						<div class="col-md-2 col-lg-3 px-2">구독기간</div>
 					</div>
+					
+					<c:forEach var="rec" items="${list }">
 					<div class="row d-flex py-2">
-						<div class="col-md-6 col-lg-5">${pdto.product_Name}</div>
-						<div class="col-7 col-md-4 col-lg-4">매월 ${pdto.product_Price}원</div>
-						<div class="col-5 col-md-2 col-lg-3"><%=product_SubsCnt %>개월</div>
-						<div class="col-md-12 col-md-5 text-right">${subs_Fdate} ~ ${subs_Edate}</div>
+						<div class="col-md-6 col-lg-5">${rec.product_Name}</div>
+						<div class="col-7 col-md-4 col-lg-4">매월 ${rec.product_Price}원</div>
+						<div class="col-5 col-md-2 col-lg-3">${rec.product_SubsCnt}개월</div>
+						<div class="col-md-12 col-md-5 text-right">${rec.cart_Fdate} ~ ${rec.cart_Edate}</div>
 					</div>
+					</c:forEach>
 				</div>
 			</div>
 			<div class="col-lg-11 mb-3 deliveryInfoDiv">
 				<div class="accordion active"><span>배송정보 입력</span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></div>
 				<div class="panel deliveryInfo">
-
-
-
-<!-- 				<div class="col-lg-10 mb-3"> -->
-<!-- 					<div class="row" id="addressForm"> -->
 					<div class="row  justify-content-end addressFromBtns">
-					<!-- <input type="hidden" name="address" id="address"> -->
 					<button type="button" class="btn addressFrom_Btn " style="color:#FF9484" id="recentAddress">
 						<span>최근 배송지</span>
 					</button>
@@ -286,12 +271,21 @@ div{
 				</div>
 			</div>
 			<div class="col-lg-11 mb-3 pb-5 priceDiv">
-				<div class="accordion active" style="cursor:default;"><span>최종 금액</span><span>${pdto.product_Price}원</span></div>
-<%-- 				<div class="panel row">
-					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>가격 </span><span>${productCost}원</span></div>
-					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>배송비</span><span>${postCost}원</span></div>
-					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>금액 </span><span>${pdto.product_Price}원</span></div>
-				</div> --%>
+				<div class="accordion active" style="cursor:default;">
+					<span>최종 금액</span>
+					<span id="p_All_Price">
+						<c:set var = "total" value = "0" />
+						<c:forEach var="rec" items="${list}" varStatus="status">     
+						<c:set var= "total" value="${total + rec.product_Price}"/>
+						</c:forEach>
+						<c:out value="${total}"/>원&nbsp;&nbsp;
+					</span>
+				</div>
+<!-- 				<div class="panel row">
+					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>가격 </span><span id="p_All_Cost"></span></div>
+					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>배송비</span><span id="p_All_Post"></span></div>
+					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>금액 </span><span id="p_All_Price"></span></div>
+				</div> -->
 			</div>
 			<div class="row col-lg-11 mb-3 pb-5 agreementDiv">
 				<input type="hidden" name="subs_Email" id="subs_Email">

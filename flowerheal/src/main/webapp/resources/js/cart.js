@@ -14,8 +14,38 @@ function keepShoppingBtnF()
 	document.location.href = "/flowerheal/product/productList";
 }
 
-function orderBtnF()
-{
+function orderBtnF(){
+	let $id = memberId;
 	alert("결제페이지로 이동합니다");
+	$.ajax({
+		type : "POST",
+		url : "cartToOrder",
+		data : {"id":$id},
+		success:function(result){	
+		console.log(result);
+			var form = document.createElement("form");
+			form.action = "/flowerheal"+result;
+			form.method = "POST";
+
+			var $input = document.createElement("input");
+			$input.setAttribute("type", "hidden");
+			$input.setAttribute('name', "user_id");
+			$input.setAttribute("value", $id);
+			form.appendChild($input);
+
+
+			document.body.appendChild(form);
+			form.submit();
+				
+		},
+			//응답 실패시 처리사항
+		error:function(xhr, status, err){		
+			console.log("code:"+xhr.status);
+			console.log("message:"+xhr.responseText );
+			console.log("status:"+status);
+			console.log("err:"+err);
+		}	
+	});
+
 }
 
