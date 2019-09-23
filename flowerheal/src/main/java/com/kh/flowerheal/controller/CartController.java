@@ -1,5 +1,6 @@
 package com.kh.flowerheal.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kh.flowerheal.cart.dao.CartDTO;
+import com.kh.flowerheal.cart.dto.CartDTO;
 import com.kh.flowerheal.cart.service.cartSVC;
 
 @Controller
@@ -34,8 +35,10 @@ public class CartController {
 	{
 		logger.info("cartList() 호출");
 		
-		List<CartDTO> cdto = cartSVC.getCartList(id);
-		model.addAttribute("cdto", cdto);
+//		List<CartDTO> cdto = cartSVC.getCartList(id);
+		List<CartDTO> list = new ArrayList<CartDTO>();
+		
+		model.addAttribute("list", list);
 		return "/product/cart";
 	}
 	

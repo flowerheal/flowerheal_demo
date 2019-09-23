@@ -2,8 +2,7 @@ package com.kh.flowerheal.cart.service;
 
 import java.util.List;
 
-import com.kh.flowerheal.cart.dao.CartDTO;
-import com.kh.flowerheal.product.dto.ProductDTO;
+import com.kh.flowerheal.cart.dto.CartDTO;
 
 public interface cartSVC{
 	

@@ -1,5 +1,7 @@
 package com.kh.flowerheal.controller;
 
+import java.sql.Date;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kh.flowerheal.cart.dao.CartDTO;
+import com.kh.flowerheal.cart.dto.CartDTO;
 import com.kh.flowerheal.cart.service.cartSVC;
 import com.kh.flowerheal.common.mail.GmailSend;
 import com.kh.flowerheal.member.dto.MemberDTO;
@@ -121,8 +123,8 @@ public class ProductController {
 			@ModelAttribute CartDTO cdto,
 			@RequestParam String product_Num,
 			@RequestParam String user_id,
-			@RequestParam String subs_Fdate,
-			@RequestParam String subs_Edate,
+			@RequestParam Date subs_Fdate,
+			@RequestParam Date subs_Edate,
 			@RequestParam String productCost,
 			@RequestParam String postCost,
 			Model model) {
@@ -132,6 +134,9 @@ public class ProductController {
 
 		//cart DB에 해당 상품 넣음
 		logger.info("addToCart() 호출됨");
+		cdto.setCart_Fdate(subs_Fdate);
+		cdto.setCart_Edate(subs_Edate);
+		
 		int result = cSvc.cart_insert(cdto);
 		logger.info("수정결과"+result);
 		

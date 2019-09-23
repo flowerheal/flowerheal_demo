@@ -32,7 +32,7 @@
 	
 	form .row,
 	.form .row{
-		margin: 0.5rem 0 !important;
+		margin: 0.5rem 0;
 		justify-content: center;
 	}
 	

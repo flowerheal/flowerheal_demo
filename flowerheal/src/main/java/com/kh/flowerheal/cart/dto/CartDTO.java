@@ -1,6 +1,10 @@
-package com.kh.flowerheal.cart.dao;
+package com.kh.flowerheal.cart.dto;
+
+import java.sql.Date;
 
 import javax.persistence.Entity;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -28,6 +32,14 @@ public class CartDTO {
 	
 	//구독횟수
 	private int product_SubsCnt;
+	
+	//상품 구독시작일
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
+	private Date cart_Fdate;	
+	
+	//상품 구독종료일
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
+	private Date cart_Edate;		
 	
 
 }

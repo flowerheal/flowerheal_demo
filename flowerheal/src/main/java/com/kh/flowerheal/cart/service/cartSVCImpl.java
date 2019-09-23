@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.kh.flowerheal.cart.dao.CartDAO;
-import com.kh.flowerheal.cart.dao.CartDTO;
-import com.kh.flowerheal.product.dto.ProductDTO;
+import com.kh.flowerheal.cart.dto.CartDTO;
 
 
 @Service

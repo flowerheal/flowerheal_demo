@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kh.flowerheal.cart.dao.CartDTO;
+import com.kh.flowerheal.cart.dto.CartDTO;
 import com.kh.flowerheal.cart.service.cartSVC;
 
 

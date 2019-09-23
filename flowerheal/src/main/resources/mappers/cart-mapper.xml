@@ -9,9 +9,9 @@
 	<!-- 카트에 상품 담기 -->
 	<insert id="cart_insert" parameterType="com.kh.flowerheal.cart.dao.CartDTO">
 		insert into cart(cart_num, cart_name, cart_id, cart_price, 
-							cart_cnt, cart_productnum)
+							cart_cnt, cart_productnum, cart_Fdate, cart_Edate)
 			   		values(cart_seq.nextVal, #{product_Name}, #{user_id}, #{product_Price}, 
-			   				#{product_SubsCnt}, #{product_Num})
+			   				#{product_SubsCnt}, #{product_Num}, #{cart_Fdate}, #{cart_Edate})
 			   <!-- 이곳의 product_price는 결제단에서 받아오는 product_price와 동일 -->
 	</insert>
 	
@@ -28,7 +28,8 @@
 	<!-- 카트 상품 리스트 불러오기 -->
 	<select id="getCartList" parameterType="String" resultType="com.kh.flowerheal.cart.dao.CartDTO">
 		select cart_num, cart_name "product_Name", cart_id "user_id", 
-				cart_price "product_Price", cart_cnt "product_SubsCnt", cart_productnum "product_Num"
+					 cart_price "product_Price", cart_cnt "product_SubsCnt",
+					 cart_productnum "product_Num", cart_Fdate, cart_Edate
 			from cart where cart_id = #{id}
 	</select>
 	

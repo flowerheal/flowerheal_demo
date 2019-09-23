@@ -44,7 +44,7 @@ public class ProductRestfulController {
 	logger.info("최근 구매상품 호출");
 
 	ResponseEntity<SubsDTO> res = null;
-	SubsDTO sdto = null;
+	SubsDTO sdto = new SubsDTO();
 	try {
 	    sdto = sSvc.getLastOrderSDTO(id);
 	    res = new ResponseEntity<SubsDTO>(sdto, HttpStatus.OK); // 200
