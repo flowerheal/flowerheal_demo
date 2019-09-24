@@ -4,6 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- CSS -->
 <link href="${pageContext.request.contextPath }/resources/css/orderPage.css" rel="stylesheet">
+
+
 <style>
 /* div.accordion */
 .accordion {

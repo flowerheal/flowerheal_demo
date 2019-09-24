@@ -2,71 +2,78 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<style>
-div, span{font-size:1rem;}
-
-/* 계속쇼핑하기/주문결제하기 버튼 감싸는 div 태그 */
-.orderOrNotDiv{
- 	display: flex;
-}
-
-
-.itemDiv div{
-	padding :0;
-}
-
-
-@media screen and (min-width: 768px) {
-	div,span{font-size:1.1rem;}
-}
-@media screen and (min-width: 992px) {
-	div,span{font-size:1.25rem;}
-}
-
-.cartList{
-	outline: 1px solid gray;
-	padding:0.5rem;
-}
-.cartList div{
-	display:flex;
-	justify-content: center;
-	margin: auto 0;
-}
-input[type=checkbox] {
-  display: none;
-}
-.checkboxDiv{
-	margin:auto 0 !important;
-}
-.checkboxDiv label{
-	margin-bottom: 0;
-}
-label:before {
-  display:none;
-  border-radius: 3px;
-  content: "";
- 
-  width: 16px;
-  height: 16px;
-
-  background-color: #aaa;
-  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
-}
-input[type=checkbox]:checked + label:before {
-  content: "\2713";
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-  font-size: 16px;
-  color: #f3f3f3;
-  text-align: center;
-  line-height: 16px;
-}
-
-.itemBtns :nth-child(1){
-	margin-right: 0;
-}
-
-#changeItemBtn, #selectDeleteBtn{display:none}
-</style>
+	<style>
+	div, span{font-size:1rem;}
+	
+	/* 계속쇼핑하기/주문결제하기 버튼 감싸는 div 태그 */
+	.orderOrNotDiv{
+	 	display: flex;
+	}
+	
+	
+	.itemDiv div{
+		padding :0;
+	}
+	
+	
+	@media screen and (min-width: 768px) {
+		div,span{font-size:1.1rem;}
+	}
+	@media screen and (min-width: 992px) {
+		div,span{font-size:1.25rem;}
+	}
+	
+	.cartList{
+		outline: 1px solid #D5D5D5;
+		padding:0.5rem;
+	}
+	.cartList div{
+		display:flex;
+		justify-content: center;
+		margin: auto 0;
+	}
+	input[type=checkbox] {
+	  display: none;
+	}
+	.checkboxDiv{
+		margin:auto 0 !important;
+	}
+	.checkboxDiv label{
+		margin-bottom: 0;
+	}
+	label:before {
+	  display:none;
+	  border-radius: 3px;
+	  content: "";
+	 
+	  width: 16px;
+	  height: 16px;
+	
+	  background-color: #aaa;
+	  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+	}
+	input[type=checkbox]:checked + label:before {
+	  content: "\2713";
+	  text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	  font-size: 16px;
+	  color: #f3f3f3;
+	  text-align: center;
+	  line-height: 16px;
+	}
+	
+	.itemBtns :nth-child(1){
+		margin-right: 0;
+	}
+	
+	#changeItemBtn, #selectDeleteBtn{display:none}
+	
+	
+	.btn{
+	/* background: #FFA59C; */
+    color:white !important;  /*글색깔*/
+	}
+	
+	</style>
 <!-- Form CSS -->
 <link href="${pageContext.request.contextPath }/resources/css/form.css" rel="stylesheet">
 
@@ -87,16 +94,16 @@ input[type=checkbox]:checked + label:before {
 			</div>
 						
 			<div class="row col-lg-11 col-xl-9 mb-3 priceDiv d-flex justify-content-between">
-				<button type="button" class="btn btn-primary col-md-3" id="selectDeleteBtn">선택삭제</button>
+				<button type="button" class="btn col-md-3"  id="selectDeleteBtn">선택삭제</button>
 					<div class="col-md-8 col-lg-7 d-flex justify-content-between mx-auto" id="total_price">
 					
 						<!-- 총 상품금액 여기에 -->
 					</div>
 			</div>
 
-			<div class="col-md-9 mb-3 orderOrNotDiv">
-				<button type="button" class="btn btn-primary" id="keepShoppingBtn">계속 쇼핑하기</button>
-				<button type="button" class="btn btn-primary" id="orderBtn">주문결제하기</button>
+			<div class="col-4orderOrNotDiv">
+				<button type="button" class="btn" style="background: #FFA59C;" id="keepShoppingBtn">계속 쇼핑하기</button>
+				<button type="button" class="btn" style="background: #FFA59C;" id="orderBtn">주문결제하기</button>
 			</div>
 		</div>
 	</section>

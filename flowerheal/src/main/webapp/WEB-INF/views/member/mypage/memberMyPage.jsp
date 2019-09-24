@@ -7,7 +7,7 @@
 
 	
 	 .outline{
-		outline:1px solid gray;
+		outline:1px solid #D5D5D5;
 	} 
 	
 	
@@ -20,6 +20,8 @@
 			display:none;
 		}
 	}
+	
+	
 
 
 </style>
@@ -77,20 +79,21 @@ function subsList(id){
 				if(rec.subs_Check =="Y"){
 					str += '<div class="row col-12 outline px-0" data-snum="'+rec.subs_num+'">';
 					str += '<div class="row col-12">';
-					str += '	<div class="col-3 px-0 TabletMode">상품명</div>';
-					str += '	<div class="col-md-8 px-0">'+rec.subs_Pname+'</div>';
+					str += '	<div class="col-3 px-0 TabletMode" >상품명</div>';
+					str += '	<div class="col-md-8 px-0" style="font-weight:bold; color:#FF9E81;">'+rec.subs_Pname+'</div>';
 					str += '	</div>';
 					str += '	<div class="row col-12">';
 					str += '		<div class="col-4 px-0 PcMode">시작일 ~ 종료일</div>';
-					str += '		<div class="col-md-8 px-0">'+rec.subs_Fdate+' ~ '+rec.subs_Edate+'</div>';
+					str += '		<div class="col-md-8 px-0" style="font-weight:bold;color:#4C4C4C;">'+rec.subs_Fdate+' ~ '+rec.subs_Edate+'</div>';
 					str += '	</div>';
 					str += '	<div class="row col-12">';
 					str += '		<div class="col-4 px-0">배송예정일</div>';
-					str += '		<div class="col-7 px-0">'+rec.subs_Fdate+'</div>';
+					str += '		<div class="col-7 px-0" style="font-weight:bold;color:#4C4C4C;">'+rec.subs_Fdate+'</div>';
 					str += '	</div>';
-					str += '	<div class="row col-12">';
-					str += '		<button type="button" class="btn btn-sm btn-primary mr-2 deliveryInfoBtn">배송정보 변경</button>';
-					str += '		<button type="button" class="btn btn-sm btn-primary mx-3 subsCancleBtn">구독 취소</button>';
+					str += '	<div class="row col-12 text-right">';
+					str += '		<button type="button" class="btn btn-sm btn mr-2 deliveryInfoBtn " style="background:#F59E85; color:#fff;">배송정보 변경</button>';
+					str += '		<button type="button" class="btn btn-sm btn mx-3 subsCancleBtn" style="background:#F59E85; color:#fff;">구독 취소</button>';
+					
 					str += '	</div>';
 					str += '</div>';
 					Y_Num += 1;
