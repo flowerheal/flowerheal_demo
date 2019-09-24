@@ -3,10 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<style>
-/* .orderProductCheck .deleteBtn a{
-	background: lightpink;
-} */
+	<style>
+	 .orderProductCheck .deleteBtn a{
+		background: #FFD3B0;
+		color:white !important;
+	} 
 
 
   .modify{

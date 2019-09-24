@@ -5,117 +5,117 @@
 
 <!-- CSS -->
 <link href="${pageContext.request.contextPath }/resources/css/form.css" rel="stylesheet">
-<style>
-.container>.form{ 
-	width:90%;
-	flex-flow: wrap-reverse;
-	justify-content:start;
-}
-.form-row{
-	width: 100%;
-}
-/* div.accordion */
-.accordion {
-  background-color: #FFF2E6;
-  color: #444;
-  font-weight: bold;
-	/* cursor: pointer; */
-	padding: 0.5rem;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: 0.4s;
-  display: flex;
-	justify-content: space-around;
-}
-
-	
-	/* accordion 중에 나의리뷰, 1:1리뷰*/
-	.accordion.active {
-	  background: #FFDEC9;
+	<style>
+	.container>.form{ 
+		width:90%;
+		flex-flow: wrap-reverse;
+		justify-content:start;
 	}
-	/* accordion 중에 나의리뷰, 1:1리뷰 hover하면 커서:포인터, 배경색 바뀜 */
-	.accordion.active:hover {
-		cursor: pointer;
-	  background: #FFBDB0;
-	  color:#fff;
+	.form-row{
+		width: 100%;
+	}
+	/* div.accordion */
+	.accordion {
+	  background-color: #FFF2E6;
+	  color: #444;
+	  font-weight: bold;
+		/* cursor: pointer; */
+		padding: 0.5rem;
+	  width: 100%;
+	  text-align: left;
+	  border: none;
+	  outline: none;
+	  transition: 0.4s;
+	  display: flex;
+		justify-content: space-around;
 	}
 	
-	
-	/* accordion 안에 글씨와 화살표 크기 조절 */
-	.accordion span,
-	.accordion i,
-	div{
-		font-size: 1rem;
-		margin: auto 0;
-	}
-
-
-
-
-/* div.accordion 누르면 나오는 div.panel */
-.panel {
-  padding: 0 0.25rem;
-  background-color: white;
-  display: block;
-  overflow: hidden;
-}
-
-.pannel div{
-	padding : 0;
-}
-.panel .row.noMobile{display:none;}
-.panel .row{
-	display: flex;
-	flex-flow: column wrap;
-}
-.panel .row .col{
-	display: flex;
-	justify-content: center;
-
-}
-.panel .row a{
-	width: 100%;
-	text-align: center;
-	margin: 0.25rem 0;
-     /* background:white; */ /* 해당 페이지 고정될때 표시되는 색*/
-}
-/* 
-  .subInfoChange a{ 
-   color: #FF9268;
-	font-weight: bold;
 		
-	}  */ /*개인정보 스타일*/
+		/* accordion 중에 나의리뷰, 1:1리뷰*/
+		.accordion.active {
+		  background: #FFDEC9;
+		}
+		/* accordion 중에 나의리뷰, 1:1리뷰 hover하면 커서:포인터, 배경색 바뀜 */
+		.accordion.active:hover {
+			cursor: pointer;
+		  background: #FFBDB0;
+		  color:#fff;
+		}
+		
+		
+		/* accordion 안에 글씨와 화살표 크기 조절 */
+		.accordion span,
+		.accordion i,
+		div{
+			font-size: 1rem;
+			margin: auto 0;
+		}
 	
-.panel .row a:hover{
-	color: #FF9268;
-	font-weight: bold;
-}
-
-
-/* 태블릿 - 768px 이상 */
-@media screen and (min-width: 768px) {
-.accordion{  padding: 18px;}
-.panel .row.noMobile{display:flex;}
-	/* accordion 안에 글씨와 화살표 크기 조절 */
-	.accordion span,
-	.accordion i,
-	div{
-		font-size: 1.1rem;
+	
+	
+	
+	/* div.accordion 누르면 나오는 div.panel */
+	.panel {
+	  padding: 0 0.25rem;
+	  background-color: white;
+	  display: block;
+	  overflow: hidden;
 	}
-
-}
-
-@media screen and (min-width: 992px) {
-	/* accordion 안에 글씨와 화살표 크기 조절 */
-	.accordion span,
-	.accordion i,
-	div{
-		font-size: 1.2rem;
+	
+	.pannel div{
+		padding : 0;
 	}
-
-}
+	.panel .row.noMobile{display:none;}
+	.panel .row{
+		display: flex;
+		flex-flow: column wrap;
+	}
+	.panel .row .col{
+		display: flex;
+		justify-content: center;
+	
+	}
+	.panel .row a{
+		width: 100%;
+		text-align: center;
+		margin: 0.25rem 0;
+	     /* background:white; */ /* 해당 페이지 고정될때 표시되는 색*/
+	}
+	/* 
+	  .subInfoChange a{ 
+	   color: #FF9268;
+		font-weight: bold;
+			
+		}  */ /*개인정보 스타일*/
+		
+	.panel .row a:hover{
+		color: #FF9268;
+		font-weight: bold;
+	}
+	
+	
+	/* 태블릿 - 768px 이상 */
+	@media screen and (min-width: 768px) {
+	.accordion{  padding: 18px;}
+	.panel .row.noMobile{display:flex;}
+		/* accordion 안에 글씨와 화살표 크기 조절 */
+		.accordion span,
+		.accordion i,
+		div{
+			font-size: 1.1rem;
+		}
+	
+	}
+	
+	@media screen and (min-width: 992px) {
+		/* accordion 안에 글씨와 화살표 크기 조절 */
+		.accordion span,
+		.accordion i,
+		div{
+			font-size: 1.2rem;
+		}
+	
+	}
 
 
  

@@ -3,142 +3,140 @@
 		pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<style>
-
-.headtext{
-font-size:2rem;
-}
-
-
-/* 카트에 담기, 주문하기 */
-.submit_checkout {
-	position: relative;
-	z-index: 0;
-	height: auto; 
-}
-.btn-black{
-	width: 100%;
-	height: 4rem;
-	margin: 0.5rem 0;
-	font-size: 1.5rem !important;
-    border:1px solid #FFA59C !important;
-   /*  border-radius: 2em;  outline 으로 해서 안되는거 같음*/ 
-   /*  background-color: #FFA59C;  안먹음*/
-}
-
-.btn-black:hover{ 
-
- background-color: #FFA59C;
- color:white !important;  /*글색깔*/
-} 
-
-.btn-black:hover{ 
-
- background-color: #FFA59C;
- color:white !important;  /*글색깔*/
-} 
-
-
-
-/* 구독기간 버튼 */
-
-
-.product_SubsCnt_Btn:hover{
-	background: none;
 	
-}
-.product_SubsCnt_Btn.active{
-	background: warning !important;
-    
-}
-
-/* form */
-.form-row{
-	width: 100%;
-}
-.form-row div{
-	text-align: center;
-}
-.form-row #productName{
-	font-size: 1.5rem;
-}
- /* .form-row input{
-	width: 100%;
-	margin-bottom: 1rem;
-} */
-.orderOption1{ /*orderDate*/
-	  /*주문 forom box줄*/
+	<style>
 	
-	font-size: 1.5rem;
-	
-}
-.orderOption2{ /*orderMore*/
-     /*주문 forom box줄*/
-	font-size: 1.2rem;
-	
-}
-.orderOption3{ /*ordersubBtn*/
-	/* outline: 1px solid #E88E9D; */ /*주문 forom box줄*/
-	font-size: 1.5rem;
-	
-}
-.orderOption4{ /*orderCost*/
-  font-size:1.2rem;
-
-}
-
-/* Style the buttons that are used to open and close the accordion panel */
-.accordion { /*orederMore*/
-/*   background-color: #eee; */
-  color: #FFA09B;
-  cursor: pointer;
-  padding: 15px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: 1px solid #FFA59C ;
-  transition: 0.4s;
-  font-size:1.5rem;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.accordion.active, .accordion:hover {
-  background-color: #FFA59C;
-  width: 100%;
-  color:white !important;  /*글색깔*/
-}
-
-/* Style the accordion panel. Note: hidden by default */
-.panel {
-  padding: 0 20px;
-  background-color: white;
-  display: none;
-  overflow: hidden;
-}
-
-
-@media (min-width: 768px) {
-.form-row #productName{
-	font-size: 1.75rem;
-}
-
-
-}
-
-	p {  /*가격들*/
-	 font-size: 100px;
-	}
-	
-	button{
-	width:120px;
-	height:35px;
-	
+	.headtext{
+	font-size:2rem;
 	}
 	
 	
-
-</style>
+	/* 카트에 담기, 주문하기 */
+	.submit_checkout {
+		position: relative;
+		z-index: 0;
+		height: auto; 
+	}
+	.btn-black{
+		width: 100%;
+		height: 4rem;
+		margin: 0.5rem 0;
+		font-size: 1.5rem !important;
+	    border:1px solid #FFA59C !important;
+	   /*  border-radius: 2em;  outline 으로 해서 안되는거 같음*/ 
+	   /*  background-color: #FFA59C;  안먹음*/
+	}
+	
+	.btn-black:hover{ 
+	
+	 background-color: #FFA59C;
+	 color:white !important;  /*글색깔*/
+	} 
+	
+	.btn-black:hover{ 
+	
+	 background-color: #FFA59C;
+	 color:white !important;  /*글색깔*/
+	} 
+	
+	
+	
+	/* 구독기간 버튼 */
+	
+	
+	.product_SubsCnt_Btn:hover{
+		background: none;
+		
+	}
+	.product_SubsCnt_Btn.active{
+		background: warning !important;
+	    
+	}
+	
+	/* form */
+	.form-row{
+		width: 100%;
+	}
+	.form-row div{
+		text-align: center;
+	}
+	.form-row #productName{
+		font-size: 1.5rem;
+	}
+	 /* .form-row input{
+		width: 100%;
+		margin-bottom: 1rem;
+	} */
+	.orderOption1{ /*orderDate*/
+		  /*주문 forom box줄*/		
+		font-size: 1.5rem;		
+	}
+	.orderOption2{ /*orderMore*/
+	     /*주문 forom box줄*/
+		font-size: 1.2rem;
+		
+	}
+	.orderOption3{ /*ordersubBtn*/
+		/* outline: 1px solid #E88E9D; */ /*주문 forom box줄*/
+		font-size: 1.5rem;
+		
+	}
+	.orderOption4{ /*orderCost*/
+	  font-size:1.2rem;
+	
+	}
+	
+	/* Style the buttons that are used to open and close the accordion panel */
+	.accordion { /*orederMore*/
+	/*   background-color: #eee; */
+	  color: #FFA09B;
+	  cursor: pointer;
+	  padding: 15px;
+	  width: 100%;
+	  text-align: left;
+	  border: none;
+	  outline: 1px solid #FFA59C ;
+	  transition: 0.4s;
+	  font-size:1.5rem;
+	}
+	
+	/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+	.accordion.active, .accordion:hover {
+	  background-color: #FFA59C;
+	  width: 100%;
+	  color:white !important;  /*글색깔*/
+	}
+	
+	/* Style the accordion panel. Note: hidden by default */
+	.panel {
+	  padding: 0 20px;
+	  background-color: white;
+	  display: none;
+	  overflow: hidden;
+	}
+	
+	
+	@media (min-width: 768px) {
+	.form-row #productName{
+		font-size: 1.75rem;
+	}
+	
+	
+	}
+	
+		p {  /*가격들*/
+		 font-size: 100px;
+		}
+		
+		button{
+		width:120px;
+		height:35px;
+		
+		}
+		
+		
+	
+	</style>
 
 
 
@@ -160,7 +158,7 @@ font-size:2rem;
 				<input type="hidden" name="user_id" id="user_id" value="${sessionScope.user.id}"> 
 				<input type="hidden" name="product_Num" id="product_Num" value="${pdto.product_Num}"> 
 				<input type="hidden" name="product_Name" id="product_Name" value="코코낸내 허니잠 세트"> 
-			  <!-- - --><div class="col-12 pb-4" id="productName" >코코낸내 허니잠 세트</div>
+			  <!-----><div class="col-12 pb-4" id="productName" >코코낸내 허니잠 세트</div>
 				<div class="col-12 pb-3 d-flex justify-content-around orderOption1" id="orderDate">
 					<i class="far fa-calendar-alt my-auto"></i> 
 					<input type="hidden" name="subs_Fdate" id="subs_Fdate"> 
