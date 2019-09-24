@@ -13,9 +13,9 @@
 	<h1>인증 번호를 입력해주세요.</h1>
 	
 	<div class="container">
-		<form method="post" name="checkForm" onSubmit="check();">
+		<form method="post" name="checkForm">
 			<input type="text" name="code" id="code"/>
-			<input type="submit" class="btn btn-info" value="이메일인증" />
+			<input type="button" class="btn btn-info" value="이메일인증" onClick="check();" />
 		</form>
 	</div>
 	
@@ -42,6 +42,7 @@
 				return false;
 			} else if(form.code.value == code){
 				alert("이메일 인증이 완료되었습니다.");
+				form.submit();
 			}
 			
 		}
