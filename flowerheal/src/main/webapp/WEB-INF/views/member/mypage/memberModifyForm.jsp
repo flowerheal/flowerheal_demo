@@ -9,7 +9,7 @@
 
  .orderProductCheck .modifyBtn a{
 	background: #FFD3B0;
-	
+	color:white !important;
 } 
 
 
