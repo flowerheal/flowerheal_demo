@@ -80,6 +80,7 @@ function inputTelNumber(obj){
 
 $(function() {	
 	loadAddressF(); // 최근 배송지 불러오는 ajax
+	$("#saveAddressMsg").on("click",agreementMsgF); // 기본배송지로 설정 클릭 이벤트
 	$("#subsEmailMsg").on("click",agreementMsgF); 	// 이메일 수신여부 클릭 이벤트
 	$("#agreementMsg").on("click",agreementMsgF); 	// 이용약관 클릭 이벤트
 	$(".payMethod_Btn").on("click",payMethod_BtnF); // 결제수단 설정버튼
@@ -122,7 +123,7 @@ function paymentBtnF(){
 	var paymentHiddenTag = $('input#payment').val();								//결제수단 선택 여부
 	var agreementBtn = $('input[id="agreementBtn"]:checked').val(); //이용약관 클릭 여부
 	var subsEmailBtn = $('input[id="subsEmailBtn"]:checked').val(); //이메일 수신여부 클릭 여부
-
+	var phoneReg = /(\d{3}).*(\d{3}).*(\d{4})/;		//전화번호 표준
 
 
 	if(orderNameTag==""){
@@ -131,6 +132,9 @@ function paymentBtnF(){
 	}
 	if(orderTelTag==""){
 		alert("전화번호를 입력해주세요.");
+		return;
+	}else if(!phoneReg.test(orderTelTag)){
+		alert("전화번호를 형식에 맞게 입력해주세요.");
 		return;
 	}
 	if(addressTag==""){

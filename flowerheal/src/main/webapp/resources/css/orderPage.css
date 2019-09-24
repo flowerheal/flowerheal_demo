@@ -68,41 +68,60 @@ div{
 }
 
 /* 동의문구 hover 커서 */
-#agreementMsg:hover{
+#agreementMsg:hover,
+#subsEmailMsg:hover,
+#saveAddressMsg:hover{
 	cursor: pointer;
 }
+.orderProductCheck .row:nth-child(2){  
+	outline: 1px solid #F5B6A8;
+}
+.orderProductCheck .row:nth-child(2) div{
+	font-size: 1.2rem;
+}
+
+.orderProductCheck .row div{
+	text-align: center;
+}
+
 
 /* 결제수단 버튼 */
-.panel.payMethod{
-	/* display:flex; */
-	flex-flow : row wrap;
-}
-.payMethod_Btn:hover{
-	background: none;
-}
-.payMethod_Btn.active{
-	background: greenyellow !important;
-}
-
-.payMethod_Btn,
-.addressForm_Btn{
-   display: flex !important;
-   width: 42%;
-   flex-flow: column;
-	 justify-content: center;
-   margin: 0.5rem;
-   align-items:center;
-}
-.payMethod_Btn img{
-	width : 100%;
-}
-.payMethod_Btn span{
-	display:none;
-}
-.agreementDiv input[type="checkbox"]{display:none;}
-
-.panel .row.noMobile{display:none;}
-.addressFrom_Btn span{font-size:0.8rem;}
+	.panel.payMethod{
+		/* display:flex; */
+		flex-flow : row wrap;
+	}
+	
+	.payMethod_Btn{
+	height: auto;
+	
+	}
+	.payMethod_Btn:hover{
+		background: none;
+	}
+	.payMethod_Btn.active{
+		background: #FFE5C2 !important;
+	}
+	
+	.payMethod_Btn,
+	.addressForm_Btn{
+	   display: flex !important;
+	   width: 42%;
+	   flex-flow: column;
+		 justify-content: center;
+	   margin: 0.5rem;
+	   align-items:center;
+	}
+	.payMethod_Btn img{
+		width : 100%;
+	}
+	.payMethod_Btn span{
+		display:none;
+	}
+	.agreementDiv input[type="checkbox"],
+	.saveAddressDiv input[type="checkbox"]{display:none;}
+	
+	.panel .row.noMobile{display:none;}
+	.addressFrom_Btn span{font-size:0.8rem;}
 
 
 /* 태블릿 - 768px 이상 */
@@ -145,6 +164,12 @@ div{
 	background-color: #FF9484;
     color:white !important;  /*글색깔*/
 	}
+	
+	.paytext{
+	
+	font-weight: bold;
+	color: #5D5D5D;
+	}
 
 /* 결제하기 버튼*/
 	button{
@@ -158,6 +183,12 @@ div{
 	/* button:hover{
     background-color: #F59E85;
     color:white !important;*/  /*글색깔*/
-/*	} */
+	/*} */
+	
+	/*결제수단*/
 
+	/* .payMethod_Btn{
+	background-image:url(/resources/img/kakao.jpg);
+	}
+  */
 

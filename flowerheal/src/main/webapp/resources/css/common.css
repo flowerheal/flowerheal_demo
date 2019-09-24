@@ -26,7 +26,7 @@
 	
 	
 	 @font-face {
-	  font-family:A드림고딕4;
+	  font-family:ADreamGothic4;
 	  src: /* url(font/Typo_BaekbeomB.woff) format('woff'), */
 	       url(font/A드림고딕4.ttf) format('truetype');
 	  font-style: normal;
@@ -34,7 +34,7 @@
 	} 
 	
 	@font-face {
-	  font-family:A드림고딕2;
+	  font-family:ADreamGothic2;
 	  src: /* url(font/Typo_BaekbeomB.woff) format('woff'), */
 	       url(font/A드림고딕2.ttf) format('truetype');
 	  font-style: normal;

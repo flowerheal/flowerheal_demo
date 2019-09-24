@@ -80,6 +80,10 @@
 						<span>새로 입력</span>
 					</button>
 				</div>
+				<div class="row  justify-content-end addressFromBtns saveAddressDiv">
+					<input type="checkbox" id="saveAddressBtn" name="checkbox">
+					<div class="col-5 pb-2 text-center" id="saveAddressMsg"><i class="far fa-check-circle"></i>기존 배송지로 설정</div>
+				</div>
 				<div class="row orderAddress">
 						<div class="row col-12 p-0 d-flex justify-content-start">
 							<input type="text" class="col-5 form-control ml-0 mr-2" placeholder="우편번호" id="zipNo" name="zipNo" readOnly onClick="goPopup();"/>
