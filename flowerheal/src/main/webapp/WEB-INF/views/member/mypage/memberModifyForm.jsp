@@ -7,9 +7,10 @@
 <style>
 
 
-/* .orderProductCheck .modifyBtn a{
-	background: lightpink;
-} */
+ .orderProductCheck .modifyBtn a{
+	background: #FFD3B0;
+	
+} 
 
 
 	

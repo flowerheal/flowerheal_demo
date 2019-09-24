@@ -4,9 +4,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <style>
-/* .orderProductCheck .mPwChangeBtn a{
-	background: lightpink;
-} */
+ .orderProductCheck .mPwChangeBtn a{
+	background: #FFD3B0;
+} 
 
 
 	 .modify{

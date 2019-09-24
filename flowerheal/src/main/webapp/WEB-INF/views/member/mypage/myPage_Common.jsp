@@ -79,7 +79,7 @@
 	width: 100%;
 	text-align: center;
 	margin: 0.25rem 0;
-     background:white; /* 해당 페이지 고정될때 표시되는 색*/
+     /* background:white; */ /* 해당 페이지 고정될때 표시되는 색*/
 }
 /* 
   .subInfoChange a{ 
