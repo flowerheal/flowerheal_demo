@@ -174,7 +174,7 @@ font-size:2rem;
 					    <div class="panel pt-3">
 					    
 					    <!-- option0 : 꽃다발/화분 : 제외 불가 -->
-						<input type="hidden" name="option0" id="option0" value="21000"> 
+						<input type="hidden" name="option0" id="option0" value="${pdto.product_Price }"> 
 						
 						<input type="checkbox"  name="option1" id="option1" value="4000" checked="checked" 
 						style="width:20px;height:20px">
@@ -197,12 +197,12 @@ font-size:2rem;
 				    <!-- <button type="button" class="ml-5 btn product_SubsCnt_Btn btn btn-outline-warning">정기결제</button> -->  
 				</div>
 				<div class="row col-12 pb-3 d-flex justify-content-around orderOption4" id="orderCost">
-					<div class="col-12 price" style="text-align:right; font-size:1.5rem;">
+					<!-- <div class="col-12 price" style="text-align:right; font-size:1.5rem;">
 					가격
 					<input type="text" style="border:none; text-align:right;"    name="productCost" id="productCost" readonly="readonly">원</div>
 					<div class="col-12 " style="text-align:right; font-size:1.5rem;">
 					배송비
-					<input type="text" style="border:none; text-align:right;"  name="postCost" id="postCost" readonly="readonly">원</div>
+					<input type="text" style="border:none; text-align:right;"  name="postCost" id="postCost" readonly="readonly">원</div> -->
 					<div class="col-12 " style="text-align:right; font-size:1.5rem;">
 					총금액
 					<input type="text" style="border:none; text-align:right;"  name="product_Price" id="product_Price" readonly="readonly">원</div>

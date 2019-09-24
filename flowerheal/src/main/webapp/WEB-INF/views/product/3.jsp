@@ -167,7 +167,7 @@ font-size:2rem;
 					    <div class="panel pt-3">
 					    
 					    <!-- option0 : 꽃다발/화분 : 제외 불가 -->
-						<input type="hidden" name="option0" id="option0" value="21000"> 
+						<input type="hidden" name="option0" id="option0" value="${pdto.product_Price }"> 
 						
 						<input type="checkbox"  name="option1" id="option1" value="4000" checked="checked" 
 						style="width:20px;height:20px">

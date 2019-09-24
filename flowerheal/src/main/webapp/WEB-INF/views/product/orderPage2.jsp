@@ -4,198 +4,21 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- CSS -->
 <link href="${pageContext.request.contextPath }/resources/css/orderPage.css" rel="stylesheet">
-
-
 <style>
-/* div.accordion */
-.accordion {
-   border : 2px solid #FFBEB7 !important;
-   border-radius: 0.25rem !important;
-  /* background-color: #fff; */
-  color:#5D5D5D;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: 0.4s;
-  display: flex;
-	justify-content: space-around;
-}
-
-
-/* accordion 활성화, 마우스 hover 되었을 때 배경색 */
-.accordion.active, .accordion:hover {
-  background-color: #FFA596;
-  color:white !important;  /*글색깔*/
-}
-
-
-/* accordion 안에 글씨와 화살표 크기 조절 */
-.accordion span,
-.accordion i,
-div{
-	font-size: 1rem;
-	margin: auto 0;
-	
-}
-
-
-/* accordion 화살표 방향 조절 */
-.accordion .fa-chevron-down{
-	display: inline-block;
-}
-.accordion .fa-chevron-up{
-	display: none;
-}
-.accordion.active .fa-chevron-down{
-	display: none;
-}
-.accordion.active .fa-chevron-up{
-	display: inline-block;
-}
-
-
-
-
-/* div.accordion 누르면 나오는 div.panel */
-.panel {
-  padding: 0 0.25rem;
-  background-color: white;
-  display: none;
-  overflow: hidden;
-}
-
-.pannel div{
-	padding : 0;
-}
-/* 동의문구 감싸는 div, 결제하기 버튼 감싸는 div 태그 */
-.agreementDiv, .paymentDiv{
-	display: flex;
-	justify-content: center;
-}
-
-/* 동의문구 hover 커서 */
-#agreementMsg:hover{
-	cursor: pointer;
-}
-.orderProductCheck .row:nth-child(2){  
+/* 주문 상품 확인 눌렀을 때 나오는 panel .row */
+.orderProductCheck .row{  
 	outline: 1px solid #F5B6A8;
 }
-.orderProductCheck .row:nth-child(2) div{
-	font-size: 1.2rem;
-}
-
 .orderProductCheck .row div{
+	font-size: 1.2rem;
 	text-align: center;
 }
-
-
-/* 결제수단 버튼 */
-	.panel.payMethod{
-		/* display:flex; */
-		flex-flow : row wrap;
-	}
-	
-	.payMethod_Btn{
-	height: auto;
-	
-	}
-	.payMethod_Btn:hover{
-		background: none;
-	}
-	.payMethod_Btn.active{
-		background: none !important;
-	}
-	
-	.payMethod_Btn,
-	.addressForm_Btn{
-	   display: flex !important;
-	   width: 42%;
-	   flex-flow: column;
-		 justify-content: center;
-	   margin: 0.5rem;
-	   align-items:center;
-	}
-	.payMethod_Btn img{
-		width : 100%;
-	}
-	.payMethod_Btn span{
-		display:none;
-	}
-	.agreementDiv input[type="checkbox"]{display:none;}
-	
-	.panel .row.noMobile{display:none;}
-	.addressFrom_Btn span{font-size:0.8rem;}
-
-
-/* 태블릿 - 768px 이상 */
-@media screen and (min-width: 768px) {
-.panel .row.noMobile{display:flex;}
-	/* accordion 안에 글씨와 화살표 크기 조절 */
-	.accordion span,
-	.accordion i,
-	div{
-		font-size: 1.1rem;
-	}
-	
-	.payMethod_Btn{
-   width: 22%;
-   }
-   
-.addressFrom_Btn span{font-size:1.1rem;}
+.orderProductCheck .row:nth-child(1){  
+	outline: none;
 }
-@media screen and (min-width: 992px) {
-	/* accordion 안에 글씨와 화살표 크기 조절 */
-	.accordion span,
-	.accordion i,
-	div{
-		font-size: 1.4rem;
-	}
-	.payMethod_Btn span{
-	display:block;
-	}
+.orderProductCheck .row:nth-child(1) div{
+	font-size: 1.4rem;
 }
-
-  /* 배송 여부 버튼*/
-
-    .addressFrom_Btn{
-     border : 1px solid #FF9484 !important;
-     border-radius: 0.25rem !important;
-    }
-
-	.addressFrom_Btn:hover{
-	background-color: #FF9484;
-    color:white !important;  /*글색깔*/
-	}
-	
-	.paytext{
-	
-	font-weight: bold;
-	color: #5D5D5D;
-	}
-
-/* 결제하기 버튼*/
-	button{
-	background-color: #F59E85;
-    /*  border : 1px solid #F59E85 !important; */
-     border-radius: 0.25rem !important;
-     height: 4rem;
-     font-size: 1.5rem;
-     /* color:#FF9880; 폰트컬러 안먹음*/
-	}
-	/* button:hover{
-    background-color: #F59E85;
-    color:white !important;  /*글색깔*/
-	} */
-	
-	/*결제수단*/
-
-	/* .payMethod_Btn{
-	background-image:url(/resources/img/kakao.jpg);
-	}
-  */
 
 
 </style>
@@ -208,21 +31,8 @@ div{
 			String product_SubsCnt = request.getParameter("product_SubsCnt");
 		%>
 
-	<form action="${pageContext.request.contextPath}/product/order" method="POST">
-	<!-- subs_Member_Id : 구독자 아이디
-			 subs_Product : 구독상품번호
-			 subs_Fdate : 구독 시작일
-			 subs_Edate : 구독 종료일
-			 subs_Cnt : 남은 구독 횟수 -->
-		
+	<form action="${pageContext.request.contextPath}/product/orderFromCart" method="POST">
 		<input type="hidden" name="subs_Member_Id" id="subs_Member_Id" value="${sessionScope.user.id }">
-		<input type="hidden" name="subs_Product" id="subs_Product" value="${pdto.product_Num}">
-		<input type="hidden" name="subs_Fdate" id="subs_Fdate" value="${subs_Fdate}">
-		<input type="hidden" name="subs_Edate" id="subs_Edate" value="${subs_Edate}">		
-		<input type="hidden" name="subs_Cnt" id="subs_Cnt" value="<%=product_SubsCnt%>">
-		<input type="hidden" name="subs_Price" id="subs_Price" value="${pdto.product_Price}">
-		<input type="hidden" name="subs_Pname" id="subs_Pname" value="${pdto.product_Name}">
-		
 		
 		<div class="row my-3" style="height: auto; width: 100%; border:2px solid #fff;">
 			<div class="col-lg-11 mb-3 pt-5 ">
@@ -233,24 +43,33 @@ div{
 						<div class="col-md-4 col-lg-4">결제금액</div>
 						<div class="col-md-2 col-lg-3 px-2">구독기간</div>
 					</div>
+					
+					<c:forEach var="rec" items="${list }">
 					<div class="row d-flex py-2">
-						<div class="col-md-6 col-lg-5">${pdto.product_Name}</div>
-						<div class="col-7 col-md-4 col-lg-4">매월 ${pdto.product_Price}원</div>
-						<div class="col-5 col-md-2 col-lg-3"><%=product_SubsCnt %>개월</div>
-						<div class="col-md-12 col-md-5 text-right">${subs_Fdate} ~ ${subs_Edate}</div>
+						<div class="col-md-6 col-lg-5">${rec.product_Name}</div>
+						<div class="col-7 col-md-4 col-lg-4">매월 ${rec.product_Price}원</div>
+						<div class="col-5 col-md-2 col-lg-3">${rec.product_SubsCnt}개월</div>
+						<div class="col-md-12 col-md-5 text-right">${rec.cart_Fdate} ~ ${rec.cart_Edate}</div>
 					</div>
+					</c:forEach>
 				</div>
 			</div>
 			<div class="col-lg-11 mb-3 deliveryInfoDiv">
 				<div class="accordion active"><span>배송정보 입력</span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></div>
 				<div class="panel deliveryInfo">
-
-
-
-<!-- 				<div class="col-lg-10 mb-3"> -->
-<!-- 					<div class="row" id="addressForm"> -->
+					<div class="row orderNamePhone">
+						<div class="row col-12 p-0 d-flex justify-content-start">
+							<div class="col-3 col-lg-2 ml-0 mr-2 small text-center">이름</div>
+							<input type="text" class="col-5 col-lg-4 form-control ml-0 mr-2" id="name" name="name"
+							 			 onkeyup="noSpace(this);" value="${mdto.name }"/>
+						</div>
+						<div class="row col-12 p-0 d-flex justify-content-start">
+							<div class="col-3 col-lg-2 ml-0 mr-2 small text-center">전화번호</div>
+							<input type="text" class="col-5 col-lg-4 form-control ml-0 mr-2" id="tel" name="tel"
+										 onkeyup="inputTelNumber(this);" value="${mdto.tel }"/>
+						</div>
+					</div>
 					<div class="row  justify-content-end addressFromBtns">
-					<!-- <input type="hidden" name="address" id="address"> -->
 					<button type="button" class="btn addressFrom_Btn " style="color:#FF9484" id="recentAddress">
 						<span>최근 배송지</span>
 					</button>
@@ -279,9 +98,9 @@ div{
 
 
 			</div>
-			<div class="col-lg-11 mb-3  payMethodDiv">
+			<div class="col-lg-11 mb-3 payMethodDiv">
 				<div class="accordion payMethod active"><span>결제수단 선택</span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></div>
-				<div class="panel pt-3 payMethod justify-content-center">
+				<div class="panel payMethod justify-content-center">
 					<input type="hidden" name="payment" id="payment">
 					<button type="button" class="btn payMethod_Btn" value="creditCard">
 						<img src="${pageContext.request.contextPath}/resources/img/product/card.jpg" alt="creditCard" />
@@ -302,12 +121,21 @@ div{
 				</div>
 			</div>
 			<div class="col-lg-11 mb-3 pb-5 priceDiv">
-				<div class="accordion active" style="cursor:default;"><span>최종 금액</span><span>${pdto.product_Price}원</span></div>
-<%-- 				<div class="panel row">
-					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>가격 </span><span>${productCost}원</span></div>
-					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>배송비</span><span>${postCost}원</span></div>
-					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>금액 </span><span>${pdto.product_Price}원</span></div>
-				</div> --%>
+				<div class="accordion active" style="cursor:default;">
+					<span>최종 금액</span>
+					<span id="p_All_Price">
+						<c:set var = "total" value = "0" />
+						<c:forEach var="rec" items="${list}" varStatus="status">     
+						<c:set var= "total" value="${total + rec.product_Price}"/>
+						</c:forEach>
+						<c:out value="${total}"/>원&nbsp;&nbsp;
+					</span>
+				</div>
+<!-- 				<div class="panel row">
+					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>가격 </span><span id="p_All_Cost"></span></div>
+					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>배송비</span><span id="p_All_Post"></span></div>
+					<div class="col-lg-7 d-flex justify-content-between mx-auto"><span>금액 </span><span id="p_All_Price"></span></div>
+				</div> -->
 			</div>
 			<div class="row col-lg-11 mb-3 pb-5 agreementDiv">
 				<input type="hidden" name="subs_Email" id="subs_Email">
