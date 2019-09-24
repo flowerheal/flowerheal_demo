@@ -241,9 +241,10 @@
 						var join_url = "http://localhost:9080/flowerheal/member/memberJoin";
 						var login_url = "http://localhost:9080/flowerheal/login/loginForm";
 						var order_url = "http://localhost:9080/flowerheal/product/orderPage";
+						var order_url2 = "http://localhost:9080/flowerheal/product/order";
 						console.log(back_url);
 						console.log(join_url);
-						if(back_url==null || back_url==join_url 	|| 
+						if(back_url==null || back_url==join_url 	|| back_url==order_url2 	||
 							 back_url==login_url	||  back_url==order_url){
 							$(location).attr('href', "${pageContext.request.contextPath }");
 						}else{

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../header.jsp" />
 
-<div class="container">
+<div class="container my-5">
 	<div class="row justify-content-center">
 		<div class="col col-sm-12 text-center">
 			<h1>구독 정보 리스트</h1>

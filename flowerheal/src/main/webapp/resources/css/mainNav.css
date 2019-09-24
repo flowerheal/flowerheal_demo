@@ -90,7 +90,7 @@
 		flex-flow: row wrap;
 		justify-content: center;
 		text-align: center;
-        width: 100%;
+    width: 100%;
 		height: auto;
 		position: relative;
 		font-size: 15px;
@@ -123,7 +123,8 @@
 		left: 0;
  		background: #F5B49D; /*메뉴바 바탕색*/
 		width: 100%;
-	    z-index: 20; 
+		justify-content: flex-end;
+		z-index: 20; 
 	}
 
 /* 메뉴바1*/
@@ -142,7 +143,7 @@
 		float: left;
 		overflow: hidden;
 		text-align: center;
-		font-size: 18px; /* 폰트 */
+		font-size: 17px; /* 폰트 */
 		border: none;
 		outline: none;
 		color: black;
@@ -173,7 +174,7 @@
 		left: 0;
 		background: #000;
 		width: 100%;
-	    z-index: 20; 
+	  z-index: 20; 
 	}
 
 
@@ -182,7 +183,7 @@
 		float: right;
 		color: white;
 		text-decoration: none;
-		width: 15%;
+		width: 9rem !important;
 		border-radius: 0.25rem;
 	}
 
@@ -207,4 +208,10 @@
 	#desktopNav .dropdown-container{
 		top:48px;
 	}
+}
+@media (min-width: 992px) {
+		.dropdown-container a {
+		width: 15% !important;
+	}
+
 }

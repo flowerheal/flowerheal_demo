@@ -28,7 +28,7 @@ public class MemberDTO {
 	@Size(min=2, max=10, message="이름은 2~10자리로 입력바랍니다.")
 	private String name;  		// 별명
 	
-	//private String gender;			// 성별
+	private String title;			// member or manager
 	
 	//주소DTO
 	private String address;        //주소 form 태크

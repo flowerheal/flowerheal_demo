@@ -61,8 +61,7 @@
 		<div class="col col-md-10 p-0">
 			<div class="row justify-content-center mt-3">
 				<div class="alert alert-warning" role="alert">
-  <h4 class="alert-heading row justify-content-center ">후기 게시판</h4>
-  <p class="mt-3">저희 꽃미힐미 의 플라워테라피 상품을 정기구독 하신 고객들만 작성할 수 있는 솔찍한 구독후기 게시판입니다.</p>
+  <h4 class="alert-heading row justify-content-center ">공지 / 이벤트 게시판</h4>
  
 </div>
 			</div>
@@ -141,9 +140,15 @@
 				</div>
 			</div>
 			<!-- 글쓰기 버튼 -->
-			<div class="row justify-content-end my-3">
-				<button type=button class="btn btn-outline-warning" id="writeBtn">글쓰기</button>
-			</div>
+			<c:choose>
+				<c:when test="${sessionScope.user.id==null ||sessionScope.user.title =='MEMBER'}">
+				</c:when>
+				<c:otherwise>
+					<div class="row justify-content-end my-3">
+						<button type=button class="btn btn-outline-warning" id="writeBtn">글쓰기</button>
+					</div>
+				</c:otherwise>
+			</c:choose>
 			<!-- 페이징 Pagination-->
 			<div class="row justify-content-center my-3">
 				<nav aria-label="...">

@@ -3,7 +3,6 @@ package com.kh.flowerheal.bbs.service;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -168,7 +167,6 @@ public class BbsSVCImpl implements BbsSVC {
 			totalRec = bbsDAO.totalRec();
 			rc = new RecordCriteria(l_reqPage, NUM_PER_PAGE);
 			pc = new PageCriteria(rc, totalRec, PAGENUM_PER_PAGE);
-			System.out.println("gd");
 			List<BbsDTO> list = bbsDAO.list(rc.getStartRecord(),rc.getEndRecord());
 			System.out.println(list);
 			model.addAttribute("list", list);

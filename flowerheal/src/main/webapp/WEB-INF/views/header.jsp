@@ -61,7 +61,7 @@
 							<span> | </span>
 							<a class="px-2" href="${pageContext.request.contextPath }/login/loginForm">로그인</a>
 							<span> | </span>
-							<a class="px-2" href="#">ID/비밀번호 찾기</a>
+							<a class="px-2" href="javascript:alert('준비중')">ID/비밀번호 찾기</a>
 						</div>
 					</c:when>
 					<c:when test="${sessionScope.msg == 'IsAdmin' }">

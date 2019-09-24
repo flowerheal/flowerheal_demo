@@ -14,13 +14,12 @@
 			<div class="nav-link"><a href="${pageContext.request.contextPath }/product/productList">구독 상품</a></div>
 		  <div><a href="${pageContext.request.contextPath }/menu/oneDayClass">원데이 클래스</a></div>
 	    <div><a href="${pageContext.request.contextPath }/menu/recommend">상품 추천</a></div>
-	    <div><a href="<%=request.getContextPath() %>/bbs/list">후기 게시판</a></div>
-			<div class="dropdown-btn subNav" id="openAbout"><a href="javascript:void(0)">Q&A ▼</a>
+	    <div><a href="javascript:alert('준비중')">후기 게시판</a></div>
+			<div class="dropdown-btn subNav" id="openAbout"><a href="javascript:void(0)">고객센터 ▼</a>
 				<div class="dropdown-container">
-					<a href="#">공지/이벤트</a>
-					<a href="#">자주 하는 질문</a>
-					<a href="#">Q&A</a>
-					<a href="#">고객센터</a>
+					<a href="<%=request.getContextPath() %>/bbs/list">공지/이벤트</a>
+					<a href="javascript:alert('준비중')">자주 하는 질문</a>
+					<a href="javascript:alert('준비중')">Q&A</a>
 				</div>
 			</div>
 		</div>  
@@ -31,13 +30,12 @@
 		  <div class="nav-link"><a href="${pageContext.request.contextPath }/product/productList">구독 상품</a></div>
 		  <div class="nav-link"><a href="${pageContext.request.contextPath }/menu/oneDayClass">원데이 클래스</a></div>
 		  <div class="nav-link"><a href="${pageContext.request.contextPath }/menu/recommend">상품 추천</a></div>
-	    <div class="nav-link"><a href="<%=request.getContextPath() %>/bbs/list">후기 게시판</a></div>
-			<div class="nav-link dropdown-btn openSubNav"><span>Q&A ▼</span>
+	    <div class="nav-link"><a href="javascript:alert('준비중')">후기 게시판</a></div>
+			<div class="nav-link dropdown-btn openSubNav"><span>고객센터 ▼</span>
 				<div class="dropdown-container">
-					<a href="#">공지/이벤트</a>
-					<a href="#">자주 하는 질문</a>
-					<a href="#">Q&A</a>
-					<a href="#">고객센터</a>
+					<a href="<%=request.getContextPath() %>/bbs/list">공지/이벤트</a>
+					<a href="javascript:alert('준비중')">자주 하는 질문</a>
+					<a href="javascript:alert('준비중')">Q&A</a>
 				</div>
 			</div>
 		</div>
