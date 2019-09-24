@@ -1,114 +1,116 @@
-/* === 폰트 === */
- @font-face {
-  font-family: Typo_BaekbeomB;
-  src: url(font/Typo_BaekbeomB.woff) format('woff'),
-       url(font/Typo_BaekbeomB.ttf) format('truetype');
-  font-style: normal;
-  font-weight: normal;
-} 
-
-/* @font-face {
-  font-family: DXSnUB;
-  src: url(font/DXSnUB-KSCpc-EUC-H.woff) format('woff'),
-       url(font/DXSnUB-KSCpc-EUC-H.ttf) format('truetype');
-  font-style: normal;
-  font-weight: normal;
-} */
-
- @font-face {
-  font-family: A드림고딕4;
-  src: /* url(font/moonp.woff) format('woff'), */
-       url(font/A드림고딕4.ttf) format('truetype');
-  font-style: normal;
-  font-weight: normal;
-} 
-
- @font-face {
-  font-family: A드림고딕2;
-  src: /* url(font/moonp.woff) format('woff'), */
-       url(font/A드림고딕2.ttf) format('truetype');
-  font-style: normal;
-  font-weight: normal;
-} 
-
-
- @font-face {
-  font-family: A스마일B;
-  src: /* url(font/moonp.woff) format('woff'), */
-       url(font/A스마일B.ttf) format('truetype');
-  font-style: normal;
-  font-weight: normal;
-}
-
- @font-face {
-  font-family: A스마일L;
-  src: /* url(font/moonp.woff) format('woff'), */
-       url(font/A스마일L.ttf) format('truetype');
-  font-style: normal;
-  font-weight: normal;
-}
-
- @font-face {
-  font-family: A스마일M;
-  src: /* url(font/moonp.woff) format('woff'), */
-       url(font/A스마일M.ttf) format('truetype');
-  font-style: normal;
-  font-weight: normal;
-}
-
-/* 기본 한국어 폰트 */
-/* *,body{	font-family: DXSnUB;} */
-
-/* 영어, 중국어, 일본어 폰트 */
-.Lang_Eng,  
-.Lang_Ch,
-.Lang_Jp{
-	font-family: MoonP;
-}
+	/* === 폰트 === */
+	 @font-face {
+	  font-family: Typo_BaekbeomB;
+	  src: url(font/Typo_BaekbeomB.woff) format('woff'),
+	       url(font/Typo_BaekbeomB.ttf) format('truetype');
+	  font-style: normal;
+	  font-weight: normal;
+	} 
+	
+	/*  @font-face {
+	  font-family: DXSnUB;
+	  src: url(font/DXSnUB-KSCpc-EUC-H.woff) format('woff'),
+	       url(font/DXSnUB-KSCpc-EUC-H.ttf) format('truetype');
+	  font-style: normal;
+	  font-weight: normal;
+	}  */
+	
+	
+	 @font-face {
+	  font-family: Typo_BaekbeomB;
+	  src: url(font/Typo_BaekbeomB.woff) format('woff'),
+	       url(font/Typo_BaekbeomB.ttf) format('truetype');
+	  font-style: normal;
+	  font-weight: normal;
+	}
+	
+	
+	 @font-face {
+	  font-family:A드림고딕4;
+	  src: /* url(font/Typo_BaekbeomB.woff) format('woff'), */
+	       url(font/A드림고딕4.ttf) format('truetype');
+	  font-style: normal;
+	  font-weight: normal;
+	} 
+	
+	@font-face {
+	  font-family:A드림고딕2;
+	  src: /* url(font/Typo_BaekbeomB.woff) format('woff'), */
+	       url(font/A드림고딕2.ttf) format('truetype');
+	  font-style: normal;
+	  font-weight: normal;
+	} 
+	 
+	 
+	
+	
+	
+	/* 기본 한국어 폰트 */
+	/* *,body{	font-family: DXSnUB;} */
+	
+	/* 영어, 중국어, 일본어 폰트 */
+	.Lang_Eng,  
+	.Lang_Ch,
+	.Lang_Jp{
+		font-family: MoonP;
+	}
 
 
 
-/* === 화면 전체 적용 === */
-h1, h2, h3, h4, h5, h6 {  font-family: A드림고딕4;
-color:#4C4C4C;
-}
-
-.lead{ /*aboutus.jsp 폰트*/
-	font-family: A드림고딕2;
-	font-size:25px;
-	color:#5D5D5D;
-}
-
-nav{	border-radius: 0.25rem;}
-	p{	font-size: 0.9rem;}
-.h4{	font-size: 1.2em;}
-.h5{	font-size: 1.15em;}
-.bg-dark{	background-color: #47331f !important;}
-.text-dark{	color:#47331f !important;}
-.btn-lg{	padding: 0.6rem;}
+	/* === 화면 전체 적용 === */
+	h1, h2, h3, h4, h5, h6 {  font-family:A드림고딕4;;
+	color:#4C4C4C;
+	}
+	
+	.lead{ /*aboutus.jsp 폰트*/
+		font-family:A드림고딕2; 
+		font-size:17px;
+		color:#5D5D5D;
+	}
+	
+	.card-title{ /*body,jsp  상품제목 텍스트*/
+	  font-family:A드림고딕2;
+	  font-size:20px;
+	  font-weight:bold;
+	  color:#5D5D5D;
+	}
+	
+	.card-text{ /*body,jsp 상품이름 텍스트*/
+	    font-family:A드림고딕2;
+		font-size:15px;
+		
+	}
+	
+	nav{	border-radius: 0.25rem;}
+		p{	font-size: 0.9rem;}
+	.h4{	font-size: 1.2em;}
+	.h5{	font-size: 1.15em;}
+	.bg-dark{	background-color: #47331f !important;}
+	.text-dark{	color:#47331f !important;}
+	.btn-lg{	padding: 0.6rem;}
 /* .btn:hover{	background-color: #47331f } */
 
-a,
-a:hover{
-	color: black;
-	text-decoration: none;
-}
-
-.row{
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-}
-
-section.container {
-	margin: 2rem auto;
-	display: flex;
-	flex-flow: column wrap;
-	align-items: center;
-}
-section h4 {
-	text-align: center;
-}
+	a,
+	a:hover{
+		color: black;
+		text-decoration: none;
+	}
+	
+	.row{
+	    margin: 0 auto;
+	    display: flex;
+	    justify-content: center;
+	}
+	
+	section.container {
+		margin: 2rem auto;
+		display: flex;
+		flex-flow: column wrap;
+		align-items: center;
+	}
+	section h4 {
+		text-align: center;
+	}
 
 
 /* === header.jsp === */
@@ -239,5 +241,3 @@ header nav{
   }
 
 }
-
-

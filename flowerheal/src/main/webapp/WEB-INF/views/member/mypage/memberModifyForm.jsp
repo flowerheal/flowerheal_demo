@@ -3,18 +3,42 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+
 <style>
-.orderProductCheck .modifyBtn a{
+
+
+/* .orderProductCheck .modifyBtn a{
 	background: lightpink;
-}
+} */
+
+
+	
+	.modify{
+	 width: 75%; 
+	height: 4rem;
+	margin: 0.5rem 0;
+	
+	font-size: 1.5rem !important;
+    border:1px solid #FFBE9E !important;
+   /*  border-radius: 2em;  outline 으로 해서 안되는거 같음*/ 
+   /*  background-color: #FFA59C;  안먹음*/
+	}
+	
+	/* .modify:hover{ 
+	
+	 background-color: #FFBE9E;
+	 color:white !important;  /*글색깔*/
+	}  */
+
+
 </style>
 
 <!-- myPage_Common.jsp : 메뉴창, 공통css -->
 <jsp:include page="myPage_Common.jsp" />
 		
 		<form:form modelAttribute="mdto" action="memberModify" id="modifyForm"
-							cssClass="row col-md-8 col-lg-6">
-			<div class="form-row">
+							cssClass="row col-md-8 col-lg-9">
+			<div class="form-row bl-5">
 				<input type="hidden"	name="id" id="id" value="${mdto.id}" />
 				<div class="col-md-10 col-lg-9 my-3 h3 text-center">개인정보 수정</div>
 				<div class="col-md-10 col-lg-9 my-3 h5 text-center">필수 입력사항</div>
@@ -41,7 +65,7 @@
 					<div class="row" id="addressForm">
 						<div class="row col-12 p-0 d-flex justify-content-start">
 							<input type="text" class="col-5 form-control ml-0 mr-2" value="${mdto.zipNo}" id="zipNo" name="zipNo" readOnly onClick="goPopup();"/>
-							<input type="button" class="col-5 form-control" value="주소 검색" onClick="goPopup();"/>
+							<input type="button" class="col-5 form-control" style="color: #fff; background-color: #FFBE9E;" value="주소 검색" onClick="goPopup();"/>
 						</div>
 						<input type="text" class="col-12 form-control mb-1" value="${mdto.roadAddrPart1}" id="roadAddrPart1" name="roadAddrPart1" readOnly/>
 						<input type="text" class="col-12 form-control" value="${mdto.addrDetail}" id="addrDetail" name="addrDetail"/>					
@@ -49,11 +73,14 @@
 				<div class="invalid-feedback"><form:errors path="address" cssClass="errMsg"></form:errors></div>
 			</div>
 		</div>
-			<button type="button" class="btn btn-primary" id="modifyInfoBtn">수정하기</button>
+		
+		
+			<button type="button" class="btn modify" style="color: #fff;  background-color: #FFBE9E;" id="modifyInfoBtn">수정하기</button>
+			
+			
 		</form:form>
 	</div>
 </section>
-
 <jsp:include page="../../footer.jsp" />
 <script src="${pageContext.request.contextPath }/resources/js/address.js"></script>
 

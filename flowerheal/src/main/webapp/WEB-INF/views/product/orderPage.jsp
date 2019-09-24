@@ -5,8 +5,79 @@
 <!-- CSS -->
 <link href="${pageContext.request.contextPath }/resources/css/orderPage.css" rel="stylesheet">
 <style>
+/* div.accordion */
+.accordion {
+   border : 2px solid #FFBEB7 !important;
+   border-radius: 0.25rem !important;
+  /* background-color: #fff; */
+  color:#5D5D5D;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  display: flex;
+	justify-content: space-around;
+}
 
-/* 주문 상품 확인 눌렀을 때 나오는 panel .row */
+
+/* accordion 활성화, 마우스 hover 되었을 때 배경색 */
+.accordion.active, .accordion:hover {
+  background-color: #FFA596;
+  color:white !important;  /*글색깔*/
+}
+
+
+/* accordion 안에 글씨와 화살표 크기 조절 */
+.accordion span,
+.accordion i,
+div{
+	font-size: 1rem;
+	margin: auto 0;
+	
+}
+
+
+/* accordion 화살표 방향 조절 */
+.accordion .fa-chevron-down{
+	display: inline-block;
+}
+.accordion .fa-chevron-up{
+	display: none;
+}
+.accordion.active .fa-chevron-down{
+	display: none;
+}
+.accordion.active .fa-chevron-up{
+	display: inline-block;
+}
+
+
+
+
+/* div.accordion 누르면 나오는 div.panel */
+.panel {
+  padding: 0 0.25rem;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+.pannel div{
+	padding : 0;
+}
+/* 동의문구 감싸는 div, 결제하기 버튼 감싸는 div 태그 */
+.agreementDiv, .paymentDiv{
+	display: flex;
+	justify-content: center;
+}
+
+/* 동의문구 hover 커서 */
+#agreementMsg:hover{
+	cursor: pointer;
+}
 .orderProductCheck .row:nth-child(2){  
 	outline: 1px solid #F5B6A8;
 }
@@ -17,6 +88,113 @@
 .orderProductCheck .row div{
 	text-align: center;
 }
+
+
+/* 결제수단 버튼 */
+	.panel.payMethod{
+		/* display:flex; */
+		flex-flow : row wrap;
+	}
+	
+	.payMethod_Btn{
+	height: auto;
+	
+	}
+	.payMethod_Btn:hover{
+		background: none;
+	}
+	.payMethod_Btn.active{
+		background: none !important;
+	}
+	
+	.payMethod_Btn,
+	.addressForm_Btn{
+	   display: flex !important;
+	   width: 42%;
+	   flex-flow: column;
+		 justify-content: center;
+	   margin: 0.5rem;
+	   align-items:center;
+	}
+	.payMethod_Btn img{
+		width : 100%;
+	}
+	.payMethod_Btn span{
+		display:none;
+	}
+	.agreementDiv input[type="checkbox"]{display:none;}
+	
+	.panel .row.noMobile{display:none;}
+	.addressFrom_Btn span{font-size:0.8rem;}
+
+
+/* 태블릿 - 768px 이상 */
+@media screen and (min-width: 768px) {
+.panel .row.noMobile{display:flex;}
+	/* accordion 안에 글씨와 화살표 크기 조절 */
+	.accordion span,
+	.accordion i,
+	div{
+		font-size: 1.1rem;
+	}
+	
+	.payMethod_Btn{
+   width: 22%;
+   }
+   
+.addressFrom_Btn span{font-size:1.1rem;}
+}
+@media screen and (min-width: 992px) {
+	/* accordion 안에 글씨와 화살표 크기 조절 */
+	.accordion span,
+	.accordion i,
+	div{
+		font-size: 1.4rem;
+	}
+	.payMethod_Btn span{
+	display:block;
+	}
+}
+
+  /* 배송 여부 버튼*/
+
+    .addressFrom_Btn{
+     border : 1px solid #FF9484 !important;
+     border-radius: 0.25rem !important;
+    }
+
+	.addressFrom_Btn:hover{
+	background-color: #FF9484;
+    color:white !important;  /*글색깔*/
+	}
+	
+	.paytext{
+	
+	font-weight: bold;
+	color: #5D5D5D;
+	}
+
+/* 결제하기 버튼*/
+	button{
+	background-color: #F59E85;
+    /*  border : 1px solid #F59E85 !important; */
+     border-radius: 0.25rem !important;
+     height: 4rem;
+     font-size: 1.5rem;
+     /* color:#FF9880; 폰트컬러 안먹음*/
+	}
+	/* button:hover{
+    background-color: #F59E85;
+    color:white !important;  /*글색깔*/
+	} */
+	
+	/*결제수단*/
+
+	/* .payMethod_Btn{
+	background-image:url(/resources/img/kakao.jpg);
+	}
+  */
+
 
 </style>
 <!-- Form CSS -->
@@ -99,24 +277,24 @@
 
 
 			</div>
-			<div class="col-lg-11 mb-3 payMethodDiv">
+			<div class="col-lg-11 mb-3  payMethodDiv">
 				<div class="accordion payMethod active"><span>결제수단 선택</span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i></div>
-				<div class="panel payMethod justify-content-center">
+				<div class="panel pt-3 payMethod justify-content-center">
 					<input type="hidden" name="payment" id="payment">
 					<button type="button" class="btn payMethod_Btn" value="creditCard">
-						<img src="${pageContext.request.contextPath}/resources/img/product/payMethod.png" alt="creditCard" />
+						<img src="${pageContext.request.contextPath}/resources/img/product/card.jpg" alt="creditCard" />
 						<span>신용카드</span>
 					</button>
 					<button type="button" class="btn payMethod_Btn" value="bankTransfer">
-						<img src="${pageContext.request.contextPath}/resources/img/product/payMethod.png" alt="bankTransfer" />
+						<img src="${pageContext.request.contextPath}/resources/img/product/transfer.jpg" alt="bankTransfer" />
 						<span>실시간 계좌이체</span>
 					</button>
 					<button type="button" class="btn payMethod_Btn" value="KakaoPay">
-						<img src="${pageContext.request.contextPath}/resources/img/product/payMethod.png" alt="KakaoPay" />
+						<img src="${pageContext.request.contextPath}/resources/img/product/kakao.jpg" alt="KakaoPay" />
 						<span>카카오페이</span>
 					</button>
 					<button type="button" class="btn payMethod_Btn" value="mobilePayment">
-						<img src="${pageContext.request.contextPath}/resources/img/product/payMethod.png" alt="mobilePayment" />
+						<img src="${pageContext.request.contextPath}/resources/img/product/payment.jpg" alt="mobilePayment" />
 						<span>휴대폰결제</span>
 					</button>
 				</div>

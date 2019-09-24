@@ -4,16 +4,39 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <style>
-.orderProductCheck .mPwChangeBtn a{
+/* .orderProductCheck .mPwChangeBtn a{
 	background: lightpink;
-}
+} */
+
+
+	 .modify{
+		 /* width: 75%;  */
+		height: 3rem;
+		margin: 0.5rem 0;
+		
+		font-size: 1.3rem !important;
+	    border:1px solid #FFBE9E !important;
+	   /*  border-radius: 2em;  outline 으로 해서 안되는거 같음*/ 
+	   /*  background-color: #FFA59C;  안먹음*/
+		}
+	
+	 .modify:hover{ 
+	
+	 background-color: #FFBE9E;
+	 color:white !important;  /*글색깔*/
+	}  
+ 
+
+
+
+
 </style>
 
 <!-- myPage_Common.jsp : 메뉴창, 공통css -->
 <jsp:include page="myPage_Common.jsp" />
 		
 		<form:form modelAttribute="pdto" action="mPwChange" 
-							cssClass="row col-md-8 col-lg-6">
+							cssClass="row col-md-8 col-lg-9">
 			<div class="form-row">
 				<div class="col-md-10 col-lg-9 my-3 h3 text-center">비밀번호 수정</div>
 				<div class="col-md-10 col-lg-9 mb-3">
@@ -40,8 +63,8 @@
 				</div>
 		</div>
 		<div class="row btnDiv">
-				<input type="button" class="btn btn-primary" id="mPwChangeBtn" value="수정">
-				<input type="button" class="btn btn-primary" id="cancleBtn" value="취소">
+				<input type="button" class="btn modify" id="mPwChangeBtn" value="수정">
+				<input type="button" class="btn modify" id="cancleBtn" value="취소">
 		</div>
 		</form:form>
 	</div>

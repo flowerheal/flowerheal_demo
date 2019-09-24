@@ -21,7 +21,7 @@
           			 class="bd-placeholder-img card-img-top" width="100%" height="100%" alt="#" />
           			 </a>
             <div class="card-body">
-              <p class="card-title h4">코코낸내 허니잠 패키지</p>
+              <p class="card-title">코코낸내 허니잠 패키지</p>
               <div class="row d-flex justify-content-between align-items-center">
               <p class="card-text">10월의 주제 : 레드벨벳<br/> 붉은 융단을 타고 잠의 나라로</p>
                 <!-- <div class="btn-group row mr-0"> 
@@ -40,7 +40,7 @@
           			 class="bd-placeholder-img card-img-top" width="100%" height="100%" alt="#" />
           			 </a>
             <div class="card-body">
-              <p class="card-title h4">활력뿜뿜 치어업 패키지</p>
+              <p class="card-title">활력뿜뿜 치어업 패키지</p>
               <div class="row d-flex justify-content-between align-items-center">
               <p class="card-text">10월의 주제 : 붉은 노을처럼 난 너를 사랑해<br/> 을날의 아름다운 붉은 노을을 꽃다발에 담았습니다.  </p>
                 <!-- <div class="btn-group row mr-0">
@@ -57,7 +57,7 @@
           			 class="bd-placeholder-img card-img-top" width="100%" height="100%" alt="#" />
           			 </a>
             <div class="card-body">
-              <p class="card-title h4">피부리셋 무지개 패키지 </p>
+              <p class="card-title">피부리셋 무지개 패키지 </p>
               <div class="row d-flex justify-content-between align-items-center">
               <p class="card-text">10월의 주제 : Over the Rainbow  <br/>눈으로, 입으로, 피부로 즐기는 당신만을 위한 무지개 </p>
                 <!-- <div class="btn-group row mr-0">
@@ -75,7 +75,7 @@
           			 class="bd-placeholder-img card-img-top" width="100%" height="100%" alt="#" />
           			 </a>
             <div class="card-body">
-              <p class="card-title h4">나만의 공간 패키지 </p>
+              <p class="card-title">나만의 공간 패키지 </p>
               <div class="row d-flex justify-content-between align-items-center">
               <p class="card-text">10월의 주제: Make clean air and my space  <br/>
                 나만의 공간을 힐링해보세요.  </p>

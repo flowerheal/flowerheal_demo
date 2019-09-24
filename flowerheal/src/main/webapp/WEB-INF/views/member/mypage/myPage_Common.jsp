@@ -16,8 +16,9 @@
 }
 /* div.accordion */
 .accordion {
-  background-color: #eee;
+  background-color: #FFF2E6;
   color: #444;
+  font-weight: bold;
 	/* cursor: pointer; */
 	padding: 0.5rem;
   width: 100%;
@@ -29,25 +30,26 @@
 	justify-content: space-around;
 }
 
-
-/* accordion 중에 나의리뷰, 1:1리뷰*/
-.accordion.active {
-  background: lavenderblush;
-}
-/* accordion 중에 나의리뷰, 1:1리뷰 hover하면 커서:포인터, 배경색 바뀜 */
-.accordion.active:hover {
-	cursor: pointer;
-  background: lightpink;
-}
-
-
-/* accordion 안에 글씨와 화살표 크기 조절 */
-.accordion span,
-.accordion i,
-div{
-	font-size: 1rem;
-	margin: auto 0;
-}
+	
+	/* accordion 중에 나의리뷰, 1:1리뷰*/
+	.accordion.active {
+	  background: #FFDEC9;
+	}
+	/* accordion 중에 나의리뷰, 1:1리뷰 hover하면 커서:포인터, 배경색 바뀜 */
+	.accordion.active:hover {
+		cursor: pointer;
+	  background: #FFBDB0;
+	  color:#fff;
+	}
+	
+	
+	/* accordion 안에 글씨와 화살표 크기 조절 */
+	.accordion span,
+	.accordion i,
+	div{
+		font-size: 1rem;
+		margin: auto 0;
+	}
 
 
 
@@ -77,9 +79,18 @@ div{
 	width: 100%;
 	text-align: center;
 	margin: 0.25rem 0;
+     background:white; /* 해당 페이지 고정될때 표시되는 색*/
 }
+/* 
+  .subInfoChange a{ 
+   color: #FF9268;
+	font-weight: bold;
+		
+	}  */ /*개인정보 스타일*/
+	
 .panel .row a:hover{
-	background: lightpink;
+	color: #FF9268;
+	font-weight: bold;
 }
 
 
@@ -105,15 +116,21 @@ div{
 	}
 
 }
+
+
+ 
 </style>
+
+
 <jsp:include page="../../header.jsp" />
 	<section class="container">
 			<div class="row form">
-			<div class="myPageMenu col-md-4 col-lg-3 px-0 mt-2">
+			<div class="myPageMenu col-md-4 col-lg-3 px-0 mt-2" style="border: 3px solid #FFDEC9;">
+			<h3 class="text-center pt-5 pb-5" style="font-weight:bold; color:#212121;">My Page</h3>
 				<div class="accordion"><span>구독 정보</span></div>
 					<div class="panel orderProductCheck px-1">
 						<div class="row py-2">
-							<div class="col subInfoChange">
+							<div class="col subInfoChange" >
 								<a href="${pageContext.request.contextPath }/member/mypage/memberMyPage/${sessionScope.user.id}">
 									구독정보 조회/변경
 								</a>
@@ -121,6 +138,7 @@ div{
 							<div class="col orderInfoChange"><a href="">주문/배송 정보</a></div>
 						</div>
 					</div>
+					
 				<div class="accordion"><span>개인 정보</span></div>
 					<div class="panel orderProductCheck px-1">
 						<div class="row py-2">
@@ -138,3 +156,5 @@ div{
 				<div class="accordion active"><span>나의 리뷰</span></div>
 				<div class="accordion active"><span>1:1 문의</span></div>
 			</div>
+			
+			<!-- div / section 닫지말기 -->

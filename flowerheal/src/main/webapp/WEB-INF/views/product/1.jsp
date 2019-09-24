@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -196,16 +197,14 @@ font-size:2rem;
 				    <!-- <button type="button" class="ml-5 btn product_SubsCnt_Btn btn btn-outline-warning">정기결제</button> -->  
 				</div>
 				<div class="row col-12 pb-3 d-flex justify-content-around orderOption4" id="orderCost">
-				<!-- 배송비 주석처리함 -->
-<!-- 					<div class="col-12 price" style="text-align:right; font-size:1.5rem;">
+					<div class="col-12 price" style="text-align:right; font-size:1.5rem;">
 					가격
 					<input type="text" style="border:none; text-align:right;"    name="productCost" id="productCost" readonly="readonly">원</div>
 					<div class="col-12 " style="text-align:right; font-size:1.5rem;">
 					배송비
 					<input type="text" style="border:none; text-align:right;"  name="postCost" id="postCost" readonly="readonly">원</div>
-					 -->
 					<div class="col-12 " style="text-align:right; font-size:1.5rem;">
-					가격
+					총금액
 					<input type="text" style="border:none; text-align:right;"  name="product_Price" id="product_Price" readonly="readonly">원</div>
 				</div>
 
@@ -219,6 +218,8 @@ font-size:2rem;
 			</div>
 	</div>
 	</div>
+	
+	
 
 <!-- 상품 상세 내용 -->
 <div class="row my-5 pt-5">

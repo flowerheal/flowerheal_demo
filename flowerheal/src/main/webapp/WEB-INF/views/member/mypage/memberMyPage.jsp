@@ -2,22 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<style>
-.subInfoChange a{
-	background: lightpink;
-}
-.outline{
-	outline: 1px solid gray;
-}
-.subsList .row div {
-	text-align: center;
-}
 
-@media screen and (max-width: 992px) {
-	.TabletMode, .PcMode{
-		display:none;
+<style>
+
+	
+	 .outline{
+		outline:1px solid gray;
+	} 
+	
+	
+	.subsList .row div {
+		text-align: center;
 	}
-}
+	
+	@media screen and (max-width: 992px) {
+		.TabletMode, .PcMode{
+			display:none;
+		}
+	}
 
 
 </style>
@@ -34,12 +36,14 @@
 				<div class="col-7">${sessionScope.user.id}</div>
 			</div>
 						
-			<div class="row outline p-2 my-3 subsList">
+			<div class="row outline p-2 my-3 subsList" >
 				<div class="col-12">구독 현황</div>
-				<div class="row" id="subsItem">
+				<div class="row " id="subsItem">
 					<!-- ajax로 호출 : replyList(memberId); -->
 				</div>
-			</div>			
+			</div>
+				
+		
 		</div>
 	</section>
 	</div>
