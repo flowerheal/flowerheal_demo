@@ -209,8 +209,10 @@
 		top:48px;
 	}
 }
+
+/* 992px 이상 -> 컨테이너 안에 a 태그 크기 조정 */
 @media (min-width: 992px) {
-		.dropdown-container a {
+	.dropdown-container a {
 		width: 15% !important;
 	}
 
