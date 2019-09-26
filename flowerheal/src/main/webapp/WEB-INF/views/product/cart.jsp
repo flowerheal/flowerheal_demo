@@ -148,8 +148,8 @@ function cartList(id){
 				str += '    </div>';
 				str += '    <div class="row col-12 itemDiv">';
 				str += '      <div class="row col-md-8 col-lg-9 px-0">';
-				str += '        <div class="col-md-6 col-lg-5" id="p_name"> ' + cartList.product_Name +' </div>';
-				str += '        <div class="col-7 col-md-4 col-lg-4" id="p_price">' + cartList.product_Price + '원 </div>';
+				str += '        <div class="col-md-7 col-lg-6" id="p_name"> ' + cartList.product_Name +' </div>';
+				str += '        <div class="col-5 col-md-3 col-lg-3" id="p_price">' + cartList.product_Price + '원 </div>';
 				str += '        <div class="col-5 col-md-2 col-lg-3" id="p_subsCnt">' + cartList.product_SubsCnt + '개월</div>';
 				str += '        <div class="col-md-12 col-md-5 text-right">' + cartList.cart_Fdate +' ~ '+ cartList.cart_Edate+ '</div>';
 				str += '      	<input type="hidden" id="p_Fdate" value='+cartList.cart_Fdate+'>';

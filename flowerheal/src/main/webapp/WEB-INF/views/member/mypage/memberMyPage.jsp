@@ -95,7 +95,7 @@ function subsList(id){
 					str += '		<div class="col-4 px-0 text-right">배송예정일</div>';
 					str += '		<div class="col-8 px-0" style="font-weight:bold;color:#4C4C4C;">'+rec.subs_Fdate+'</div>';
 					str += '	</div>';
-					str += '	<div class="row col-12 text-right">';
+					str += '	<div class="row col-12 d-flex justify-content-end">';
 					str += '		<button type="button" class="btn btn-sm btn mr-2 deliveryInfoBtn " style="background:#F59E85; color:#fff;">배송정보 변경</button>';
 					str += '		<button type="button" class="btn btn-sm btn mx-3 subsCancleBtn" style="background:#F59E85; color:#fff;">구독 취소</button>';
 					
