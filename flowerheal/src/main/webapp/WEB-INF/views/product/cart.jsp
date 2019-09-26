@@ -207,7 +207,7 @@ function total_price(id){
 			$.each(result,function(idx, cartList){
 				p_totalPrice += cartList.product_Price
 			});
-				str += '<span>총 상품금액  </span> <span>' +p_totalPrice+ '원 </span>';
+				str += '<span>총 상품금액  </span> <span id="price">' + p_totalPrice + '원</span>';
 			
 			//장바구니목록 삽입
 			$("#total_price").html(str);

@@ -138,11 +138,11 @@
 	
 	</style>
 
-
-
 <jsp:include page="../header.jsp" />
+
+
 <section class="container">
-<div class="row my-5"><p class="headtext" style="color:#5D5D5D;  font-weight:bold;">(정기구독상품)코코낸내 허니잠 패키지</p></div>
+<div class="row my-5"><p class="headtext" style="color:#5D5D5D;  font-weight:bold;">(정기구독상품)${pdto.product_Name }</p></div>
 
 <div class="row" >
 	<!-- 상품 대표이미지 -->
@@ -157,8 +157,8 @@
 			<div class="form-row " style="outline:2px solid #FEC5B9;">
 				<input type="hidden" name="user_id" id="user_id" value="${sessionScope.user.id}"> 
 				<input type="hidden" name="product_Num" id="product_Num" value="${pdto.product_Num}"> 
-				<input type="hidden" name="product_Name" id="product_Name" value="코코낸내 허니잠 세트"> 
-			  <!-----><div class="col-12 pb-4" id="productName" >코코낸내 허니잠 세트</div>
+				<input type="hidden" name="product_Name" id="product_Name" value="${pdto.product_Name }"> 
+			  <!-----><div class="col-12 pb-4" id="productName" >${pdto.product_Name }</div>
 				<div class="col-12 pb-3 d-flex justify-content-around orderOption1" id="orderDate">
 					<i class="far fa-calendar-alt my-auto"></i> 
 					<input type="hidden" name="subs_Fdate" id="subs_Fdate"> 
@@ -202,10 +202,9 @@
 					배송비
 					<input type="text" style="border:none; text-align:right;"  name="postCost" id="postCost" readonly="readonly">원</div> -->
 					<div class="col-12 " style="text-align:right; font-size:1.5rem;">
-					총금액
+					금액
 					<input type="text" style="border:none; text-align:right;"  name="product_Price" id="product_Price" readonly="readonly">원</div>
 				</div>
-
 			</div>
 		</form>
 

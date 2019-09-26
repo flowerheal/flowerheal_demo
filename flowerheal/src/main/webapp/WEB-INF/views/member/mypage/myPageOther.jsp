@@ -6,7 +6,7 @@
 <style>
 
 	
- .orderProductCheck .subInfoChange a{
+ .orderProductCheck .otherInfoChange a{
 	background: #FFD3B0;
 	color:white !important;
   }  
@@ -44,7 +44,7 @@
 			</div>
 						
 			<div class="row outline p-2 my-3 subsList" >
-				<div class="col-12">구독 현황</div>				
+				<div class="col-12">지난 구독 리스트</div>				
 				<div class="row " id="subsItem">
 					<!-- ajax로 호출 : replyList(memberId); -->
 				</div>
@@ -81,7 +81,7 @@ function subsList(id){
 		success:function(result){
 			var Y_Num = 0;
 			$.each(result,function(idx, rec){
-				if(rec.subs_Check =="Y"){
+				if(rec.subs_Check !="Y"){
 					str += '<div class="row col-12 outline px-0" data-snum="'+rec.subs_num+'">';
 					str += '<div class="row col-12">';
 					str += '	<div class="col-4 px-0 TabletMode text-right" >상품명</div>';
@@ -92,13 +92,16 @@ function subsList(id){
 					str += '		<div class="col-md-8 px-0" style="font-weight:bold;color:#4C4C4C;">'+rec.subs_Fdate+' ~ '+rec.subs_Edate+'</div>';
 					str += '	</div>';
 					str += '	<div class="row col-12">';
-					str += '		<div class="col-4 px-0 text-right">배송예정일</div>';
-					str += '		<div class="col-8 px-0" style="font-weight:bold;color:#4C4C4C;">'+rec.subs_Fdate+'</div>';
-					str += '	</div>';
-					str += '	<div class="row col-12 text-right">';
-					str += '		<button type="button" class="btn btn-sm btn mr-2 deliveryInfoBtn " style="background:#F59E85; color:#fff;">배송정보 변경</button>';
-					str += '		<button type="button" class="btn btn-sm btn mx-3 subsCancleBtn" style="background:#F59E85; color:#fff;">구독 취소</button>';
+					str += '		<div class="col-4 px-0 text-right">사유</div>';
+					str += '		<div class="col-8 px-0" style="font-weight:bold;color:#4C4C4C;">';
 					
+					if(rec.subs_Check == "C"){
+						str += '구독 취소';	
+					} else {
+						str += '기간 만료';
+					}
+					
+					str += '		</div>';
 					str += '	</div>';
 					str += '</div>';
 					Y_Num += 1;
@@ -111,7 +114,7 @@ function subsList(id){
 				str += '	<i class="fas fa-shopping-basket" style="font-size:14rem;"></i>';
 				str += '</div>';
 				str += '<div class="col-12 px-0">';
-				str += '	구독 중인 상품이 없습니다.';
+				str += '	지난 구독상품이 없습니다.';
 				str += '</div>';
 				str += '</div>';
 			}

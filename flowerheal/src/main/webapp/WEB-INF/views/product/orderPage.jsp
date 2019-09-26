@@ -76,7 +76,7 @@
 				</div>
 				<div class="row  justify-content-end saveAddressDiv">
 					<input type="checkbox" id="saveAddressBtn" name="checkbox">
-					<div class="col-5 pb-2 text-center" id="saveAddressMsg"><i class="far fa-check-circle"></i>기존 배송지로 설정</div>
+					<div class="col-5 pb-2 text-center" id="saveAddressMsg"><i class="far fa-check-circle"></i>기본 배송지로 설정</div>
 				</div>
 				<div class="row orderAddress">
 						<div class="row col-12 p-0 d-flex justify-content-start">
@@ -166,7 +166,7 @@ function loadAddressF(){
        	$("#roadAddrPart1").val(res.roadAddrPart1);
       	$("#addrDetail").val(res.addrDetail);
 				
-			/* 없으면 기존 배송지 click */
+			/* 없으면 기본 배송지 click */
 			}else{
 				$(".addressFrom_Btn#recentAddress").removeClass("active");
 				$(".addressFrom_Btn#defaultAddress").addClass("active");
@@ -193,18 +193,20 @@ function loadAddressF(){
 	$(".addressFrom_Btn.active").removeClass("active");
 	$(this).toggleClass("active");
 	switch(this.id){
-	case "recentAddress": 	//최근배송지
-
-	break;
-	case "defaultAddress": 	//기본배송지
-		$("#zipNo").val(`${mdto.zipNo}`);
-    $("#roadAddrPart1").val(`${mdto.roadAddrPart1}`);
-    $("#addrDetail").val(`${mdto.addrDetail}`);
-	break;
-	case "newAddress":  		//새로입력 ->빈칸으로
-		console.log("newAddress")
-		$(".orderAddress input:text").val("");
-	break;
+		case "recentAddress": 	//최근배송지
+			$("#saveAddressMsg").show();
+		break;
+		case "defaultAddress": 	//기본배송지
+			$("#zipNo").val(`${mdto.zipNo}`);
+	    	$("#roadAddrPart1").val(`${mdto.roadAddrPart1}`);
+	    	$("#addrDetail").val(`${mdto.addrDetail}`);
+	    	$("#saveAddressMsg").hide();
+		break;
+		case "newAddress":  		//새로입력 ->빈칸으로
+			console.log("newAddress")
+			$(".orderAddress input:text").val("");
+			$("#saveAddressMsg").show();
+		break;
 	}
 } 
 </script>

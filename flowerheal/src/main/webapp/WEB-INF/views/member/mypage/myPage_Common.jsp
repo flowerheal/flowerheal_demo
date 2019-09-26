@@ -136,6 +136,12 @@
 								</a>
 							</div>
 							<div class="col orderInfoChange"><a href="">주문/배송 정보</a></div>
+							<div class="col otherInfoChange" >
+								<a href="${pageContext.request.contextPath }/member/mypage/myPageOther/${sessionScope.user.id}">
+									지난 구독정보 조회
+								</a>
+							</div>
+							
 						</div>
 					</div>
 					

@@ -21,10 +21,21 @@ $( document ).ready(function() {
 	// 	}
 	// $("#postCost").val($postCost);	//배송비 input 란에 삽입
 
-
-	let $product_Price = parseInt($option0 + $option1 + $option2); // 상품 가격
+	// 숫자.toLocaleString() 
+	let $product_Price = parseInt($option0 + $option1 + $option2).toLocaleString(); // 상품 가격
+	
 	$("#product_Price").val($product_Price); //금액 input 란에 삽입
-
+	
+	// let test = addComma(1234567891);
+	// $("#product_Price").val(test); //금액 input 란에 삽입
+	
+	// 정규식을 이용한 , 원화표시
+	function addComma(num) {
+		  var regexp = /\B(?=(\d{3})+(?!\d))/g;
+		  return num.toString().replace(regexp, ',');
+	}
+	
+	
 	//====== 금액 계산 로직 : 체크박스 선택에 따를 가격 변동 ======
 $("input:checkbox").each(function(){
 	$(this).on("click",function(){
