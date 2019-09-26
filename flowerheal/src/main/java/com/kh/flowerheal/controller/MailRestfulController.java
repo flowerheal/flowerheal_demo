@@ -20,7 +20,11 @@ import com.kh.flowerheal.member.service.MemberSvc;
 @RestController
 @RequestMapping("/mail")
 public class MailRestfulController {
-
+	/* ===============================================================================
+	 
+	 *************************** 해당 컨트롤러는 사용하지않습니다. *************************** 
+	 
+	=============================================================================== */
     private static Logger logger = LoggerFactory.getLogger(MailRestfulController.class);
 
     // @Inject

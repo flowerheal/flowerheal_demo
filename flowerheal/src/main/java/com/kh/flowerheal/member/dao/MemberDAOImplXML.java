@@ -81,4 +81,15 @@ public class MemberDAOImplXML implements MemberDAO {
 	return sqlSession.selectList("mappers.member-mapper.getMemberList");
     }
 
+	@Override
+	public int changeAddr(String id, String zipNo, String roadAddrPart1, String addrDetail) {
+		logger.info("MemberDAOImplXML.changeAddr 호출됨");
+		Map<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("zipNo", zipNo);
+		map.put("roadAddrPart1", roadAddrPart1);
+		map.put("addrDetail", addrDetail);
+		return sqlSession.update("mappers.member-mapper.changeAddr", map);
+	}
+
 }

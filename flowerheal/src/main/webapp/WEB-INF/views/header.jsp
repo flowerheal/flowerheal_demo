@@ -41,7 +41,6 @@
 
   </head>
   <body>
- ${sessionScope }
   <header class="blog-header pt-4" id="blog-header">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col text-center">

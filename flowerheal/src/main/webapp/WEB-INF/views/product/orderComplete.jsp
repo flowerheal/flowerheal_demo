@@ -57,8 +57,7 @@
 	<div class="row text-center">
 	 <div class="col-md-4 pb-5">
        <!--  <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
-       <img src="${pageContext.request.contextPath }/resources/img/product/aboutus11.jpg" class="img-fluid" alt="Responsive image">
-       <p>예시사진</p>
+       <img src="${pageContext.request.contextPath }/resources/img/order.png" class="img-fluid" alt="Responsive image">
       </div>
    <!--    <div class="col-10 pb-3 h4">주문이 완료되었습니다.</div>
       	<div class="row col-12 afterJoinBtns">

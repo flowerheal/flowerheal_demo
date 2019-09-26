@@ -347,6 +347,7 @@ function addToCartBtnF(){
 	var $product_Name = $("#product_Name").val();
 	var $user_id ="${sessionScope.user.id}";
 	var $product_Price =$("#product_Price").val();
+	$product_Price = $product_Price.replace(/\,/g,''); // 30,000 String 형태를 30000 콤마 제거 후 Int형으로 넣음
 	var $product_Num = $("#product_Num").val();
 	var $product_SubsCnt = $("#product_SubsCnt").val();
 	var $cart_Fdate = $("#subs_Fdate").val();

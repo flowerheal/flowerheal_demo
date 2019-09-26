@@ -34,6 +34,6 @@ public class SubsDTO {
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 	private Date subs_Ddate;	// 구독 배송 예정일
 	
-	
+	private String isSaveAddr;
 	
 }

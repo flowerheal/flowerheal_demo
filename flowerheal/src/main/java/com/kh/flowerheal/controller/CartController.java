@@ -1,5 +1,6 @@
 package com.kh.flowerheal.controller;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.flowerheal.cart.dto.CartDTO;
 import com.kh.flowerheal.cart.service.cartSVC;
-import com.kh.flowerheal.member.service.MemberSvc;
 
 @Controller
 @RequestMapping("/cart")
@@ -27,11 +27,9 @@ public class CartController {
 		= LoggerFactory.getLogger(CartController.class);
 	
 	@Inject
-	private MemberSvc mSvc;
-	
-	@Inject
 	private cartSVC cartSVC;
 	
+	DecimalFormat formatter = new DecimalFormat("###,###");
 	
 	//장바구니 보기
 	@GetMapping("/cart2/{id:.+}")
@@ -42,6 +40,15 @@ public class CartController {
 		
 		List<CartDTO> list = cartSVC.getCartList(id);
 		//List<CartDTO> list = new ArrayList<CartDTO>();
+		
+		for(CartDTO item : list) {
+			int addComma = item.getProduct_Price();
+			
+			System.out.println("addComma : " + addComma);
+			// System.out.println(formatter.format(addComma));
+			//  addComma = Integer.parseInt(formatter.format(addComma));
+			// item.setProduct_Price(addComma);
+		}
 		
 		model.addAttribute("list", list);
 		return "/product/cart";

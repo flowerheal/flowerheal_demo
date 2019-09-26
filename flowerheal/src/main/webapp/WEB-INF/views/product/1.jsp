@@ -351,6 +351,7 @@ function addToCartBtnF(){
 	var $product_Name = $("#product_Name").val();
 	var $user_id ="${sessionScope.user.id}";
 	var $product_Price =$("#product_Price").val();
+	$product_Price = $product_Price.replace(/\,/g,''); // 30,000 String 형태를 30000 콤마 제거 후 Int형으로 넣음
 	var $product_Num = $("#product_Num").val();
 	var $product_SubsCnt = $("#product_SubsCnt").val();
 	var $cart_Fdate = $("#subs_Fdate").val();
@@ -372,6 +373,7 @@ function addToCartBtnF(){
 		//dataType : "JSON",   //요청시 응답데이터 타입
 		//응답 성공시 처리사항
 		success:function(result){	
+			console.log($product_Price);
 			if(result=="YES"){
 				if(confirm("장바구니로 이동하시겠습니까?")){
 					document.location.href = "${pageContext.request.contextPath }/cart/cart2/"+"${sessionScope.user.id}";
