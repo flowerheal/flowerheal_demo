@@ -245,6 +245,16 @@ public class MemberController {
 		return "/member/mypage/memberMyPage";
 	}
 	
+	// 지난 구독조회 페이지
+	@GetMapping("/mypage/myPageOther/{id:.+}")
+	public String memberOther(@PathVariable String id, Model model) {
+		logger.info("memberOther() 호출됨");
+		
+		MemberDTO mdto = mSvc.getMember(id);
+		model.addAttribute("mdto", mdto);
+		
+		return "/member/mypage/myPageOther";
+	}
 	
 	
 }
