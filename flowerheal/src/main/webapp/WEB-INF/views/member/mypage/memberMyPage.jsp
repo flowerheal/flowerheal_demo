@@ -8,7 +8,7 @@
 	
  .orderProductCheck .subInfoChange a{
 	background: #FFD3B0;
-	color:white !important;
+	font-weight: bold;
   }  
 	
 	 .outline{
