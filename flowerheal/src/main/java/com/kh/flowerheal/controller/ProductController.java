@@ -98,6 +98,7 @@ public class ProductController {
 		viewname = "/product/orderPage";
 		return viewname;
 	}
+
 	// 카트 -> 주문하기 페이지
 	@PostMapping("/orderPage2")
 	public String orderPage2(
@@ -113,13 +114,21 @@ public class ProductController {
 		viewname = "/product/orderPage2";
 		return viewname;
 	}
-	
 	// 결제 및 상품등록 기능구현
 	@PostMapping("/order")
 	public String addSubs(@Valid @ModelAttribute SubsDTO sdto) {
-		System.out.println("product 컨트롤러 /order 결제 구독상품 기능구현");
-				
+		logger.info("addSubs() 호출됨 구독 상품 결제 기능구현");
+		
 		int cnt = sSvc.addSubs(sdto);
+
+		if(sdto.getIsSaveAddr().equals("Y")) {
+			System.out.println("기본배송지로 주소를 변경하겠습니다.");
+			String id = sdto.getSubs_Member_Id();
+			String zipNo = sdto.getZipNo();
+			String roadAddrPart1 = sdto.getRoadAddrPart1();
+			String addrDetail = sdto.getAddrDetail();
+			mSvc.changeAddr(id, zipNo, roadAddrPart1, addrDetail);
+		}
 		
 		MemberDTO mdto = mSvc.getMember(sdto.getSubs_Member_Id());
 		
@@ -180,13 +189,21 @@ public class ProductController {
 			@RequestParam("subs_Email") String subs_Email,
 			@RequestParam("zipNo") String zipNo,
 			@RequestParam("roadAddrPart1") String roadAddrPart1,
-			@RequestParam("addrDetail") String addrDetail) {
+			@RequestParam("addrDetail") String addrDetail,
+			@RequestParam("isSaveAddr") String isSaveAddr) {
 		
-		System.out.println("orderPage2 기능구현");
-		System.out.println("===============================");
-		
-		
+		logger.info("addSubs2() 호출됨 orderPage2 기능구현");
+
 		boolean result = false;
+		
+		
+		if(isSaveAddr.equals("Y")) {
+			String _id = subs_Email;
+			String _zipNo = zipNo;
+			String _roadAddrPart1 = roadAddrPart1;
+			String _addrDetail = addrDetail;
+			mSvc.changeAddr(_id, _zipNo, _roadAddrPart1, _addrDetail);
+		}
 		
 		List<CartDTO> list = cSvc.getCartList(user_id);
 		List<SubsDTO> sdtoList = new ArrayList<>();

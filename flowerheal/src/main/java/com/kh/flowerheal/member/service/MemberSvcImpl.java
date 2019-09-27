@@ -80,4 +80,9 @@ public class MemberSvcImpl implements MemberSvc {
 	return mDAO.getMemberList();
     }
 
+	@Override
+	public int changeAddr(String id, String zipNo, String roadAddrPart1, String addrDetail) {
+		return mDAO.changeAddr(id, zipNo, roadAddrPart1, addrDetail);
+	}
+
 }

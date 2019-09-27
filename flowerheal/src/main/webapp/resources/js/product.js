@@ -22,6 +22,7 @@ $( document ).ready(function() {
 	// $("#postCost").val($postCost);	//배송비 input 란에 삽입
 
 	// 숫자.toLocaleString() 
+	// let $product_Price = parseInt($option0 + $option1 + $option2); // 상품 가격
 	let $product_Price = parseInt($option0 + $option1 + $option2).toLocaleString(); // 상품 가격
 	
 	$("#product_Price").val($product_Price); //금액 input 란에 삽입
@@ -35,14 +36,21 @@ $( document ).ready(function() {
 		  return num.toString().replace(regexp, ',');
 	}
 	
+	// ',' 콤마를 제거해주는 함수
+	function removeComma(num){
+		return num = num.replace(/\,/g,'');
+	}
+	
 	
 	//====== 금액 계산 로직 : 체크박스 선택에 따를 가격 변동 ======
 $("input:checkbox").each(function(){
 	$(this).on("click",function(){
 		if(!$(this).is(":checked")){
-			$product_Price = $product_Price - parseInt($(this).val()); //checked 안한 경우	
+			$product_Price = removeComma($product_Price);
+			$product_Price = parseInt($product_Price) - parseInt($(this).val()); //checked 안한 경우	
 		}else{
-			$product_Price = $product_Price + parseInt($(this).val()); //다시 checked한 경우
+			$product_Price = removeComma($product_Price);
+			$product_Price = parseInt($product_Price) + parseInt($(this).val()); //다시 checked한 경우
 		}
 
 		// $("#productCost").val($productCost);//바뀐 가격 input 란에 삽입
@@ -54,6 +62,10 @@ $("input:checkbox").each(function(){
 		// 	}
 		// $("#postCost").val($postCost);	//배송비 input 란에 삽입
 		// $product_Price = $productCost+$postCost; //금액 = 바뀐가격 + 바뀐가격에 따른 배송비
+		
+		console.log($product_Price);
+		$product_Price = addComma($product_Price);
+		console.log($product_Price);
 		$("#product_Price").val($product_Price); 		 //금액 input 란에 삽입
 
 	});

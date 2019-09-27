@@ -28,5 +28,8 @@ public interface MemberDAO {
 
     // 회원 목록 조회(관리자용)
     List<MemberDTO> getMemberList();
-
+    
+    // 회원 배송지변경
+    int changeAddr(String id, String zipNo, String roadAddrPart1, String addrDetail);
+    
 }

@@ -21,7 +21,6 @@ function orderBtnF(){
 		alert("장바구니가 비어있습니다.");
 	}
 	
-	return false;
 	let $id = memberId;
 	//alert("결제페이지로 이동합니다");
 	$.ajax({

@@ -140,6 +140,7 @@ function cartList(id){
 		success:function(result){	
 			var cart_Num = 0;
 			$.each(result,function(idx, cartList){
+				cartList.product_Price = addComma(cartList.product_Price);
 				str += '    <div class="row cartList" data-cnum="' +cartList.cart_num+ '">';
 				str += '    <div class="row col-1 d-none checkboxDiv">';
 				str += '      <input type="checkbox" name="itemCheck" id="itemCheck'+cartList.cart_num+'"';
@@ -207,6 +208,7 @@ function total_price(id){
 			$.each(result,function(idx, cartList){
 				p_totalPrice += cartList.product_Price
 			});
+				p_totalPrice = addComma(p_totalPrice);
 				str += '<span>총 상품금액  </span> <span id="price">' + p_totalPrice + '원</span>';
 			
 			//장바구니목록 삽입
@@ -257,6 +259,16 @@ function delCartF()
 	});	//end of ajax	
 }
 
+// 정규식을 이용한 , 원화표시
+function addComma(num) {
+	  var regexp = /\B(?=(\d{3})+(?!\d))/g;
+	  return num.toString().replace(regexp, ',');
+}
+
+// ',' 콤마를 제거해주는 함수
+function removeComma(num){
+	return num = parseInt(num).replace(/\,/g,'');
+}
 
 
 

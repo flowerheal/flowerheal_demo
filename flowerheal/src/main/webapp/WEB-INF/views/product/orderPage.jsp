@@ -14,7 +14,7 @@
 		<%
 			String product_SubsCnt = request.getParameter("product_SubsCnt");
 		%>
-
+	${pdto }
 	<form action="${pageContext.request.contextPath}/product/order" method="POST">
 	<!-- subs_Member_Id : 구독자 아이디
 			 subs_Product : 구독상품번호
@@ -75,6 +75,7 @@
 					</button>
 				</div>
 				<div class="row  justify-content-end saveAddressDiv">
+					<input type="hidden" name="isSaveAddr" id="isSaveAddr">
 					<input type="checkbox" id="saveAddressBtn" name="checkbox">
 					<div class="col-5 pb-2 text-center" id="saveAddressMsg"><i class="far fa-check-circle"></i>기본 배송지로 설정</div>
 				</div>
@@ -86,8 +87,7 @@
 						<br><Br>
 							<input type="text" class="col-12 form-control" placeholder="도로명주소" id="roadAddrPart1" name="roadAddrPart1" readOnly/>
 							<br/><br>
-							<input type="text" class="col-12 form-control" placeholder="상세주소" id="addrDetail" name="addrDetail" />					
-					
+							<input type="text" class="col-12 form-control" placeholder="상세주소" id="addrDetail" name="addrDetail" />
 						</div>
 					<div class="invalid-feedback">
 						<!-- <form:errors path="address" cssClass="errMsg"></form:errors> -->
@@ -142,7 +142,6 @@
 
 <!-- 주소 js -->
 <script src="${pageContext.request.contextPath }/resources/js/address.js"></script>
-<jsp:include page="../footer.jsp" />
 
 <!-- 최근배송지 ajax -->
 <script>
@@ -163,17 +162,18 @@ function loadAddressF(){
 			if(res!=""){
 				$(".addressFrom_Btn#recentAddress").addClass("active");
 			 	$("#zipNo").val(res.zipNo);
-       	$("#roadAddrPart1").val(res.roadAddrPart1);
-      	$("#addrDetail").val(res.addrDetail);
-				
+       			$("#roadAddrPart1").val(res.roadAddrPart1);
+      			$("#addrDetail").val(res.addrDetail);
+      			$("#saveAddressMsg").show();
 			/* 없으면 기본 배송지 click */
 			}else{
 				$(".addressFrom_Btn#recentAddress").removeClass("active");
 				$(".addressFrom_Btn#defaultAddress").addClass("active");
 			 	$("#zipNo").val(`${mdto.zipNo}`);
-       	$("#roadAddrPart1").val(`${mdto.roadAddrPart1}`);
-      	$("#addrDetail").val(`${mdto.addrDetail}`);
-      	alert("최근배송지가 없습니다. 기본배송지로 적용됩니다.");
+       			$("#roadAddrPart1").val(`${mdto.roadAddrPart1}`);
+      			$("#addrDetail").val(`${mdto.addrDetail}`);
+      			alert("최근배송지가 없습니다. 기본배송지로 적용됩니다.");
+      			$("#saveAddressMsg").hide();
 			}
 			
 		},
@@ -194,6 +194,7 @@ function loadAddressF(){
 	$(this).toggleClass("active");
 	switch(this.id){
 		case "recentAddress": 	//최근배송지
+		
 			$("#saveAddressMsg").show();
 		break;
 		case "defaultAddress": 	//기본배송지
@@ -213,3 +214,7 @@ function loadAddressF(){
 
 <!-- 주문페이지 js -->
 <script src="${pageContext.request.contextPath }/resources/js/orderPage.js"></script>
+
+
+
+<jsp:include page="../footer.jsp" />
