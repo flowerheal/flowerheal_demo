@@ -195,10 +195,9 @@ public class ProductController {
 		logger.info("addSubs2() 호출됨 orderPage2 기능구현");
 
 		boolean result = false;
-		
-		
 		if(isSaveAddr.equals("Y")) {
-			String _id = subs_Email;
+			System.out.println("기본배송지로 주소를 변경하겠습니다.");
+			String _id = user_id;
 			String _zipNo = zipNo;
 			String _roadAddrPart1 = roadAddrPart1;
 			String _addrDetail = addrDetail;

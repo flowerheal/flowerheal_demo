@@ -14,7 +14,7 @@
 		<%
 			String product_SubsCnt = request.getParameter("product_SubsCnt");
 		%>
-	${pdto }
+	
 	<form action="${pageContext.request.contextPath}/product/order" method="POST">
 	<!-- subs_Member_Id : 구독자 아이디
 			 subs_Product : 구독상품번호

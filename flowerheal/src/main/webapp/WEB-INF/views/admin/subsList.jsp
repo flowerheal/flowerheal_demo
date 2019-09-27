@@ -48,12 +48,17 @@
 	$(function(){
 		// 강제로 get 링크를 열었을 경우 홈페이지로 이동
 		if("${msg}" != "IsAdmin"){
+			$(".container").html("");
 			alert("잘못된 접근입니다.");
-			// location.href = "${referer}";
+			location.href = getContextPath();
+			return;
 		}
 		
 		// 구독리스트 호출
-		subsList();
+
+		if("${msg}" == "IsAdmin"){
+			subsList();
+		}
 		
 		
 		
@@ -88,21 +93,23 @@
 			success:function(result){	
 				
 				$.each(result, function(idx, rec){
-				    str += '<div class="row border">';
-				    str += '    <div class="col col-md-1 text-center">' + rec.subs_num + '</div>';
-				    str += '    <div class="col col-md-2">' + rec.subs_Member_Id + '</div>';
-				    str += '    <div class="col col-md-2">' + rec.subs_Pname + '</div>';
-				    str += '    <div class="col col-md-2 text-center">' + rec.subs_Fdate + '~';
-				    str += '        ' + rec.subs_Edate + '</div>';
-				    str += '    <div class="col col-md-1 text-center">' + rec.subs_Cnt + '</div>';
-				    str += '    <div class="col col-md-2 text-center">' + rec.subs_Ddate + '</div>';
-				    str += '    <div class="col col-md-1">';
-				    str += '        <button class="btn btn-danger deliveryBtn"';
-				    str += '            data-snum="' + rec.subs_num + '">';
-				    str += '            배송';
-				    str += '        </button>';
-				    str += '    </div>';
-				    str += '</div>';
+					if(rec.subs_Check == 'Y'){
+					    str += '<div class="row border">';
+					    str += '    <div class="col col-md-1 text-center">' + rec.subs_num + '</div>';
+					    str += '    <div class="col col-md-2">' + rec.subs_Member_Id + '</div>';
+					    str += '    <div class="col col-md-2">' + rec.subs_Pname + '</div>';
+					    str += '    <div class="col col-md-2 text-center">' + rec.subs_Fdate + '~';
+					    str += '        ' + rec.subs_Edate + '</div>';
+					    str += '    <div class="col col-md-1 text-center">' + rec.subs_Cnt + '</div>';
+					    str += '    <div class="col col-md-2 text-center">' + rec.subs_Ddate + '</div>';
+					    str += '    <div class="col col-md-1">';
+					    str += '        <button class="btn btn-danger deliveryBtn"';
+					    str += '            data-snum="' + rec.subs_num + '">';
+					    str += '            배송';
+					    str += '        </button>';
+					    str += '    </div>';
+					    str += '</div>';
+					}
 				});
 				
 				// 구독 리스트 삽입
@@ -135,7 +142,9 @@
 	
 	// 배송 버튼 클릭 이벤트
 	function deliveryBtnF(){
-		alert("배송버튼클릭");
+		if(!confirm("해당 상품을 배송하시겠습니까?")){
+			return false;
+		}
 		// document.location.href = "${pageContext.request.contextPath}" + this.getAttribute("data-url");
 		
 		var snum = this.getAttribute("data-snum");
@@ -161,6 +170,12 @@
 					
 		});//End of $.ajax
 		
+	}
+	
+	function getContextPath(){
+	    var offset=location.href.indexOf(location.host)+location.host.length;
+	    var ctxPath=location.href.substring(offset,location.href.indexOf('/',offset+1));
+	    return ctxPath;
 	}
 	
 </script>
