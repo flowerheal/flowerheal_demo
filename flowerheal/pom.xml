@@ -282,7 +282,7 @@
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
-		    <version>2.9.9.3</version>
+		    <version>2.9.10.4</version>
 		</dependency>	
 		<!-- xml포맷을 java객체로 변환 또는 java객체를 xml포맷으로 변환 -->
 		<dependency>
